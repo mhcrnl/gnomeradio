@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio 0\n"
-"POT-Creation-Date: 2004-02-01 17:04+0100\n"
-"PO-Revision-Date: 2004-02-05 23:49+CET\n"
+"POT-Creation-Date: 2004-03-20 14:54+0100\n"
+"PO-Revision-Date: 2004-03-20 14:54+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "UtiĹĄaj zvuk pri izlazku"
 
 #: gnomeradio.schemas.in.h:13
 msgid "Number of presets"
-msgstr ""
+msgstr "Broj postavki"
 
 #: gnomeradio.schemas.in.h:14
 msgid "Radio device"
@@ -95,7 +95,7 @@ msgstr "Selektiraj radio ureÄaj (najÄeĹĄÄi sluÄaj /dev/radio)"
 
 #: gnomeradio.schemas.in.h:20 src/record.c:354
 msgid "The audio device to use (usually /dev/audio)"
-msgstr ""
+msgstr "Audio uređaj za uporabu (obično /dev/audio)"
 
 #: gnomeradio.schemas.in.h:21 src/record.c:350
 msgid "The audio sample-rate of the wave-file"
@@ -103,7 +103,7 @@ msgstr "Kvaliteta zapisa wave-datoteke"
 
 #: gnomeradio.schemas.in.h:22 src/record.c:351
 msgid "The format (8 or 16 bit) of the wave-file"
-msgstr ""
+msgstr "Oblik (8 ili 16 bita) za wave datoteku"
 
 #: gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
@@ -114,20 +114,24 @@ msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
+"Uređaj miješanja koji treba koristiti gnomeradio. Promjenjivo je samo pomoću "
+"ove tipke (ne preko grafičkog sučelja)"
 
 #: gnomeradio.schemas.in.h:25
 msgid "The number of presets"
-msgstr ""
+msgstr "Broj psotavki"
 
 #: gnomeradio.schemas.in.h:26
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
+"Postavka je omogućena kad je isključen gnomeradio. Raspon 0 ... "
+"(# postavke -1). Bez postavke je -1."
 
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
-msgstr ""
+msgstr "Spremljena vrijednost jačine zvuka (0-100)"
 
 #: gnomeradio.schemas.in.h:28
 msgid "Volume"
@@ -135,11 +139,11 @@ msgstr "Razina Zvuka"
 
 #: gnomeradio.schemas.in.h:29 src/record.c:355 src/record.c:356
 msgid "Whether the output should be a mp3- or a wave-file"
-msgstr ""
+msgstr "Da li izlaz treba biti u mp3 ili wave datoteci?"
 
 #: gnomeradio.schemas.in.h:30 src/record.c:357 src/record.c:358
 msgid "Whether the output should be in stereo or mono"
-msgstr ""
+msgstr "Da li izlaz treba biti stereo ili mono?"
 
 #: gnomeradio.desktop.in.h:1
 msgid "A Gnome FM-Tuner"
@@ -191,7 +195,7 @@ msgstr "Maknite predpostavku iz liste"
 
 #: src/prefs.c:703
 msgid "Update the preset in the List"
-msgstr ""
+msgstr "Osvježi postavke u popisu"
 
 #: src/gui.c:71
 #, c-format
@@ -210,7 +214,7 @@ msgstr ""
 
 #: src/gui.c:93
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr ""
+msgstr "Izvor miješanja \"%s\" niej ispravni izvor!"
 
 #: src/gui.c:95
 #, c-format
@@ -219,7 +223,7 @@ msgstr "Ne moĹže se otvoriti \"%s\"!"
 
 #: src/gui.c:283 src/gui.c:291 src/gui.c:800
 msgid "Gnomeradio - %.2f MHz"
-msgstr ""
+msgstr "Gnomeradio - %.2f MHz"
 
 #: src/gui.c:287 src/gui.c:1015
 #, c-format
@@ -227,9 +231,8 @@ msgid "Frequency: %.2f MHz"
 msgstr "Ferkvencija: %.2f MHz"
 
 #: src/gui.c:311 src/gui.c:1018
-#, fuzzy
 msgid "Volume: %d%%"
-msgstr "JAÄINA: %d%%"
+msgstr "Jačina: %d%%"
 
 #: src/gui.c:476
 msgid "manual"
@@ -237,7 +240,7 @@ msgstr "ručno"
 
 #: src/gui.c:588
 msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr ""
+msgstr "Sox nije otkriven. Molim, provjerite je li instaliran u vašu varijablu PATH."
 
 #: src/gui.c:624
 #, c-format
@@ -266,7 +269,7 @@ msgstr "OdtiĹĄaj"
 #. Feel free to put your names here translators :-)
 #: src/gui.c:682
 msgid "TRANSLATORS"
-msgstr "Ferko Nenad"
+msgstr "lokalizacija@linux.hr"
 
 #: src/gui.c:693
 msgid ""
@@ -294,7 +297,7 @@ msgstr ""
 
 #: src/gui.c:895
 msgid "Presets:"
-msgstr ""
+msgstr "Postavke:"
 
 #: src/gui.c:1006
 msgid "Scan Backwards"
@@ -397,7 +400,7 @@ msgstr "Format uzorkovanja"
 
 #: src/record.c:221
 msgid "Record in:"
-msgstr ""
+msgstr "Zapiši u:"
 
 #: src/record.c:254
 msgid "Mono"
@@ -457,7 +460,7 @@ msgstr "Greška"
 
 #: src/record.c:491
 msgid "0 byte"
-msgstr "0 byte"
+msgstr "0 bajta"
 
 #: src/record.c:530
 msgid "Gnomeradio recording status"
