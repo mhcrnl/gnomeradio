@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnomeradio cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-30 04:32+0200\n"
+"POT-Creation-Date: 2004-03-15 20:30+0100\n"
 "PO-Revision-Date: 2003-07-30 13:50+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -462,12 +462,12 @@ msgstr "%i byte"
 #: src/record.c:482
 #, c-format
 msgid "%i kB"
-msgstr "%i Kb"
+msgstr "%i KB"
 
 #: src/record.c:484
 #, c-format
 msgid "%.2f MB"
-msgstr "%.2f Mb"
+msgstr "%.2f MB"
 
 #: src/record.c:489
 msgid "Error"
