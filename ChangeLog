@@ -1,3 +1,8 @@
+2003-02-09  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* Added src/eggtrayicon.c/.h
+	* src/gui.c/.h: Added a notification area icon :-)
+
 2003-02-02  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* configure.in: added "hu" to ALL_LINGUAS

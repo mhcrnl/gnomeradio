@@ -24,6 +24,7 @@
 #include <gnome.h>
 #include <gconf/gconf-client.h>
 #include <math.h>
+#include "eggtrayicon.h"
 #include "gui.h"
 #include "tech.h"
 #include "rec_tech.h"
@@ -51,6 +52,8 @@ static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
 static GtkWidget *preset_menu, *menu;
 static GtkWidget *freq_scale, *vol_scale;
+static GtkWidget *tray_icon;
+
 
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
 
@@ -282,6 +285,10 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	
 	buffer = g_strdup_printf(_("Frequency: %.2f MHz"), rint(adj->value)/STEPS);
 	gtk_tooltips_set_tip(tooltips, freq_scale, buffer, NULL);
+	g_free(buffer);
+	
+	buffer = g_strdup_printf(_("%.2f MHz"), adj->value/STEPS);
+	gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
 	g_free(buffer);
 
 	radio_setfreq(adj->value/STEPS);
@@ -721,6 +728,75 @@ void display_help_cb(char *topic)
 	}
 }
 
+gboolean
+tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
+{
+	static posx, posy;
+	GtkWidget *app = GTK_WIDGET(data);
+	switch (event->button)
+	{
+		case 1:
+			if (event->type != GDK_BUTTON_PRESS)
+				break;
+			if (GTK_WIDGET_VISIBLE(app))
+			{
+				gtk_window_get_position(GTK_WINDOW(app), &posx, &posy);
+				gtk_widget_hide(app);
+			}
+			else
+			{
+				if ((posx >= 0) && (posy >= 0))
+					gtk_window_move(GTK_WINDOW(app), posx, posy);
+				gtk_window_present(GTK_WINDOW(app));
+			}
+			break;
+		case 3:
+			if (event->type != GDK_BUTTON_PRESS)
+				break;
+			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
+				NULL, NULL, event->button, event->time);
+			break;
+		default:
+	}			
+	return FALSE;
+}	
+
+gboolean
+tray_destroyed (GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+	create_tray_icon(GTK_WIDGET(data));
+	return TRUE;
+}
+
+void create_tray_icon(GtkWidget *app)
+{
+	GdkPixbuf *pixbuf, *scaled;
+	GtkWidget *tray_icon_image;
+	GtkWidget *eventbox;
+	char *text;
+	
+	tray_icon = GTK_WIDGET(egg_tray_icon_new (PACKAGE));
+	pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
+	scaled = gdk_pixbuf_scale_simple(pixbuf, 16, 16, GDK_INTERP_HYPER);
+	gdk_pixbuf_unref(pixbuf);
+	tray_icon_image = gtk_image_new_from_pixbuf(scaled);
+	gdk_pixbuf_unref(scaled);
+
+	eventbox = gtk_event_box_new();
+	gtk_container_add(GTK_CONTAINER(eventbox), tray_icon_image);
+	gtk_container_add (GTK_CONTAINER(tray_icon), eventbox);
+
+	g_signal_connect(G_OBJECT(eventbox), "button-press-event", 
+		G_CALLBACK(tray_clicked), (gpointer)app);
+	g_signal_connect(G_OBJECT(tray_icon), "destroy-event",
+		G_CALLBACK(tray_destroyed), (gpointer)app);
+	gtk_widget_show_all(GTK_WIDGET(tray_icon));
+	
+	text = g_strdup_printf(_("%.2f MHz"), adj->value/STEPS);
+	gtk_tooltips_set_tip(tooltips, tray_icon, text, NULL);
+	g_free(text);
+}	
+
 GtkWidget* gnome_radio_gui(void)
 {
 	GtkWidget *app;
@@ -1035,7 +1111,6 @@ int main(int argc, char* argv[])
 	icons = g_list_append(NULL, (gpointer)app_icon);
 	gtk_window_set_default_icon_list(icons);
 
-	/* Technical Stuff */
 	
 	/* Main app */
 
@@ -1043,6 +1118,9 @@ int main(int argc, char* argv[])
 
 	gtk_widget_show_all(app);
 
+	/* Create an tray icon */
+	create_tray_icon(app);
+	
 	/* Initizialize Gconf */
 	if (!gconf_init(argc, argv, &err))
 	{

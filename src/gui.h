@@ -71,5 +71,7 @@ void display_help_cb(char *topic);
 
 void change_preset(gboolean next);
 
+void create_tray_icon(GtkWidget *app);
+
 #endif
 
