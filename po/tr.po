@@ -1,156 +1,156 @@
-# SOME DESCRIPTIVE TITLE.
+# Turkish translation for gnomeradio
 # Copyright (C) YEAR Free Software Foundation, Inc.
-# G�rkem �etin <gorkem@gelecek.com.tr>, 2001
+# Görkem Çetin <gorkem@gelecek.com.tr>, 2001
+# Barbaros Ulutas <barbaros@ekolojikpolitika.org>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
-"POT-Creation-Date: 2003-01-08 16:14+0100\n"
-"PO-Revision-Date: 2001-10-20 13:09+0200\n"
-"Last-Translator: G�rkem �etin <gorkem@gelecek.com.tr>\n"
+"POT-Creation-Date: 2003-01-29 11:02+0100\n"
+"PO-Revision-Date: 2003-01-30 04:12+0200\n"
+"Last-Translator: Barbaros Ulutas <barbaros@ekolojikpolitika.org>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-9\n"
-"Content-Transfer-Encoding: 8-bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: gnomeradio.schemas.in.h:1
-#, fuzzy
 msgid "Audio device"
-msgstr "Radyo Ayg�t�:"
+msgstr "Ses Aygıtı:"
 
 #: gnomeradio.schemas.in.h:2 src/record.c:351
+#, fuzzy
 msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr ""
+msgstr "Mp3 kodlamasının yapılacağı bitrate değerini seçin"
 
 #: gnomeradio.schemas.in.h:3 src/prefs.c:699
-#, fuzzy
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
-msgstr "Radyonun sesini y�neten kar��t�r�c� ayg�t�n� verin (line, line1 vb) "
+msgstr "Radyonun sesini ayarlayabilen karıştırıcı aygıtı seçin (line, line1 vb) "
 
 #: gnomeradio.schemas.in.h:4 src/record.c:350
 msgid "Choose the mp3 encoder that should be used"
-msgstr ""
+msgstr "Kullanılacak mp3 kodlayıcısını seçin"
 
 #: gnomeradio.schemas.in.h:5 src/prefs.c:700
 msgid "If unchecked, gnomeradio won't mute after exiting"
-msgstr "E�er t�klan�rsa, gnomeradio ��k��ta sesi k�smayacakt�r"
+msgstr "Eğer tıklanmış olmazsa, gnomeradio çıkışta sesi kısmayacaktır"
 
 #: gnomeradio.schemas.in.h:6
-#, fuzzy
 msgid "Last frequency"
-msgstr "Frekans:"
+msgstr "Son Frekans"
 
 #: gnomeradio.schemas.in.h:7
-#, fuzzy
 msgid "Last presets"
-msgstr "Kanallar"
+msgstr "Kaydedilmiş son kanallar"
 
 #: gnomeradio.schemas.in.h:8
 msgid "MP3 bitrate"
-msgstr ""
+msgstr "MP3 bitrate"
 
 #: gnomeradio.schemas.in.h:9
 msgid "MP3 encoder"
-msgstr ""
+msgstr "MP3 kodlayıcı"
 
 #: gnomeradio.schemas.in.h:10
-#, fuzzy
 msgid "Mixer Device"
-msgstr "Radyo Ayg�t�:"
+msgstr "Karıştırıcı"
 
 #: gnomeradio.schemas.in.h:11
 #, fuzzy
 msgid "Mixer source"
-msgstr "Kar��t�r�c� Kayna��:"
+msgstr "Karıştırıcı Kaynağı:"
 
 #: gnomeradio.schemas.in.h:12
 #, fuzzy
 msgid "Mute on exit"
-msgstr "��k��ta sessiz olsun"
+msgstr "Çıkışta sessiz olsun"
 
 #: gnomeradio.schemas.in.h:13
 msgid "Number of presets"
-msgstr ""
+msgstr "Kayıtlı kanal sayısı"
 
 #: gnomeradio.schemas.in.h:14
 #, fuzzy
 msgid "Radio device"
-msgstr "Radyo Ayg�t�:"
+msgstr "Radyo Aygıtı:"
 
 #: gnomeradio.schemas.in.h:15
 msgid "Record as mp3- or wave-file"
-msgstr ""
+msgstr "MP3 ya da wave olarak kaydet"
 
 #: gnomeradio.schemas.in.h:16
 msgid "Record in stereo or mono"
-msgstr ""
+msgstr "Stereo ya da mono olarak kaydet"
 
 #: gnomeradio.schemas.in.h:17
 msgid "Sample format"
-msgstr ""
+msgstr "Örnek biçimi"
 
 #: gnomeradio.schemas.in.h:18
 msgid "Sample rate"
-msgstr ""
+msgstr "Örnek oranı"
 
 #: gnomeradio.schemas.in.h:19 src/prefs.c:697
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr "Radyo ayg�t�n� verin (genellikle /dev/radio)"
+msgstr "Radyo aygıtını belirtin (genellikle /dev/radio)"
 
 #: gnomeradio.schemas.in.h:20 src/record.c:352
-#, fuzzy
 msgid "The audio device to use (usually /dev/audio)"
-msgstr "Radyo ayg�t�n� verin (genellikle /dev/radio)"
+msgstr "Kullanılacak ses aygıtı (genellikle /dev/audio)"
 
 #: gnomeradio.schemas.in.h:21 src/record.c:348
 msgid "The audio sample-rate of the wave-file"
-msgstr ""
+msgstr "Wave dosyasının örnek ses oranı"
 
 #: gnomeradio.schemas.in.h:22 src/record.c:349
 msgid "The format (8 or 16 bit) of the wave-file"
-msgstr ""
+msgstr "wave dosyası biçimi (8 ya da 16 bit)"
 
 #: gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
-msgstr ""
+msgstr "Kullanımdaki son frekans (MHz cinsinden)"
 
 #: gnomeradio.schemas.in.h:24
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
+"Gnomeradio'nun kullanacağı karıştırıcı aygıt. Sadece bu tuş kullanılarak değiştirilebilir "
+"(GUI seçeneği yok)"
 
 #: gnomeradio.schemas.in.h:25
 msgid "The number of presets"
-msgstr ""
+msgstr "Kayıtlı kanal sayısı"
 
 #: gnomeradio.schemas.in.h:26
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
+"Gnomeradio sonlandırıldığında etkinleştirilmiş olan kayıtlı kanal. Düzen:0 "
+"(# kayıtlı kanal - 1). Hiçbiri -1"
 
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
-msgstr ""
+msgstr "Kaydedilmiş ses yükseklik değeri (1-100)"
 
 #: gnomeradio.schemas.in.h:28
 msgid "Volume"
-msgstr ""
+msgstr "Ses"
 
 #: gnomeradio.schemas.in.h:29 src/record.c:353 src/record.c:354
 msgid "Whether the output should be a mp3- or a wave-file"
-msgstr ""
+msgstr "Çıktı dosyasının mp3 mü wave dosyası mı olacağını belirtir"
 
 #: gnomeradio.schemas.in.h:30 src/record.c:355 src/record.c:356
 msgid "Whether the output should be in stereo or mono"
-msgstr ""
+msgstr "Çıktının stereo mu mono mu olacağını belirtir"
 
 #: gnomeradio.desktop.in.h:1
 msgid "A Gnome FM-Tuner"
-msgstr ""
+msgstr "Bir Gnome FM alıcısı"
 
 #: gnomeradio.desktop.in.h:2 src/gui.c:739
 msgid "Gnomeradio"
@@ -158,11 +158,11 @@ msgstr "Gnomeradio"
 
 #: src/prefs.c:519
 msgid "Gnomeradio Settings"
-msgstr "Gnomeradio Ayarlar�"
+msgstr "Gnomeradio Ayarları"
 
 #: src/prefs.c:526
 msgid "Misc Settings"
-msgstr "�e�itli Ayarlar"
+msgstr "Çeşitli Ayarlar"
 
 #: src/prefs.c:527
 msgid "Presets"
@@ -170,37 +170,35 @@ msgstr "Kanallar"
 
 #: src/prefs.c:539
 msgid "Radio Device:"
-msgstr "Radyo Ayg�t�:"
+msgstr "Radyo Aygıtı:"
 
 #: src/prefs.c:547
 msgid "Mixer Source:"
-msgstr "Kar��t�r�c� Kayna��:"
+msgstr "Karıştırıcı Kaynağı:"
 
 #: src/prefs.c:561
 msgid "Mute on exit?"
-msgstr "��k��ta sessiz olsun"
+msgstr "Çıkışta sessiz olsun mu?"
 
 #: src/prefs.c:609
 msgid "Name:"
-msgstr "�sim:"
+msgstr "Ad:"
 
 #: src/prefs.c:643
 msgid "Frequency:"
 msgstr "Frekans:"
 
 #: src/prefs.c:701
-#, fuzzy
 msgid "Add a new preset"
-msgstr "Yeni bir kanal a�"
+msgstr "Yeni bir kanal ekle"
 
 #: src/prefs.c:702
 msgid "Remove preset from List"
-msgstr "Kanal� listeden sil"
+msgstr "Kanalı Listeden sil"
 
 #: src/prefs.c:703
-#, fuzzy
 msgid "Update the preset in the List"
-msgstr "Kanal� listeye kaydet"
+msgstr "Listede kayıtlı kanalı güncelle"
 
 #: src/gui.c:67
 #, c-format
@@ -211,21 +209,21 @@ msgid ""
 "program is using %s.\n"
 "Make also sure that you have read-access to it."
 msgstr ""
-"\"%s\" ayg�t� a��lamad� !\n"
+"\"%s\" aygıtı açılamadı !\n"
 "\n"
-"Ayarlar�n�z� kontrol edin ve %s ayg�t�n� ba�ka\n"
-"bir program�n kullanmad���na emin olun.\n"
-"(Bu ayg�ta okuma eri�iminiz var m�?"
+"Ayarlarınızı kontrol edin ve %s aygıtını başka\n"
+"bir programın kullanmadığına emin olun.\n"
+"Bu aygıt için okuma erişiminiz var mı?"
 
 #: src/gui.c:89
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr "\"%s\" kar��t�r�c�s� ge�ersiz"
+msgstr "\"%s\" karıştırıcısı geçersiz bir kaynak!"
 
 #: src/gui.c:91
 #, c-format
 msgid "Could not open \"%s\"!"
-msgstr "\"%s\" a��lamad�!"
+msgstr "\"%s\" açılamadı!"
 
 #: src/gui.c:279
 #, c-format
@@ -240,16 +238,15 @@ msgstr "Frekans: %.2f MHz"
 #: src/gui.c:303 src/gui.c:937
 #, c-format
 msgid "Volume: %d%%"
-msgstr ""
+msgstr "Ses: %d%%"
 
 #: src/gui.c:468
 msgid "manual"
 msgstr "elle"
 
 #: src/gui.c:579
-msgid ""
-"Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr ""
+msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
+msgstr "Sox bulunamadı. Lütfen olması gereken yerde yüklü olduğuna emin olun."
 
 #: src/gui.c:614
 #, c-format
@@ -257,6 +254,8 @@ msgid ""
 "File '%s' exists.\n"
 "Overwrite it?"
 msgstr ""
+"'%s' dosyası zaten var.\n"
+"Üstüne yazılsın mı?"
 
 #: src/gui.c:625
 #, c-format
@@ -264,6 +263,8 @@ msgid ""
 "Error opening file '%s':\n"
 "%s"
 msgstr ""
+"'%s' dosyası açılırken hata oluştu:\n"
+"%s"
 
 #: src/gui.c:653 src/gui.c:932
 msgid "Mute"
@@ -271,12 +272,14 @@ msgstr "Sesi kapat"
 
 #: src/gui.c:659
 msgid "Unmute"
-msgstr "Sesi a�"
+msgstr "Sesi aç"
 
 #. Feel free to put your names here translators :-)
 #: src/gui.c:671
 msgid "TRANSLATORS"
 msgstr ""
+"Barbaros Ulutas <barbaros@ekolojikpolitika.org>"
+"Görkem Çetin <gorkem@gelecek.com.tr>"
 
 #: src/gui.c:682
 msgid ""
@@ -285,6 +288,10 @@ msgid ""
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
+"Gnomeradio, GNOME masaüstü için bir FM alıcısıdır. video4linux sürücüleri tarafından "
+"desteklenen her alıcı donanımla çalışır.\n"
+"\n"
+"Bu sürüm LIRC desteği ile derlenmiştir."
 
 #: src/gui.c:686
 msgid ""
@@ -293,18 +300,22 @@ msgid ""
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
+"Gnomeradio, GNOME masaüstü için bir FM alıcısıdır. video4linux sürücüleri tarafından "
+"desteklenen her alıcı donanımla çalışır.\n"
+"\n"
+"Bu sürüm LIRC desteği olmaksızın derlenmiştir."
 
 #: src/gui.c:814
 msgid "Presets:"
-msgstr "Sender:"
+msgstr "Kanallar:"
 
 #: src/gui.c:925
 msgid "Scan Backwards"
-msgstr "Geri Tara"
+msgstr "Geriye Doğru Tara"
 
 #: src/gui.c:926
 msgid "Scan Forwards"
-msgstr "�leri Tara"
+msgstr "İleriye Doğru Tara"
 
 #: src/gui.c:927
 msgid "0.05 MHz Backwards"
@@ -312,23 +323,23 @@ msgstr "0.05 MHz Geri"
 
 #: src/gui.c:928
 msgid "0.05 MHz Forwards"
-msgstr "0.05 MHz �leri"
+msgstr "0.05 MHz İleri"
 
 #: src/gui.c:929
 msgid "About Gnomeradio"
-msgstr "Gnomeradio hakk�nda"
+msgstr "Gnomeradio hakkında"
 
 #: src/gui.c:930
 msgid "Record radio as Wave or MP3"
-msgstr ""
+msgstr "Radyo yayınını Wave ya da MP3 olarak kaydet"
 
 #: src/gui.c:931
 msgid "Edit your Preferences"
-msgstr "Tercihleri D�zenle"
+msgstr "Tercihleri Düzenle"
 
 #: src/gui.c:933
 msgid "Quit"
-msgstr "��k"
+msgstr "Çık"
 
 #: src/gui.c:1051
 #, c-format
@@ -336,92 +347,90 @@ msgid ""
 "Failed to init GConf: %s\n"
 "Changes to the settings won't be saved\n"
 msgstr ""
+"GConf başlatılamadı: %s\n"
+"Ayarlarda yapılan düzenleme kaydedilmeyecek.\n"
 
 #: src/gui.c:1076
 msgid "Could not start lirc"
-msgstr "Lirc ba�lat�lamad�"
+msgstr "Lirc başlatılamadı"
 
 #: src/record.c:150
 msgid "Start"
-msgstr ""
+msgstr "Başla"
 
 #: src/record.c:158
-#, fuzzy
 msgid "Gnomeradio Record"
-msgstr "Gnomeradio"
+msgstr "Gnomeradio Kaydedici"
 
 #: src/record.c:166
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: src/record.c:167
-#, fuzzy
 msgid "Wave Settings"
-msgstr "�e�itli Ayarlar"
+msgstr "Wave Ayarları"
 
 #: src/record.c:168
-#, fuzzy
 msgid "Mp3/Ogg Settings"
-msgstr "�e�itli Ayarlar"
+msgstr "Mp3/Ogg Ayarları"
 
 #: src/record.c:180
-#, fuzzy
 msgid "Audio device:"
-msgstr "Radyo Ayg�t�:"
+msgstr "Ses Aygıtı:"
 
 #: src/record.c:183
 msgid "Filename:"
-msgstr ""
+msgstr "Dosya adı:"
 
 #. path_entry = gtk_entry_new();
 #: src/record.c:185
 msgid "Choose a filename"
-msgstr ""
+msgstr "Bir dosya adı seçin"
 
 #. choose_button = gtk_button_new_with_label(_("Choose..."));
 #: src/record.c:191
 msgid "Record as:"
-msgstr ""
+msgstr "Şöyle kaydet:"
 
 #: src/record.c:192
 msgid "Wave (.wav)"
-msgstr ""
+msgstr "Wave (.wav)"
 
 #: src/record.c:193
 msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr ""
+msgstr "MP3/Ogg (.mp3/.ogg)"
 
 #: src/record.c:217
 msgid "Sample rate:"
-msgstr ""
+msgstr "Örnek oran:"
 
 #: src/record.c:218
 msgid "Sample format:"
-msgstr ""
+msgstr "Örnek biçimi:"
 
 #: src/record.c:219
 msgid "Record in:"
-msgstr ""
+msgstr "Şu biçimde kaydet:"
 
 #: src/record.c:252
 msgid "Mono"
-msgstr ""
+msgstr "Mono"
 
 #: src/record.c:253
 msgid "Stereo"
-msgstr ""
+msgstr "Stereo"
 
 #: src/record.c:271
 msgid "Encoder:"
-msgstr ""
+msgstr "Kodlayıcı:"
 
 #: src/record.c:272
 msgid "Bitrate:"
-msgstr ""
+msgstr "Bitrate:"
 
 #: src/record.c:299 src/record.c:306
 msgid "no supported encoder installed"
-msgstr ""
+msgstr "desteklenen herhangi bir kodlayıcı yüklü değil"
 
 #: src/record.c:422
 #, c-format
@@ -429,73 +438,75 @@ msgid ""
 "%s has stopped:\n"
 "%s\n"
 msgstr ""
+"%s durdu:\n"
+"%s\n"
 
 #: src/record.c:423
 msgid "MP3/Ogg encoder"
-msgstr ""
+msgstr "MP3/Ogg kodlayıcı"
 
 #: src/record.c:424
 msgid "unknown reason"
-msgstr ""
+msgstr "bilinmeyen neden"
 
 #: src/record.c:476
 #, c-format
 msgid "%i byte"
-msgstr ""
+msgstr "%i byte"
 
 #: src/record.c:479
 #, c-format
 msgid "%i kB"
-msgstr ""
+msgstr "%i kB"
 
 #: src/record.c:481
 #, c-format
 msgid "%.2f MB"
-msgstr ""
+msgstr "%.2f MB"
 
 #: src/record.c:486
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: src/record.c:488
 msgid "0 byte"
-msgstr ""
+msgstr "0 byte"
 
 #: src/record.c:527
-#, fuzzy
 msgid "Gnomeradio recording status"
-msgstr "Gnomeradio Ayarlar�"
+msgstr "Gnomeradio kayıt durumu"
 
 #: src/record.c:541
 msgid "Recording:"
-msgstr ""
+msgstr "Kaydediliyor:"
 
 #: src/record.c:542
 msgid "Filesize:"
-msgstr ""
+msgstr "Dosya boyutu:"
 
 #: src/record.c:552
 msgid "Stop Recording"
-msgstr ""
+msgstr "Kaydı Durdur"
 
 #~ msgid ""
 #~ "Yet another Gnome FM-Tuner. But this one is the best ;-)\n"
 #~ "(Hopefully) works with all FM-Tunercards supported by video4linux."
 #~ msgstr ""
-#~ "GNOME FM Tuner program�. Video4linux taraf�ndan desteklenen t�m FM Tuner "
-#~ "kartlar�nda �al���r."
+#~ "GNOME FM Tuner programı. Video4linux tarafından desteklenen tüm FM Tuner "
+#~ "kartlarında çalışır."
 
 #, fuzzy
 #~ msgid "Mute on Exit"
-#~ msgstr "��k��ta sessiz olsun"
+#~ msgstr "Çıkışta sessiz olsun"
 
 #, fuzzy
 #~ msgid "The audio device"
-#~ msgstr "Radyo Ayg�t�:"
+#~ msgstr "Radyo Aygıtı:"
 
 #, fuzzy
 #~ msgid "The radio device"
-#~ msgstr "Radyo Ayg�t�:"
+#~ msgstr "Radyo Aygıtı:"
 
 #~ msgid "Choose your frequency"
-#~ msgstr "Frekans� se�in"
+#~ msgstr "Frekansı seçin"
+
