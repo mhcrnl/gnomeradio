@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnomeradio CVS (HEAD)\n"
-"POT-Creation-Date: 2003-01-20 17:20+0100\n"
-"PO-Revision-Date: 2003-01-20 17:19+0100\n"
+"POT-Creation-Date: 2003-01-21 20:51+0100\n"
+"PO-Revision-Date: 2003-01-21 20:51+0100\n"
 "Last-Translator: Jörgen Scheibengruber <mfcn@gmx.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -209,7 +209,7 @@ msgid ""
 "program is using %s.\n"
 "Make also sure that you have read-access to it."
 msgstr ""
-"Es war nich möglich, das Gerät „%s” zu öffnen!\n"
+"Es war nich möglich, das Gerät »%s« zu öffnen!\n"
 "\n"
 "Überprüfen Sie Ihre Einstellungen und stellen sie sicher,\n"
 "dass kein anderes Programm auf %s zugreift.\n"
@@ -218,12 +218,12 @@ msgstr ""
 #: src/gui.c:89
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr "Die Mixerquelle „%s” ist keine gültige Quelle!"
+msgstr "Die Mixerquelle »%s« ist keine gültige Quelle!"
 
 #: src/gui.c:91
 #, c-format
 msgid "Could not open \"%s\"!"
-msgstr "„%s” konnte nicht geöffnet werden!"
+msgstr "»%s« konnte nicht geöffnet werden!"
 
 #: src/gui.c:279
 #, c-format
@@ -249,7 +249,7 @@ msgid ""
 "Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr ""
 "Sox konnte nicht erkannt werden. Stellen Sie sicher, dass es in einem in der "
-"Umgebungsvariable „$PATH” enthaltenen Verzeichnisse befindet. "
+"Umgebungsvariable »$PATH« enthaltenen Verzeichnisse befindet. "
 
 #: src/gui.c:614
 #, c-format
@@ -257,7 +257,7 @@ msgid ""
 "File '%s' exists.\n"
 "Overwrite it?"
 msgstr ""
-"Datei „%s” existiert bereits.\n"
+"Datei »%s« existiert bereits.\n"
 "Soll Sie überschrieben werden?"
 
 #: src/gui.c:625
@@ -266,7 +266,7 @@ msgid ""
 "Error opening file '%s':\n"
 "%s"
 msgstr ""
-"Fehler beim Öffnen der Datei „%s”:\n"
+"Fehler beim Öffnen der Datei »%s«:\n"
 "%s"
 
 #: src/gui.c:653 src/gui.c:932
