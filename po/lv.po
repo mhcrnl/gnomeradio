@@ -5,35 +5,35 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
-"POT-Creation-Date: 2003-01-08 16:14+0100\n"
-"PO-Revision-Date: 2002-10-25 19:17+0200\n"
+"POT-Creation-Date: 2003-01-09 04:50+0100\n"
+"PO-Revision-Date: 2003-01-09 16:48+0200\n"
 "Last-Translator: Artis Trops <hornet@navigator.lv>\n"
 "Language-Team: Latvian <ll10nt@os.lv>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: gnomeradio.schemas.in.h:1
 msgid "Audio device"
 msgstr "Audio iekārta"
 
-#: gnomeradio.schemas.in.h:2 src/record.c:351
+#: gnomeradio.schemas.in.h:2
+#: src/record.c:351
 msgid "Choose the bitrate in which the mp3 will be encoded"
 msgstr "Izvēlies bitu ātrumu, kādā mp3 tiks kodēts"
 
-#: gnomeradio.schemas.in.h:3 src/prefs.c:699
-msgid ""
-"Choose the mixer source (line, line1, etc.) that is able to control the "
-"volume of your radio"
-msgstr ""
-"Izvēlieties miksera avotu (line, line1 utt.), kas spēj kontrolēt jūsu radio "
-"skaļumu"
+#: gnomeradio.schemas.in.h:3
+#: src/prefs.c:699
+msgid "Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"
+msgstr "Izvēlieties miksera avotu (line, line1 utt.), kas spēj kontrolēt jūsu radio skaļumu"
 
-#: gnomeradio.schemas.in.h:4 src/record.c:350
+#: gnomeradio.schemas.in.h:4
+#: src/record.c:350
 msgid "Choose the mp3 encoder that should be used"
 msgstr "Izvēlies mp3 kodētāju, kuru lietot"
 
-#: gnomeradio.schemas.in.h:5 src/prefs.c:700
+#: gnomeradio.schemas.in.h:5
+#: src/prefs.c:700
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr "Ja neatķeksēts, gnomeradio neapklusīs pēc iziešnas"
 
@@ -89,19 +89,23 @@ msgstr "Nolases formāts"
 msgid "Sample rate"
 msgstr "Nolases kvalitāte"
 
-#: gnomeradio.schemas.in.h:19 src/prefs.c:697
+#: gnomeradio.schemas.in.h:19
+#: src/prefs.c:697
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr "Norādi radio iekārtu (visbiežāk /dev/radio)"
 
-#: gnomeradio.schemas.in.h:20 src/record.c:352
+#: gnomeradio.schemas.in.h:20
+#: src/record.c:352
 msgid "The audio device to use (usually /dev/audio)"
 msgstr "Lietojamā radio iekārta (visbiežāk /dev/radio)"
 
-#: gnomeradio.schemas.in.h:21 src/record.c:348
+#: gnomeradio.schemas.in.h:21
+#: src/record.c:348
 msgid "The audio sample-rate of the wave-file"
 msgstr "Audio wave-faila parauga kvalitāte"
 
-#: gnomeradio.schemas.in.h:22 src/record.c:349
+#: gnomeradio.schemas.in.h:22
+#: src/record.c:349
 msgid "The format (8 or 16 bit) of the wave-file"
 msgstr "Formāts (8 vai 16 bitu) wave-failam"
 
@@ -110,24 +114,16 @@ msgid "The last frequency (in MHz) in use"
 msgstr "Pēdējoreiz lietotā frekvence (MHz)"
 
 #: gnomeradio.schemas.in.h:24
-msgid ""
-"The mixer device that gnomeradio should use. Only changeable via this key "
-"(no GUI option)"
-msgstr ""
-"Miksera iekārta, ko gnomeradio lietot. Tikai maināma ar šo atslēgu (nav GUI "
-"opcijas)"
+msgid "The mixer device that gnomeradio should use. Only changeable via this key (no GUI option)"
+msgstr "Miksera iekārta, ko gnomeradio lietot. Tikai maināma ar šo atslēgu (nav GUI opcijas)"
 
 #: gnomeradio.schemas.in.h:25
 msgid "The number of presets"
 msgstr "Priekšnoteikto skaits"
 
 #: gnomeradio.schemas.in.h:26
-msgid ""
-"The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
-"(# presets - 1). None is -1"
-msgstr ""
-"Priekšnoteiktie, kas bija aktivizēti, kad gnomeradio tika nokauts. Diapazons "
-"ir 0 ... (# priekšnoteiktie - 1). Neviens ir -1"
+msgid "The preset that was enabled when gnomeradio was terminated. Range is 0 ... (# presets - 1). None is -1"
+msgstr "Priekšnoteiktie, kas bija aktivizēti, kad gnomeradio tika nokauts. Diapazons ir 0 ... (# priekšnoteiktie - 1). Neviens ir -1"
 
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
@@ -137,11 +133,15 @@ msgstr "Sējuma glabātā vērtība (0-100)"
 msgid "Volume"
 msgstr "Skaļums"
 
-#: gnomeradio.schemas.in.h:29 src/record.c:353 src/record.c:354
+#: gnomeradio.schemas.in.h:29
+#: src/record.c:353
+#: src/record.c:354
 msgid "Whether the output should be a mp3- or a wave-file"
 msgstr "Vai izvadei jābūt mp3- vai wave-failam"
 
-#: gnomeradio.schemas.in.h:30 src/record.c:355 src/record.c:356
+#: gnomeradio.schemas.in.h:30
+#: src/record.c:355
+#: src/record.c:356
 msgid "Whether the output should be in stereo or mono"
 msgstr "Vai izvadei jābūt stereo vai mono"
 
@@ -149,7 +149,8 @@ msgstr "Vai izvadei jābūt stereo vai mono"
 msgid "A Gnome FM-Tuner"
 msgstr "Gnoem FM-Skaņotājs"
 
-#: gnomeradio.desktop.in.h:2 src/gui.c:739
+#: gnomeradio.desktop.in.h:2
+#: src/gui.c:739
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
@@ -227,12 +228,14 @@ msgstr "Nevarēju atvērt \"%s\"!"
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: src/gui.c:283 src/gui.c:934
+#: src/gui.c:283
+#: src/gui.c:934
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Frekvence: %.2f MHz"
 
-#: src/gui.c:303 src/gui.c:937
+#: src/gui.c:303
+#: src/gui.c:937
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Skaļums: %d%%"
@@ -242,29 +245,25 @@ msgid "manual"
 msgstr "pašrocīgi"
 
 #: src/gui.c:579
-msgid ""
-"Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr ""
+msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
+msgstr "Nevaru noteikt Sox. Lūdzu pārliecinieties, vai tas ir instalēts jūsu PATH."
 
 #: src/gui.c:614
 #, c-format
-msgid ""
-"File '%s' exists.\n"
+msgid "File '%s' exists.\n"
 "Overwrite it?"
-msgstr ""
-"Fails '%s' eksistē.\n"
+msgstr "Fails '%s' eksistē.\n"
 "Pārrakstīt to?"
 
 #: src/gui.c:625
 #, c-format
-msgid ""
-"Error opening file '%s':\n"
+msgid "Error opening file '%s':\n"
 "%s"
-msgstr ""
-"Kļūda atverot failu '%s':\n"
+msgstr "Kļūda atverot failu '%s':\n"
 "%s"
 
-#: src/gui.c:653 src/gui.c:932
+#: src/gui.c:653
+#: src/gui.c:932
 msgid "Mute"
 msgstr "Klusināt"
 
@@ -279,19 +278,23 @@ msgstr "Artis Trops <hornet@navigator.lv>"
 
 #: src/gui.c:682
 msgid ""
-"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
-"with all tuner hardware that is supported by the video4linux drivers.\n"
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
+"Gnomeradio ir FM-Uztvērēja aplikācija GNOME darba virsmai. Tai vajadzētu darboties ar visu uztvērēju aparatūru, kuru atbalsta video4linux draiveri.\n"
+"\n"
+"Šī versija tika kompilēta ar LIRC atbalstu."
 
 #: src/gui.c:686
 msgid ""
-"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
-"with all tuner hardware that is supported by the video4linux drivers.\n"
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
+"Gnomeradio ir FM-Uztvērēja aplikācija GNOME darba virsmai. Tai vajadzētu darboties ar visu uztvērēju aparatūru, kuru atbalsta video4linux draiveri.\n"
+"\n"
+"Šī versija tika kompilēta bez LIRC atbalsta."
 
 #: src/gui.c:814
 msgid "Presets:"
@@ -331,11 +334,9 @@ msgstr "Iziet"
 
 #: src/gui.c:1051
 #, c-format
-msgid ""
-"Failed to init GConf: %s\n"
+msgid "Failed to init GConf: %s\n"
 "Changes to the settings won't be saved\n"
-msgstr ""
-"Neizdevās init GConf: %s\n"
+msgstr "Neizdevās init GConf: %s\n"
 "Izmaiņas uzstādījumos netiks saglabātas\n"
 
 #: src/gui.c:1076
@@ -344,7 +345,7 @@ msgstr "Nevarēju sāknēt lirc"
 
 #: src/record.c:150
 msgid "Start"
-msgstr ""
+msgstr "Sākt"
 
 #: src/record.c:158
 msgid "Gnomeradio Record"
@@ -359,9 +360,8 @@ msgid "Wave Settings"
 msgstr "Wave Uzstādījumi"
 
 #: src/record.c:168
-#, fuzzy
 msgid "Mp3/Ogg Settings"
-msgstr "Mp3 Uzstādījumi"
+msgstr "Mp3/Ogg Uzstādījumi"
 
 #: src/record.c:180
 msgid "Audio device:"
@@ -386,9 +386,8 @@ msgid "Wave (.wav)"
 msgstr "Wave (.wav)"
 
 #: src/record.c:193
-#, fuzzy
 msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3 (.mp3)"
+msgstr "MP3/Ogg (.mp3/.ogg)"
 
 #: src/record.c:217
 msgid "Sample rate:"
@@ -411,35 +410,32 @@ msgid "Stereo"
 msgstr "Stereo"
 
 #: src/record.c:271
-#, fuzzy
 msgid "Encoder:"
-msgstr "MP3 kodētājs:"
+msgstr "Kodētājs:"
 
 #: src/record.c:272
-#, fuzzy
 msgid "Bitrate:"
-msgstr "MP3 bitu ātrums:"
+msgstr "Bitu ātrums:"
 
-#: src/record.c:299 src/record.c:306
+#: src/record.c:299
+#: src/record.c:306
 msgid "no supported encoder installed"
-msgstr ""
+msgstr "instalēts neatbalstīts kodētājs"
 
 #: src/record.c:422
 #, c-format
-msgid ""
-"%s has stopped:\n"
+msgid "%s has stopped:\n"
 "%s\n"
-msgstr ""
+msgstr "%s apstājās:\n"
+"%s\n"
 
 #: src/record.c:423
-#, fuzzy
 msgid "MP3/Ogg encoder"
-msgstr "MP3 kodētājs"
+msgstr "MP3/Ogg kodētājs"
 
 #: src/record.c:424
-#, fuzzy
 msgid "unknown reason"
-msgstr "nezināma kļūda"
+msgstr "nezināms iemesls"
 
 #: src/record.c:476
 #, c-format
@@ -447,14 +443,14 @@ msgid "%i byte"
 msgstr "%i baiti"
 
 #: src/record.c:479
-#, fuzzy, c-format
+#, c-format
 msgid "%i kB"
-msgstr "%i kb"
+msgstr "%i kB"
 
 #: src/record.c:481
-#, fuzzy, c-format
+#, c-format
 msgid "%.2f MB"
-msgstr "%.1f Mb"
+msgstr "%.2f MB"
 
 #: src/record.c:486
 msgid "Error"
@@ -480,33 +476,3 @@ msgstr "Faila izmērs:"
 msgid "Stop Recording"
 msgstr "Apturēt ierakstīšanu"
 
-#~ msgid ""
-#~ "Yet another Gnome FM-Tuner. But this one is the best ;-)\n"
-#~ "(Hopefully) works with all FM-Tunercards supported by video4linux."
-#~ msgstr ""
-#~ "Vēl viens Gnome FM-Skaņotājs. Bet šis te ir vislabākais ;-)\n"
-#~ "(Cerams) darbojas ar visām FM-Skaņotājkartēm, kuras atbalsta video4linux."
-
-#~ msgid "Start Recording"
-#~ msgstr "Sākt Ierakstīšanu"
-
-#~ msgid "Choose..."
-#~ msgstr "Izvēlieties..."
-
-#~ msgid ""
-#~ "Mp3 encoder has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "Mp3 apstājās:\n"
-#~ "%s\n"
-#~ "Sāknējiet gnomeradio no komandrindas detalizētākai uzziņai"
-
-#~ msgid ""
-#~ "sox has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "sox apstājās:\n"
-#~ "%s\n"
-#~ "Sāknējiet gnomeradio no komandrindas detalizētākai uzziņai"
