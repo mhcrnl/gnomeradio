@@ -1068,6 +1068,10 @@ int main(int argc, char* argv[])
 
 	start_radio(FALSE, app);
 	
+	start_mixer(FALSE, app);
+	adj_value_changed_cb(NULL, (gpointer) app);
+	volume_value_changed_cb(NULL, NULL);
+
 #ifdef HAVE_LIRC
 	if(!my_lirc_init())
 	{
@@ -1080,10 +1084,6 @@ int main(int argc, char* argv[])
 	else
 		start_lirc();
 #endif
-
-	start_mixer(FALSE, app);
-	adj_value_changed_cb(NULL, (gpointer) app);
-	volume_value_changed_cb(NULL, NULL);
 	
 /* Connect the Session Management signals
  */
