@@ -1,3 +1,8 @@
+2004-06-08  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* autogen.sh: require automake 1.7
+	* remove *_DEPRECATED from Makefile.am
+
 2004-05-01  Adam Weinberger  <adamw@gnome.org>
 
 	* configure.in: Added en_CA to ALL_LINGUAS.

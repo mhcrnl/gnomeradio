@@ -2,8 +2,6 @@ INCLUDES = -I$(top_srcdir) -I$(includedir) \
            $(GNOMERADIO_CFLAGS) \
            -DG_LOG_DOMAIN=\"gnomeradio\" \
            -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-           -DGNOME_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
-           -DGDK_DISABLE_DEPRECATED -DG_DISABLE_DEPRECATED \
            -DDATADIR=\""$(datadir)/"\" \
            -DPREFIX=\""$(prefix)/"\" \
            -DLIBDIR=\""$(libdir)/"\" \
