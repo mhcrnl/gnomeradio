@@ -1,0 +1,6 @@
+gnomeradio.schemas.in
+gnomeradio.desktop.in
+src/prefs.c
+src/gui.c
+src/record.c
+
