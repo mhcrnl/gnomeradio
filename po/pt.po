@@ -1,12 +1,14 @@
 # Gnomeradio's Portuguese Translation
 # Copyright (C) 2001 Free Software Foundation, Inc.
+# Distributed under the same licence as the gnomeradio package.
 # Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2003-02-18 01:14+0000\n"
-"PO-Revision-Date: 2003-02-18 01:25+0000\n"
+"Project-Id-Version: 2.4\n"
+"Report-Msgid-Bugs-To: Duarte Loreto <happyguy_pt@hotmail.com>\n"
+"POT-Creation-Date: 2003-08-26 01:21+0100\n"
+"PO-Revision-Date: 2003-08-26 01:25+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +28,7 @@ msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Seleccione a fonte de misturas (linha, linha1, etc.) que é capaz de "
+"Seleccione a fonte de misturas (line, line1, etc.) que é capaz de "
 "controlar o volume de som do seu rádio"
 
 #: gnomeradio.schemas.in.h:4 src/record.c:352
@@ -126,8 +128,8 @@ msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
-"A pré-definição que estava activa quando o gnomeradio terminou. Intrevalo "
-"é 0 ... (# pré-definições -1). Nenhum é -1"
+"A pré-definição que estava activa quando o gnomeradio terminou. Intervalo é "
+"0 ... (nº pré-definições -1). Nenhum é -1"
 
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
