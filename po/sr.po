@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio 1.4\n"
-"POT-Creation-Date: 2003-05-06 05:15+0200\n"
-"PO-Revision-Date: 2003-04-08 14:53+0100\n"
+"POT-Creation-Date: 2003-08-13 03:06+0200\n"
+"PO-Revision-Date: 2003-08-13 03:06+0200\n"
 "Last-Translator:  Goran Rakić <gox@devbase.net>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +21,11 @@ msgid "Audio device"
 msgstr "Звучни уређај"
 
 #: gnomeradio.schemas.in.h:2 src/record.c:353
-#, fuzzy
 msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr "Изаберите bitrate у који ће MP3 фајл бити енкодован"
+msgstr ""
+"Изаберите број битова по секунди који ће се користити за запис MP3 датотеке"
 
 #: gnomeradio.schemas.in.h:3 src/prefs.c:699
-#, fuzzy
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
@@ -51,21 +50,18 @@ msgid "Last presets"
 msgstr "Задња станица"
 
 #: gnomeradio.schemas.in.h:8
-#, fuzzy
 msgid "MP3 bitrate"
-msgstr "MP3 bitrate"
+msgstr "MP3 број битова по секунди"
 
 #: gnomeradio.schemas.in.h:9
 msgid "MP3 encoder"
 msgstr "MP3 енкодер"
 
 #: gnomeradio.schemas.in.h:10
-#, fuzzy
 msgid "Mixer Device"
 msgstr "Миксер уређај"
 
 #: gnomeradio.schemas.in.h:11
-#, fuzzy
 msgid "Mixer source"
 msgstr "Извор миксера"
 
@@ -95,7 +91,7 @@ msgstr "Формат"
 
 #: gnomeradio.schemas.in.h:18
 msgid "Sample rate"
-msgstr ""
+msgstr "Фреквенција"
 
 #: gnomeradio.schemas.in.h:19 src/prefs.c:697
 msgid "Specify the radio-device (in most cases /dev/radio)"
@@ -107,7 +103,7 @@ msgstr "Звучни уређај (најчешће /dev/audio)"
 
 #: gnomeradio.schemas.in.h:21 src/record.c:350
 msgid "The audio sample-rate of the wave-file"
-msgstr ""
+msgstr "Опсег фреквенција за WAV датотеку"
 
 #: gnomeradio.schemas.in.h:22 src/record.c:351
 msgid "The format (8 or 16 bit) of the wave-file"
@@ -285,7 +281,6 @@ msgid "TRANSLATORS"
 msgstr "Горан Ракић <gox@devbase.net>"
 
 #: src/gui.c:693
-#, fuzzy
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -295,10 +290,9 @@ msgstr ""
 "Гномерадио је ФМ пријемник за Гноме окружење. Требало би да ради са свим "
 "радио картицама подржаних од стране video4linux драјвера.\n"
 "\n"
-"Ова верзија је преведена %s LIRC подршком(е)."
+"Ова верзија је преведена са LIRC подршком."
 
 #: src/gui.c:697
-#, fuzzy
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -308,7 +302,7 @@ msgstr ""
 "Гномерадио је ФМ пријемник за Гноме окружење. Требало би да ради са свим "
 "радио картицама подржаних од стране video4linux драјвера.\n"
 "\n"
-"Ова верзија је преведена %s LIRC подршком(е)."
+"Ова верзија је преведена без LIRC подршке."
 
 #: src/gui.c:895
 msgid "Presets:"
@@ -336,7 +330,7 @@ msgstr "О Гномерадију"
 
 #: src/gui.c:1011
 msgid "Record radio as Wave or MP3"
-msgstr ""
+msgstr "Сними са радија као WAV или MP3"
 
 #: src/gui.c:1012
 msgid "Edit your Preferences"
@@ -407,7 +401,7 @@ msgstr "MP3/Ogg (.mp3/.ogg)"
 
 #: src/record.c:219
 msgid "Sample rate:"
-msgstr ""
+msgstr "Фреквенција:"
 
 #: src/record.c:220
 msgid "Sample format:"
@@ -431,7 +425,7 @@ msgstr "Енкодер:"
 
 #: src/record.c:274
 msgid "Bitrate:"
-msgstr ""
+msgstr "Битова по секунди:"
 
 #: src/record.c:301 src/record.c:308
 msgid "no supported encoder installed"
