@@ -1,0 +1,496 @@
+# translation of eu.po to basque
+# Basque translation of gnomeradio.
+# Copyright (C) 2003 THE gnomeradio'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the
+# gnomeradio package.
+# Alberto Silva Gago <alberto@nmp.es>, 2003.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eu\n"
+"POT-Creation-Date: 2003-12-10 17:18+0100\n"
+"PO-Revision-Date: 2003-12-10 17:55+0100\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
+"Language-Team: basque <itzulpena@euskalgnu.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: KBabel 1.0.2\n"
+
+#: gnomeradio.schemas.in.h:1
+msgid "Audio device"
+msgstr "Soinu-gailua"
+
+#: gnomeradio.schemas.in.h:2 src/record.c:353
+msgid "Choose the bitrate in which the mp3 will be encoded"
+msgstr "Hautatu Mp3a kodetzeko erabiliko den bit-tasa"
+
+#: gnomeradio.schemas.in.h:3 src/prefs.c:699
+msgid ""
+"Choose the mixer source (line, line1, etc.) that is able to control the "
+"volume of your radio"
+msgstr ""
+"Hautatu zure irratiaren bolumena kontrolatzen duen nahasgailuaren iturria "
+"(line, line1, e.a.)"
+
+#: gnomeradio.schemas.in.h:4 src/record.c:352
+msgid "Choose the mp3 encoder that should be used"
+msgstr "Hautatu erabiliko den mp3 kodetzailea"
+
+#: gnomeradio.schemas.in.h:5 src/prefs.c:700
+msgid "If unchecked, gnomeradio won't mute after exiting"
+msgstr "Aukeratu ezean, gnomeradio ez da isilduko irten eta gero"
+
+#: gnomeradio.schemas.in.h:6
+msgid "Last frequency"
+msgstr "Azken frekuentzia"
+
+#: gnomeradio.schemas.in.h:7
+msgid "Last presets"
+msgstr "Azken ezarpenak"
+
+#: gnomeradio.schemas.in.h:8
+msgid "MP3 bitrate"
+msgstr "MP3 bit-tasa"
+
+#: gnomeradio.schemas.in.h:9
+msgid "MP3 encoder"
+msgstr "MP3 kodetzailea"
+
+#: gnomeradio.schemas.in.h:10
+msgid "Mixer Device"
+msgstr "Nahasgailua"
+
+#: gnomeradio.schemas.in.h:11
+msgid "Mixer source"
+msgstr "Nahasgailuaren iturria"
+
+#: gnomeradio.schemas.in.h:12
+msgid "Mute on exit"
+msgstr "Isildu irtetean"
+
+#: gnomeradio.schemas.in.h:13
+msgid "Number of presets"
+msgstr "Ezarpen-kopurua"
+
+#: gnomeradio.schemas.in.h:14
+msgid "Radio device"
+msgstr "Irrati-gailua"
+
+#: gnomeradio.schemas.in.h:15
+msgid "Record as mp3- or wave-file"
+msgstr "Grabatu Mp3 edo wave-fitxategi gisa"
+
+#: gnomeradio.schemas.in.h:16
+msgid "Record in stereo or mono"
+msgstr "Grabatu Mono edo estereo moduan"
+
+#: gnomeradio.schemas.in.h:17
+msgid "Sample format"
+msgstr "Lagin-formatua"
+
+#: gnomeradio.schemas.in.h:18
+msgid "Sample rate"
+msgstr "Lagin-tasa"
+
+#: gnomeradio.schemas.in.h:19 src/prefs.c:697
+msgid "Specify the radio-device (in most cases /dev/radio)"
+msgstr "Zehaztu irrati-gailua (normalean /dev/radio)"
+
+#: gnomeradio.schemas.in.h:20 src/record.c:354
+msgid "The audio device to use (usually /dev/audio)"
+msgstr "Erabiliko den soinu-gailua (normalean /dev/audio)"
+
+#: gnomeradio.schemas.in.h:21 src/record.c:350
+msgid "The audio sample-rate of the wave-file"
+msgstr "Wave fitxategiko soinuaren lagin-tasa"
+
+#: gnomeradio.schemas.in.h:22 src/record.c:351
+msgid "The format (8 or 16 bit) of the wave-file"
+msgstr "Wave fitxategiaren formatua (8 edo 16 bitekoa)"
+
+#: gnomeradio.schemas.in.h:23
+msgid "The last frequency (in MHz) in use"
+msgstr "Erabilitako azken frekuentzia (Mhz-tan)"
+
+#: gnomeradio.schemas.in.h:24
+msgid ""
+"The mixer device that gnomeradio should use. Only changeable via this key "
+"(no GUI option)"
+msgstr ""
+"Gnomeradiok erabiliko duen nahasgailua. Bakarrik gako honen bitartez alda "
+"daiteke (ez dago aukera grafikorik)"
+
+#: gnomeradio.schemas.in.h:25
+msgid "The number of presets"
+msgstr "Ezarpenen kopurua"
+
+#: gnomeradio.schemas.in.h:26
+msgid ""
+"The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
+"(# presets - 1). None is -1"
+msgstr ""
+"Gnomeradio irtetean gaitutako ezarpena. Bitartea 0 da ... (# ezarpenak - 1). "
+"Bat ere ez -1 da"
+
+#: gnomeradio.schemas.in.h:27
+msgid "The stored value of the volume (0-100)"
+msgstr "Gordetako bolumenaren balioa (0-100)"
+
+#: gnomeradio.schemas.in.h:28
+msgid "Volume"
+msgstr "Bolumena"
+
+#: gnomeradio.schemas.in.h:29 src/record.c:355 src/record.c:356
+msgid "Whether the output should be a mp3- or a wave-file"
+msgstr "Irteera-formatua mp3- edo wave-fitxategia izango den adierazten du"
+
+#: gnomeradio.schemas.in.h:30 src/record.c:357 src/record.c:358
+msgid "Whether the output should be in stereo or mono"
+msgstr "Irteera-formatua estereo edo mono izango den adierazten du"
+
+#: gnomeradio.desktop.in.h:1
+msgid "A Gnome FM-Tuner"
+msgstr "FM sintonizatzaile bat GNOMErako"
+
+#: gnomeradio.desktop.in.h:2 src/gui.c:820
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: src/prefs.c:519
+msgid "Gnomeradio Settings"
+msgstr "Gnomeradio ezarpenak"
+
+#: src/prefs.c:526
+msgid "Misc Settings"
+msgstr "Hainbat ezarpen"
+
+#: src/prefs.c:527
+msgid "Presets"
+msgstr "Ezarpenak"
+
+#: src/prefs.c:539
+msgid "Radio Device:"
+msgstr "Irrati-gailua:"
+
+#: src/prefs.c:547
+msgid "Mixer Source:"
+msgstr "Nahasgailuren iturria:"
+
+#: src/prefs.c:561
+msgid "Mute on exit?"
+msgstr "Isildu irtetean?"
+
+#: src/prefs.c:609
+msgid "Name:"
+msgstr "Izena:"
+
+#: src/prefs.c:643
+msgid "Frequency:"
+msgstr "Frekuentzia:"
+
+#: src/prefs.c:701
+msgid "Add a new preset"
+msgstr "Gehitu ezarpen berria"
+
+#: src/prefs.c:702
+msgid "Remove preset from List"
+msgstr "Kendu ezarpena zerrendatik"
+
+#: src/prefs.c:703
+msgid "Update the preset in the List"
+msgstr "Eguneratu ezarpena zerrendan"
+
+#: src/gui.c:71
+#, c-format
+msgid ""
+"Could not open device \"%s\" !\n"
+"\n"
+"Check your Settings and make sure that no other\n"
+"program is using %s.\n"
+"Make also sure that you have read-access to it."
+msgstr ""
+"\"%s\" gailua ezin izan da ireki!\n"
+"\n"
+"Egiaztatu zure ezarpenak eta ziurtatu ez dagoela %s gailua erabiltzen ari "
+"den beste programarik.\n"
+"Honetaz gain, ziurtatu gailu hori irakurtzeko baimena baduzula."
+
+#: src/gui.c:93
+#, c-format
+msgid "Mixer source \"%s\" is not a valid source!"
+msgstr "\"%s\" nahasgailuaren iturria ez da iturri baliogarri bat!"
+
+#: src/gui.c:95
+#, c-format
+msgid "Could not open \"%s\"!"
+msgstr "Ezin izan da \"%s\" ireki!"
+
+#: src/gui.c:283 src/gui.c:291 src/gui.c:800
+#, c-format
+msgid "Gnomeradio - %.2f MHz"
+msgstr "Gnomeradio - %.2f MHz"
+
+#: src/gui.c:287 src/gui.c:1015
+#, c-format
+msgid "Frequency: %.2f MHz"
+msgstr "Frekuentzia: %.2f MHz"
+
+#: src/gui.c:311 src/gui.c:1018
+#, c-format
+msgid "Volume: %d%%"
+msgstr "Bolumena: %d%%"
+
+#: src/gui.c:476
+msgid "manual"
+msgstr "eskuliburua"
+
+#: src/gui.c:588
+msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
+msgstr ""
+"Sox ezin izan da antzeman. Zure PATH-ean instalatuta dagoela "
+"ziurtatu."
+
+#: src/gui.c:624
+#, c-format
+msgid ""
+"File '%s' exists.\n"
+"Overwrite it?"
+msgstr ""
+"'%s' izeneko fitxategia existitzen da.\n"
+"Gainidatzi?"
+
+#: src/gui.c:635
+#, c-format
+msgid ""
+"Error opening file '%s':\n"
+"%s"
+msgstr ""
+"Errorea '%s' fitxategia irekitzean:\n"
+"%s"
+
+#: src/gui.c:664 src/gui.c:1013
+msgid "Mute"
+msgstr "Isildu"
+
+#: src/gui.c:670
+msgid "Unmute"
+msgstr "Ez isildu"
+
+#. Feel free to put your names here translators :-)
+#: src/gui.c:682
+msgid "TRANSLATORS"
+msgstr "Alberto Silva <alberto@nmp.es>"
+
+#: src/gui.c:693
+msgid ""
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
+"\n"
+"This version has been compiled with LIRC support."
+msgstr ""
+"Gnomeradio FM sintonizatzeko balio duen GNOME mahaigainerako aplikazioa da."
+"Video4linux kontrolatzaileek onartzen dituzten hardware sintonizatzaile guztiekin "
+"funtzionatu beharko luke.\n"
+"\n"
+"Bertsio hau LIRC euskarriarekin konpilatua izan da."
+
+#: src/gui.c:697
+msgid ""
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
+"\n"
+"This version has been compiled without LIRC support."
+msgstr ""
+"Gnomeradio FM sintonizatzeko balio duen GNOME mahaigainerako aplikazioa da."
+"Video4linux kontrolatzaileek onartzen dituzten hardware sintonizatzaile guztiekin "
+"funtzionatu beharko luke.\n"
+"\n"
+"Bertsio hau LIRC euskarririk gabe konpilatua izan da."
+
+#: src/gui.c:895
+msgid "Presets:"
+msgstr "Ezarpenak:"
+
+#: src/gui.c:1006
+msgid "Scan Backwards"
+msgstr "Eskaneatu atzerantz"
+
+#: src/gui.c:1007
+msgid "Scan Forwards"
+msgstr "Eskaneatu aurrerantz"
+
+#: src/gui.c:1008
+msgid "0.05 MHz Backwards"
+msgstr "0.05 MHz atzerantz"
+
+#: src/gui.c:1009
+msgid "0.05 MHz Forwards"
+msgstr "0.05 MHz aurrerantz"
+
+#: src/gui.c:1010
+msgid "About Gnomeradio"
+msgstr "Gnomeradiori buruz"
+
+#: src/gui.c:1011
+msgid "Record radio as Wave or MP3"
+msgstr "Grabatu Wave edo MP3 gisa"
+
+#: src/gui.c:1012
+msgid "Edit your Preferences"
+msgstr "Editatu zure ezarpenak"
+
+#: src/gui.c:1014
+msgid "Quit"
+msgstr "Itxi"
+
+#: src/gui.c:1134
+#, c-format
+msgid ""
+"Failed to init GConf: %s\n"
+"Changes to the settings won't be saved\n"
+msgstr ""
+"GConf ezin izan da abiarazi: %s\n"
+"Ezarpenetan egindako aldaketak ez dira gordeko\n"
+
+#: src/gui.c:1163
+msgid "Could not start lirc"
+msgstr "Lirc ezin izan da abiarazi"
+
+#: src/record.c:152
+msgid "Start"
+msgstr "Hasi"
+
+#: src/record.c:160
+msgid "Gnomeradio Record"
+msgstr "Gnomeradio grabaketa"
+
+#: src/record.c:168
+msgid "General"
+msgstr "Orokorra"
+
+#: src/record.c:169
+msgid "Wave Settings"
+msgstr "Wave ezarpenak"
+
+#: src/record.c:170
+msgid "Mp3/Ogg Settings"
+msgstr "Mp3/Ogg ezarpenak"
+
+#: src/record.c:182
+msgid "Audio device:"
+msgstr "Soinu-gailua:"
+
+#: src/record.c:185
+msgid "Filename:"
+msgstr "Fitxategi-izena:"
+
+#. path_entry = gtk_entry_new();
+#: src/record.c:187
+msgid "Choose a filename"
+msgstr "Aukeratu fitxategi-izena"
+
+#. choose_button = gtk_button_new_with_label(_("Choose..."));
+#: src/record.c:193
+msgid "Record as:"
+msgstr "Grabatu honela:"
+
+#: src/record.c:194
+msgid "Wave (.wav)"
+msgstr "Wave (.wav)"
+
+#: src/record.c:195
+msgid "MP3/Ogg (.mp3/.ogg)"
+msgstr "MP3/Ogg (.mp3/.ogg)"
+
+#: src/record.c:219
+msgid "Sample rate:"
+msgstr "Lagin-tasa:"
+
+#: src/record.c:220
+msgid "Sample format:"
+msgstr "Lagin-formatua:"
+
+#: src/record.c:221
+msgid "Record in:"
+msgstr "Grabatu hemen:"
+
+#: src/record.c:254
+msgid "Mono"
+msgstr "Mono"
+
+#: src/record.c:255
+msgid "Stereo"
+msgstr "Estereo"
+
+#: src/record.c:273
+msgid "Encoder:"
+msgstr "Kodetzailea:"
+
+#: src/record.c:274
+msgid "Bitrate:"
+msgstr "Bit-tasa"
+
+#: src/record.c:301 src/record.c:308
+msgid "no supported encoder installed"
+msgstr "instalatutako kodetzailea ez dago onartua"
+
+#: src/record.c:425
+#, c-format
+msgid ""
+"%s has stopped:\n"
+"%s\n"
+msgstr ""
+"%s gelditu egin da:\n"
+"%s\n"
+
+#: src/record.c:426
+msgid "MP3/Ogg encoder"
+msgstr "MP3/Ogg kodetzailea"
+
+#: src/record.c:427
+msgid "unknown reason"
+msgstr "arrazoi ezezaguna"
+
+#: src/record.c:479
+#, c-format
+msgid "%i byte"
+msgstr "%i byte"
+
+#: src/record.c:482
+#, c-format
+msgid "%i kB"
+msgstr "%i kB"
+
+#: src/record.c:484
+#, c-format
+msgid "%.2f MB"
+msgstr "%.2f MB"
+
+#: src/record.c:489
+msgid "Error"
+msgstr "Errorea"
+
+#: src/record.c:491
+msgid "0 byte"
+msgstr "0 byte"
+
+#: src/record.c:530
+msgid "Gnomeradio recording status"
+msgstr "Gnomeradioren grabazio egoera"
+
+#: src/record.c:544
+msgid "Recording:"
+msgstr "Grabatzen:"
+
+#: src/record.c:545
+msgid "Filesize:"
+msgstr "Fitxategi-tamainua:"
+
+#: src/record.c:555
+msgid "Stop Recording"
+msgstr "Utzi grabatzeari"
+
