@@ -1,11 +1,11 @@
-# Translation of gnomeradio to Croatian
-# Copyright (C) Croatian team
-# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,
+# Translation of gnomeradio to Croatiann
+# Copyright (C) Croatiann team
+# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,Nenad Ferko <9a6nfn@vip.hr>,Robert Sedak <robert.sedak@sk.tel.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio 0\n"
-"POT-Creation-Date: 2003-11-06 18:10+0100\n"
-"PO-Revision-Date: 2003-11-10 16:52+CET\n"
+"POT-Creation-Date: 2004-02-01 17:04+0100\n"
+"PO-Revision-Date: 2004-02-05 23:49+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -15,53 +15,55 @@ msgstr ""
 
 #: gnomeradio.schemas.in.h:1
 msgid "Audio device"
-msgstr ""
+msgstr "ZvuÄni ureÄaj"
 
 #: gnomeradio.schemas.in.h:2 src/record.c:353
 msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr ""
+msgstr "Odaberite kvalitetu kodiranja u kojoj Äe mp3 biti kodiran"
 
 #: gnomeradio.schemas.in.h:3 src/prefs.c:699
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
+"Odaberite ulaz miksera (line, line1, dr.) kojim Äete upravljati "
+"razinom glasnoÄe vaĹĄeg radija"
 
 #: gnomeradio.schemas.in.h:4 src/record.c:352
 msgid "Choose the mp3 encoder that should be used"
-msgstr ""
+msgstr "Odaberite mp3 koder koji Äete koristiti"
 
 #: gnomeradio.schemas.in.h:5 src/prefs.c:700
 msgid "If unchecked, gnomeradio won't mute after exiting"
-msgstr ""
+msgstr "Ako ostavite nepotvrÄeno, gnome radio neÄe se utiĹĄati nakon gaĹĄenja"
 
 #: gnomeradio.schemas.in.h:6
 msgid "Last frequency"
-msgstr ""
+msgstr "Zadnja upotrijebljena ferkvencija"
 
 #: gnomeradio.schemas.in.h:7
 msgid "Last presets"
-msgstr ""
+msgstr "Zadnja postavka"
 
 #: gnomeradio.schemas.in.h:8
 msgid "MP3 bitrate"
-msgstr ""
+msgstr "MP3 kvaliteta kodiranja"
 
 #: gnomeradio.schemas.in.h:9
 msgid "MP3 encoder"
-msgstr ""
+msgstr "MP3 koder"
 
 #: gnomeradio.schemas.in.h:10
 msgid "Mixer Device"
-msgstr ""
+msgstr "Mikser "
 
 #: gnomeradio.schemas.in.h:11
 msgid "Mixer source"
-msgstr ""
+msgstr "Mikser ulaz"
 
 #: gnomeradio.schemas.in.h:12
 msgid "Mute on exit"
-msgstr ""
+msgstr "UtiĹĄaj zvuk pri izlazku"
 
 #: gnomeradio.schemas.in.h:13
 msgid "Number of presets"
@@ -69,27 +71,27 @@ msgstr ""
 
 #: gnomeradio.schemas.in.h:14
 msgid "Radio device"
-msgstr ""
+msgstr "Radio ureÄaj"
 
 #: gnomeradio.schemas.in.h:15
 msgid "Record as mp3- or wave-file"
-msgstr ""
+msgstr "Snimi kao Wave ili MP3 zapis"
 
 #: gnomeradio.schemas.in.h:16
 msgid "Record in stereo or mono"
-msgstr ""
+msgstr "Odaberite stereo ili mono snimanje"
 
 #: gnomeradio.schemas.in.h:17
 msgid "Sample format"
-msgstr ""
+msgstr "Format uzorkovanja"
 
 #: gnomeradio.schemas.in.h:18
 msgid "Sample rate"
-msgstr ""
+msgstr "Kvaliteta uzorkovanja"
 
 #: gnomeradio.schemas.in.h:19 src/prefs.c:697
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr ""
+msgstr "Selektiraj radio ureÄaj (najÄeĹĄÄi sluÄaj /dev/radio)"
 
 #: gnomeradio.schemas.in.h:20 src/record.c:354
 msgid "The audio device to use (usually /dev/audio)"
@@ -97,7 +99,7 @@ msgstr ""
 
 #: gnomeradio.schemas.in.h:21 src/record.c:350
 msgid "The audio sample-rate of the wave-file"
-msgstr ""
+msgstr "Kvaliteta zapisa wave-datoteke"
 
 #: gnomeradio.schemas.in.h:22 src/record.c:351
 msgid "The format (8 or 16 bit) of the wave-file"
@@ -105,7 +107,7 @@ msgstr ""
 
 #: gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
-msgstr ""
+msgstr "Zadnje upotrijebljena ferkvencija (u MHz)"
 
 #: gnomeradio.schemas.in.h:24
 msgid ""
@@ -141,15 +143,15 @@ msgstr ""
 
 #: gnomeradio.desktop.in.h:1
 msgid "A Gnome FM-Tuner"
-msgstr ""
+msgstr "Gnome FM-Tjuner"
 
 #: gnomeradio.desktop.in.h:2 src/gui.c:820
 msgid "Gnomeradio"
-msgstr ""
+msgstr "Gnomeradio"
 
 #: src/prefs.c:519
 msgid "Gnomeradio Settings"
-msgstr ""
+msgstr "Gnomeradio postavke"
 
 #: src/prefs.c:526
 msgid "Misc Settings"
@@ -161,15 +163,15 @@ msgstr "Pretpostavljeno"
 
 #: src/prefs.c:539
 msgid "Radio Device:"
-msgstr ""
+msgstr "Radio ureÄaj"
 
 #: src/prefs.c:547
 msgid "Mixer Source:"
-msgstr ""
+msgstr "Mikser ulaz"
 
 #: src/prefs.c:561
 msgid "Mute on exit?"
-msgstr ""
+msgstr "UtiĹĄaj zvuk pri izlazku"
 
 #: src/prefs.c:609
 msgid "Name:"
@@ -177,15 +179,15 @@ msgstr "Ime:"
 
 #: src/prefs.c:643
 msgid "Frequency:"
-msgstr ""
+msgstr "Ferkvencija:"
 
 #: src/prefs.c:701
 msgid "Add a new preset"
-msgstr ""
+msgstr "Unesite nove postavke"
 
 #: src/prefs.c:702
 msgid "Remove preset from List"
-msgstr ""
+msgstr "Maknite predpostavku iz liste"
 
 #: src/prefs.c:703
 msgid "Update the preset in the List"
@@ -200,26 +202,29 @@ msgid ""
 "program is using %s.\n"
 "Make also sure that you have read-access to it."
 msgstr ""
+"UreÄaj se ne moĹže pokrenuti \"%s\" !\n"
+"\n"
+"Provjerite postavke i provjerite da neki drugi\n"
+"program ne koristi %s.\n"
+"Provjerite takoÄer da li imate pravo pristupa ureÄaju."
 
 #: src/gui.c:93
-#, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr ""
 
 #: src/gui.c:95
 #, c-format
 msgid "Could not open \"%s\"!"
-msgstr ""
+msgstr "Ne moĹže se otvoriti \"%s\"!"
 
 #: src/gui.c:283 src/gui.c:291 src/gui.c:800
-#, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr ""
 
 #: src/gui.c:287 src/gui.c:1015
 #, c-format
 msgid "Frequency: %.2f MHz"
-msgstr ""
+msgstr "Ferkvencija: %.2f MHz"
 
 #: src/gui.c:311 src/gui.c:1018
 #, fuzzy
@@ -252,16 +257,16 @@ msgstr ""
 
 #: src/gui.c:664 src/gui.c:1013
 msgid "Mute"
-msgstr ""
+msgstr "UtiĹĄan zvuk"
 
 #: src/gui.c:670
 msgid "Unmute"
-msgstr ""
+msgstr "OdtiĹĄaj"
 
 #. Feel free to put your names here translators :-)
 #: src/gui.c:682
 msgid "TRANSLATORS"
-msgstr ""
+msgstr "Ferko Nenad"
 
 #: src/gui.c:693
 msgid ""
@@ -270,6 +275,10 @@ msgid ""
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
+"Gnomeradio je FM-Tjuner program za GNOME desktop. Program bi trebao raditi "
+"sa svim tjunerskim karticama koje su podrĹžane od strane video4linux upravljaÄkih programa.\n"
+"\n"
+"Ova verzija je kompajlirana sa podrĹĄkom za LIRC."
 
 #: src/gui.c:697
 msgid ""
@@ -278,6 +287,10 @@ msgid ""
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
+"Gnomeradio je FM-Tjuner program za GNOME desktop. Program bi trebao raditi "
+"sa svim tjunerskim karticama koje su podrĹžane od strane video4linux upravljaÄkih programa.\n"
+"\n"
+"Ova verzija je kompajlirana sa podrĹĄkom za LIRC."
 
 #: src/gui.c:895
 msgid "Presets:"
@@ -285,11 +298,11 @@ msgstr ""
 
 #: src/gui.c:1006
 msgid "Scan Backwards"
-msgstr ""
+msgstr "Skeniraj ferkvencije prema natrag"
 
 #: src/gui.c:1007
 msgid "Scan Forwards"
-msgstr ""
+msgstr "Skeniraj ferkvencije prema naprijed"
 
 #: src/gui.c:1008
 msgid "0.05 MHz Backwards"
@@ -301,15 +314,15 @@ msgstr "0.05 MHz naprijed"
 
 #: src/gui.c:1010
 msgid "About Gnomeradio"
-msgstr ""
+msgstr "O Gnomeradiu"
 
 #: src/gui.c:1011
 msgid "Record radio as Wave or MP3"
-msgstr ""
+msgstr "Snimi radio kao Wave ili MP3 zapis"
 
 #: src/gui.c:1012
 msgid "Edit your Preferences"
-msgstr ""
+msgstr "Uredite vaĹĄe preferencije"
 
 #: src/gui.c:1014
 msgid "Quit"
@@ -321,10 +334,12 @@ msgid ""
 "Failed to init GConf: %s\n"
 "Changes to the settings won't be saved\n"
 msgstr ""
+"Nije uspjelo pokretanje programa Gconf: %s\n"
+"Promjene u vašim postavkama neće biti spremljene\n"
 
 #: src/gui.c:1163
 msgid "Could not start lirc"
-msgstr ""
+msgstr "Lirc se ne moĹže pokrenuti"
 
 #: src/record.c:152
 msgid "Start"
@@ -332,7 +347,7 @@ msgstr "Započni"
 
 #: src/record.c:160
 msgid "Gnomeradio Record"
-msgstr ""
+msgstr "Gnomeradio zvuÄna snimka"
 
 #: src/record.c:168
 msgid "General"
@@ -340,11 +355,11 @@ msgstr "Općenito"
 
 #: src/record.c:169
 msgid "Wave Settings"
-msgstr ""
+msgstr "Wave postavke"
 
 #: src/record.c:170
 msgid "Mp3/Ogg Settings"
-msgstr ""
+msgstr "Mp3/Ogg Postavke"
 
 #: src/record.c:182
 msgid "Audio device:"
@@ -357,28 +372,28 @@ msgstr "Ime datoteke:"
 #. path_entry = gtk_entry_new();
 #: src/record.c:187
 msgid "Choose a filename"
-msgstr ""
+msgstr "Odaberite naziv datoteke"
 
 #. choose_button = gtk_button_new_with_label(_("Choose..."));
 #: src/record.c:193
 msgid "Record as:"
-msgstr ""
+msgstr "Snimi kao:"
 
 #: src/record.c:194
 msgid "Wave (.wav)"
-msgstr ""
+msgstr "Wave (.wav)"
 
 #: src/record.c:195
 msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr ""
+msgstr "MP3/Ogg (.mp3/.ogg)"
 
 #: src/record.c:219
 msgid "Sample rate:"
-msgstr ""
+msgstr "Kvaliteta uzorkovanja"
 
 #: src/record.c:220
 msgid "Sample format:"
-msgstr ""
+msgstr "Format uzorkovanja"
 
 #: src/record.c:221
 msgid "Record in:"
@@ -394,7 +409,7 @@ msgstr "Stereo"
 
 #: src/record.c:273
 msgid "Encoder:"
-msgstr ""
+msgstr "Koder"
 
 #: src/record.c:274
 msgid "Bitrate:"
@@ -402,7 +417,7 @@ msgstr "Protok bitova:"
 
 #: src/record.c:301 src/record.c:308
 msgid "no supported encoder installed"
-msgstr ""
+msgstr "nemate instalirani podrĹžani koder"
 
 #: src/record.c:425
 #, c-format
@@ -415,11 +430,11 @@ msgstr ""
 
 #: src/record.c:426
 msgid "MP3/Ogg encoder"
-msgstr ""
+msgstr "MP3/Ogg koder"
 
 #: src/record.c:427
 msgid "unknown reason"
-msgstr ""
+msgstr "nepoznat razlog"
 
 #: src/record.c:479
 #, c-format
@@ -446,15 +461,15 @@ msgstr "0 byte"
 
 #: src/record.c:530
 msgid "Gnomeradio recording status"
-msgstr ""
+msgstr "Gnomeradio stanje snimanja"
 
 #: src/record.c:544
 msgid "Recording:"
-msgstr ""
+msgstr "Snimanje:"
 
 #: src/record.c:545
 msgid "Filesize:"
-msgstr ""
+msgstr "VeliÄina datoteke:"
 
 #: src/record.c:555
 msgid "Stop Recording"
