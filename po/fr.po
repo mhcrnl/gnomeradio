@@ -1,13 +1,14 @@
 # French translation of gnomeradio.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # maintainer: Jean-Michel Ardantz <jmardantz@ifrance.com>, 2002.
+# Laurent RICHARD <laurent.richard@lilit.be>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio 1.2\n"
-"POT-Creation-Date: 2003-01-08 16:14+0100\n"
+"POT-Creation-Date: 2003-02-07 19:04+0100\n"
 "PO-Revision-Date: 2002-10-11 23:14+0200\n"
-"Last-Translator: Jean-Michel Ardantz <jmardantz@ifrance.com>\n"
+"Last-Translator: Laurent RICHARD <laurent.richard@lilit.be>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -246,6 +247,8 @@ msgstr "manuel"
 msgid ""
 "Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr ""
+"Sox n'a pu être détecté. Veuillez vous assurer que celui-ci est bien "
+"installé dans votre PATH."
 
 #: src/gui.c:614
 #, c-format
@@ -276,7 +279,9 @@ msgstr "Activer le volume"
 #. Feel free to put your names here translators :-)
 #: src/gui.c:671
 msgid "TRANSLATORS"
-msgstr "Jean-Michel Ardantz <jmardantz@ifrance.com>"
+msgstr ""
+"Jean-Michel Ardantz <jmardantz@ifrance.com>\n"
+"Laurent RICHARD <laurent.richard@lilit.be>"
 
 #: src/gui.c:682
 msgid ""
@@ -285,6 +290,11 @@ msgid ""
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
+"Gnomeradio est une application sélecteur de bande FM pour le bureau GNOME. "
+"Elle devrait fonctionné avec tout matériel radio qui est supporté par les "
+"drivers video4linux.\n"
+" \n"
+"Cette version a été compilée avec le support LIRC."
 
 #: src/gui.c:686
 msgid ""
@@ -293,6 +303,11 @@ msgid ""
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
+"Gnomeradio est une application sélecteur de bande FM pour le bureau GNOME. "
+"Elle devrait fonctionné avec tout matériel radio qui est supporté par les "
+"drivers video4linux.\n"
+" \n"
+"Cette version a été compilée sans le support LIRC."
 
 #: src/gui.c:814
 msgid "Presets:"
@@ -339,13 +354,13 @@ msgstr ""
 "Impossible d'initialiser GConf: %s\n"
 "Les changements ne seront pas enrtegistrés\n"
 
-#: src/gui.c:1076
+#: src/gui.c:1080
 msgid "Could not start lirc"
 msgstr "Impossible de démarrer lirc"
 
 #: src/record.c:150
 msgid "Start"
-msgstr ""
+msgstr "Lancement"
 
 #: src/record.c:158
 msgid "Gnomeradio Record"
@@ -360,9 +375,8 @@ msgid "Wave Settings"
 msgstr "Paramètres pour Wave"
 
 #: src/record.c:168
-#, fuzzy
 msgid "Mp3/Ogg Settings"
-msgstr "Paramètres pour Mp3"
+msgstr "Paramètres pour Mp3/Ogg"
 
 #: src/record.c:180
 msgid "Audio device:"
@@ -387,9 +401,8 @@ msgid "Wave (.wav)"
 msgstr "Wave (.wav)"
 
 #: src/record.c:193
-#, fuzzy
 msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3 (.mp3)"
+msgstr "MP3/Ogg (.mp3/.ogg)"
 
 #: src/record.c:217
 msgid "Sample rate:"
@@ -412,18 +425,16 @@ msgid "Stereo"
 msgstr "Stéréo"
 
 #: src/record.c:271
-#, fuzzy
 msgid "Encoder:"
 msgstr "Encodeur :"
 
 #: src/record.c:272
-#, fuzzy
 msgid "Bitrate:"
 msgstr "Débit :"
 
 #: src/record.c:299 src/record.c:306
 msgid "no supported encoder installed"
-msgstr ""
+msgstr "Aucun encodeur supporté n'est installé"
 
 #: src/record.c:422
 #, c-format
@@ -431,14 +442,14 @@ msgid ""
 "%s has stopped:\n"
 "%s\n"
 msgstr ""
+"%s a été arrêté:\n"
+"%s\n"
 
 #: src/record.c:423
-#, fuzzy
 msgid "MP3/Ogg encoder"
-msgstr "Encodeur MP3"
+msgstr "Encodeur MP3/Ogg"
 
 #: src/record.c:424
-#, fuzzy
 msgid "unknown reason"
 msgstr "erreur inconnue"
 
@@ -448,14 +459,14 @@ msgid "%i byte"
 msgstr "%i octets"
 
 #: src/record.c:479
-#, fuzzy, c-format
+#, c-format
 msgid "%i kB"
 msgstr "%i kb"
 
 #: src/record.c:481
-#, fuzzy, c-format
+#, c-format
 msgid "%.2f MB"
-msgstr "%.1f Mb"
+msgstr "%.2f Mb"
 
 #: src/record.c:486
 msgid "Error"
