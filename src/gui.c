@@ -56,6 +56,7 @@ static GtkWidget *tray_icon;
 
 
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
+gboolean tray_menu_disabled = FALSE;
 
 void start_radio(gboolean restart, GtkWidget *app)
 {
@@ -525,7 +526,7 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 	
 	/*gnome_dialog_set_parent(GNOME_DIALOG(dialog), GTK_WINDOW(app));*/
 	
-	
+	tray_menu_disabled = TRUE;
 	choise = GTK_RESPONSE_HELP;
 	while (choise == GTK_RESPONSE_HELP)
 	{
@@ -546,6 +547,7 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 				rollback_settings();
 		}
 	}
+	tray_menu_disabled = FALSE;
 }
 
 static int
@@ -597,6 +599,7 @@ static void rec_button_clicked_cb(GtkButton *button, gpointer app)
 	
 	//g_print("choise: %d\n", choise);
 	
+	tray_menu_disabled = TRUE;
 	choise = GTK_RESPONSE_HELP;
 	while (choise == GTK_RESPONSE_HELP)
 	{
@@ -644,6 +647,7 @@ static void rec_button_clicked_cb(GtkButton *button, gpointer app)
 					choise = GTK_RESPONSE_HELP;
 				break;
 			default:
+				tray_menu_disabled = FALSE;
 				gtk_widget_destroy(dialog);
 		}
 	}
@@ -752,6 +756,8 @@ tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
 			break;
 		case 3:
 			if (event->type != GDK_BUTTON_PRESS)
+				break;
+			if (tray_menu_disabled)
 				break;
 			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
 				NULL, NULL, event->button, event->time);
