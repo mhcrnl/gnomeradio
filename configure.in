@@ -18,7 +18,7 @@ AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
 
-ALL_LINGUAS="am be cs da de es fr he it lv nl pl pt pt_BR ru sk sv tr vi zh_CN"
+ALL_LINGUAS="am be cs da de es fr he it lv nl no pl pt pt_BR ru sk sv tr vi zh_CN"
 AM_GLIB_GNU_GETTEXT
 GETTEXT_PACKAGE=gnomeradio
 AC_SUBST(GETTEXT_PACKAGE)
