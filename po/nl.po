@@ -1,159 +1,158 @@
 # Dutch translation of Gnomeradio.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Heman Bruyninckx <herman.bruyninckx@mech.kuleuven.ac.be>, 2001.
-# 
+# Tino Meinen <a.t.meinen@chello.nl>, 2003.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnomeradio cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-07 13:04+0200\n"
-"PO-Revision-Date: 2002-02-05 10:28+0100\n"
-"Last-Translator: Heman Bruyninckx <herman.bruyninckx@mech.kuleuven.ac.be>\n"
-"Language-Team: Dutch <nl@li.org>\n"
+"POT-Creation-Date: 2003-07-30 04:32+0200\n"
+"PO-Revision-Date: 2003-07-30 13:50+0200\n"
+"Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
+"Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+# was eerst Radio-toestel
 #: gnomeradio.schemas.in.h:1
-#, fuzzy
 msgid "Audio device"
-msgstr "Radio-toestel:"
+msgstr "Audio-apparaat"
 
 #: gnomeradio.schemas.in.h:2 src/record.c:353
 msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr ""
+msgstr "De bitrate opgeven waarmee de mp3 wordt gecodeerd"
 
 #: gnomeradio.schemas.in.h:3 src/prefs.c:699
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Kies de mixer bron (lijn, lijn1, enz.) die het volume van je radio kan "
+"Kies de mixer-bron (lijn, lijn1, enz.) die het volume van je radio kan "
 "instellen"
 
 #: gnomeradio.schemas.in.h:4 src/record.c:352
 msgid "Choose the mp3 encoder that should be used"
-msgstr ""
+msgstr "De mp3 codeertoepassing kiezen die moet worden gebruikt"
 
 #: gnomeradio.schemas.in.h:5 src/prefs.c:700
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr "Indien niet aangevinkt, zal gnomeradio blijven spelen na afsluiten"
 
 #: gnomeradio.schemas.in.h:6
-#, fuzzy
 msgid "Last frequency"
-msgstr "Frequentie:"
+msgstr "Laatste frequentie"
 
 #: gnomeradio.schemas.in.h:7
-#, fuzzy
 msgid "Last presets"
-msgstr "Voorinstellingen"
+msgstr "Laatste instellingen"
 
 #: gnomeradio.schemas.in.h:8
 msgid "MP3 bitrate"
-msgstr ""
+msgstr "MP3 bitrate"
 
 #: gnomeradio.schemas.in.h:9
 msgid "MP3 encoder"
-msgstr ""
+msgstr "MP3 encoder"
 
 #: gnomeradio.schemas.in.h:10
-#, fuzzy
 msgid "Mixer Device"
-msgstr "Radio-toestel:"
+msgstr "Mixer-apparaat"
 
 #: gnomeradio.schemas.in.h:11
-#, fuzzy
 msgid "Mixer source"
-msgstr "Mixer bron:"
+msgstr "Mixer bron"
 
 #: gnomeradio.schemas.in.h:12
-#, fuzzy
 msgid "Mute on exit"
-msgstr "Stilzetten bij afsluiten?"
+msgstr "Bij afsluiten of Mute zetten"
 
 #: gnomeradio.schemas.in.h:13
 msgid "Number of presets"
-msgstr ""
+msgstr "Aantal instellingen"
 
 #: gnomeradio.schemas.in.h:14
-#, fuzzy
 msgid "Radio device"
-msgstr "Radio-toestel:"
+msgstr "Radiotoestel"
 
 #: gnomeradio.schemas.in.h:15
 msgid "Record as mp3- or wave-file"
-msgstr ""
+msgstr "Als mp3 of wave-bestand opnemen"
 
 #: gnomeradio.schemas.in.h:16
 msgid "Record in stereo or mono"
-msgstr ""
+msgstr "In stereo of mono opnemen"
 
 #: gnomeradio.schemas.in.h:17
 msgid "Sample format"
-msgstr ""
+msgstr "Sampleformaat"
 
 #: gnomeradio.schemas.in.h:18
 msgid "Sample rate"
-msgstr ""
+msgstr "Samplefrequentie"
 
 #: gnomeradio.schemas.in.h:19 src/prefs.c:697
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr "Geef het radio-toestel op (meestal /dev/radio)"
+msgstr "Geef het radiotoestel op (meestal /dev/radio)"
 
 #: gnomeradio.schemas.in.h:20 src/record.c:354
-#, fuzzy
 msgid "The audio device to use (usually /dev/audio)"
-msgstr "Geef het radio-toestel op (meestal /dev/radio)"
+msgstr "Geef het audioapparaat op (meestal /dev/audio)"
 
 #: gnomeradio.schemas.in.h:21 src/record.c:350
 msgid "The audio sample-rate of the wave-file"
-msgstr ""
+msgstr "De audio sample-frequentie van het wave-bestand"
 
 #: gnomeradio.schemas.in.h:22 src/record.c:351
 msgid "The format (8 or 16 bit) of the wave-file"
-msgstr ""
+msgstr "Het formaat (8 of 16 bit) van het wave-bestand"
 
+# hoogste ipv laatste?
 #: gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
-msgstr ""
+msgstr "De laatste gebruikte frequentie (in MHz)"
 
 #: gnomeradio.schemas.in.h:24
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
+"Het mixer-apparaat dat gnomeradio moet gebruiken. Alleen via deze sleutel te "
+"veranderen (geen GUI optie)"
 
 #: gnomeradio.schemas.in.h:25
 msgid "The number of presets"
-msgstr ""
+msgstr "Het aantal instellingen"
 
 #: gnomeradio.schemas.in.h:26
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
+"De instelling die aanstond toen gnomeradio werd afgesloten. Bereik is 0 ... "
+"(# instellingen - 1). Geen is -1"
 
+# geluidsniveau?
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
-msgstr ""
+msgstr "De opgeslagen waarde van het volume (0-100)"
 
 #: gnomeradio.schemas.in.h:28
-#, fuzzy
 msgid "Volume"
-msgstr "Volume: %d%%"
+msgstr "Volume"
 
 #: gnomeradio.schemas.in.h:29 src/record.c:355 src/record.c:356
 msgid "Whether the output should be a mp3- or a wave-file"
-msgstr ""
+msgstr "Of de uitvoer een mp3 of een wave-bestand moet zijn"
 
 #: gnomeradio.schemas.in.h:30 src/record.c:357 src/record.c:358
 msgid "Whether the output should be in stereo or mono"
-msgstr ""
+msgstr "Of de uitvoer in stereo of mono moet zijn"
 
 #: gnomeradio.desktop.in.h:1
 msgid "A Gnome FM-Tuner"
-msgstr ""
+msgstr "Een FM-tuner voor Gnome"
 
 #: gnomeradio.desktop.in.h:2 src/gui.c:820
 msgid "Gnomeradio"
@@ -192,18 +191,16 @@ msgid "Frequency:"
 msgstr "Frequentie:"
 
 #: src/prefs.c:701
-#, fuzzy
 msgid "Add a new preset"
-msgstr "Begin een nieuwe voorinstelling"
+msgstr "Een nieuwe instelling toevoegen"
 
 #: src/prefs.c:702
 msgid "Remove preset from List"
-msgstr "Verwijder voorinstelling van de lijst"
+msgstr "Instelling van de lijst verwijderen"
 
 #: src/prefs.c:703
-#, fuzzy
 msgid "Update the preset in the List"
-msgstr "Voeg de voorinstelling aan de Lijst toe"
+msgstr "De instelling van de lijst bijwerken"
 
 #: src/gui.c:71
 #, c-format
@@ -252,7 +249,7 @@ msgstr "handleiding"
 #: src/gui.c:588
 msgid ""
 "Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr ""
+msgstr "Sox is niet gevonden. Controleer of het wel in uw PATH is te vinden."
 
 #: src/gui.c:624
 #, c-format
@@ -269,6 +266,8 @@ msgid ""
 "Error opening file '%s':\n"
 "%s"
 msgstr ""
+"Fout bij openen bestand '%s':\n"
+"%s"
 
 #: src/gui.c:664 src/gui.c:1013
 msgid "Mute"
@@ -282,6 +281,8 @@ msgstr "Opzetten"
 #: src/gui.c:682
 msgid "TRANSLATORS"
 msgstr ""
+"Heman Bruyninckx <herman.bruyninckx@mech.kuleuven.ac.be>\n"
+"Tino Meinen <a.t.meinen@chello.nl>"
 
 #: src/gui.c:693
 msgid ""
@@ -290,6 +291,11 @@ msgid ""
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
+"Gnomeradio is een FM-tuner toepassing voor de GNOME-desktop. Het werkt met "
+"alle tuner-hardware die ook ondersteund wordt door de video4linux "
+"stuurprogramma's.\n"
+"\n"
+"Deze versie is gecompileerd met ondersteuning voor LIRC."
 
 #: src/gui.c:697
 msgid ""
@@ -298,6 +304,11 @@ msgid ""
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
+"Gnomeradio is een FM-tuner toepassing voor de GNOME-desktop. Het werkt met "
+"alle tuner-hardware die ook ondersteund wordt door de video4linux "
+"stuurprogramma's.\n"
+"\n"
+"Deze versie is gecompileerd zonder ondersteuning voor LIRC.\""
 
 #: src/gui.c:895
 msgid "Presets:"
@@ -325,7 +336,7 @@ msgstr "Over Gnomeradio"
 
 #: src/gui.c:1011
 msgid "Record radio as Wave or MP3"
-msgstr ""
+msgstr "Radio opnemen als Wave of Mp3"
 
 #: src/gui.c:1012
 msgid "Edit your Preferences"
@@ -341,6 +352,8 @@ msgid ""
 "Failed to init GConf: %s\n"
 "Changes to the settings won't be saved\n"
 msgstr ""
+"Kon GConf niet initialiseren: %s\n"
+"Veranderingen aan de instellingen worden niet bewaard\n"
 
 #: src/gui.c:1163
 msgid "Could not start lirc"
@@ -351,28 +364,24 @@ msgid "Start"
 msgstr "Start"
 
 #: src/record.c:160
-#, fuzzy
 msgid "Gnomeradio Record"
-msgstr "Gnomeradio"
+msgstr "Gnomeradio opname"
 
 #: src/record.c:168
 msgid "General"
 msgstr "Algemeen"
 
 #: src/record.c:169
-#, fuzzy
 msgid "Wave Settings"
-msgstr "Varia Instellingen"
+msgstr "Wave-instellingen"
 
 #: src/record.c:170
-#, fuzzy
 msgid "Mp3/Ogg Settings"
-msgstr "Varia Instellingen"
+msgstr "Mp3/Ogg-instellingen"
 
 #: src/record.c:182
-#, fuzzy
 msgid "Audio device:"
-msgstr "Radio-toestel:"
+msgstr "Audio-apparaat:"
 
 #: src/record.c:185
 msgid "Filename:"
@@ -381,20 +390,20 @@ msgstr "Bestandsnaam:"
 #. path_entry = gtk_entry_new();
 #: src/record.c:187
 msgid "Choose a filename"
-msgstr ""
+msgstr "Een bestandsnaam kiezen"
 
 #. choose_button = gtk_button_new_with_label(_("Choose..."));
 #: src/record.c:193
 msgid "Record as:"
-msgstr ""
+msgstr "Opnemen als:"
 
 #: src/record.c:194
 msgid "Wave (.wav)"
-msgstr ""
+msgstr "Wave (.wav)"
 
 #: src/record.c:195
 msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr ""
+msgstr "MP3/Ogg (.mp3/.ogg)"
 
 #: src/record.c:219
 msgid "Sample rate:"
@@ -402,11 +411,11 @@ msgstr "Sample rate: "
 
 #: src/record.c:220
 msgid "Sample format:"
-msgstr ""
+msgstr "Sample-formaat:"
 
 #: src/record.c:221
 msgid "Record in:"
-msgstr ""
+msgstr "Opnemen in:"
 
 #: src/record.c:254
 msgid "Mono"
@@ -418,7 +427,7 @@ msgstr "Stereo"
 
 #: src/record.c:273
 msgid "Encoder:"
-msgstr ""
+msgstr "Encoder:"
 
 #: src/record.c:274
 msgid "Bitrate:"
@@ -426,7 +435,7 @@ msgstr "Bitsnelheid: "
 
 #: src/record.c:301 src/record.c:308
 msgid "no supported encoder installed"
-msgstr ""
+msgstr "Geen ondersteunde encoder geïnstalleerd"
 
 #: src/record.c:425
 #, c-format
@@ -434,29 +443,31 @@ msgid ""
 "%s has stopped:\n"
 "%s\n"
 msgstr ""
+"%s is gestopt:\n"
+"%s\n"
 
 #: src/record.c:426
 msgid "MP3/Ogg encoder"
-msgstr ""
+msgstr "MP3/Ogg encoder"
 
 #: src/record.c:427
 msgid "unknown reason"
-msgstr ""
+msgstr "Onbekende reden"
 
 #: src/record.c:479
 #, c-format
 msgid "%i byte"
-msgstr ""
+msgstr "%i byte"
 
 #: src/record.c:482
 #, c-format
 msgid "%i kB"
-msgstr ""
+msgstr "%i Kb"
 
 #: src/record.c:484
 #, c-format
 msgid "%.2f MB"
-msgstr ""
+msgstr "%.2f Mb"
 
 #: src/record.c:489
 msgid "Error"
@@ -464,21 +475,20 @@ msgstr "Fout"
 
 #: src/record.c:491
 msgid "0 byte"
-msgstr ""
+msgstr "0 byte"
 
 #: src/record.c:530
-#, fuzzy
 msgid "Gnomeradio recording status"
-msgstr "Gnomeradio Instellingen"
+msgstr "Gnomeradio opname-status"
 
 #: src/record.c:544
 msgid "Recording:"
-msgstr ""
+msgstr "Opnemen:"
 
 #: src/record.c:545
 msgid "Filesize:"
-msgstr ""
+msgstr "Bestandsgrootte:"
 
 #: src/record.c:555
 msgid "Stop Recording"
-msgstr ""
+msgstr "Opname stoppen"
