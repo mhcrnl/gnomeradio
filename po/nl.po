@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnomeradio cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-21 12:51+0200\n"
+"POT-Creation-Date: 2003-07-07 13:04+0200\n"
 "PO-Revision-Date: 2002-02-05 10:28+0100\n"
 "Last-Translator: Heman Bruyninckx <herman.bruyninckx@mech.kuleuven.ac.be>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -260,6 +260,8 @@ msgid ""
 "File '%s' exists.\n"
 "Overwrite it?"
 msgstr ""
+"Bestand '%s' bestaat.\n"
+" Overschrijven?"
 
 #: src/gui.c:635
 #, c-format
@@ -346,7 +348,7 @@ msgstr "Kan lirc niet opstarten"
 
 #: src/record.c:152
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: src/record.c:160
 #, fuzzy
@@ -374,7 +376,7 @@ msgstr "Radio-toestel:"
 
 #: src/record.c:185
 msgid "Filename:"
-msgstr ""
+msgstr "Bestandsnaam:"
 
 #. path_entry = gtk_entry_new();
 #: src/record.c:187
@@ -396,7 +398,7 @@ msgstr ""
 
 #: src/record.c:219
 msgid "Sample rate:"
-msgstr ""
+msgstr "Sample rate: "
 
 #: src/record.c:220
 msgid "Sample format:"
@@ -408,11 +410,11 @@ msgstr ""
 
 #: src/record.c:254
 msgid "Mono"
-msgstr ""
+msgstr "Mono"
 
 #: src/record.c:255
 msgid "Stereo"
-msgstr ""
+msgstr "Stereo"
 
 #: src/record.c:273
 msgid "Encoder:"
@@ -420,7 +422,7 @@ msgstr ""
 
 #: src/record.c:274
 msgid "Bitrate:"
-msgstr ""
+msgstr "Bitsnelheid: "
 
 #: src/record.c:301 src/record.c:308
 msgid "no supported encoder installed"
