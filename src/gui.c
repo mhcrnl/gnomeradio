@@ -287,7 +287,7 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	gtk_tooltips_set_tip(tooltips, freq_scale, buffer, NULL);
 	g_free(buffer);
 	
-	buffer = g_strdup_printf(_("%.2f MHz"), adj->value/STEPS);
+	buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), adj->value/STEPS);
 	gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
 	g_free(buffer);
 
@@ -756,7 +756,6 @@ tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
 			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
 				NULL, NULL, event->button, event->time);
 			break;
-		default:
 	}			
 	return FALSE;
 }	
@@ -792,7 +791,7 @@ void create_tray_icon(GtkWidget *app)
 		G_CALLBACK(tray_destroyed), (gpointer)app);
 	gtk_widget_show_all(GTK_WIDGET(tray_icon));
 	
-	text = g_strdup_printf(_("%.2f MHz"), adj->value/STEPS);
+	text = g_strdup_printf(_("Gnomeradio - %.2f MHz"), adj->value/STEPS);
 	gtk_tooltips_set_tip(tooltips, tray_icon, text, NULL);
 	g_free(text);
 }	
