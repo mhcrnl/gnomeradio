@@ -1,3 +1,7 @@
+2005-02-12  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* configure.in: Added fi to ALL_LINGUAS.
+
 2004-12-04  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* configure.in: new version 1.5
