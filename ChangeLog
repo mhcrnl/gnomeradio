@@ -1,3 +1,9 @@
+2004-12-04  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* configure.in: new version 1.5
+	* record.c: fix issues with long filenames
+	* release 1.5
+
 2004-06-08  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* autogen.sh: require automake 1.7

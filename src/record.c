@@ -490,7 +490,14 @@ static gboolean timeout_cb(gpointer data)
 		else
 			size = g_strdup(_("0 byte"));	
 	}	
-	gtk_label_set_text(GTK_LABEL(file_lbl), rec_settings.filename);
+	if (strlen(rec_settings.filename) > 100) {
+		char *ellipsized, *back;
+		
+		back = rec_settings.filename + (strlen(rec_settings.filename) - 45);
+		ellipsized = g_strdup_printf("%.50s ... %s", rec_settings.filename, back);
+		gtk_label_set_text(GTK_LABEL(file_lbl), ellipsized);
+		g_free(ellipsized);
+	} else gtk_label_set_text(GTK_LABEL(file_lbl), rec_settings.filename);
 	gtk_label_set_text(GTK_LABEL(size_lbl), size);
 	g_free(size);
 	
@@ -528,7 +535,7 @@ GtkWidget* record_status_window(void)
 
 	status_dialog = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title(GTK_WINDOW(status_dialog),_("Gnomeradio recording status"));
-	gtk_window_set_resizable(GTK_WINDOW(status_dialog), FALSE);
+	//gtk_window_set_resizable(GTK_WINDOW(status_dialog), FALSE);
 
 	vbox = gtk_vbox_new(FALSE, 5);
 	hbox = gtk_hbox_new(FALSE, 0);
@@ -536,8 +543,9 @@ GtkWidget* record_status_window(void)
 	gtk_container_set_border_width(GTK_CONTAINER(table), 5);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
 	
-	gtk_widget_set_size_request(status_dialog, 280, -1);
+	gtk_window_set_default_size(GTK_WINDOW(status_dialog), 280, -1);
 	gtk_table_set_row_spacing(GTK_TABLE(table), 0, 5);
+	gtk_table_set_col_spacing(GTK_TABLE(table), 0, 10);
 
 	frame = gtk_frame_new(NULL);
 	
@@ -562,8 +570,8 @@ GtkWidget* record_status_window(void)
 	gtk_container_add(GTK_CONTAINER(frame), table);
 	
 	gtk_box_pack_end (GTK_BOX(hbox), button, TRUE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox), frame, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
 	gtk_table_attach_defaults(GTK_TABLE(table), f_lbl, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(table), s_lbl, 0, 1, 1, 2);
@@ -578,5 +586,4 @@ GtkWidget* record_status_window(void)
 	gtk_window_set_modal(GTK_WINDOW(status_dialog), TRUE);
 
 	return status_dialog;
-}	
-	
+}
