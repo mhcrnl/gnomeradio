@@ -1,0 +1,6 @@
+2003-01-08  Christian Rose  <menthos@menthos.com>
+
+	* .cvsignore: Added.
+	* gnomeradio.pot: Removed. This is a generated file and should not
+	be stored in cvs.
+
