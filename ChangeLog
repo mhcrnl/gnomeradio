@@ -1,3 +1,8 @@
+2003-01-29  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* gnomeradio.desktop.in: Added startup-notification
+	and bugzilla tags
+
 2003-01-24  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Added "no" to ALL_LINGUAS.
