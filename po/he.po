@@ -1,19 +1,20 @@
+# translation of gnomeradio.HEAD.he.po to Hebrew
 # translation of gnomeradio.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002
+# Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002,2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnomeradio\n"
-"POT-Creation-Date: 2003-01-08 16:14+0100\n"
-"PO-Revision-Date: 2002-11-29 19:08+0200\n"
+"Project-Id-Version: gnomeradio.HEAD.he\n"
+"POT-Creation-Date: 2003-01-11 10:53+0100\n"
+"PO-Revision-Date: 2003-01-11 17:21+0200\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0beta2\n"
+"X-Generator: KBabel 1.0\n"
 
 #: gnomeradio.schemas.in.h:1
 msgid "Audio device"
@@ -125,8 +126,7 @@ msgstr "מספר התחנות"
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
-msgstr ""
-"התחנה שפעלה כש Gnomeradio נסגר. התווך הוא 0 ... (# תחנות - 1). ללא זה -1"
+msgstr "התחנה שפעלה כש Gnomeradio נסגר. התווך הוא 0 ... (# תחנות - 1). ללא זה -1"
 
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
@@ -241,8 +241,7 @@ msgid "manual"
 msgstr "ידני"
 
 #: src/gui.c:579
-msgid ""
-"Sox could not be detected. Please ensure that it is installed in your PATH."
+msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr "Sox לא זוהה. אנא ודא כי הוא מותקן בנתיב שלך."
 
 #: src/gui.c:614
@@ -282,7 +281,6 @@ msgstr ""
 "http://linbrew.sourceforge.net"
 
 #: src/gui.c:682
-#, fuzzy
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -292,10 +290,9 @@ msgstr ""
 "Gnomeradio הינו יישום מקלט FM של שולחן העבודה GNOME. הוא אמור לעבוד עם כל "
 "כרטיסי הרדיו הנתמכים על-ידי מנהל ההתקנים video4linux.\n"
 "\n"
-"גירסה זו הודרה %s תמיכת LIRC."
+"גירסה זו הודרה עם תמיכת LIRC."
 
 #: src/gui.c:686
-#, fuzzy
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -305,7 +302,7 @@ msgstr ""
 "Gnomeradio הינו יישום מקלט FM של שולחן העבודה GNOME. הוא אמור לעבוד עם כל "
 "כרטיסי הרדיו הנתמכים על-ידי מנהל ההתקנים video4linux.\n"
 "\n"
-"גירסה זו הודרה %s תמיכת LIRC."
+"גירסה זו הודרה ללא תמיכת LIRC."
 
 #: src/gui.c:814
 msgid "Presets:"
@@ -495,3 +492,4 @@ msgstr "הפסק הקלטה"
 
 #~ msgid "withtout"
 #~ msgstr "בלי"
+
