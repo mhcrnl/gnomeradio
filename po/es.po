@@ -16,7 +16,7 @@ msgstr ""
 
 #: gnomeradio.schemas.in.h:1
 msgid "Audio device"
-msgstr "Dispositivo de radio"
+msgstr "Dispositivo de audio"
 
 #: gnomeradio.schemas.in.h:2 src/record.c:351
 msgid "Choose the bitrate in which the mp3 will be encoded"
@@ -44,7 +44,7 @@ msgstr "Ultima frecuencia"
 
 #: gnomeradio.schemas.in.h:7
 msgid "Last presets"
-msgstr "Ultima configuración"
+msgstr "Ultima emisora"
 
 #: gnomeradio.schemas.in.h:8
 msgid "MP3 bitrate"
@@ -60,7 +60,7 @@ msgstr "Dispositivo de mezcla"
 
 #: gnomeradio.schemas.in.h:11
 msgid "Mixer source"
-msgstr "Fuente del mezclador"
+msgstr "Entrada de sonid"
 
 #: gnomeradio.schemas.in.h:12
 msgid "Mute on exit"
@@ -68,7 +68,7 @@ msgstr "Silenciar al salir"
 
 #: gnomeradio.schemas.in.h:13
 msgid "Number of presets"
-msgstr ""
+msgstr "Número de emisoras"
 
 #: gnomeradio.schemas.in.h:14
 msgid "Radio device"
@@ -100,7 +100,7 @@ msgstr "Especifique el dispositivo de audio (en la mayoría de los casos /dev/au
 
 #: gnomeradio.schemas.in.h:21 src/record.c:348
 msgid "The audio sample-rate of the wave-file"
-msgstr "La tasa de muestre del archivo wav"
+msgstr "La tasa de muestreo del archivo wav"
 
 #: gnomeradio.schemas.in.h:22 src/record.c:349
 msgid "The format (8 or 16 bit) of the wave-file"
@@ -108,7 +108,7 @@ msgstr "El formato del archivo wav (8 o 16 bits)"
 
 #: gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
-msgstr "La última frecuenta (en Mhz) empleada"
+msgstr "La última frecuenta (en MHz) empleada"
 
 #: gnomeradio.schemas.in.h:24
 msgid ""
@@ -120,13 +120,15 @@ msgstr ""
 
 #: gnomeradio.schemas.in.h:25
 msgid "The number of presets"
-msgstr ""
+msgstr "El número de emisoras"
 
 #: gnomeradio.schemas.in.h:26
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
+"La emisora que fue habilitada cuando terminó gnomeradio.  El rango es 0 ... "
+"(# de emisoras - 1).  Ninguno es -1."
 
 #: gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
@@ -166,15 +168,15 @@ msgstr "Emisoras"
 
 #: src/prefs.c:539
 msgid "Radio Device:"
-msgstr "Dispositivo de radio"
+msgstr "Dispositivo de radio:"
 
 #: src/prefs.c:547
 msgid "Mixer Source:"
-msgstr "Entrada de mezclado:"
+msgstr "Entrada de sonido:"
 
 #: src/prefs.c:561
 msgid "Mute on exit?"
-msgstr "Silenciar al salir"
+msgstr "Silenciar al salir:"
 
 #: src/prefs.c:609
 msgid "Name:"
@@ -186,11 +188,11 @@ msgstr "Frecuencia:"
 
 #: src/prefs.c:701
 msgid "Add a new preset"
-msgstr "Agregar nueva emisora"
+msgstr "Agregar una nueva emisora"
 
 #: src/prefs.c:702
 msgid "Remove preset from List"
-msgstr "Elimina la emisora de la lista"
+msgstr "Eliminar la emisora de la lista"
 
 #: src/prefs.c:703
 msgid "Update the preset in the List"
@@ -214,12 +216,12 @@ msgstr ""
 #: src/gui.c:89
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr "La entrada de mezclado «%s» no es válida"
+msgstr "La entrada de sonido «%s» no es válida"
 
 #: src/gui.c:91
 #, c-format
 msgid "Could not open \"%s\"!"
-msgstr "No su pudo abrir «%s"
+msgstr "No su pudo abrir «%s»"
 
 #: src/gui.c:279
 #, c-format
@@ -242,7 +244,7 @@ msgstr "manual"
 
 #: src/gui.c:579
 msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr "No se pudo detectar SOX.  Verifique que se encuentra instalado."
+msgstr "No se pudo detectar SOX.  Verifique que se encuentre instalado."
 
 #: src/gui.c:614
 #, c-format
@@ -259,7 +261,7 @@ msgid ""
 "Error opening file '%s':\n"
 "%s"
 msgstr ""
-"Ha ocurrido un error al abrir «%s»:\n"
+"Ha ocurrido un error al abrir el archivo «%s»:\n"
 "%s"
 
 #: src/gui.c:653 src/gui.c:932
@@ -303,7 +305,7 @@ msgstr ""
 
 #: src/gui.c:814
 msgid "Presets:"
-msgstr "Emisora:"
+msgstr "Emisoras:"
 
 #: src/gui.c:925
 msgid "Scan Backwards"
@@ -327,7 +329,7 @@ msgstr "Acerca de Gnomeradio"
 
 #: src/gui.c:930
 msgid "Record radio as Wave or MP3"
-msgstr "Grabar radio como wav o mp3"
+msgstr "Grabar radio como WAV o MP3"
 
 #: src/gui.c:931
 msgid "Edit your Preferences"
@@ -352,11 +354,11 @@ msgstr "No se ha podido iniciar lirc"
 
 #: src/record.c:150
 msgid "Start"
-msgstr "Comenzar"
+msgstr "Iniciar"
 
 #: src/record.c:158
 msgid "Gnomeradio Record"
-msgstr "Grabación Gnomeradio"
+msgstr "Grabación de Gnomeradio"
 
 #: src/record.c:166
 msgid "General"
@@ -364,7 +366,7 @@ msgstr "General"
 
 #: src/record.c:167
 msgid "Wave Settings"
-msgstr "Configuración de wav"
+msgstr "Configuración de WAV"
 
 #: src/record.c:168
 msgid "Mp3/Ogg Settings"
@@ -381,7 +383,7 @@ msgstr "Nombre del archivo:"
 #. path_entry = gtk_entry_new();
 #: src/record.c:185
 msgid "Choose a filename"
-msgstr "Elija un nombre de archivo:"
+msgstr "Elija un nombre de archivo"
 
 #. choose_button = gtk_button_new_with_label(_("Choose..."));
 #: src/record.c:191
