@@ -1,5 +1,10 @@
 2003-01-08  Christian Rose  <menthos@menthos.com>
 
+	* cs.po, de.po, pt_BR.po: Copied from gnome-i18n/extra-po/gnomeradio.
+	These copies seem newer.
+
+2003-01-08  Christian Rose  <menthos@menthos.com>
+
 	* .cvsignore: Added.
 	* gnomeradio.pot: Removed. This is a generated file and should not
 	be stored in cvs.
