@@ -1,5 +1,9 @@
 2003-01-08  Christian Rose  <menthos@menthos.com>
 
+	* sv.po: Updated Swedish translation.
+
+2003-01-08  Christian Rose  <menthos@menthos.com>
+
 	* cs.po, de.po, pt_BR.po: Copied from gnome-i18n/extra-po/gnomeradio.
 	These copies seem newer.
 

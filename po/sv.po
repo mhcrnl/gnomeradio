@@ -1,15 +1,15 @@
 # Swedish messages for Gnomeradio.
-# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 # Gudmund Areskoug <fta@algonet.se>, 2001.
-# Christian Rose <menthos@menthos.com>, 2001, 2002.
+# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
 # $Id$
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
-"POT-Creation-Date: 2003-01-08 16:14+0100\n"
-"PO-Revision-Date: 2002-11-29 15:48+0100\n"
+"POT-Creation-Date: 2003-01-08 19:29+0100\n"
+"PO-Revision-Date: 2003-01-08 19:29+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +284,6 @@ msgstr ""
 "Skicka synpunkter på översättningen till sv@li.org"
 
 #: src/gui.c:682
-#, fuzzy
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -292,12 +291,11 @@ msgid ""
 "This version has been compiled with LIRC support."
 msgstr ""
 "Gnomeradio är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera "
-"med all mottagarhårdvara som stöds av video4öinux-drivrutiner.\n"
+"med all mottagarhårdvara som stöds av video4linux-drivrutinerna.\n"
 "\n"
-"Denna version har kompilerats %s stöd för LIRC."
+"Denna version har kompilerats med stöd för LIRC."
 
 #: src/gui.c:686
-#, fuzzy
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -305,9 +303,9 @@ msgid ""
 "This version has been compiled without LIRC support."
 msgstr ""
 "Gnomeradio är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera "
-"med all mottagarhårdvara som stöds av video4öinux-drivrutiner.\n"
+"med all mottagarhårdvara som stöds av video4linux-drivrutinerna.\n"
 "\n"
-"Denna version har kompilerats %s stöd för LIRC."
+"Denna version har kompilerats utan stöd för LIRC."
 
 #: src/gui.c:814
 msgid "Presets:"
