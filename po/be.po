@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio.HEAD.be\n"
-"POT-Creation-Date: 2003-02-20 20:16+0100\n"
+"POT-Creation-Date: 2003-04-27 20:08+0200\n"
 "PO-Revision-Date: 2003-02-21 22:46GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
@@ -113,7 +113,8 @@ msgstr "Апошняя часьціня  (у MHz)"
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
-msgstr "Мікшар ужо выкарыстоўваецца. Магчыма зьмяняць толькі гэты ключ(ня ГІК опцыя)"
+msgstr ""
+"Мікшар ужо выкарыстоўваецца. Магчыма зьмяняць толькі гэты ключ(ня ГІК опцыя)"
 
 #: gnomeradio.schemas.in.h:25
 msgid "The number of presets"
@@ -239,7 +240,8 @@ msgid "manual"
 msgstr "ручная"
 
 #: src/gui.c:588
-msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
+msgid ""
+"Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr "Sox ня адшуканы. Калі ласка, праверце што ён усталяваны ў ШЛЯХУ."
 
 #: src/gui.c:624
@@ -488,4 +490,3 @@ msgstr "Спыніць запіс"
 
 #~ msgid "withtout"
 #~ msgstr "бяз"
-
