@@ -1,14 +1,14 @@
 # French translation of gnomeradio.
 # Copyright (C) 2002 Free Software Foundation, Inc.
-# maintainer: Jean-Michel Ardantz <jmardantz@ifrance.com>, 2002.
-# Laurent RICHARD <laurent.richard@lilit.be>, 2003
+# maintainer: Jean-Michel Ardantz <jmardantz@ifrance.com>, 2002-2003.
+# Laurent Richard <laurent.richard@lilit.be>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnomeradio 1.2\n"
-"POT-Creation-Date: 2003-02-07 19:04+0100\n"
-"PO-Revision-Date: 2002-10-11 23:14+0200\n"
-"Last-Translator: Laurent RICHARD <laurent.richard@lilit.be>\n"
+"Project-Id-Version: gnomeradio 1.4.99\n"
+"POT-Creation-Date: 2003-02-09 02:52+0100\n"
+"PO-Revision-Date: 2003-02-09 02:38+0100\n"
+"Last-Translator: Jean-Michel Ardantz <jmardantz@ifrance.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -247,8 +247,8 @@ msgstr "manuel"
 msgid ""
 "Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr ""
-"Sox n'a pu être détecté. Veuillez vous assurer que celui-ci est bien "
-"installé dans votre PATH."
+"Sox n'a pu être détecté. Veuillez-vous assurez que son répertoire "
+"d'installation est dans le PATH."
 
 #: src/gui.c:614
 #, c-format
@@ -280,8 +280,11 @@ msgstr "Activer le volume"
 #: src/gui.c:671
 msgid "TRANSLATORS"
 msgstr ""
+"Mainteneur :\n"
 "Jean-Michel Ardantz <jmardantz@ifrance.com>\n"
-"Laurent RICHARD <laurent.richard@lilit.be>"
+"\n"
+"Contributeur :\n"
+"Laurent Richard <laurent.richard@lilit.be>"
 
 #: src/gui.c:682
 msgid ""
@@ -290,10 +293,10 @@ msgid ""
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
-"Gnomeradio est une application sélecteur de bande FM pour le bureau GNOME. "
-"Elle devrait fonctionné avec tout matériel radio qui est supporté par les "
-"drivers video4linux.\n"
-" \n"
+"Gnomeradio est un syntoniseur FM pour le bureau GNOME. Il devrait "
+"fonctionner avec tout matériel de syntonisation compatible avec les pilotes "
+"video4linux.\n"
+"\n"
 "Cette version a été compilée avec le support LIRC."
 
 #: src/gui.c:686
@@ -303,10 +306,10 @@ msgid ""
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
-"Gnomeradio est une application sélecteur de bande FM pour le bureau GNOME. "
-"Elle devrait fonctionné avec tout matériel radio qui est supporté par les "
-"drivers video4linux.\n"
-" \n"
+"Gnomeradio est un syntoniseur FM pour le bureau GNOME. Il devrait "
+"fonctionner avec tout matériel de syntonisation compatible avec les pilotes "
+"video4linux.\n"
+"\n"
 "Cette version a été compilée sans le support LIRC."
 
 #: src/gui.c:814
@@ -360,7 +363,7 @@ msgstr "Impossible de démarrer lirc"
 
 #: src/record.c:150
 msgid "Start"
-msgstr "Lancement"
+msgstr "Enregistrer"
 
 #: src/record.c:158
 msgid "Gnomeradio Record"
@@ -434,7 +437,7 @@ msgstr "Débit :"
 
 #: src/record.c:299 src/record.c:306
 msgid "no supported encoder installed"
-msgstr "Aucun encodeur supporté n'est installé"
+msgstr "aucun encodeur supporté n'est installé"
 
 #: src/record.c:422
 #, c-format
@@ -442,7 +445,7 @@ msgid ""
 "%s has stopped:\n"
 "%s\n"
 msgstr ""
-"%s a été arrêté:\n"
+"%s a été arrêté :\n"
 "%s\n"
 
 #: src/record.c:423
@@ -451,7 +454,7 @@ msgstr "Encodeur MP3/Ogg"
 
 #: src/record.c:424
 msgid "unknown reason"
-msgstr "erreur inconnue"
+msgstr "raison inconnue"
 
 #: src/record.c:476
 #, c-format
@@ -461,12 +464,12 @@ msgstr "%i octets"
 #: src/record.c:479
 #, c-format
 msgid "%i kB"
-msgstr "%i kb"
+msgstr "%i ko"
 
 #: src/record.c:481
 #, c-format
 msgid "%.2f MB"
-msgstr "%.2f Mb"
+msgstr "%.2f Mo"
 
 #: src/record.c:486
 msgid "Error"
@@ -491,34 +494,3 @@ msgstr "Taille :"
 #: src/record.c:552
 msgid "Stop Recording"
 msgstr "Arrêter l'enregistrement"
-
-#~ msgid ""
-#~ "Yet another Gnome FM-Tuner. But this one is the best ;-)\n"
-#~ "(Hopefully) works with all FM-Tunercards supported by video4linux."
-#~ msgstr ""
-#~ "Un nouveau sélecteur de bande FM pour Gnome. Le meilleur ;-) ...\n"
-#~ "Celui-ci fonctionne avec toutes les cartes FM supportées par video4linux."
-
-#~ msgid "Start Recording"
-#~ msgstr "Enregistrer"
-
-#~ msgid "Choose..."
-#~ msgstr "Choisir..."
-
-#~ msgid ""
-#~ "Mp3 encoder has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "L'encodeur Mp3 a été interrompu :\n"
-#~ "%s\n"
-#~ "Lancez gnomeradio depuis un terminal pour obtenir plus de détails"
-
-#~ msgid ""
-#~ "sox has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "Sox a été interrompu :\n"
-#~ "%s\n"
-#~ "Lancez gnomeradio depuis un terminal pour obtenir plus de détails"
