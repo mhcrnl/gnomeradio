@@ -1,11 +1,11 @@
 # Translation of gnomeradio to Croatian
 # Copyright (C) Croatian team
-# Translators: Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,
+# Translators: Antun Krasic <butch@gawab.com>,Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio 0\n"
 "POT-Creation-Date: 2003-11-06 18:10+0100\n"
-"PO-Revision-Date: 2003-11-07 18:43+CET\n"
+"PO-Revision-Date: 2003-11-10 16:52+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -293,11 +293,11 @@ msgstr ""
 
 #: src/gui.c:1008
 msgid "0.05 MHz Backwards"
-msgstr ""
+msgstr "0.05 MHz Unatrag"
 
 #: src/gui.c:1009
 msgid "0.05 MHz Forwards"
-msgstr ""
+msgstr "0.05 MHz naprijed"
 
 #: src/gui.c:1010
 msgid "About Gnomeradio"
@@ -410,6 +410,8 @@ msgid ""
 "%s has stopped:\n"
 "%s\n"
 msgstr ""
+"%s je stao\n"
+"%s\n"
 
 #: src/record.c:426
 msgid "MP3/Ogg encoder"
@@ -422,12 +424,12 @@ msgstr ""
 #: src/record.c:479
 #, c-format
 msgid "%i byte"
-msgstr ""
+msgstr "%i byte"
 
 #: src/record.c:482
 #, c-format
 msgid "%i kB"
-msgstr ""
+msgstr "%i kB"
 
 #: src/record.c:484
 #, c-format
@@ -440,7 +442,7 @@ msgstr "Greška"
 
 #: src/record.c:491
 msgid "0 byte"
-msgstr ""
+msgstr "0 byte"
 
 #: src/record.c:530
 msgid "Gnomeradio recording status"
