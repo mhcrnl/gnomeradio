@@ -167,89 +167,56 @@ GList* get_mixer_recdev_list(void)
 }
 
 static gboolean
-redraw_status_window(gboolean expose_event)
+redraw_status_window(void)
 {
 
-	GdkWindow *window;
-	static GdkGC *gc;
+	GdkWindow *real_window, *window;
+	GdkGC *gc;
 	int win_width, win_height;
-	//int a, b, c, d, e;
-	int freq[5], signal_strength, is_stereo, fl, rst, i;
-	static int old_signal_strength, old_is_stereo, old_freq[5], first = 1;
-	double dob, val;
+	int val, freq[5], signal_strength, is_stereo, i;
 	
-	//g_print("Redrawing %s\n", expose_event ? "(expose event)" : "");
+	val = (int)(rint(adj->value)/STEPS * 100.0);
 	
-	if (expose_event)
-	{
-		for (i=0; i<5; old_freq[i++] = -1)
-			;
-		old_signal_strength = -1;
-		old_is_stereo = -1;
-	}
-	
-	val = rint(gtk_adjustment_get_value(adj));
-
-	fl = (int)(floor(val/STEPS));
-	dob = rint((double)(val*100/STEPS));
-	rst = (int)(dob)%100;
-		
-	freq[0] = fl - fl%100;
-	freq[1] = (fl - freq[0]) - (fl - freq[0])%10;
-	freq[2] = fl - freq[0] - freq[1]; 
-	freq[4] = rst%10;
-	freq[3] = (rst - freq[4])/10;
-
-	freq[0] /= 100;
-	freq[1] /= 10;
+	freq[0] = val / 10000;
+	freq[1] = (val % 10000) / 1000;
+	freq[2] = (val % 1000) / 100; 
+	freq[3] = (val % 100) / 10;
+	freq[4] = val % 10;
 
 	signal_strength = radio_getsignal();
 	is_stereo = radio_getstereo();
 	
-	if (signal_strength > 3)
-		signal_strength = 3;
-	if (signal_strength < 0)
-		signal_strength = 0;
+	if (signal_strength > 3) signal_strength = 3;
+	if (signal_strength < 0) signal_strength = 0;
+	is_stereo = (is_stereo == 1) ? 1 : 0;
 	
-	window = drawing_area->window;
+	real_window = drawing_area->window;
+	gc = gdk_gc_new(real_window);
+	gdk_drawable_get_size(real_window, &win_width, &win_height);
+	
+	/* use doublebuffering to avoid flickering */
+	window = gdk_pixmap_new(real_window, win_width, win_height, -1);
 
-	gdk_drawable_get_size(window, &win_width, &win_height);
-	if (!gc)
-		gc = gdk_gc_new(window);
-	
-	if (expose_event || first)
-		gdk_draw_rectangle(window, gc, TRUE, 0, 0, -1, -1);
-	if (first)
-		first = 0;
+	gdk_draw_rectangle(window, gc, TRUE, 0, 0, win_width, win_height);
 	
 	win_width -= 5;
 	
-	if (freq[0] != old_freq[0])
-	{
-		if (freq[0])
-			gdk_draw_drawable(window, gc, digits, freq[0] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*6, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-		else
-			gdk_draw_rectangle(window, gc, TRUE, win_width - DIGIT_WIDTH*6, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-	}
-	if (freq[1] != old_freq[1])
-		gdk_draw_drawable(window, gc, digits, freq[1] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*5, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-	if (freq[2] != old_freq[2])
-		gdk_draw_drawable(window, gc, digits, freq[2] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*4, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-	if (expose_event)
-		gdk_draw_drawable(window, gc, digits, 10 * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*3, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-	if (freq[3] != old_freq[3])
-		gdk_draw_drawable(window, gc, digits, freq[3] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*2, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-	if (freq[4] != old_freq[4])
-		gdk_draw_drawable(window, gc, digits, freq[4] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*1, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
-	if (signal_strength != old_signal_strength)
-		gdk_draw_drawable(window, gc, signal_s, signal_strength * SIGNAL_WIDTH, 0, win_width - DIGIT_WIDTH*6-SIGNAL_WIDTH, 5, SIGNAL_WIDTH, DIGIT_HEIGTH);
-	if ((is_stereo != old_is_stereo) && (is_stereo > -1))
-		gdk_draw_drawable(window, gc, stereo, is_stereo * STEREO_WIDTH, 0, win_width - DIGIT_WIDTH*6-SIGNAL_WIDTH-STEREO_WIDTH, 5, STEREO_WIDTH, DIGIT_HEIGTH);
+	if (freq[0])	gdk_draw_drawable(window, gc, digits, freq[0] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*6, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
+	else gdk_draw_rectangle(window, gc, TRUE, win_width - DIGIT_WIDTH*6, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
 
-	for (i=0; i<5; old_freq[i] = freq[i++])
-			;
-	old_signal_strength = signal_strength;
-	old_is_stereo = is_stereo;
+	gdk_draw_drawable(window, gc, digits, freq[1] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*5, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
+	gdk_draw_drawable(window, gc, digits, freq[2] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*4, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
+	gdk_draw_drawable(window, gc, digits, 10 * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*3, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
+	gdk_draw_drawable(window, gc, digits, freq[3] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*2, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
+	gdk_draw_drawable(window, gc, digits, freq[4] * DIGIT_WIDTH, 0, win_width - DIGIT_WIDTH*1, 5, DIGIT_WIDTH, DIGIT_HEIGTH);
+	gdk_draw_drawable(window, gc, signal_s, signal_strength * SIGNAL_WIDTH, 0, win_width - DIGIT_WIDTH*6-SIGNAL_WIDTH, 5, SIGNAL_WIDTH, DIGIT_HEIGTH);
+	gdk_draw_drawable(window, gc, stereo, is_stereo * STEREO_WIDTH, 0, win_width - DIGIT_WIDTH*6-SIGNAL_WIDTH-STEREO_WIDTH, 5, STEREO_WIDTH, DIGIT_HEIGTH);
+
+	/* draw the pixmap to the real window */	
+	gdk_draw_drawable(real_window, gc, window, 0, 0, 0, 0, win_width + 5, win_height);
+	
+	g_object_unref(G_OBJECT(gc));
+	g_object_unref(G_OBJECT(window));
 	
 	return TRUE;	
 }
@@ -258,7 +225,8 @@ redraw_status_window(gboolean expose_event)
 static gboolean
 expose_event_cb(GtkWidget *widget, GdkEventExpose *event, gpointer data)
 {
-	return redraw_status_window(TRUE);
+	redraw_status_window();
+	return TRUE;
 }	
 
 void exit_gnome_radio(void)
@@ -276,9 +244,8 @@ void exit_gnome_radio(void)
 static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 {
 	gchar *buffer;
-
-	//expose_event_cb(NULL, NULL, NULL);
-	redraw_status_window(FALSE);
+	
+	redraw_status_window();
 	
 	buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), rint(adj->value)/STEPS);
 	gtk_window_set_title (GTK_WINDOW(window), buffer);
@@ -288,7 +255,7 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	gtk_tooltips_set_tip(tooltips, freq_scale, buffer, NULL);
 	g_free(buffer);
 	
-	buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), adj->value/STEPS);
+	buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), rint(adj->value)/STEPS);
 	gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
 	g_free(buffer);
 
@@ -1197,4 +1164,3 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
-
