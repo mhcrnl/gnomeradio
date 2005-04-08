@@ -1,18 +1,24 @@
+2004-12-04  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* gui.c: Fix #167963, #167962
+	* prefs.c: Use g_get_home_dir instead of / for rec_settings.filename
+	* prefs.c: HIG-ifieing
+
 2005-04-01  Steve Murphy  <murf@e-tools.com>
 
         * configure.in: Added "rw" to ALL_LINGUAS.
 
-2005-02-12  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2005-02-12  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* configure.in: Added fi to ALL_LINGUAS.
 
-2004-12-04  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-12-04  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* configure.in: new version 1.5
 	* record.c: fix issues with long filenames
 	* release 1.5
 
-2004-06-08  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2004-06-08  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* autogen.sh: require automake 1.7
 	* remove *_DEPRECATED from Makefile.am
@@ -29,7 +35,7 @@
 
         * configure.in: Added "hr" (Croatian) to ALL_LINGUAS.
 
-2003-12-09  IÃ±aki LarraÃ±aga  <dooteo@euskalgnu.org>
+2003-12-09  Iñaki Larrañaga  <dooteo@euskalgnu.org>
 
 	* configure.in: Added "eu" (Basque) to ALL_LINGUAS.
 
@@ -53,11 +59,11 @@
 
 	* configure.in (ALL_LINGUAS): Added "ca" (Catalan).
 
-2003-05-06  Danilo Å egan  <dsegan@gmx.net>
+2003-05-06  Danilo ¦egan  <dsegan@gmx.net>
 
 	* configure.in: Added "sr" and "sr@Latn" to ALL_LINGUAS.
 
-2003-03-14  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-03-14  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* configure.in: added "ja" to ALL_LINGUAS
 
@@ -65,21 +71,21 @@
 
 	* configure.in: added "uk" (Ukrainian) to ALL_LINGUAS
 
-2003-02-09  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-02-09  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added src/eggtrayicon.c/.h
 	* src/gui.c/.h: Added a notification area icon :-)
 
-2003-02-02  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-02-02  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* configure.in: added "hu" to ALL_LINGUAS
 
-2003-01-31  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-31  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* gui.c: rearranged some startup code, so that
 	the lirc error message doesn't delay radio playback
 
-2003-01-29  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-29  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* gnomeradio.desktop.in: Added startup-notification
 	and bugzilla tags
@@ -92,45 +98,45 @@
 
 	* configure.in: Added am to ALL_LINGUAS.
 
-2003-01-08  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-08  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Made the hole thing ready for cvs
 
-2003-01-07  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2003-01-07  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Hopefully fixed an issue with stereo on aztech 
 	radio cards.
 	(Thx to Giuseppe Bagnato <ttyman@sitoverde.com>)
 
-2002-12-18  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-12-18  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Removed _all_ deprecated stuff... Fixed some issues
 	with detection of invalid/existing files before 
 	recording...
 	* Applied patches from Artur Flinta <aflinta@at.kernel.pl>
 
-2002-12-16  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-12-16  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Added a minimal (auto)configuration if ~/.lircrc is
 	not present.
 
-2002-12-14  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-12-14  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Removed some debugging output and some deprecated
 	stuff...
 
-2002-11-06  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-11-06  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Played around a little bit with the new 
 	press-and-hold of the step buttons (build in
 	a little delay)
 
-2002-11-03  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-11-03  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Partially rewrote recording part. New files:
 	rec_tech.c & rec_tech.h
 
-2002-11-01  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-11-01  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added press-and-hold for the step buttons.
 	* Reverted behaviour of the frequency slider
@@ -139,23 +145,23 @@
 	current volume and set the slider appropriate
 	instead.
 
-2002-10-20  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-10-20  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added keyboard shortcuts. 
 	* Several minor	improvements regarding the redrawing of
 	the status window.
 
-2002-10-19  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-10-19  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Started with documentation: added docs...
 	* Added help buttons to the dialogs, and a f1-key-press
 	callback
 
-2002-10-13  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-10-13  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	*Added example.lircrc and the entry in Makefile.am
 
-2002-10-11  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-10-11  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added a .schemas.in file.
 	* Added stuff to configure.in
@@ -163,7 +169,7 @@
 	from the .in file (intltool magic) and the .schemas
 	file is properly installed
 	
-2002-10-08  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-10-08  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* ported it from gnome_config_* to GConf. this is
 	not yet perfect, but it already works
@@ -172,79 +178,79 @@
 
 	* Added README.lirc and README.recording to Makefile.am
 
-2002-08-21  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-08-21  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Added a shadow to the scrolled window (which cotains
 	the presets listview in the prefswin)
 	* Edited configure.in (is now more gnome2 compliant)
 	
-2002-07-18  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-18  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* It's now no longer possible to open several instances of
 	the about dialog
 
-2002-07-16  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-07-16  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Fixed a bug in updating presets (the presets were
 	appended to the g_list)
 
-2002-06-12  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-06-12  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Fixed some probles with the freq_scale
 
 
-2002-06-??  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-06-??  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Ported it to gnome2
 
-???  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+???  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Added recording functionalty	
 
-2002-01-30  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-01-30  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	*Fixed stupid assertion.
 
-2002-01-25  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-01-25  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Volume is now properly saved on exit.
 
-2002-01-15  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-01-15  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Fixed a small lirc-bug, that caused a crash.
 
-2002-01-13  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2002-01-13  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Edited the tooltips of the volume and frequecy sliders so that they
 	display the current value 
 
-2001-12-18  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2001-12-18  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Removed the stupid homebrewn-code for the spinbutton in the prefs-dialog,
 	it's now a "real" gtk_spin_button
 
-2001-12-12  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2001-12-12  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Improvements in the prefs-dialog placement.
 	* Improved the management of presets.
 	* Added turkish, swedish and portuguese translations
 
-2001-11-09  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2001-11-09  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Changed the mixerdevice-entry to a combobox. 
 	* Added preset up/down lirc commands.
 	* Packaging bugfixes.	
 	* Improved preset handling.
 
-2001-11-05  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2001-11-05  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* Added the icon drawn by Bruno Pires Marinho to pixmaps/.
 
-2001-10-25  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2001-10-25  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* A volume control and some more lirc commands were added.
 	* Some tiny bugs were fixed.
 
-2001-10-19  JÃ¶rgen Scheibengruber <mfcn@gmx.de>
+2001-10-19  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Initial release

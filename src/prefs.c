@@ -127,7 +127,7 @@ gboolean load_settings(void)
 		rec_settings.audiodevice = g_strdup("/dev/audio");
 	rec_settings.filename = gconf_client_get_string(client, "/apps/gnomeradio/recording/last-filename", NULL);
 	if (!rec_settings.filename)
-		rec_settings.filename = g_strdup("/");
+		rec_settings.filename = g_strdup(g_get_home_dir());
 	rec_settings.mp3 = gconf_client_get_bool(client, "/apps/gnomeradio/recording/record-as-mp3", NULL);
 	rec_settings.rate = gconf_client_get_string(client, "/apps/gnomeradio/recording/sample-rate", NULL);
 	if (!rec_settings.rate)
@@ -500,20 +500,24 @@ static void spin_value_changed_cb(GtkWidget *widget, gpointer data)
 GtkWidget* prefs_window(void)
 {
 	GtkWidget *dialog;
-	GtkWidget *frame1, *frame2;
+	GtkWidget *box, *sbox, *pbox;
+	GtkWidget *settings_box, *presets_box;
+	GtkWidget *settings_label, *presets_label;
+	GtkWidget *s_indent_label, *p_indent_label;
 	GtkWidget *misc_box, *preset_box, *hbox;
-	GtkWidget *device_label, *device_box;
-	GtkWidget *mixer_label, *mixer_box;
+	GtkWidget *settings_table;
+	GtkWidget *device_label;
+	GtkWidget *mixer_label;
 	GtkWidget *name_label, *freq_label;
 	GtkWidget *button_box, *entry_box, *freq_box;
 	GtkWidget *add_button, *del_button, *update_button;
 	GtkWidget *add_pixmap, *del_pixmap, *update_pixmap;
 	GtkWidget *scrolled_window;
-	GtkWidget *separator;
 	GtkCellRenderer *cellrenderer;
 	GtkTreeViewColumn *list_column;
 	GList *mixer_devs;
 	gint i;
+	char *settings_hdr, *presets_hdr;
 	preset* ps;
 	
 	dialog = gtk_dialog_new_with_buttons(_("Gnomeradio Settings"), NULL, 
@@ -523,29 +527,49 @@ GtkWidget* prefs_window(void)
 			GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 			NULL);
 	
-	frame1 = gtk_frame_new(_("Misc Settings"));
-	frame2 = gtk_frame_new(_("Presets"));
-	gtk_container_set_border_width(GTK_CONTAINER(frame1), 5);
-	gtk_container_set_border_width(GTK_CONTAINER(frame2), 5);
-
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame1, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame2, TRUE, TRUE, 0);
-
-	misc_box = gtk_vbox_new(FALSE, 6);
-	gtk_container_set_border_width(GTK_CONTAINER(misc_box), 8);
-	gtk_container_add(GTK_CONTAINER(frame1), misc_box);
+	box = gtk_vbox_new(FALSE, 18);
+	gtk_container_set_border_width(GTK_CONTAINER(box), 12);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), box, TRUE, TRUE, 0);
 	
-	device_box = gtk_hbox_new(FALSE, 10);
+	settings_box = gtk_vbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(box), settings_box, TRUE, TRUE, 0);
+
+	settings_hdr = g_strconcat("<span weight=\"bold\">", _("General Settings"), "</span>", NULL);
+	settings_label = gtk_label_new(settings_hdr);
+	gtk_misc_set_alignment(GTK_MISC(settings_label), 0, 0.5);
+	gtk_label_set_use_markup(GTK_LABEL(settings_label), TRUE);
+	g_free(settings_hdr);
+	gtk_box_pack_start(GTK_BOX(settings_box), settings_label, TRUE, TRUE, 0);
+
+	presets_box = gtk_vbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(box), presets_box, TRUE, TRUE, 0);
+
+	presets_hdr = g_strconcat("<span weight=\"bold\">", _("Presets"), "</span>", NULL);
+	presets_label = gtk_label_new(presets_hdr);
+	gtk_misc_set_alignment(GTK_MISC(presets_label), 0, 0.5);
+	gtk_label_set_use_markup(GTK_LABEL(presets_label), TRUE);
+	g_free(presets_hdr);
+	gtk_box_pack_start(GTK_BOX(presets_box), presets_label, TRUE, TRUE, 0);
+
+	sbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(settings_box), sbox, TRUE, TRUE, 0);
+	s_indent_label = gtk_label_new("    ");
+	gtk_box_pack_start(GTK_BOX(sbox), s_indent_label, TRUE, TRUE, 0);
+	
+	settings_table = gtk_table_new(3, 2, FALSE);
+	gtk_table_set_row_spacings(GTK_TABLE(settings_table), 10);
+	gtk_table_set_col_spacings(GTK_TABLE(settings_table), 15);
+	gtk_box_pack_start(GTK_BOX(sbox), settings_table, TRUE, TRUE, 0);
+	
 	device_label = gtk_label_new(_("Radio Device:"));
-	gtk_misc_set_alignment(GTK_MISC(device_label), 0.0f, 0.5f);
+	//gtk_misc_set_alignment(GTK_MISC(device_label), 0.0f, 0.5f);
 	device_entry = gtk_entry_new();
 	gtk_entry_set_text(GTK_ENTRY(device_entry), tmp_settings.device);
-	gtk_box_pack_start(GTK_BOX(device_box), device_label, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(device_box), device_entry, TRUE, TRUE, 0);
+	gtk_table_attach_defaults(GTK_TABLE(settings_table), device_label, 0, 1, 0, 1);
+	gtk_table_attach_defaults(GTK_TABLE(settings_table), device_entry, 1, 2, 0, 1);
 
-	mixer_box = gtk_hbox_new(FALSE, 10);
 	mixer_label = gtk_label_new(_("Mixer Source:"));
-	gtk_misc_set_alignment(GTK_MISC(mixer_label), 0.0f, 0.5f);
+	//gtk_misc_set_alignment(GTK_MISC(mixer_label), 0.0f, 0.5f);
 	mixer_combo = gtk_combo_new();
 	mixer_devs = get_mixer_recdev_list();
 	if (mixer_devs)
@@ -555,20 +579,23 @@ GtkWidget* prefs_window(void)
 		g_list_free(mixer_devs);
 	}
 	gtk_entry_set_text(GTK_ENTRY(GTK_COMBO(mixer_combo)->entry), tmp_settings.mixer);
-	gtk_box_pack_start(GTK_BOX(mixer_box), mixer_label, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(mixer_box), mixer_combo, TRUE, TRUE, 0);
+	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_label, 0, 1, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_combo, 1, 2, 1, 2);
 
 	mute_on_exit_cb = gtk_check_button_new_with_label(_("Mute on exit?"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_on_exit_cb), tmp_settings.mute_on_exit);
 
-	gtk_box_pack_start(GTK_BOX(misc_box), device_box, FALSE, FALSE, 2);
-	gtk_box_pack_start(GTK_BOX(misc_box), mixer_box, FALSE, FALSE, 2);
-	gtk_box_pack_start(GTK_BOX(misc_box), mute_on_exit_cb, FALSE, FALSE, 2);
+	gtk_table_attach_defaults(GTK_TABLE(settings_table), mute_on_exit_cb, 0, 2, 2, 3);
+
+	pbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(presets_box), pbox, TRUE, TRUE, 0);
+	p_indent_label = gtk_label_new("    ");
+	gtk_box_pack_start(GTK_BOX(pbox), p_indent_label, TRUE, TRUE, 0);
 
 	preset_box = gtk_vbox_new(FALSE, 4);
 	hbox = gtk_hbox_new(FALSE, 4);
 	gtk_container_set_border_width(GTK_CONTAINER(hbox), 8);
-	gtk_container_add(GTK_CONTAINER(frame2), hbox);
+	gtk_box_pack_start(GTK_BOX(pbox), hbox, TRUE, TRUE, 0);
 
 	/*scrolled_window = gtk_scrolled_window_new(NULL, NULL);
 	clist = gtk_clist_new(2);
@@ -629,7 +656,7 @@ GtkWidget* prefs_window(void)
 	update_button = gtk_button_new_from_stock(GTK_STOCK_REFRESH);*/
 
 
-	separator = gtk_hseparator_new();
+	//separator = gtk_hseparator_new();
 	
 	gtk_container_add(GTK_CONTAINER(add_button), add_pixmap);
 	gtk_container_add(GTK_CONTAINER(del_button), del_pixmap);
@@ -658,7 +685,7 @@ GtkWidget* prefs_window(void)
 	gtk_box_pack_start(GTK_BOX(freq_box), freq_spin, TRUE, TRUE, 0);
 
 	gtk_box_pack_start(GTK_BOX(preset_box), scrolled_window, TRUE, TRUE, 2);
-	gtk_box_pack_start(GTK_BOX(preset_box), separator, TRUE, TRUE, 0);
+	//gtk_box_pack_start(GTK_BOX(preset_box), separator, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(preset_box), entry_box, TRUE, TRUE, 2);
 	gtk_box_pack_start(GTK_BOX(preset_box), freq_box, TRUE, TRUE, 2);
 	//gtk_box_pack_start(GTK_BOX(preset_box), button_box, TRUE, TRUE, 2);
@@ -705,5 +732,4 @@ GtkWidget* prefs_window(void)
 	gtk_widget_show_all(dialog);
 
 	return dialog;
-}	
-	
+}
