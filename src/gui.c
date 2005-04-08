@@ -1125,11 +1125,13 @@ int main(int argc, char* argv[])
 #ifdef HAVE_LIRC
 	if(!my_lirc_init())
 	{
-		GtkWidget *dialog;
+/*		GtkWidget *dialog;
 		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 					_("Could not start lirc"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
+*/
+		g_print(_("Could not start lirc!\n"));
 	}
 	else
 		start_lirc();
