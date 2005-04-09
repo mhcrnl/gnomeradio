@@ -498,6 +498,7 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 	/*gnome_dialog_set_parent(GNOME_DIALOG(dialog), GTK_WINDOW(app));*/
 	
 	tray_menu_disabled = TRUE;
+	presets_changed = FALSE;
 	choise = GTK_RESPONSE_HELP;
 	while (choise == GTK_RESPONSE_HELP)
 	{
@@ -511,7 +512,7 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 				/* We need the hide signal to get the value of the device_entry */
 				gtk_widget_hide_all(dialog);
 				gtk_widget_destroy(dialog);
-				update_preset_menu();
+				if (presets_changed) update_preset_menu();
 		}
 	}
 	tray_menu_disabled = FALSE;
@@ -854,9 +855,9 @@ GtkWidget* gnome_radio_gui(void)
 	//gtk_box_pack_start(GTK_BOX(hbox2), vseparator2, TRUE, TRUE, 3);
 	gtk_box_pack_start(GTK_BOX(hbox2), rec_button, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(hbox2), vseparator4, FALSE, FALSE, 2);
-	gtk_box_pack_start(GTK_BOX(hbox2), about_button, FALSE, FALSE, 2);
 	//gtk_box_pack_start(GTK_BOX(hbox2), help_button, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(hbox2), prefs_button, FALSE, FALSE, 2);
+	gtk_box_pack_start(GTK_BOX(hbox2), about_button, FALSE, FALSE, 2);
 	//gtk_box_pack_start(GTK_BOX(hbox2), quit_button, FALSE, FALSE, 2);
 
 	gtk_box_pack_start(GTK_BOX(hbox1), frame, FALSE, FALSE, 3);
@@ -914,7 +915,7 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_tooltips_set_tip(tooltips, stbw_button, _("0.05 MHz Backwards"), NULL);
 	gtk_tooltips_set_tip(tooltips, stfw_button, _("0.05 MHz Forwards"), NULL);
 	gtk_tooltips_set_tip(tooltips, about_button, _("About Gnomeradio"), NULL);
-	gtk_tooltips_set_tip(tooltips, rec_button, _("Record radio as Wave or MP3"), NULL);
+	gtk_tooltips_set_tip(tooltips, rec_button, _("Record radio as Wave, OGG or MP3"), NULL);
 	gtk_tooltips_set_tip(tooltips, prefs_button, _("Edit your Preferences"), NULL);
 	gtk_tooltips_set_tip(tooltips, mute_button, _("Mute"), NULL);
 	gtk_tooltips_set_tip(tooltips, quit_button, _("Quit"), NULL);

@@ -284,7 +284,8 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	path = gtk_tree_path_new_from_string(buffer);
 	g_free(buffer);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
-	gtk_tree_path_free(path);	
+	gtk_tree_path_free(path);
+	presets_changed = TRUE;	
 }
 
 
@@ -316,6 +317,7 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	gtk_tree_path_prev(path);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
 	gtk_tree_path_free(path);	
+	presets_changed = TRUE;	
 }
 
 static void destination_button_clicked_cb(GtkWidget *button, gpointer data)
@@ -369,6 +371,7 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 0, new_val, -1);
 	gtk_tree_path_free(path);	
+	presets_changed = TRUE;	
 }	
 
 static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *path_str, gchar *new_val, gpointer user_data)
@@ -407,6 +410,7 @@ static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 1, freq_str, -1);
 	g_free(freq_str);
 	gtk_tree_path_free(path);	
+	presets_changed = TRUE;	
 }	
 
 static void free_string_list(GList *list)
