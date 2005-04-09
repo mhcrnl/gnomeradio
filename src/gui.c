@@ -420,16 +420,18 @@ void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 
 void preset_combo_set_item(gint i)
 {
-	if ((i < 0) || (i >= g_list_length(settings.presets))) return;
-	gtk_combo_box_set_active(GTK_COMBO_BOX(preset_combo), i);
+	if (i < -1) return;
+	gtk_combo_box_set_active(GTK_COMBO_BOX(preset_combo), i + 1);
 }
 
 static void preset_combo_change_cb(GtkWidget *combo, gpointer data)
 {
-	gint i = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
-
-	preset* ps = (preset*)g_list_nth_data(settings.presets, i);
-	mom_ps = i;
+	preset* ps;
+	mom_ps = gtk_combo_box_get_active(GTK_COMBO_BOX(combo)) - 1;
+	
+	if (mom_ps < 0) return;
+	
+	ps = (preset*)g_list_nth_data(settings.presets, mom_ps);
 	gtk_adjustment_set_value(adj, ps->freq * STEPS);
 }
 
@@ -1045,18 +1047,20 @@ int main(int argc, char* argv[])
 	}
 		
 	load_settings();
+	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), _("manual"));
 	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
 		preset *ps = (preset*)ptr->data;
 		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
 	}
 	preset_combo_set_item(mom_ps);
-
+	
 	start_radio(FALSE);
 	
 	start_mixer(FALSE);
 	adj_value_changed_cb(NULL, (gpointer) app);
 	volume_value_changed_cb(NULL, NULL);
 
+	
 #ifdef HAVE_LIRC
 	if(!my_lirc_init())
 	{

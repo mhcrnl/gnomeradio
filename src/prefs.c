@@ -316,8 +316,9 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_remove(list_store, &iter);
 
-	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row);
+	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
 	if (--mom_ps < 0) mom_ps = 0;
+	if (!g_list_length(settings.presets)) mom_ps = -1;
 	preset_combo_set_item(mom_ps);
 	
 	gtk_tree_path_prev(path);
@@ -372,8 +373,8 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	if (ps->title) g_free(ps->title);
 	ps->title = g_strdup(new_val);
 
-	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row);
-	gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row, ps->title);
+	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
+	gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row + 1, ps->title);
 	preset_combo_set_item(mom_ps);
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
