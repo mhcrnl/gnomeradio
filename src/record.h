@@ -21,11 +21,10 @@
 
 GtkWidget* record_prefs_window(void);
 
-void run_status_window(GIOChannel *wavioc, GIOChannel *mp3ioc);
+void run_status_window(GIOChannel *wavioc, GIOChannel *mp3ioc, const gchar* fn);
 
 void show_error_msg(gboolean mp3);
 
 GtkWidget* record_status_window(void);	
 
 #endif
-

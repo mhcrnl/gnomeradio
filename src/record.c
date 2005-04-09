@@ -32,9 +32,11 @@ static GtkWidget *file_lbl, *size_lbl;
 static GtkWidget *audiodev_entry, *path_entry, *mp3_rb, *wav_rb, *encoder_combo;
 static GtkWidget *rate_combo, *sample_combo, *stereo_rb, *mono_rb, *bitrate_combo; 
 static GtkWidget *status_dialog;
+static gchar *filename;
 
 extern gboolean tray_menu_disabled;
 
+#if 0
 static gboolean audiodev_entry_changed_cb(GtkWidget *widget, gpointer data)
 {
 	if (rec_settings.audiodevice)
@@ -361,6 +363,7 @@ GtkWidget* record_prefs_window(void)
 
 	return dialog;
 }
+#endif
 
 void close_status_window(void)
 {
@@ -370,8 +373,10 @@ void close_status_window(void)
 		timeout_id = -1;
 	}
 
-	if (status_dialog)
-		gtk_widget_destroy(GTK_WIDGET(status_dialog));
+	if (filename) g_free(filename);
+	filename = NULL;
+
+	if (status_dialog) gtk_widget_destroy(GTK_WIDGET(status_dialog));
 	status_dialog = NULL;
 	tray_menu_disabled = FALSE;
 }
@@ -418,6 +423,8 @@ monitor_ioc(GIOChannel *source, GIOCondition condition, gboolean is_mp3_chan)
 		exitsignal = record_get_exit_status(is_mp3_chan, &exitcode);
 		//g_print("Signal was %d and Code %d\n", -exitsignal, exitcode);
 		//g_print(">>%s<<\n", is_mp3_chan ? mp3_buf : wav_buf);
+
+		close_status_window();		
 		if (exitcode)
 		{
 			GtkWidget *dialog;
@@ -438,10 +445,7 @@ monitor_ioc(GIOChannel *source, GIOCondition condition, gboolean is_mp3_chan)
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			g_free(text);
-		}
-		else
-			record_stop(SIGINT);
-		close_status_window();		
+		} else record_stop(SIGINT);
 		return FALSE;
 	}	
 	if (condition & G_IO_ERR)
@@ -468,50 +472,38 @@ static gboolean timeout_cb(gpointer data)
 {
 	gint s;
 	gchar *size=NULL;
-		
+
+	g_assert(filename);	
+	
 	if (!GTK_WIDGET_VISIBLE(status_dialog))
 		gtk_widget_show_all(status_dialog);
 	
-	s = get_file_size(rec_settings.filename);
-	if (s > 0)
-	{
-		if (s < 1024)
-			size = g_strdup_printf(_("%i byte"), s);
+	s = get_file_size(filename);
+	if (s > 0) {
+		if (s < 1024) size = g_strdup_printf(_("%i byte"), s);
 		
-		if ((s >= 1024) && (s < 1024*1024))
-			size = g_strdup_printf(_("%i kB"), s>>10);
-		if (s >= 1024*1024)
-			size = g_strdup_printf(_("%.2f MB"), (float)s/1024/1024);
-	}
-	else
-	{
-		if (s)
-			size = g_strdup(_("Error"));
-		else
-			size = g_strdup(_("0 byte"));	
+		if ((s >= 1024) && (s < 1024*1024)) size = g_strdup_printf(_("%i kB"), s>>10);
+		if (s >= 1024*1024) size = g_strdup_printf(_("%.2f MB"), (float)s/1024/1024);
+	} else {
+		if (s)	size = g_strdup(_("Error"));
+		else	size = g_strdup(_("0 byte"));	
 	}	
-	if (strlen(rec_settings.filename) > 100) {
-		char *ellipsized, *back;
-		
-		back = rec_settings.filename + (strlen(rec_settings.filename) - 45);
-		ellipsized = g_strdup_printf("%.50s ... %s", rec_settings.filename, back);
-		gtk_label_set_text(GTK_LABEL(file_lbl), ellipsized);
-		g_free(ellipsized);
-	} else gtk_label_set_text(GTK_LABEL(file_lbl), rec_settings.filename);
+	
+	gtk_label_set_text(GTK_LABEL(file_lbl), filename);
 	gtk_label_set_text(GTK_LABEL(size_lbl), size);
 	g_free(size);
 	
 	return TRUE;
 }	
 	
-void run_status_window(GIOChannel *wavioc, GIOChannel *mp3ioc)
+void run_status_window(GIOChannel *wavioc, GIOChannel *mp3ioc, const gchar *fn)
 {
+	filename = g_strdup(fn);
 	g_assert(wavioc);
 	g_assert(timeout_id == -1);
 
 	wav_io_id = g_io_add_watch(wavioc, G_IO_IN | G_IO_PRI | G_IO_ERR | G_IO_HUP, (GIOFunc)monitor_wav_ioc, NULL);
-	if (mp3ioc)
-		mp3_io_id = g_io_add_watch(mp3ioc, G_IO_IN | G_IO_PRI | G_IO_ERR | G_IO_HUP, (GIOFunc)monitor_mp3_ioc, NULL);
+	if (mp3ioc)	mp3_io_id = g_io_add_watch(mp3ioc, G_IO_IN | G_IO_PRI | G_IO_ERR | G_IO_HUP, (GIOFunc)monitor_mp3_ioc, NULL);
 	timeout_id = gtk_timeout_add(500, (GtkFunction) timeout_cb, NULL);
 }
 
@@ -529,35 +521,40 @@ static gint delete_event_cb(GtkWidget* window, GdkEventAny* e, gpointer data)
 
 GtkWidget* record_status_window(void)
 {
-	GtkWidget *frame;
-	GtkWidget *btn_label, *btn_pixmap, *button, *vbox, *btn_box, *hbox, *table;
+	GtkWidget *btn_label, *btn_pixmap, *button;
+	GtkWidget *vbox, *btn_box, *hbox, *lbl_hbox, *lbl_vbox1, *lbl_vbox2;
 	GtkWidget *f_lbl, *s_lbl;
 
 	status_dialog = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title(GTK_WINDOW(status_dialog),_("Gnomeradio recording status"));
 	//gtk_window_set_resizable(GTK_WINDOW(status_dialog), FALSE);
+	gtk_window_set_default_size(GTK_WINDOW(status_dialog), 300, -1);
 
 	vbox = gtk_vbox_new(FALSE, 5);
-	hbox = gtk_hbox_new(FALSE, 0);
-	table = gtk_table_new(2, 2, FALSE);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 5);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
-	
-	gtk_window_set_default_size(GTK_WINDOW(status_dialog), 280, -1);
-	gtk_table_set_row_spacing(GTK_TABLE(table), 0, 5);
-	gtk_table_set_col_spacing(GTK_TABLE(table), 0, 10);
 
-	frame = gtk_frame_new(NULL);
+	lbl_hbox = gtk_hbox_new(FALSE, 10);	
+	lbl_vbox1 = gtk_vbox_new(FALSE, 5);
+	lbl_vbox2 = gtk_vbox_new(FALSE, 5);
+	gtk_box_pack_start(GTK_BOX(lbl_hbox), lbl_vbox1, FALSE, FALSE, 0);
+	gtk_box_pack_end(GTK_BOX(lbl_hbox), lbl_vbox2, TRUE, TRUE, 0);
 	
 	f_lbl = gtk_label_new(_("Recording:"));
 	s_lbl = gtk_label_new(_("Filesize:"));
 	file_lbl = gtk_label_new("");
+	gtk_label_set_ellipsize(GTK_LABEL(file_lbl), PANGO_ELLIPSIZE_MIDDLE);
 	size_lbl = gtk_label_new("");
 	gtk_misc_set_alignment(GTK_MISC(f_lbl), 0.0f, 0.5f); 
 	gtk_misc_set_alignment(GTK_MISC(s_lbl), 0.0f, 0.5f); 
 	gtk_misc_set_alignment(GTK_MISC(file_lbl), 1.0f, 0.5f); 
 	gtk_misc_set_alignment(GTK_MISC(size_lbl), 1.0f, 0.5f);
-	
+
+	gtk_box_pack_start(GTK_BOX(lbl_vbox1), f_lbl, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(lbl_vbox1), s_lbl, FALSE, FALSE, 0);
+
+	gtk_box_pack_start(GTK_BOX(lbl_vbox2), file_lbl, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(lbl_vbox2), size_lbl, FALSE, FALSE, 0);
+
 	button = gtk_button_new();
 	btn_box = gtk_hbox_new(FALSE, 0);
 	btn_label = gtk_label_new(_("Stop Recording"));
@@ -567,16 +564,12 @@ GtkWidget* record_status_window(void)
 	gtk_box_pack_start (GTK_BOX(btn_box), btn_label, FALSE, FALSE, 2);
 
 	gtk_container_add(GTK_CONTAINER(button), btn_box);
-	gtk_container_add(GTK_CONTAINER(frame), table);
 	
+	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_end (GTK_BOX(hbox), button, TRUE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX(vbox), frame, TRUE, TRUE, 0);
-	gtk_box_pack_start (GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
-
-	gtk_table_attach_defaults(GTK_TABLE(table), f_lbl, 0, 1, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(table), s_lbl, 0, 1, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(table), file_lbl, 1, 2, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(table), size_lbl, 1, 2, 1, 2);
+	
+	gtk_box_pack_start (GTK_BOX(vbox), lbl_hbox, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
 	gtk_container_add(GTK_CONTAINER(status_dialog), vbox);
 

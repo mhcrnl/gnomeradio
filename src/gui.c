@@ -396,8 +396,11 @@ static gboolean scan_freq(gpointer data)
 
 void scfw_button_clicked_cb(GtkButton *button, gpointer data)
 {
-	if (timeout_id)
+	if (timeout_id) {
+		gtk_timeout_remove(timeout_id);
+		timeout_id = 0;
 		return;
+	}
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)1);	
 	mom_ps = -1;
@@ -407,8 +410,11 @@ void scfw_button_clicked_cb(GtkButton *button, gpointer data)
 
 void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 {
-	if (timeout_id)
+	if (timeout_id) {
+		gtk_timeout_remove(timeout_id);
+		timeout_id = 0;
 		return;
+	}
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)(-1));	
 	mom_ps = -1;
@@ -742,9 +748,9 @@ GtkWidget* gnome_radio_gui(void)
 	GtkWidget *vol_up_pixmap, *vol_down_pixmap, *freq_up_pixmap, *freq_down_pixmap;
 	GdkPixbuf *vol_up_pixbuf, *vol_down_pixbuf, *freq_up_pixbuf, *freq_down_pixbuf;
 	GtkWidget *hbox1, *hbox2, *vbox, *menubox, *freq_vol_box;
-	GtkWidget *hseparator1, *hseparator2, *vseparator1, *vseparator2, *vseparator3, *vseparator4;
+	GtkWidget *vseparator1, *vseparator2, *vseparator3, *vseparator4;
 	GtkWidget *label;
-	GtkWidget *frame1, *frame2;
+	GtkWidget *frame;
 	gchar *text;
 
 	app = gnome_app_new(PACKAGE, _("Gnomeradio"));
@@ -753,28 +759,17 @@ GtkWidget* gnome_radio_gui(void)
 	//gtk_window_set_policy(GTK_WINDOW(app), FALSE, FALSE, FALSE);
 	gtk_window_set_wmclass(GTK_WINDOW(app), "gnomeradio", "Gnomeradio");
 
-	frame1 = gtk_frame_new(NULL);
-	frame2 = gtk_frame_new(NULL);
-
-	/*quit_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_QUIT, GTK_ICON_SIZE_BUTTON);
-	prefs_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_PROPERTIES, GTK_ICON_SIZE_BUTTON);
-	scfw_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_LAST, GTK_ICON_SIZE_BUTTON);
-	scbw_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_FIRST, GTK_ICON_SIZE_BUTTON);
-	stfw_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_FORWARD, GTK_ICON_SIZE_BUTTON);
-	stbw_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_BACK, GTK_ICON_SIZE_BUTTON);
-	about_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_ABOUT, GTK_ICON_SIZE_BUTTON);
-	mute_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_VOLUME, GTK_ICON_SIZE_BUTTON);
-	rec_pixmap = gtk_image_new_from_stock(GNOME_STOCK_PIXMAP_MIC, GTK_ICON_SIZE_BUTTON);*/
+	frame = gtk_frame_new(NULL);
 	
-	quit_pixmap = gtk_image_new_from_stock(GTK_STOCK_QUIT, GTK_ICON_SIZE_BUTTON);
-	prefs_pixmap = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_BUTTON);
-	scfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GOTO_LAST, GTK_ICON_SIZE_BUTTON);
-	scbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GOTO_FIRST, GTK_ICON_SIZE_BUTTON);
-	stfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GO_FORWARD, GTK_ICON_SIZE_BUTTON);
-	stbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GO_BACK, GTK_ICON_SIZE_BUTTON);
-	about_pixmap = gtk_image_new_from_stock(GNOME_STOCK_ABOUT, GTK_ICON_SIZE_BUTTON);
-	mute_pixmap = gtk_image_new_from_stock(GNOME_STOCK_VOLUME, GTK_ICON_SIZE_BUTTON);
-	rec_pixmap = gtk_image_new_from_stock(GNOME_STOCK_MIC, GTK_ICON_SIZE_BUTTON);
+	quit_pixmap = gtk_image_new_from_stock(GTK_STOCK_QUIT, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	prefs_pixmap = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	scfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GOTO_LAST, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	scbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GOTO_FIRST, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	stfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GO_FORWARD, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	stbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GO_BACK, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	about_pixmap = gtk_image_new_from_stock(GNOME_STOCK_ABOUT, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	mute_pixmap = gtk_image_new_from_stock(GNOME_STOCK_VOLUME, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	rec_pixmap = gtk_image_new_from_stock(GNOME_STOCK_MIC, GTK_ICON_SIZE_LARGE_TOOLBAR);
 	//help_pixmap = gtk_image_new_from_stock(GTK_STOCK_HELP, GTK_ICON_SIZE_BUTTON);
 	
 	quit_button = gtk_button_new();
@@ -799,16 +794,6 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_container_add(GTK_CONTAINER(rec_button), rec_pixmap);
 	//gtk_container_add(GTK_CONTAINER(help_button), help_pixmap);
 
-	/*gtk_widget_set_usize(quit_button, 30, 30);
-	gtk_widget_set_usize(prefs_button, 30, 30);
-	gtk_widget_set_usize(scfw_button, 30, 30);
-	gtk_widget_set_usize(scbw_button, 30, 30);
-	gtk_widget_set_usize(stfw_button, 30, 30);
-	gtk_widget_set_usize(stbw_button, 30, 30);
-	gtk_widget_set_usize(about_button, 30, 30);
-	gtk_widget_set_usize(mute_button, 30, 30);
-	gtk_widget_set_usize(rec_button, 30, 30);*/
-
 	vbox = gtk_vbox_new(FALSE, 0);
 	hbox1 = gtk_hbox_new(FALSE, 0);
 	hbox2 = gtk_hbox_new(FALSE, 0);
@@ -817,7 +802,6 @@ GtkWidget* gnome_radio_gui(void)
 	
 	adj = GTK_ADJUSTMENT(gtk_adjustment_new(SUNSHINE*STEPS, FREQ_MIN*STEPS, FREQ_MAX*STEPS+1, 1, STEPS, 1));
 	volume = GTK_ADJUSTMENT(gtk_adjustment_new(100, 0, 101, 1, 10, 1));
-	
 	
 	preset_menu = gtk_option_menu_new();
 	//gtk_widget_set_usize(preset_menu, 10, 25);	
@@ -847,8 +831,6 @@ GtkWidget* gnome_radio_gui(void)
 	signal_s = gdk_pixmap_create_from_xpm_d (app->window, NULL, NULL, signal_xpm);
 	stereo = gdk_pixmap_create_from_xpm_d (app->window, NULL, NULL, stereo_xpm);
 	
-	hseparator1 = gtk_hseparator_new();
-	hseparator2 = gtk_hseparator_new();
 	vseparator1 = gtk_vseparator_new();
 	vseparator2 = gtk_vseparator_new();
 	vseparator3 = gtk_vseparator_new();
@@ -859,11 +841,9 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_scale_set_digits(GTK_SCALE(vol_scale), 0);
 	gtk_scale_set_draw_value(GTK_SCALE(vol_scale), FALSE);
 
-	//gtk_drawing_area_size(GTK_DRAWING_AREA(drawing_area), DIGIT_WIDTH*6+10+SIGNAL_WIDTH+STEREO_WIDTH, DIGIT_HEIGTH+10);
 	gtk_widget_set_size_request(drawing_area, DIGIT_WIDTH*6+10+SIGNAL_WIDTH+STEREO_WIDTH, DIGIT_HEIGTH+10);
-	//gtk_widget_set_usize(spinbutton, 60, 25);
 
-	gtk_container_add(GTK_CONTAINER(frame2), drawing_area);
+	gtk_container_add(GTK_CONTAINER(frame), drawing_area);
 
 	gtk_box_pack_start(GTK_BOX(hbox2), scbw_button, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(hbox2), stbw_button, FALSE, FALSE, 2);
@@ -877,9 +857,9 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_box_pack_start(GTK_BOX(hbox2), about_button, FALSE, FALSE, 2);
 	//gtk_box_pack_start(GTK_BOX(hbox2), help_button, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(hbox2), prefs_button, FALSE, FALSE, 2);
-	gtk_box_pack_start(GTK_BOX(hbox2), quit_button, FALSE, FALSE, 2);
+	//gtk_box_pack_start(GTK_BOX(hbox2), quit_button, FALSE, FALSE, 2);
 
-	gtk_box_pack_start(GTK_BOX(hbox1), frame2, FALSE, FALSE, 3);
+	gtk_box_pack_start(GTK_BOX(hbox1), frame, FALSE, FALSE, 3);
 	gtk_box_pack_start(GTK_BOX(hbox1), menubox, TRUE, TRUE, 3);
 	
 	gtk_box_pack_start(GTK_BOX(menubox), label, TRUE, TRUE, 0);
@@ -895,18 +875,14 @@ GtkWidget* gnome_radio_gui(void)
 
 	gtk_box_pack_start(GTK_BOX(vbox), hbox1, FALSE, FALSE, 4);
 	gtk_box_pack_start(GTK_BOX(vbox), freq_vol_box, TRUE, TRUE, 2);
-	gtk_box_pack_start(GTK_BOX(vbox), hseparator1, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox2, FALSE, FALSE, 4);
-	//gtk_box_pack_start(GTK_BOX(vbox), hseparator2, FALSE, FALSE, 0);
 	
-	gtk_container_add(GTK_CONTAINER(frame1), vbox);
-	
-	gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
+	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 
-	gtk_container_set_border_width(GTK_CONTAINER(frame1), 3);
-	gtk_container_set_border_width(GTK_CONTAINER(frame2), 2);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), 3);
+	gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
 
-	gnome_app_set_contents(GNOME_APP(app), frame1);
+	gnome_app_set_contents(GNOME_APP(app), vbox);
 
 	//status = gnome_appbar_new(FALSE, TRUE, GNOME_PREFERENCES_NEVER);
 

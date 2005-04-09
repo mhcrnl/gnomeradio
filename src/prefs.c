@@ -426,6 +426,7 @@ GtkWidget* prefs_window(void)
 	GtkWidget *encoder_label, *bitrate_label, *destination_label;
 	GtkWidget *destination_button;
 	GtkWidget *encoder_combo, *bitrate_combo;
+	GtkWidget *mixer_eb, *encoder_eb, *bitrate_eb;
 	GtkWidget *misc_box, *preset_box, *hbox;
 	GtkWidget *settings_table, *record_table;
 	GtkWidget *device_label, *mixer_label;
@@ -502,7 +503,9 @@ GtkWidget* prefs_window(void)
 
 	mixer_label = gtk_label_new(_("Mixer Source:"));
 	gtk_misc_set_alignment(GTK_MISC(mixer_label), 0.0f, 0.5f);
+	mixer_eb = gtk_event_box_new();
 	mixer_combo = gtk_combo_box_new_text();
+	gtk_container_add(GTK_CONTAINER(mixer_eb), mixer_combo);
 	ptr = mixer_devs = get_mixer_recdev_list();
 	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
 		gtk_combo_box_append_text(GTK_COMBO_BOX(mixer_combo), ptr->data);
@@ -513,7 +516,7 @@ GtkWidget* prefs_window(void)
 	g_object_set_data_full(G_OBJECT(mixer_combo), "mixer_devs", mixer_devs, (GDestroyNotify)free_string_list);
 	
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_label, 0, 1, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_combo, 1, 2, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_eb, 1, 2, 1, 2);
 
 	mute_on_exit_cb = gtk_check_button_new_with_label(_("Mute on exit?"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_on_exit_cb), settings.mute_on_exit);
@@ -526,7 +529,7 @@ GtkWidget* prefs_window(void)
 	g_signal_connect(GTK_OBJECT(mute_on_exit_cb), "toggled", GTK_SIGNAL_FUNC(mute_on_exit_toggled_cb), NULL);
 
 	gtk_tooltips_set_tip(tooltips, device_entry, _("Specify the radio-device (in most cases /dev/radio)"), NULL);
-	gtk_tooltips_set_tip(tooltips, mixer_combo, 
+	gtk_tooltips_set_tip(tooltips, mixer_eb, 
 	_("Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"), NULL);
 	gtk_tooltips_set_tip(tooltips, mute_on_exit_cb, _("If unchecked, gnomeradio won't mute after exiting"), NULL);
 
@@ -633,7 +636,9 @@ GtkWidget* prefs_window(void)
 	destination_button = gtk_button_new();
 	gtk_button_set_label(GTK_BUTTON(destination_button), rec_settings.destination);
 	
+	encoder_eb = gtk_event_box_new();
 	encoder_combo = gtk_combo_box_new_text();
+	gtk_container_add(GTK_CONTAINER(encoder_eb), encoder_combo);
 	encoders = get_installed_encoders();
 	ptr = encoders = g_list_prepend(encoders, (gpointer)g_strdup(_("Wave file")));
 	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
@@ -646,7 +651,9 @@ GtkWidget* prefs_window(void)
 	gtk_combo_box_set_active(GTK_COMBO_BOX(encoder_combo), active);
 	if (encoders) g_object_set_data_full(G_OBJECT(encoder_combo), "encoders", encoders, (GDestroyNotify)free_string_list);
 
+	bitrate_eb = gtk_event_box_new();
 	bitrate_combo = gtk_combo_box_new_text();
+	gtk_container_add(GTK_CONTAINER(bitrate_eb), bitrate_combo);
 	ptr = bitrates;
 	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
 		gchar *buffer = g_strdup_printf(_("%s kb/s"), ptr->data);
@@ -666,16 +673,16 @@ GtkWidget* prefs_window(void)
 	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_label, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_button, 1, 2, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_label, 0, 1, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_combo, 1, 2, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_eb, 1, 2, 1, 2);
 	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_label, 0, 1, 2, 3);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_combo, 1, 2, 2, 3);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_eb, 1, 2, 2, 3);
 
 	g_signal_connect(GTK_OBJECT(destination_button), "clicked", GTK_SIGNAL_FUNC(destination_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(encoder_combo), "changed", GTK_SIGNAL_FUNC(encoder_combo_change_cb), (gpointer)bitrate_combo);
 	g_signal_connect(GTK_OBJECT(bitrate_combo), "changed", GTK_SIGNAL_FUNC(bitrate_combo_change_cb), NULL);
 
-	gtk_tooltips_set_tip(tooltips, encoder_combo, _("Choose the mp3-/ogg-encoder that should be used"), NULL);
-	gtk_tooltips_set_tip(tooltips, bitrate_combo, _("Choose the bitrate in which the mp3/ogg will be encoded"), NULL);
+	gtk_tooltips_set_tip(tooltips, encoder_eb, _("Choose the mp3-/ogg-encoder that should be used, or to record as a uncompressed wave file"), NULL);
+	gtk_tooltips_set_tip(tooltips, bitrate_eb, _("Choose the bitrate in which the mp3/ogg will be encoded"), NULL);
 	
 	gtk_box_pack_start(GTK_BOX(rbox), record_table, TRUE, TRUE, 0);
 
