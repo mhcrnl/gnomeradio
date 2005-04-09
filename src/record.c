@@ -29,12 +29,12 @@
 
 static int timeout_id = -1, wav_io_id = -1, mp3_io_id = -1;
 static GtkWidget *file_lbl, *size_lbl;
+#if 0
 static GtkWidget *audiodev_entry, *path_entry, *mp3_rb, *wav_rb, *encoder_combo;
 static GtkWidget *rate_combo, *sample_combo, *stereo_rb, *mono_rb, *bitrate_combo; 
+#endif
 static GtkWidget *status_dialog;
 static gchar *filename;
-
-extern gboolean tray_menu_disabled;
 
 #if 0
 static gboolean audiodev_entry_changed_cb(GtkWidget *widget, gpointer data)
@@ -378,7 +378,6 @@ void close_status_window(void)
 
 	if (status_dialog) gtk_widget_destroy(GTK_WIDGET(status_dialog));
 	status_dialog = NULL;
-	tray_menu_disabled = FALSE;
 }
 
 static gboolean

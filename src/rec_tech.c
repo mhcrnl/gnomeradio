@@ -123,7 +123,7 @@ executable_exists(const char *name)
 GList* 
 get_installed_encoders(void)
 {
-	int i = 0, o = 0;
+	int i = 0;
 	const char* encoders[] =	{ "lame", "bladeenc", "oggenc", NULL};
 	GList *result = NULL;
 	

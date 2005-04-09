@@ -27,7 +27,6 @@ static GtkWidget *mute_on_exit_cb;
 static GtkWidget *list_view;
 static GtkListStore *list_store;
 static GtkTreeSelection *selection;
-static gint selected_row = -1;
 
 gboolean save_settings(void)
 {
@@ -174,7 +173,7 @@ static gboolean device_entry_activate_cb(GtkWidget *widget, gpointer data)
 {
 	const gchar *text = gtk_entry_get_text(GTK_ENTRY(device_entry));
 
-	if (!strcmp(settings.device, text)) return;
+	if (!strcmp(settings.device, text)) return FALSE;
 	
 	if (settings.device) g_free(settings.device);
 	settings.device = g_strdup(text);
@@ -187,7 +186,7 @@ static gboolean device_entry_activate_cb(GtkWidget *widget, gpointer data)
 static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 {
 	GList *mixer_devs;
-	int i, active;
+	int active;
 	gchar *mixer_dev, *tmp;
 	
 	g_assert(combo);
@@ -199,7 +198,7 @@ static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 	g_assert(mixer_dev);
 	
 	if (g_str_equal(mixer_dev, settings.mixer))
-		return;
+		return FALSE;
 
 	if (settings.mixer) g_free(settings.mixer);
 	settings.mixer = g_strdup(mixer_dev);
@@ -215,7 +214,7 @@ static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 static gboolean bitrate_combo_change_cb(GtkComboBox *combo, gpointer data)
 {
 	GList *bitrates;
-	gint i, active;
+	gint active;
 	gchar *bitrate;
 
 	g_assert(combo);
@@ -235,7 +234,7 @@ static gboolean bitrate_combo_change_cb(GtkComboBox *combo, gpointer data)
 static gboolean encoder_combo_change_cb(GtkComboBox *combo, gpointer bitrate_combo)
 {
 	GList *encoders;
-	gint i, active;
+	gint active;
 	gchar *encoder;
 	
 	g_assert(combo);
@@ -267,7 +266,7 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	
 	ps = malloc(sizeof(preset));
 	ps->title = g_strdup(_("unamed"));
-	ps->freq = rint(adj->value)/STEPS;
+	ps->freq = rint(adj->value) / STEPS;
 	settings.presets = g_list_append(settings.presets, (gpointer) ps);
 	buffer = g_strdup_printf("%.2f", ps->freq);
 
@@ -280,12 +279,15 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	v_scb = gtk_tree_view_get_vadjustment(GTK_TREE_VIEW(list_view));
 	gtk_adjustment_set_value(v_scb, v_scb->upper);
 	
+	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
+	mom_ps = g_list_length(settings.presets) - 1;
+	preset_combo_set_item(mom_ps);
+	
 	buffer = g_strdup_printf("%d", g_list_length(settings.presets) - 1);
 	path = gtk_tree_path_new_from_string(buffer);
 	g_free(buffer);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
 	gtk_tree_path_free(path);
-	presets_changed = TRUE;	
 }
 
 
@@ -313,11 +315,14 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_remove(list_store, &iter);
+
+	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row);
+	if (--mom_ps < 0) mom_ps = 0;
+	preset_combo_set_item(mom_ps);
 	
 	gtk_tree_path_prev(path);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
 	gtk_tree_path_free(path);	
-	presets_changed = TRUE;	
 }
 
 static void destination_button_clicked_cb(GtkWidget *button, gpointer data)
@@ -352,7 +357,6 @@ static gboolean list_view_key_press_event_cb(GtkWidget *widget, GdkEventKey *eve
 static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *path_str, gchar *new_val, gpointer user_data)
 {
 	GtkTreePath *path = NULL;
-	GtkTreeViewColumn *focus_column = NULL;
 	GtkTreeIter iter;
 	preset *ps;
 	int *row;
@@ -367,17 +371,19 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	g_assert(ps);	
 	if (ps->title) g_free(ps->title);
 	ps->title = g_strdup(new_val);
+
+	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row);
+	gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row, ps->title);
+	preset_combo_set_item(mom_ps);
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 0, new_val, -1);
 	gtk_tree_path_free(path);	
-	presets_changed = TRUE;	
 }	
 
 static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *path_str, gchar *new_val, gpointer user_data)
 {
 	GtkTreePath *path = NULL;
-	GtkTreeViewColumn *focus_column = NULL;
 	GtkTreeIter iter;
 	preset *ps;
 	int *row;
@@ -404,14 +410,32 @@ static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 
 	gtk_adjustment_set_value(adj, value * STEPS);
 	mom_ps = -1;
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 1, freq_str, -1);
 	g_free(freq_str);
 	gtk_tree_path_free(path);	
-	presets_changed = TRUE;	
 }	
+
+static void
+list_view_cursor_changed_cb(GtkWidget *widget, gpointer data)
+{
+	int *row;
+	GtkTreePath *path = NULL;
+	GtkTreeViewColumn *focus_column = NULL;
+	
+	gtk_tree_view_get_cursor(GTK_TREE_VIEW(list_view), &path, &focus_column);
+	
+	if (!path) return;
+
+	row = gtk_tree_path_get_indices(path);
+	g_assert(row);
+
+	mom_ps = *row;
+	preset_combo_set_item(mom_ps);
+	return;
+}
 
 static void free_string_list(GList *list)
 {
@@ -431,7 +455,7 @@ GtkWidget* prefs_window(void)
 	GtkWidget *destination_button;
 	GtkWidget *encoder_combo, *bitrate_combo;
 	GtkWidget *mixer_eb, *encoder_eb, *bitrate_eb;
-	GtkWidget *misc_box, *preset_box, *hbox;
+	GtkWidget *preset_box;
 	GtkWidget *settings_table, *record_table;
 	GtkWidget *device_label, *mixer_label;
 	GtkWidget *button_box;
@@ -553,7 +577,7 @@ GtkWidget* prefs_window(void)
 	gtk_container_add(GTK_CONTAINER(scrolled_window), list_view);
 	gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(scrolled_window), GTK_SHADOW_IN);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-	gtk_widget_set_size_request(list_view, -1, 100);
+	gtk_widget_set_size_request(list_view, 200, 100);
 	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list_view), FALSE);
 	
 	selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list_view));
@@ -565,12 +589,14 @@ GtkWidget* prefs_window(void)
 	cellrenderer->mode = GTK_CELL_RENDERER_MODE_EDITABLE;
 	GTK_CELL_RENDERER_TEXT(cellrenderer)->editable = TRUE;
 	list_column = gtk_tree_view_column_new_with_attributes(NULL, cellrenderer, "text", 0, NULL);
-	gtk_tree_view_column_set_min_width(list_column, 150);
+	gtk_tree_view_column_set_min_width(list_column, 130);
+	gtk_tree_view_column_set_max_width(list_column, 130);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
 	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(name_cell_edited_cb), NULL);
 
 	cellrenderer = gtk_cell_renderer_text_new();
 	cellrenderer->mode = GTK_CELL_RENDERER_MODE_EDITABLE;
+	cellrenderer->xalign = 1.0f;
 	GTK_CELL_RENDERER_TEXT(cellrenderer)->editable = TRUE;
 	list_column = gtk_tree_view_column_new_with_attributes(NULL, cellrenderer, "text", 1, NULL);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
@@ -600,6 +626,7 @@ GtkWidget* prefs_window(void)
 	g_signal_connect(GTK_OBJECT(add_button), "clicked", GTK_SIGNAL_FUNC(add_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(del_button), "clicked", GTK_SIGNAL_FUNC(del_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(list_view), "key-press-event", GTK_SIGNAL_FUNC(list_view_key_press_event_cb), NULL);
+	g_signal_connect(GTK_OBJECT(list_view), "cursor-changed", GTK_SIGNAL_FUNC(list_view_cursor_changed_cb), NULL);
 
 	gtk_tooltips_set_tip(tooltips, add_button, _("Add a new preset"), NULL);
 	gtk_tooltips_set_tip(tooltips, del_button, _("Remove preset from List"), NULL);
@@ -660,7 +687,7 @@ GtkWidget* prefs_window(void)
 	gtk_container_add(GTK_CONTAINER(bitrate_eb), bitrate_combo);
 	ptr = bitrates;
 	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
-		gchar *buffer = g_strdup_printf(_("%s kb/s"), ptr->data);
+		gchar *buffer = g_strdup_printf(_("%s kb/s"), (gchar*)ptr->data);
 		gtk_combo_box_append_text(GTK_COMBO_BOX(bitrate_combo), buffer);
 		g_free(buffer);
 		if (!strncmp(ptr->data, rec_settings.bitrate, strlen(rec_settings.bitrate))) active = i;
@@ -668,9 +695,6 @@ GtkWidget* prefs_window(void)
 	}
 	gtk_combo_box_set_active(GTK_COMBO_BOX(bitrate_combo), active);
 	g_object_set_data_full(G_OBJECT(bitrate_combo), "bitrates", bitrates, (GDestroyNotify)free_string_list);
-
-	/*gtk_widget_set_size_request(encoder_combo, 80, -1);
-	gtk_widget_set_size_request(bitrate_combo, 80, -1);*/
 
 	gtk_widget_set_sensitive(bitrate_combo, rec_settings.mp3);
 

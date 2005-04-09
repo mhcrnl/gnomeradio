@@ -76,12 +76,12 @@ static void execute_lirc_command (char *cmd)
 			ps = g_list_nth_data(settings.presets, tmp);
 			gtk_adjustment_set_value(adj, ps->freq*STEPS);
 			mom_ps = tmp;
-			preset_menu_set_item(mom_ps);
+			preset_combo_set_item(mom_ps);
 		}
 	}
 	else
 	{
-    	printf ("unrecognized lirccmd: %s\n", cmd);
+    		printf ("unrecognized lirccmd: %s\n", cmd);
 	}
 }
 
@@ -210,4 +210,3 @@ void start_lirc(void)
 }
 
 #endif
-

@@ -20,8 +20,6 @@
 #include <math.h>
 #include <gnome.h>
 
-gboolean presets_changed;
-
 gboolean save_settings(void);
 gboolean load_settings(void);
 

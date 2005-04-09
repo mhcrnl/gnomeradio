@@ -50,13 +50,10 @@
 
 static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
-static GtkWidget *preset_menu, *menu;
 static GtkWidget *freq_scale, *vol_scale;
 static GtkWidget *tray_icon;
 
-
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
-gboolean tray_menu_disabled = FALSE;
 
 void start_radio(gboolean restart)
 {
@@ -173,7 +170,7 @@ redraw_status_window(void)
 	GdkWindow *real_window, *window;
 	GdkGC *gc;
 	int win_width, win_height;
-	int val, freq[5], signal_strength, is_stereo, i;
+	int val, freq[5], signal_strength, is_stereo;
 	
 	val = (int)(rint(adj->value)/STEPS * 100.0);
 	
@@ -265,7 +262,7 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 static gboolean freq_scale_focus_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
 	mom_ps = -1;
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 	return FALSE;
 }
 
@@ -340,7 +337,7 @@ static void step_button_pressed_cb(GtkButton *button, gpointer data)
 	bp_timeout_id = gtk_timeout_add(500, (GtkFunction)change_frequency_timeout, data);
 	
 	mom_ps = -1;
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 }
 
 static void step_button_clicked_cb(GtkButton *button, gpointer data)
@@ -348,7 +345,7 @@ static void step_button_clicked_cb(GtkButton *button, gpointer data)
 	change_frequency(data);
 
 	mom_ps = -1;
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 }
 
 static void step_button_released_cb(GtkButton *button, gpointer data)
@@ -404,7 +401,7 @@ void scfw_button_clicked_cb(GtkButton *button, gpointer data)
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)1);	
 	mom_ps = -1;
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 
 }
 
@@ -418,23 +415,25 @@ void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)(-1));	
 	mom_ps = -1;
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 }
 
-void preset_menu_set_item(gint i)
+void preset_combo_set_item(gint i)
 {
-	gtk_option_menu_set_history(GTK_OPTION_MENU(preset_menu), i+1);
+	if ((i < 0) || (i >= g_list_length(settings.presets))) return;
+	gtk_combo_box_set_active(GTK_COMBO_BOX(preset_combo), i);
 }
 
-static void pref_item_activate_cb(GtkWidget *item, gpointer data)
+static void preset_combo_change_cb(GtkWidget *combo, gpointer data)
 {
-	gint i = (gint)data;
-	preset* ps = (preset*)g_list_nth_data(settings.presets,i);
+	gint i = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
+
+	preset* ps = (preset*)g_list_nth_data(settings.presets, i);
 	mom_ps = i;
-	gtk_adjustment_set_value(adj, ps->freq*STEPS);
+	gtk_adjustment_set_value(adj, ps->freq * STEPS);
 }
 
-static void update_preset_menu(void)
+/*static void update_preset_menu(void)
 {
 	gint i, count;
 	GtkWidget *item;
@@ -458,7 +457,7 @@ static void update_preset_menu(void)
 	}
 	gtk_widget_show_all(menu);
 	gtk_option_menu_set_menu(GTK_OPTION_MENU(preset_menu), menu);
-}
+}*/
 
 void
 change_preset(gboolean next)
@@ -475,7 +474,7 @@ change_preset(gboolean next)
 
 	ps = g_list_nth_data(settings.presets, mom_ps);
 	gtk_adjustment_set_value(adj, ps->freq*STEPS);
-	preset_menu_set_item(mom_ps);
+	preset_combo_set_item(mom_ps);
 }
 
 static void quit_button_clicked_cb(GtkButton *button, gpointer data)
@@ -497,8 +496,6 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 	
 	/*gnome_dialog_set_parent(GNOME_DIALOG(dialog), GTK_WINDOW(app));*/
 	
-	tray_menu_disabled = TRUE;
-	presets_changed = FALSE;
 	choise = GTK_RESPONSE_HELP;
 	while (choise == GTK_RESPONSE_HELP)
 	{
@@ -512,10 +509,8 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 				/* We need the hide signal to get the value of the device_entry */
 				gtk_widget_hide_all(dialog);
 				gtk_widget_destroy(dialog);
-				if (presets_changed) update_preset_menu();
 		}
 	}
-	tray_menu_disabled = FALSE;
 }
 
 static int
@@ -541,7 +536,6 @@ start_recording(const gchar *filename)
 
 	dialog = record_status_window();
 	
-	tray_menu_disabled = TRUE;
 	run_status_window(wavioc, mp3ioc, filename);
 
 	return 1;
@@ -642,8 +636,7 @@ static void about_button_clicked_cb(GtkButton *button, gpointer data)
 							app_icon);
 
 	gtk_widget_show(about);
-	g_object_add_weak_pointer(G_OBJECT(about), (gpointer*)&about);
-	
+	g_object_add_weak_pointer(G_OBJECT(about), (gpointer)&about);
 }
 
 static gint delete_event_cb(GtkWidget* window, GdkEventAny* e, gpointer data)
@@ -672,7 +665,7 @@ void display_help_cb(char *topic)
 gboolean
 tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
-	static posx, posy;
+	static gint posx, posy;
 	GtkWidget *app = GTK_WIDGET(data);
 	switch (event->button)
 	{
@@ -694,10 +687,10 @@ tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
 		case 3:
 			if (event->type != GDK_BUTTON_PRESS)
 				break;
-			if (tray_menu_disabled)
+/*			if (tray_menu_disabled)
 				break;
 			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
-				NULL, NULL, event->button, event->time);
+				NULL, NULL, event->button, event->time);*/
 			break;
 	}			
 	return FALSE;
@@ -753,7 +746,7 @@ GtkWidget* gnome_radio_gui(void)
 	GtkWidget *label;
 	GtkWidget *frame;
 	gchar *text;
-
+	
 	app = gnome_app_new(PACKAGE, _("Gnomeradio"));
 
 	gtk_window_set_resizable(GTK_WINDOW(app), FALSE);
@@ -804,9 +797,10 @@ GtkWidget* gnome_radio_gui(void)
 	adj = GTK_ADJUSTMENT(gtk_adjustment_new(SUNSHINE*STEPS, FREQ_MIN*STEPS, FREQ_MAX*STEPS+1, 1, STEPS, 1));
 	volume = GTK_ADJUSTMENT(gtk_adjustment_new(100, 0, 101, 1, 10, 1));
 	
-	preset_menu = gtk_option_menu_new();
-	//gtk_widget_set_usize(preset_menu, 10, 25);	
-	gtk_widget_set_size_request(preset_menu, 10, -1);
+	preset_combo = gtk_combo_box_new_text();
+	g_signal_connect(GTK_OBJECT(preset_combo), "changed", GTK_SIGNAL_FUNC(preset_combo_change_cb), NULL);
+	
+	gtk_widget_set_size_request(preset_combo, 10, -1);
 	label = gtk_label_new(_("Presets:"));
 	
 	freq_scale = gtk_hscale_new(adj);
@@ -864,7 +858,7 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_box_pack_start(GTK_BOX(hbox1), menubox, TRUE, TRUE, 3);
 	
 	gtk_box_pack_start(GTK_BOX(menubox), label, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(menubox), preset_menu, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(menubox), preset_combo, TRUE, TRUE, 0);
 
 	gtk_box_pack_start(GTK_BOX(freq_vol_box), freq_down_pixmap, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(freq_vol_box), freq_scale, FALSE, FALSE, 0);
@@ -953,7 +947,6 @@ save_session_cb(GnomeClient *client, gint phase, GnomeSaveStyle save_style,
 static void
 gconf_error_handler(GConfClient *client, GError *error)
 {
-	//gnome_error_dialog(error->message);
 	g_print("GConf error: %s\n", error->message);
 }
 
@@ -1004,7 +997,7 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 int main(int argc, char* argv[])
 {
 	GtkWidget* app;
-	GList *icons;
+	GList *icons, *ptr;
 	GdkPixbuf *app_icon;
 	GnomeClient *client;
 	GError *err = NULL;
@@ -1052,9 +1045,11 @@ int main(int argc, char* argv[])
 	}
 		
 	load_settings();
-	update_preset_menu();
-	//g_print("momps: %i\n", mom_ps);
-	preset_menu_set_item(mom_ps);
+	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
+		preset *ps = (preset*)ptr->data;
+		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
+	}
+	preset_combo_set_item(mom_ps);
 
 	start_radio(FALSE);
 	
