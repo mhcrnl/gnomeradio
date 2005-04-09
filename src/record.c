@@ -541,7 +541,7 @@ GtkWidget* record_status_window(void)
 	f_lbl = gtk_label_new(_("Recording:"));
 	s_lbl = gtk_label_new(_("Filesize:"));
 	file_lbl = gtk_label_new("");
-	gtk_label_set_ellipsize(GTK_LABEL(file_lbl), PANGO_ELLIPSIZE_MIDDLE);
+	gtk_label_set_ellipsize(GTK_LABEL(file_lbl), PANGO_ELLIPSIZE_START);
 	size_lbl = gtk_label_new("");
 	gtk_misc_set_alignment(GTK_MISC(f_lbl), 0.0f, 0.5f); 
 	gtk_misc_set_alignment(GTK_MISC(s_lbl), 0.0f, 0.5f); 

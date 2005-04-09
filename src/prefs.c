@@ -410,7 +410,7 @@ static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	ps->freq = value;
 
 	gtk_adjustment_set_value(adj, value * STEPS);
-	mom_ps = -1;
+	mom_ps = *row;
 	preset_combo_set_item(mom_ps);
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
