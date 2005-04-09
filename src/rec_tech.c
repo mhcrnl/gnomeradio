@@ -120,40 +120,29 @@ executable_exists(const char *name)
 	return retval;
 }	
 
-char** 
+GList* 
 get_installed_encoders(void)
 {
 	int i = 0, o = 0;
 	const char* encoders[] =	{ "lame", "bladeenc", "oggenc", NULL};
-	char **retstring = calloc(4, sizeof(const char*));
+	GList *result = NULL;
 	
-	for (i=0; encoders[i]; i++)
-	{
-		if (executable_exists(encoders[i]))
-		{
-			//printf("%s seems to be installed\n", encoders[i]);
-			retstring[o++] = strdup(encoders[i]);
-		}
+	for (i=0; encoders[i]; i++) {
+		if (executable_exists(encoders[i])) result = g_list_append(result, g_strdup(encoders[i]));
 	}
-	//printf("%d encoders detected\n", o);
-	retstring[o] = NULL;
 
-	return retstring;
+	return result;
 }
 
 int 
 check_sox_installation(void)
 {
-	if (executable_exists("sox"))
-	{
-		//printf("sox seems to be installed\n");
-		return 1;
-	}
+	if (executable_exists("sox")) return 1;
 	return 0;
 }
 
 void
-record_as_wave(GIOChannel **wavioc)
+record_as_wave(GIOChannel **wavioc, const gchar *filename)
 {
 	char *ster, *sample;	
 	GError *err = NULL;
@@ -167,7 +156,7 @@ record_as_wave(GIOChannel **wavioc)
 	*wavioc = execute_command(&wav_pid, 
 				"sox", "-c2", "-w", "-r32000","-tossdsp", rec_settings.audiodevice,
 				"-r", rec_settings.rate, "-c", ster, sample, 
-				"-twav", rec_settings.filename,
+				"-twav", filename,
 				NULL);
 	
 	if (g_io_channel_set_flags(*wavioc, G_IO_FLAG_NONBLOCK, &err) != G_IO_STATUS_NORMAL)
@@ -178,7 +167,7 @@ record_as_wave(GIOChannel **wavioc)
 	}
 }	
 
-void record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc)
+void record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc, const gchar *filename)
 {
 	char *ster, *sample;	
 	GError *err = NULL;
@@ -203,7 +192,7 @@ void record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc)
 		/* lame -S -h -b bitrate pipename filename */
 		*mp3ioc = execute_command(&mp3_pid,
 				"lame", "-S", "-h", "-b", rec_settings.bitrate,
-				FIFO_NAME, rec_settings.filename, 
+				FIFO_NAME, filename, 
 				NULL);
 	}
 	else if (!strcmp("bladeenc", rec_settings.encoder))
@@ -211,7 +200,7 @@ void record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc)
 		/* bladeenc -br bitrate pipename filename */
 		*mp3ioc = execute_command(&mp3_pid,
 				"bladeenc", "-quiet", "-br", rec_settings.bitrate,
-				FIFO_NAME, rec_settings.filename,
+				FIFO_NAME, filename,
 				NULL);
 	}		
 	else if (!strcmp("oggenc", rec_settings.encoder))
@@ -219,7 +208,7 @@ void record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc)
 		/* oggenc -Q -b bitrate -o filename pipename */
 		*mp3ioc = execute_command(&mp3_pid,
 				"oggenc", "-Q", "-b", rec_settings.bitrate,
-				"-o", rec_settings.filename, FIFO_NAME,
+				"-o", filename, FIFO_NAME,
 				NULL);
 	}		
 	else
@@ -313,4 +302,3 @@ int check_filename(const char *filename)
 	close(retval);
 	return 1;
 }
-

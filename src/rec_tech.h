@@ -38,7 +38,7 @@ typedef struct Recording_Settings recording_settings;
 struct Recording_Settings
 {
 	gchar *audiodevice;
-	gchar *filename;
+	gchar *destination;
 	gboolean mp3;
 	gchar *rate;
 	gchar *sample;
@@ -49,17 +49,17 @@ struct Recording_Settings
 
 recording_settings rec_settings;
 
-char** 
+GList *
 get_installed_encoders(void);
 
 int 
 check_sox_installation(void);
 
 void
-record_as_wave(GIOChannel **wavioc);
+record_as_wave(GIOChannel **wavioc, const gchar *filename);
 
 void
-record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc);
+record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc, const gchar *filename);
 
 int 
 record_get_exit_status(gboolean mp3, int *exitcode);
@@ -74,4 +74,3 @@ int
 get_file_size(char *filename);
 
 #endif
-

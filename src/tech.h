@@ -57,5 +57,3 @@ int radio_getstereo();
 int radio_getsignal();
 
 #endif
-
-

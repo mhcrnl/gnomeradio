@@ -1,4 +1,9 @@
-2004-12-04  Jörgen Scheibengruber <mfcn@gmx.de>
+2005-04-09  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* lots of changes. HIG-ifieing continued, recording dialog removed/reworked
+	* probably broke stuff
+
+2005-04-08  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* gui.c: Fix #167963, #167962
 	* prefs.c: Use g_get_home_dir instead of / for rec_settings.filename

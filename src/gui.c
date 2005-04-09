@@ -512,7 +512,7 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 }
 
 static int
-start_recording(void)
+start_recording(const gchar *filename)
 {
 	GIOChannel *wavioc = NULL, *mp3ioc = NULL;
 	GtkWidget *dialog;
@@ -526,22 +526,26 @@ start_recording(void)
 		gtk_widget_destroy (dialog);
 		return -1;
 	}
-		
+	
 	if (rec_settings.mp3)
-		record_as_mp3(&wavioc, &mp3ioc);
+		record_as_mp3(&wavioc, &mp3ioc, filename);
 	else	
-		record_as_wave(&wavioc);
+		record_as_wave(&wavioc, filename);
 
 	dialog = record_status_window();
 	
-	run_status_window(wavioc, mp3ioc);
+	tray_menu_disabled = TRUE;
+	run_status_window(wavioc, mp3ioc, filename);
+
 	return 1;
 }
 
 static void rec_button_clicked_cb(GtkButton *button, gpointer app)
 {
 	GtkWidget *dialog;
-	gint choise, retval=0;
+	gchar *filename, *suffix;
+	char time_str[100];
+	time_t t;
 	
 	if (!check_sox_installation())
 	{
@@ -552,66 +556,31 @@ static void rec_button_clicked_cb(GtkButton *button, gpointer app)
 		gtk_widget_destroy (dialog);
 		return;
 	}
-	
-	dialog = record_prefs_window();
-	
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(app));
-	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
-	
-	//g_print("choise: %d\n", choise);
-	
-	tray_menu_disabled = TRUE;
-	choise = GTK_RESPONSE_HELP;
-	while (choise == GTK_RESPONSE_HELP)
-	{
-		choise = gtk_dialog_run(GTK_DIALOG(dialog));
-		switch (choise)
-		{
-			case GTK_RESPONSE_HELP:
-				display_help_cb("gnomeradio-recording");
-				break;
 
-			case GTK_RESPONSE_OK:
-		
-				retval = 0;
-				while (!retval)
-				{
-					if (g_file_test(rec_settings.filename, G_FILE_TEST_EXISTS ))
-					{
-						int ch;
-						GtkWidget *question;
-						question = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_QUESTION, 
-									GTK_BUTTONS_YES_NO, 
-									_("File '%s' exists.\nOverwrite it?"), rec_settings.filename);
-						ch = gtk_dialog_run (GTK_DIALOG (question)); 
-						gtk_widget_destroy (question);
-						if (ch == GTK_RESPONSE_NO)
-							break;
-					}
-					retval = check_filename(rec_settings.filename);
-					if (!retval)
-					{
-						GtkWidget *errdialog;
-						errdialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-									_("Error opening file '%s':\n%s"), rec_settings.filename, strerror(errno));
-						gtk_dialog_run (GTK_DIALOG (errdialog));
-						gtk_widget_destroy (errdialog);
-						break;
-					}
-				}
-				if (retval > 0)
-				{
-					gtk_widget_destroy(dialog);
-					start_recording();
-				}
-				else
-					choise = GTK_RESPONSE_HELP;
-				break;
-			default:
-				tray_menu_disabled = FALSE;
-				gtk_widget_destroy(dialog);
-		}
-	}
+	if (rec_settings.mp3) {
+		if (g_str_equal(rec_settings.encoder, "oggenc")) suffix = ".ogg";
+		else suffix = ".mp3";
+	} else suffix = ".wav";
+	
+	t = time(NULL);
+	/* consult man strftime to translate this. This is a filename, so don't use "/" or ":", please */
+	strftime(time_str, 100, _("%B-%d-%Y_%H-%M-%S"), localtime(&t));
+	
+	/* Only change the "MHz" part here (if applicable) */
+	filename = g_strdup_printf(_("%s/%.2fMHz_%s%s"), 
+		rec_settings.destination, 
+		rint(adj->value)/STEPS, 
+		time_str,
+		suffix);
+	
+	if (!check_filename(filename)) {
+		GtkWidget *errdialog;
+		errdialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+					_("Error opening file '%s':\n%s"), filename, strerror(errno));
+		gtk_dialog_run (GTK_DIALOG (errdialog));
+		gtk_widget_destroy (errdialog);
+	} else start_recording(filename);
+	g_free(filename);		
 }
 
 void mute_button_toggled_cb(GtkButton *button, gpointer data)

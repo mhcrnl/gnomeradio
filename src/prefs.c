@@ -53,7 +53,7 @@ gboolean save_settings(void)
 
 	/* Store recording settings */
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/audiodevice", rec_settings.audiodevice, NULL);
-	gconf_client_set_string(client, "/apps/gnomeradio/recording/last-filename", rec_settings.filename, NULL);
+	gconf_client_set_string(client, "/apps/gnomeradio/recording/destination", rec_settings.destination, NULL);
 	gconf_client_set_bool(client, "/apps/gnomeradio/recording/record-as-mp3", rec_settings.mp3, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/sample-rate", rec_settings.rate, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/sample-format", rec_settings.sample, NULL);
@@ -119,9 +119,9 @@ gboolean load_settings(void)
 	rec_settings.audiodevice = gconf_client_get_string(client, "/apps/gnomeradio/recording/audiodevice", NULL);
 	if (!rec_settings.audiodevice)
 		rec_settings.audiodevice = g_strdup("/dev/audio");
-	rec_settings.filename = gconf_client_get_string(client, "/apps/gnomeradio/recording/last-filename", NULL);
-	if (!rec_settings.filename)
-		rec_settings.filename = g_strdup(g_get_home_dir());
+	rec_settings.destination = gconf_client_get_string(client, "/apps/gnomeradio/recording/destination", NULL);
+	if (!rec_settings.destination)
+		rec_settings.destination = g_strdup(g_get_home_dir());
 	rec_settings.mp3 = gconf_client_get_bool(client, "/apps/gnomeradio/recording/record-as-mp3", NULL);
 	rec_settings.rate = gconf_client_get_string(client, "/apps/gnomeradio/recording/sample-rate", NULL);
 	if (!rec_settings.rate)
@@ -186,31 +186,73 @@ static gboolean device_entry_activate_cb(GtkWidget *widget, gpointer data)
 
 static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 {
-	GList *ptr, *mixer_devs;
+	GList *mixer_devs;
 	int i, active;
-	char *tmp;
-
+	gchar *mixer_dev, *tmp;
+	
 	g_assert(combo);
-	ptr = mixer_devs = g_object_get_data(G_OBJECT(combo), "mixer_devs");
+	mixer_devs = g_object_get_data(G_OBJECT(combo), "mixer_devs");
 	active = gtk_combo_box_get_active(combo);
 	g_assert(active > -1);
 	
-	for (i = 0; i < active; i++) {
-		ptr = g_list_next(ptr);
-		g_assert(ptr);
-	}
-	g_assert(ptr);
-
-	if (g_str_equal(ptr->data, settings.mixer))
+	mixer_dev = (gchar*)g_list_nth_data(mixer_devs, active);
+	g_assert(mixer_dev);
+	
+	if (g_str_equal(mixer_dev, settings.mixer))
 		return;
 
 	if (settings.mixer) g_free(settings.mixer);
-	settings.mixer = g_strdup(ptr->data);
+	settings.mixer = g_strdup(mixer_dev);
 	
 	if ((tmp = strstr(settings.mixer, " (")))
 		tmp[0] = '\0';
 	
 	start_mixer(TRUE);
+	
+	return FALSE;
+}
+
+static gboolean bitrate_combo_change_cb(GtkComboBox *combo, gpointer data)
+{
+	GList *bitrates;
+	gint i, active;
+	gchar *bitrate;
+
+	g_assert(combo);
+	bitrates = g_object_get_data(G_OBJECT(combo), "bitrates");
+	active = gtk_combo_box_get_active(combo);
+	g_assert(active > -1);
+	
+	bitrate = (gchar*)g_list_nth_data(bitrates, active);
+	g_assert(bitrate);
+
+	if (rec_settings.bitrate) g_free(rec_settings.bitrate);
+	rec_settings.bitrate = g_strdup(bitrate);
+	
+	return FALSE;
+}
+
+static gboolean encoder_combo_change_cb(GtkComboBox *combo, gpointer bitrate_combo)
+{
+	GList *encoders;
+	gint i, active;
+	gchar *encoder;
+	
+	g_assert(combo);
+	encoders = g_object_get_data(G_OBJECT(combo), "encoders");
+	active = gtk_combo_box_get_active(combo);
+	g_assert(active > -1);
+	
+	encoder = (gchar*)g_list_nth_data(encoders, active);
+	g_assert(encoder);
+
+	if (g_str_equal(encoder, _("Wave file"))) rec_settings.mp3 = FALSE;
+	else {
+		rec_settings.mp3 = TRUE;
+		if (rec_settings.encoder) g_free(rec_settings.encoder);
+		rec_settings.encoder = g_strdup(encoder);
+	}
+	gtk_widget_set_sensitive(bitrate_combo, rec_settings.mp3);
 	
 	return FALSE;
 }
@@ -274,6 +316,25 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	gtk_tree_path_prev(path);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
 	gtk_tree_path_free(path);	
+}
+
+static void destination_button_clicked_cb(GtkWidget *button, gpointer data)
+{
+	GtkWidget *dialog;
+	
+	dialog = gtk_file_chooser_dialog_new(_("Choose a destination folder"), NULL, 
+					GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, 
+					GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
+					GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+					NULL);
+	gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dialog), rec_settings.destination);
+	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+		if (rec_settings.destination) g_free(rec_settings.destination);
+		rec_settings.destination = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+		gtk_button_set_label(GTK_BUTTON(button), rec_settings.destination);
+	}
+	
+	gtk_widget_destroy (dialog);
 }
 
 static gboolean list_view_key_press_event_cb(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
@@ -348,32 +409,34 @@ static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	gtk_tree_path_free(path);	
 }	
 
-static void free_mixer_list(GList *list)
+static void free_string_list(GList *list)
 {
+	if (!list) return;
 	g_list_foreach(list, (GFunc)g_free, NULL);
 	g_list_free(list);
 }
 
-
 GtkWidget* prefs_window(void)
 {
 	GtkWidget *dialog;
-	GtkWidget *box, *sbox, *pbox;
-	GtkWidget *settings_box, *presets_box;
-	GtkWidget *settings_label, *presets_label;
-	GtkWidget *s_indent_label, *p_indent_label;
+	GtkWidget *box, *sbox, *pbox, *rbox;
+	GtkWidget *settings_box, *presets_box, *record_box;
+	GtkWidget *settings_label, *presets_label, *record_label;
+	GtkWidget *s_indent_label, *p_indent_label, *r_indent_label;
+	GtkWidget *encoder_label, *bitrate_label, *destination_label;
+	GtkWidget *destination_button;
+	GtkWidget *encoder_combo, *bitrate_combo;
 	GtkWidget *misc_box, *preset_box, *hbox;
-	GtkWidget *settings_table;
-	GtkWidget *device_label;
-	GtkWidget *mixer_label;
+	GtkWidget *settings_table, *record_table;
+	GtkWidget *device_label, *mixer_label;
 	GtkWidget *button_box;
 	GtkWidget *add_button, *del_button;
 	GtkWidget *scrolled_window;
 	GtkCellRenderer *cellrenderer;
 	GtkTreeViewColumn *list_column;
-	GList *mixer_devs, *ptr;
+	GList *mixer_devs, *encoders, *bitrates, *ptr;
 	gint i, active;
-	char *settings_hdr, *presets_hdr;
+	char *settings_hdr, *presets_hdr, *record_hdr;
 	preset* ps;
 	
 	dialog = gtk_dialog_new_with_buttons(_("Gnomeradio Settings"), NULL, 
@@ -409,34 +472,45 @@ GtkWidget* prefs_window(void)
 	g_free(presets_hdr);
 	gtk_box_pack_start(GTK_BOX(presets_box), presets_label, TRUE, TRUE, 0);
 
+	record_box = gtk_vbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(box), record_box, TRUE, TRUE, 0);
+
+	record_hdr = g_strconcat("<span weight=\"bold\">", _("Record Settings"), "</span>", NULL);
+	record_label = gtk_label_new(record_hdr);
+	gtk_misc_set_alignment(GTK_MISC(record_label), 0, 0.5);
+	gtk_label_set_use_markup(GTK_LABEL(record_label), TRUE);
+	g_free(record_hdr);
+	gtk_box_pack_start(GTK_BOX(record_box), record_label, TRUE, TRUE, 0);
+
+	/* The general settings part */
 	sbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(settings_box), sbox, TRUE, TRUE, 0);
 	s_indent_label = gtk_label_new("    ");
 	gtk_box_pack_start(GTK_BOX(sbox), s_indent_label, FALSE, FALSE, 0);
 	
 	settings_table = gtk_table_new(3, 2, FALSE);
-	gtk_table_set_row_spacings(GTK_TABLE(settings_table), 10);
+	gtk_table_set_row_spacings(GTK_TABLE(settings_table), 5);
 	gtk_table_set_col_spacings(GTK_TABLE(settings_table), 15);
 	gtk_box_pack_start(GTK_BOX(sbox), settings_table, TRUE, TRUE, 0);
 	
 	device_label = gtk_label_new(_("Radio Device:"));
+	gtk_misc_set_alignment(GTK_MISC(device_label), 0.0f, 0.5f); 
 	device_entry = gtk_entry_new();
 	gtk_entry_set_text(GTK_ENTRY(device_entry), settings.device);
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), device_label, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), device_entry, 1, 2, 0, 1);
 
 	mixer_label = gtk_label_new(_("Mixer Source:"));
+	gtk_misc_set_alignment(GTK_MISC(mixer_label), 0.0f, 0.5f);
 	mixer_combo = gtk_combo_box_new_text();
 	ptr = mixer_devs = get_mixer_recdev_list();
-
-	for (i = 0; ptr; ptr = g_list_next(ptr)) {
+	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
 		gtk_combo_box_append_text(GTK_COMBO_BOX(mixer_combo), ptr->data);
 		if (g_str_equal(ptr->data, settings.mixer)) active = i;
 		++i;
 	}
-	if (active < 0) active = 0;
 	gtk_combo_box_set_active(GTK_COMBO_BOX(mixer_combo), active);
-	g_object_set_data_full(G_OBJECT(mixer_combo), "mixer_devs", mixer_devs, (GDestroyNotify)free_mixer_list);
+	g_object_set_data_full(G_OBJECT(mixer_combo), "mixer_devs", mixer_devs, (GDestroyNotify)free_string_list);
 	
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_label, 0, 1, 1, 2);
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_combo, 1, 2, 1, 2);
@@ -446,12 +520,24 @@ GtkWidget* prefs_window(void)
 
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mute_on_exit_cb, 0, 2, 2, 3);
 
+	g_signal_connect(GTK_OBJECT(device_entry), "hide", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
+	g_signal_connect(GTK_OBJECT(device_entry), "activate", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
+	g_signal_connect(GTK_OBJECT(mixer_combo), "changed", GTK_SIGNAL_FUNC(mixer_combo_change_cb), NULL);
+	g_signal_connect(GTK_OBJECT(mute_on_exit_cb), "toggled", GTK_SIGNAL_FUNC(mute_on_exit_toggled_cb), NULL);
+
+	gtk_tooltips_set_tip(tooltips, device_entry, _("Specify the radio-device (in most cases /dev/radio)"), NULL);
+	gtk_tooltips_set_tip(tooltips, mixer_combo, 
+	_("Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"), NULL);
+	gtk_tooltips_set_tip(tooltips, mute_on_exit_cb, _("If unchecked, gnomeradio won't mute after exiting"), NULL);
+
+	
+	/* The presets part */
 	pbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(presets_box), pbox, TRUE, TRUE, 0);
 	p_indent_label = gtk_label_new("    ");
 	gtk_box_pack_start(GTK_BOX(pbox), p_indent_label, FALSE, FALSE, 0);
 
-	preset_box = gtk_vbox_new(FALSE, 10);
+	preset_box = gtk_hbox_new(FALSE, 10);
 	gtk_box_pack_start(GTK_BOX(pbox), preset_box, TRUE, TRUE, 0);
 
 	scrolled_window = gtk_scrolled_window_new(NULL, NULL);
@@ -472,7 +558,7 @@ GtkWidget* prefs_window(void)
 	cellrenderer->mode = GTK_CELL_RENDERER_MODE_EDITABLE;
 	GTK_CELL_RENDERER_TEXT(cellrenderer)->editable = TRUE;
 	list_column = gtk_tree_view_column_new_with_attributes(NULL, cellrenderer, "text", 0, NULL);
-	gtk_tree_view_column_set_min_width(list_column, 170);
+	gtk_tree_view_column_set_min_width(list_column, 150);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
 	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(name_cell_edited_cb), NULL);
 
@@ -483,27 +569,18 @@ GtkWidget* prefs_window(void)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
 	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(freq_cell_edited_cb), NULL);
 
-	button_box = gtk_hbox_new(FALSE, 15);
+	button_box = gtk_vbox_new(FALSE, 15);
 
 	add_button = gtk_button_new_from_stock(GTK_STOCK_ADD);
 	del_button = gtk_button_new_from_stock(GTK_STOCK_DELETE);
 	
 	gtk_box_pack_start(GTK_BOX(button_box), add_button, FALSE, FALSE, 0);
-	gtk_box_pack_end(GTK_BOX(button_box), del_button, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(button_box), del_button, FALSE, FALSE, 0);
 	
 	gtk_box_pack_start(GTK_BOX(preset_box), scrolled_window, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(preset_box), button_box, TRUE, TRUE, 0);
 
-	g_signal_connect(GTK_OBJECT(device_entry), "hide", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
-	g_signal_connect(GTK_OBJECT(device_entry), "activate", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
-	g_signal_connect(GTK_OBJECT(mixer_combo), "changed", GTK_SIGNAL_FUNC(mixer_combo_change_cb), NULL);
-	g_signal_connect(GTK_OBJECT(mute_on_exit_cb), "toggled", GTK_SIGNAL_FUNC(mute_on_exit_toggled_cb), NULL);
-	g_signal_connect(GTK_OBJECT(add_button), "clicked", GTK_SIGNAL_FUNC(add_button_clicked_cb), NULL);
-	g_signal_connect(GTK_OBJECT(del_button), "clicked", GTK_SIGNAL_FUNC(del_button_clicked_cb), NULL);
-	g_signal_connect(GTK_OBJECT(list_view), "key-press-event", GTK_SIGNAL_FUNC(list_view_key_press_event_cb), NULL);
-
-	for (i=0;i<g_list_length(settings.presets);i++)
-	{
+	for (i=0;i<g_list_length(settings.presets);i++) {
 		GtkTreeIter iter = {0};
 		char *buffer;
 		ps = g_list_nth_data(settings.presets, i);
@@ -513,12 +590,94 @@ GtkWidget* prefs_window(void)
 		g_free(buffer);
 	}
 
-	gtk_tooltips_set_tip(tooltips, device_entry, _("Specify the radio-device (in most cases /dev/radio)"), NULL);
-	gtk_tooltips_set_tip(tooltips, mixer_combo, 
-	_("Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"), NULL);
-	gtk_tooltips_set_tip(tooltips, mute_on_exit_cb, _("If unchecked, gnomeradio won't mute after exiting"), NULL);
+	g_signal_connect(GTK_OBJECT(add_button), "clicked", GTK_SIGNAL_FUNC(add_button_clicked_cb), NULL);
+	g_signal_connect(GTK_OBJECT(del_button), "clicked", GTK_SIGNAL_FUNC(del_button_clicked_cb), NULL);
+	g_signal_connect(GTK_OBJECT(list_view), "key-press-event", GTK_SIGNAL_FUNC(list_view_key_press_event_cb), NULL);
+
 	gtk_tooltips_set_tip(tooltips, add_button, _("Add a new preset"), NULL);
 	gtk_tooltips_set_tip(tooltips, del_button, _("Remove preset from List"), NULL);
+
+
+	/* The record settings part */
+	rbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(record_box), rbox, TRUE, TRUE, 0);
+	r_indent_label = gtk_label_new("    ");
+	gtk_box_pack_start(GTK_BOX(rbox), r_indent_label, FALSE, FALSE, 0);
+
+	bitrates = g_list_append(NULL, g_strdup("32"));
+	bitrates = g_list_append(bitrates, g_strdup("40"));
+	bitrates = g_list_append(bitrates, g_strdup("48"));
+	bitrates = g_list_append(bitrates, g_strdup("56"));
+	bitrates = g_list_append(bitrates, g_strdup("64"));
+	bitrates = g_list_append(bitrates, g_strdup("80"));
+	bitrates = g_list_append(bitrates, g_strdup("96"));
+	bitrates = g_list_append(bitrates, g_strdup("112"));
+	bitrates = g_list_append(bitrates, g_strdup("128"));
+	bitrates = g_list_append(bitrates, g_strdup("160"));
+	bitrates = g_list_append(bitrates, g_strdup("192"));
+	bitrates = g_list_append(bitrates, g_strdup("224"));
+	bitrates = g_list_append(bitrates, g_strdup("256"));
+	bitrates = g_list_append(bitrates, g_strdup("320"));
+
+	record_table = gtk_table_new(3, 2, FALSE);
+	gtk_table_set_col_spacings(GTK_TABLE(record_table), 15);
+	gtk_table_set_row_spacings(GTK_TABLE(record_table), 5);
+	
+	encoder_label = gtk_label_new(_("Encoder:"));
+	bitrate_label = gtk_label_new(_("Bitrate:"));
+	destination_label = gtk_label_new(_("Destination directory:"));
+	gtk_misc_set_alignment(GTK_MISC(encoder_label), 0.0f, 0.5f); 
+	gtk_misc_set_alignment(GTK_MISC(bitrate_label), 0.0f, 0.5f);
+	gtk_misc_set_alignment(GTK_MISC(destination_label), 0.0f, 0.5f);
+
+	destination_button = gtk_button_new();
+	gtk_button_set_label(GTK_BUTTON(destination_button), rec_settings.destination);
+	
+	encoder_combo = gtk_combo_box_new_text();
+	encoders = get_installed_encoders();
+	ptr = encoders = g_list_prepend(encoders, (gpointer)g_strdup(_("Wave file")));
+	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
+		gtk_combo_box_append_text(GTK_COMBO_BOX(encoder_combo), ptr->data);
+		if (g_str_equal(ptr->data, rec_settings.encoder)) active = i;
+		++i;
+	}
+
+	if (!rec_settings.mp3) active = 0;
+	gtk_combo_box_set_active(GTK_COMBO_BOX(encoder_combo), active);
+	if (encoders) g_object_set_data_full(G_OBJECT(encoder_combo), "encoders", encoders, (GDestroyNotify)free_string_list);
+
+	bitrate_combo = gtk_combo_box_new_text();
+	ptr = bitrates;
+	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
+		gchar *buffer = g_strdup_printf(_("%s kb/s"), ptr->data);
+		gtk_combo_box_append_text(GTK_COMBO_BOX(bitrate_combo), buffer);
+		g_free(buffer);
+		if (!strncmp(ptr->data, rec_settings.bitrate, strlen(rec_settings.bitrate))) active = i;
+		++i;
+	}
+	gtk_combo_box_set_active(GTK_COMBO_BOX(bitrate_combo), active);
+	g_object_set_data_full(G_OBJECT(bitrate_combo), "bitrates", bitrates, (GDestroyNotify)free_string_list);
+
+	/*gtk_widget_set_size_request(encoder_combo, 80, -1);
+	gtk_widget_set_size_request(bitrate_combo, 80, -1);*/
+
+	gtk_widget_set_sensitive(bitrate_combo, rec_settings.mp3);
+
+	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_label, 0, 1, 0, 1);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_button, 1, 2, 0, 1);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_label, 0, 1, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_combo, 1, 2, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_label, 0, 1, 2, 3);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_combo, 1, 2, 2, 3);
+
+	g_signal_connect(GTK_OBJECT(destination_button), "clicked", GTK_SIGNAL_FUNC(destination_button_clicked_cb), NULL);
+	g_signal_connect(GTK_OBJECT(encoder_combo), "changed", GTK_SIGNAL_FUNC(encoder_combo_change_cb), (gpointer)bitrate_combo);
+	g_signal_connect(GTK_OBJECT(bitrate_combo), "changed", GTK_SIGNAL_FUNC(bitrate_combo_change_cb), NULL);
+
+	gtk_tooltips_set_tip(tooltips, encoder_combo, _("Choose the mp3-/ogg-encoder that should be used"), NULL);
+	gtk_tooltips_set_tip(tooltips, bitrate_combo, _("Choose the bitrate in which the mp3/ogg will be encoded"), NULL);
+	
+	gtk_box_pack_start(GTK_BOX(rbox), record_table, TRUE, TRUE, 0);
 
 	gtk_widget_show_all(dialog);
 
