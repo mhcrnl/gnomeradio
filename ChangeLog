@@ -2,6 +2,7 @@
 	
 	* lots of changes. HIG-ifieing continued, recording dialog removed/reworked
 	* probably broke stuff
+	* configure.in: temp version 1.5.99
 
 2005-04-08  Jörgen Scheibengruber <mfcn@gmx.de>
 	

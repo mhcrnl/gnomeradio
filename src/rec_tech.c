@@ -89,37 +89,6 @@ execute_command(int *pid, const char *arg1, ...)
  * These functions handle recording
  */
 
-static int
-executable_exists(const char *name)
-{
-	GIOChannel *ioc;
-	GError *err = NULL;
-	int n, retval;
-	char *buffer;
-	pid_t pid;
-	
-	ioc = execute_command(&pid, name, NULL);
-	if (!ioc)
-		return 0;
-	
-	if (g_io_channel_read_to_end(ioc, &buffer, &n, &err) != G_IO_STATUS_NORMAL)
-	{
-		g_print("%s\n", err->message);
-		g_error_free(err); 
-		return 0;
-	}
-
-	if (strstr(buffer, "wrzlbrmft"))
-		retval = 0;
-	else
-		retval = 1;
-	g_io_channel_shutdown(ioc, TRUE, NULL);
-	
-	waitpid(pid, NULL, 0);
-	
-	return retval;
-}	
-
 GList* 
 get_installed_encoders(void)
 {
@@ -128,7 +97,11 @@ get_installed_encoders(void)
 	GList *result = NULL;
 	
 	for (i=0; encoders[i]; i++) {
-		if (executable_exists(encoders[i])) result = g_list_append(result, g_strdup(encoders[i]));
+		gchar *path = g_find_program_in_path(encoders[i]); 		
+		if (path) { 
+			result = g_list_append(result, g_strdup(encoders[i]));
+			g_free(path);
+		}
 	}
 
 	return result;
@@ -137,7 +110,11 @@ get_installed_encoders(void)
 int 
 check_sox_installation(void)
 {
-	if (executable_exists("sox")) return 1;
+	gchar *path = g_find_program_in_path("sox"); 
+	if (path) {
+		g_free(path);
+		return 1;
+	}
 	return 0;
 }
 
