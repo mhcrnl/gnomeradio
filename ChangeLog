@@ -2,7 +2,7 @@
 	
 	* gui.c: Fix #167963, #167962
 	* prefs.c: Use g_get_home_dir instead of / for rec_settings.filename
-	* prefs.c: HIG-ifieing
+	* prefs.c/.h, gui.c/.h, : HIG-ifieing of the prefs-dialog
 
 2005-04-01  Steve Murphy  <murf@e-tools.com>
 
