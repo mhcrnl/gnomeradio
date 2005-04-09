@@ -23,11 +23,6 @@
 gboolean save_settings(void);
 gboolean load_settings(void);
 
-gint backup_settings(void);
-gint commit_settings(gpointer app);
-gint rollback_settings(void);
-
 GtkWidget* prefs_window(void);
 
 #endif
-

@@ -39,7 +39,7 @@ struct Gnomeradio_Settings
 
 struct Preset
 {
-	gchar name[21];
+	gchar* title;
 	gfloat freq;
 };
 
@@ -51,9 +51,9 @@ int mom_ps;
 
 gnomeradio_settings settings;
 
-void start_radio(gboolean restart, GtkWidget* app);
+void start_radio(gboolean restart);
 
-void start_mixer(gboolean restart, GtkWidget* app);
+void start_mixer(gboolean restart);
 
 GList* get_mixer_recdev_list(void);
 
@@ -74,4 +74,3 @@ void change_preset(gboolean next);
 void create_tray_icon(GtkWidget *app);
 
 #endif
-

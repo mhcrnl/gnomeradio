@@ -21,19 +21,13 @@
 #include "gui.h"
 #include "rec_tech.h"
 
-#define UN_NAMED "unnamed"
-
-static GtkWidget *name_entry, *device_entry, *freq_spin;
+static GtkWidget *device_entry;
 static GtkWidget *mixer_combo;
 static GtkWidget *mute_on_exit_cb;
-//static GtkWidget *clist;
 static GtkWidget *list_view;
 static GtkListStore *list_store;
 static GtkTreeSelection *selection;
-static GtkAdjustment *spin;
 static gint selected_row = -1;
-
-static gnomeradio_settings tmp_settings;
 
 gboolean save_settings(void)
 {
@@ -74,7 +68,7 @@ gboolean save_settings(void)
 	{
 		ps = g_list_nth_data(settings.presets, i);
 		buffer = g_strdup_printf("/apps/gnomeradio/presets/%d/name", i);
-		gconf_client_set_string(client, buffer, ps->name, NULL); 
+		gconf_client_set_string(client, buffer, ps->title, NULL); 
 		g_free(buffer);
 		buffer = g_strdup_printf("/apps/gnomeradio/presets/%d/freqency", i);
 		gconf_client_set_float(client, buffer, ps->freq, NULL); 
@@ -153,8 +147,7 @@ gboolean load_settings(void)
 		tmp = gconf_client_get_string(client, buffer, NULL); 
 		if (!tmp)
 			tmp = "unnamed";
-		strncpy(ps->name, tmp, 20);
-		ps->name[20] = '\0';
+		ps->title = g_strdup(tmp);
 		g_free(buffer);
 		buffer = g_strdup_printf("/apps/gnomeradio/presets/%d/freqency", i);
 		freq = gconf_client_get_float(client, buffer, NULL); 
@@ -172,105 +165,52 @@ gboolean load_settings(void)
 	return TRUE;
 }			
 	
-gint backup_settings(void)
-{
-	preset *ps, *tmp;
-	gint i;
-	
-	//g_print("Making a backup of settings\n");
-		
-	tmp_settings.device = g_strdup(settings.device);
-	tmp_settings.mixer = g_strdup(settings.mixer);
-	tmp_settings.mute_on_exit = settings.mute_on_exit;
-	tmp_settings.presets = NULL;
-	for (i=0;i<g_list_length(settings.presets);i++)
-	{
-		ps = malloc(sizeof(preset));
-		tmp = g_list_nth_data(settings.presets, i);
-		strcpy(ps->name, tmp->name);
-		ps->freq = tmp->freq;
-		tmp_settings.presets = g_list_append(tmp_settings.presets, (gpointer) ps);
-	}
-	return 1;
-}
-
-gint commit_settings(gpointer app)
-{
-	preset  *tmp;
-	gint i;
-	gchar* ptr;
-	
-	//g_print("Committing Settings\n");
-	
-	ptr = settings.device;
-	settings.device = tmp_settings.device;
-	if (strcmp(ptr, tmp_settings.device))
-		start_radio(TRUE, app);
-	g_free(ptr);
-	tmp_settings.device = NULL;
-	ptr = settings.mixer;
-	settings.mixer = tmp_settings.mixer;
-	if (strcmp(ptr, tmp_settings.mixer))
-		start_mixer(TRUE, app);
-	g_free(ptr);
-	tmp_settings.mixer = NULL;
-	settings.mute_on_exit = tmp_settings.mute_on_exit;
-	for (i=0;i<g_list_length(settings.presets);i++)
-	{
-		tmp = g_list_nth_data(settings.presets, i);
-		g_free(tmp);
-	}
-	g_list_free(settings.presets);
-	settings.presets = tmp_settings.presets;
-	tmp_settings.presets = NULL;
-	
-	selected_row = -1;	
-	return 1;
-}
-
-gint rollback_settings(void)
-{
-	preset *tmp;
-	gint i;
-	
-	//g_print("Undo Changes\n");
-	
-	g_free(tmp_settings.device);
-	g_free(tmp_settings.mixer);
-	for (i=0;i<g_list_length(tmp_settings.presets);i++)
-	{
-		tmp = g_list_nth_data(tmp_settings.presets, i);
-		g_free(tmp);
-	}
-	g_list_free(tmp_settings.presets);
-	tmp_settings.presets = NULL;
-	
-	selected_row = -1;	
-	return 1;
-}
-	
 static void mute_on_exit_toggled_cb(GtkWidget* widget, gpointer data)
 {
-	tmp_settings.mute_on_exit = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mute_on_exit_cb));
+	settings.mute_on_exit = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mute_on_exit_cb));
 }	
 
-static gboolean device_entry_focus_out_event_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data)
+static gboolean device_entry_activate_cb(GtkWidget *widget, gpointer data)
 {
-	if (tmp_settings.device)
-		g_free(tmp_settings.device);
-	tmp_settings.device = g_strdup(gtk_entry_get_text(GTK_ENTRY(device_entry)));
+	const gchar *text = gtk_entry_get_text(GTK_ENTRY(device_entry));
+
+	if (!strcmp(settings.device, text)) return;
+	
+	if (settings.device) g_free(settings.device);
+	settings.device = g_strdup(text);
+	
+	start_radio(TRUE);
+	
 	return FALSE;
 }
 
-static gboolean mixer_entry_focus_out_event_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data)
+static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 {
+	GList *ptr, *mixer_devs;
+	int i, active;
 	char *tmp;
-	if (tmp_settings.mixer)
-		g_free(tmp_settings.mixer);
-	tmp_settings.mixer = g_strdup(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(mixer_combo)->entry)));
+
+	g_assert(combo);
+	ptr = mixer_devs = g_object_get_data(G_OBJECT(combo), "mixer_devs");
+	active = gtk_combo_box_get_active(combo);
+	g_assert(active > -1);
 	
-	if ((tmp = strstr(tmp_settings.mixer, " (")))
+	for (i = 0; i < active; i++) {
+		ptr = g_list_next(ptr);
+		g_assert(ptr);
+	}
+	g_assert(ptr);
+
+	if (g_str_equal(ptr->data, settings.mixer))
+		return;
+
+	if (settings.mixer) g_free(settings.mixer);
+	settings.mixer = g_strdup(ptr->data);
+	
+	if ((tmp = strstr(settings.mixer, " (")))
 		tmp[0] = '\0';
+	
+	start_mixer(TRUE);
 	
 	return FALSE;
 }
@@ -278,33 +218,31 @@ static gboolean mixer_entry_focus_out_event_cb(GtkWidget *widget, GdkEventFocus 
 static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 {
 	preset *ps;
+	gchar *buffer;
 	GtkTreeIter iter = {0};
-	char *text, *buffer;
-	GtkAdjustment *v_scb;
-	
-	text = (char*)gtk_entry_get_text(GTK_ENTRY(name_entry));
-	if (strlen(text)<1)
-	{
-		g_print("\a");
-		return;
-	}
+	GtkAdjustment* v_scb;
+	GtkTreePath *path = NULL;
 	
 	ps = malloc(sizeof(preset));
-	strcpy(ps->name, text);
-	ps->freq = spin->value;
-	tmp_settings.presets = g_list_append(tmp_settings.presets, (gpointer) ps);
-	buffer = g_strdup_printf("%.2f", spin->value);
+	ps->title = g_strdup(_("unamed"));
+	ps->freq = rint(adj->value)/STEPS;
+	settings.presets = g_list_append(settings.presets, (gpointer) ps);
+	buffer = g_strdup_printf("%.2f", ps->freq);
 
 	gtk_list_store_append(list_store, &iter);
-	gtk_list_store_set(list_store, &iter, 0, text, 1, buffer, -1);
+	gtk_list_store_set(list_store, &iter, 0, ps->title, 1, buffer, -1);
 
-	gtk_entry_set_text(GTK_ENTRY(name_entry), "");
-	
 	g_free(buffer);
 	gtk_tree_selection_unselect_all(selection);
 	
 	v_scb = gtk_tree_view_get_vadjustment(GTK_TREE_VIEW(list_view));
 	gtk_adjustment_set_value(v_scb, v_scb->upper);
+	
+	buffer = g_strdup_printf("%d", g_list_length(settings.presets) - 1);
+	path = gtk_tree_path_new_from_string(buffer);
+	g_free(buffer);
+	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
+	gtk_tree_path_free(path);	
 }
 
 
@@ -318,184 +256,104 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	
 	gtk_tree_view_get_cursor(GTK_TREE_VIEW(list_view), &path, &focus_column);
 	
-	if (!path)
-	{
-		g_print("\aNo row selected\n");
-		return;
-	}
-	
+	if (!path) return;
+
 	row = gtk_tree_path_get_indices(path);
 	g_assert(row);
-	g_assert(*row < g_list_length(tmp_settings.presets));
+	g_assert(*row < g_list_length(settings.presets));
 
-	//g_print("path: %s row %d\n", gtk_tree_path_to_string(path), *row);
-	ps = g_list_nth_data(tmp_settings.presets, *row);
+	ps = g_list_nth_data(settings.presets, *row);
 	g_assert(ps);	
-	tmp_settings.presets = g_list_remove(tmp_settings.presets, (gpointer)ps);
+	settings.presets = g_list_remove(settings.presets, (gpointer)ps);
+	g_free(ps->title);
 	g_free(ps);
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_remove(list_store, &iter);
 	
-	if (!gtk_tree_path_prev(path))
-		return;
+	gtk_tree_path_prev(path);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
-		
-}
-
-static void update_button_clicked_cb(GtkWidget *widget, gpointer data)
-{
-	GtkTreePath *path = NULL;
-	GtkTreeViewColumn *focus_column = NULL;
-	GtkTreeIter iter;
-	preset *ps;
-	int *row;
-	char *text, *buffer;
-	
-	gtk_tree_view_get_cursor(GTK_TREE_VIEW(list_view), &path, &focus_column);
-	
-	if (!path)
-	{
-		g_print("\aNo row selected\n");
-		return;
-	}
-	
-	row = gtk_tree_path_get_indices(path);
-	g_assert(row);
-	g_assert(*row < g_list_length(tmp_settings.presets));
-
-	text = (char*)gtk_entry_get_text(GTK_ENTRY(name_entry));
-	if (strlen(text)<1)
-	{
-		g_print("\a");
-		return;
-	}
-	ps = g_list_nth_data(tmp_settings.presets, *row);
-	g_assert(ps);	
-
-	strcpy(ps->name, text);
-	ps->freq = spin->value;
-	buffer = g_strdup_printf("%.2f", spin->value);
-	
-	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
-	gtk_list_store_set(list_store, &iter, 0, text, 1, buffer, -1);
-
-	g_free(buffer);
+	gtk_tree_path_free(path);	
 }
 
 static gboolean list_view_key_press_event_cb(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 {
 	if (event->keyval == GDK_Delete)
 		del_button_clicked_cb(widget, user_data);
+	if (event->keyval == GDK_Insert)
+		add_button_clicked_cb(widget, user_data);
 	
 	return FALSE;
 }		
 
-#if 0
-static void freq_spin_activate_cb(void)
+static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *path_str, gchar *new_val, gpointer user_data)
 {
 	GtkTreePath *path = NULL;
 	GtkTreeViewColumn *focus_column = NULL;
-	
-	gtk_tree_view_get_cursor(GTK_TREE_VIEW(list_view), &path, &focus_column);
-	
-	if (!path)
-		add_button_clicked_cb(NULL, NULL);
-	else
-		update_button_clicked_cb(NULL, NULL);
-}	
-
-static gboolean enter_key_press_event_cb(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
-{
-	//g_print("keyval = %d\n", event->keyval);
-	if (event->keyval == GDK_Return)
-		freq_spin_activate_cb();
-
-	return FALSE;
-}		
-#endif
-
-/*static gboolean
-list_view_select_cb(GtkTreeSelection *selection, GtkTreeModel *model, 
-				GtkTreePath *path, gboolean path_currently_selected, gpointer data)
-{
-	gchar* text;
+	GtkTreeIter iter;
 	preset *ps;
 	int *row;
 	
+	path = gtk_tree_path_new_from_string(path_str);
+
 	row = gtk_tree_path_get_indices(path);
 	g_assert(row);
-	g_assert(*row < g_list_length(tmp_settings.presets));
-	g_print("row: %d %d\n", *row, path_currently_selected);
-	if (!path_currently_selected)
-	{
-		return TRUE;
-	}
-	ps = (preset*)g_list_nth_data(tmp_settings.presets, *row);
-	text = ps->name;
-	gtk_entry_set_text(GTK_ENTRY(name_entry), text);
-	gtk_adjustment_set_value(spin, ps->freq);
-	return TRUE;
-}*/
+	g_assert(*row < g_list_length(settings.presets));
 
-static void
-list_view_cursor_changed_cb(GtkWidget *widget, gpointer data)
+	ps = g_list_nth_data(settings.presets, *row);
+	g_assert(ps);	
+	if (ps->title) g_free(ps->title);
+	ps->title = g_strdup(new_val);
+	
+	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
+	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 0, new_val, -1);
+	gtk_tree_path_free(path);	
+}	
+
+static void freq_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *path_str, gchar *new_val, gpointer user_data)
 {
-	gchar* text;
-	preset *ps;
-	int *row;
 	GtkTreePath *path = NULL;
 	GtkTreeViewColumn *focus_column = NULL;
-	
-	gtk_tree_view_get_cursor(GTK_TREE_VIEW(list_view), &path, &focus_column);
-	
-	if (!path)
-	{
-		return;
-	}
-
-	row = gtk_tree_path_get_indices(path);
-	g_assert(row);
-	g_assert(*row < g_list_length(tmp_settings.presets));
-
-	ps = (preset*)g_list_nth_data(tmp_settings.presets, *row);
-	text = ps->name;
-	gtk_entry_set_text(GTK_ENTRY(name_entry), text);
-	gtk_adjustment_set_value(spin, ps->freq);
-	return;
-}
-
-/*
-static void clist_select_row_cb(GtkWidget *widget, gint row, gint column, GdkEventButton *event, gpointer user_data)
-{
-	gchar* text;
+	GtkTreeIter iter;
 	preset *ps;
-
-	g_assert(row < g_list_length(tmp_settings.presets));
-
-	selected_row = row;
-	ps = (preset*)g_list_nth_data(tmp_settings.presets, row);
-	text = ps->name;
-	gtk_entry_set_text(GTK_ENTRY(name_entry), text);
-	//freq_entry_set_value(ps->freq);
-	//freq_entry_activate_cb(NULL, NULL);	
-	gtk_adjustment_set_value(spin, ps->freq);
-}	
-
-static void clist_unselect_row_cb(GtkWidget *widget, gint row, gint column, GdkEventButton *event, gpointer user_data)
-{
-	selected_row = -1;
-}*/	
-
-static void spin_value_changed_cb(GtkWidget *widget, gpointer data)
-{
+	int *row;
 	double value;
+	gchar *freq_str;
+	
+	if (sscanf(new_val, "%lf", &value) != 1) return;
+	
+	if (value < FREQ_MIN) value = FREQ_MIN;
+	if (value > FREQ_MAX) value = FREQ_MAX;
+	value = rint(value * STEPS) / STEPS;
+	
+	freq_str = g_strdup_printf("%.2f", value);
+	
+	path = gtk_tree_path_new_from_string(path_str);
+	
+	row = gtk_tree_path_get_indices(path);
+	g_assert(row);
+	g_assert(*row < g_list_length(settings.presets));
 
-	value = gtk_spin_button_get_value(GTK_SPIN_BUTTON(freq_spin));
-	gtk_adjustment_set_value(adj, value*STEPS);
+	ps = g_list_nth_data(settings.presets, *row);
+	g_assert(ps);	
+	ps->freq = value;
+
+	gtk_adjustment_set_value(adj, value * STEPS);
 	mom_ps = -1;
 	preset_menu_set_item(mom_ps);
+	
+	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
+	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 1, freq_str, -1);
+	g_free(freq_str);
+	gtk_tree_path_free(path);	
+}	
+
+static void free_mixer_list(GList *list)
+{
+	g_list_foreach(list, (GFunc)g_free, NULL);
+	g_list_free(list);
 }
+
 
 GtkWidget* prefs_window(void)
 {
@@ -508,25 +366,25 @@ GtkWidget* prefs_window(void)
 	GtkWidget *settings_table;
 	GtkWidget *device_label;
 	GtkWidget *mixer_label;
-	GtkWidget *name_label, *freq_label;
-	GtkWidget *button_box, *entry_box, *freq_box;
-	GtkWidget *add_button, *del_button, *update_button;
-	GtkWidget *add_pixmap, *del_pixmap, *update_pixmap;
+	GtkWidget *button_box;
+	GtkWidget *add_button, *del_button;
 	GtkWidget *scrolled_window;
 	GtkCellRenderer *cellrenderer;
 	GtkTreeViewColumn *list_column;
-	GList *mixer_devs;
-	gint i;
+	GList *mixer_devs, *ptr;
+	gint i, active;
 	char *settings_hdr, *presets_hdr;
 	preset* ps;
 	
 	dialog = gtk_dialog_new_with_buttons(_("Gnomeradio Settings"), NULL, 
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, 
-			GTK_STOCK_OK, GTK_RESPONSE_OK, 
+			GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, 
 			GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 			NULL);
 	
+	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CLOSE);
+
 	box = gtk_vbox_new(FALSE, 18);
 	gtk_container_set_border_width(GTK_CONTAINER(box), 12);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), box, TRUE, TRUE, 0);
@@ -554,7 +412,7 @@ GtkWidget* prefs_window(void)
 	sbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(settings_box), sbox, TRUE, TRUE, 0);
 	s_indent_label = gtk_label_new("    ");
-	gtk_box_pack_start(GTK_BOX(sbox), s_indent_label, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(sbox), s_indent_label, FALSE, FALSE, 0);
 	
 	settings_table = gtk_table_new(3, 2, FALSE);
 	gtk_table_set_row_spacings(GTK_TABLE(settings_table), 10);
@@ -562,49 +420,39 @@ GtkWidget* prefs_window(void)
 	gtk_box_pack_start(GTK_BOX(sbox), settings_table, TRUE, TRUE, 0);
 	
 	device_label = gtk_label_new(_("Radio Device:"));
-	//gtk_misc_set_alignment(GTK_MISC(device_label), 0.0f, 0.5f);
 	device_entry = gtk_entry_new();
-	gtk_entry_set_text(GTK_ENTRY(device_entry), tmp_settings.device);
+	gtk_entry_set_text(GTK_ENTRY(device_entry), settings.device);
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), device_label, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), device_entry, 1, 2, 0, 1);
 
 	mixer_label = gtk_label_new(_("Mixer Source:"));
-	//gtk_misc_set_alignment(GTK_MISC(mixer_label), 0.0f, 0.5f);
-	mixer_combo = gtk_combo_new();
-	mixer_devs = get_mixer_recdev_list();
-	if (mixer_devs)
-	{
-		gtk_combo_set_popdown_strings(GTK_COMBO(mixer_combo), mixer_devs);
-		g_list_foreach(mixer_devs, (GFunc)g_free, NULL);
-		g_list_free(mixer_devs);
+	mixer_combo = gtk_combo_box_new_text();
+	ptr = mixer_devs = get_mixer_recdev_list();
+
+	for (i = 0; ptr; ptr = g_list_next(ptr)) {
+		gtk_combo_box_append_text(GTK_COMBO_BOX(mixer_combo), ptr->data);
+		if (g_str_equal(ptr->data, settings.mixer)) active = i;
+		++i;
 	}
-	gtk_entry_set_text(GTK_ENTRY(GTK_COMBO(mixer_combo)->entry), tmp_settings.mixer);
+	if (active < 0) active = 0;
+	gtk_combo_box_set_active(GTK_COMBO_BOX(mixer_combo), active);
+	g_object_set_data_full(G_OBJECT(mixer_combo), "mixer_devs", mixer_devs, (GDestroyNotify)free_mixer_list);
+	
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_label, 0, 1, 1, 2);
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mixer_combo, 1, 2, 1, 2);
 
 	mute_on_exit_cb = gtk_check_button_new_with_label(_("Mute on exit?"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_on_exit_cb), tmp_settings.mute_on_exit);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_on_exit_cb), settings.mute_on_exit);
 
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mute_on_exit_cb, 0, 2, 2, 3);
 
 	pbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(presets_box), pbox, TRUE, TRUE, 0);
 	p_indent_label = gtk_label_new("    ");
-	gtk_box_pack_start(GTK_BOX(pbox), p_indent_label, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(pbox), p_indent_label, FALSE, FALSE, 0);
 
-	preset_box = gtk_vbox_new(FALSE, 4);
-	hbox = gtk_hbox_new(FALSE, 4);
-	gtk_container_set_border_width(GTK_CONTAINER(hbox), 8);
-	gtk_box_pack_start(GTK_BOX(pbox), hbox, TRUE, TRUE, 0);
-
-	/*scrolled_window = gtk_scrolled_window_new(NULL, NULL);
-	clist = gtk_clist_new(2);
-	gtk_container_add(GTK_CONTAINER(scrolled_window), clist);
-	gtk_widget_set_usize(clist, 50, 80);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-	gtk_clist_set_selection_mode(GTK_CLIST(clist), GTK_SELECTION_SINGLE);
-	gtk_clist_set_column_width(GTK_CLIST(clist), 0, 120);
-	//gtk_clist_set_column_width(GTK_CLIST(clist), 1, 40);*/
+	preset_box = gtk_vbox_new(FALSE, 10);
+	gtk_box_pack_start(GTK_BOX(pbox), preset_box, TRUE, TRUE, 0);
 
 	scrolled_window = gtk_scrolled_window_new(NULL, NULL);
 	list_store = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
@@ -612,8 +460,7 @@ GtkWidget* prefs_window(void)
 	gtk_container_add(GTK_CONTAINER(scrolled_window), list_view);
 	gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(scrolled_window), GTK_SHADOW_IN);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-	//gtk_widget_set_usize(list_view, 130, 100);
-	gtk_widget_set_size_request(list_view, 130, 100);
+	gtk_widget_set_size_request(list_view, -1, 100);
 	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list_view), FALSE);
 	
 	selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list_view));
@@ -622,112 +469,56 @@ GtkWidget* prefs_window(void)
 	gtk_tree_selection_set_select_function(selection, (GtkTreeSelectionFunc)list_view_select_cb, NULL, NULL);*/
 	
 	cellrenderer = gtk_cell_renderer_text_new();
+	cellrenderer->mode = GTK_CELL_RENDERER_MODE_EDITABLE;
+	GTK_CELL_RENDERER_TEXT(cellrenderer)->editable = TRUE;
 	list_column = gtk_tree_view_column_new_with_attributes(NULL, cellrenderer, "text", 0, NULL);
-	gtk_tree_view_column_set_min_width(list_column, 130);
+	gtk_tree_view_column_set_min_width(list_column, 170);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
+	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(name_cell_edited_cb), NULL);
+
 	cellrenderer = gtk_cell_renderer_text_new();
+	cellrenderer->mode = GTK_CELL_RENDERER_MODE_EDITABLE;
+	GTK_CELL_RENDERER_TEXT(cellrenderer)->editable = TRUE;
 	list_column = gtk_tree_view_column_new_with_attributes(NULL, cellrenderer, "text", 1, NULL);
-	//gtk_tree_view_column_set_min_width(list_column, 30);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
+	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(freq_cell_edited_cb), NULL);
 
-	entry_box = gtk_hbox_new(FALSE, 10);
-	button_box = gtk_vbox_new(TRUE, 3);
+	button_box = gtk_hbox_new(FALSE, 15);
 
-	name_label = gtk_label_new(_("Name:"));	
-	gtk_misc_set_alignment(GTK_MISC(name_label), 0.0f, 0.5f);
-	name_entry = gtk_entry_new();
-	gtk_entry_set_max_length(GTK_ENTRY(name_entry), 20);
-	//gtk_entry_set_text(GTK_ENTRY(name_entry), UN_NAMED);
-	gtk_editable_set_editable(GTK_EDITABLE(name_entry), TRUE);
-	
-	gtk_box_pack_start(GTK_BOX(entry_box), name_label, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(entry_box), name_entry, TRUE, TRUE, 0);
-
-	add_pixmap = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_BUTTON);
-	del_pixmap = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_BUTTON);
-	update_pixmap = gtk_image_new_from_stock(GTK_STOCK_REFRESH, GTK_ICON_SIZE_BUTTON);
-	
-	add_button = gtk_button_new();
-	del_button = gtk_button_new();
-	update_button = gtk_button_new();
-
-	/*add_button = gtk_button_new_from_stock(GTK_STOCK_ADD);
+	add_button = gtk_button_new_from_stock(GTK_STOCK_ADD);
 	del_button = gtk_button_new_from_stock(GTK_STOCK_DELETE);
-	update_button = gtk_button_new_from_stock(GTK_STOCK_REFRESH);*/
-
-
-	//separator = gtk_hseparator_new();
 	
-	gtk_container_add(GTK_CONTAINER(add_button), add_pixmap);
-	gtk_container_add(GTK_CONTAINER(del_button), del_pixmap);
-	gtk_container_add(GTK_CONTAINER(update_button), update_pixmap);
-
 	gtk_box_pack_start(GTK_BOX(button_box), add_button, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(button_box), del_button, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(button_box), update_button, FALSE, FALSE, 0);
+	gtk_box_pack_end(GTK_BOX(button_box), del_button, FALSE, FALSE, 0);
 	
-	freq_box = gtk_hbox_new(FALSE, 4);
-	freq_label = gtk_label_new(_("Frequency:"));
-	gtk_misc_set_alignment(GTK_MISC(freq_label), 0.0f, 0.5f);
-	/*freq_entry = gtk_entry_new_with_max_length(6);
-	freq_entry_set_value(adj->value/STEPS);
-	gtk_widget_set_usize(freq_entry, 50, 23);
-	freq_spin = my_spin();*/
-	
-	spin = GTK_ADJUSTMENT(gtk_adjustment_new(adj->value/STEPS, FREQ_MIN, FREQ_MAX, 0.05, 1, 1));
-	freq_spin = gtk_spin_button_new(spin, 0.05, 2);
-	gtk_spin_button_set_snap_to_ticks(GTK_SPIN_BUTTON(freq_spin), TRUE);
-	gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(freq_spin), TRUE);
-	//gtk_widget_set_usize(fgtk_spin_button_get_snap_to_ticksreq_spin, 120, 23);
-	
-	gtk_box_pack_start(GTK_BOX(freq_box), freq_label, TRUE, TRUE, 0);
-	//gtk_box_pack_start(GTK_BOX(freq_box), freq_entry, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(freq_box), freq_spin, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(preset_box), scrolled_window, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(preset_box), button_box, TRUE, TRUE, 0);
 
-	gtk_box_pack_start(GTK_BOX(preset_box), scrolled_window, TRUE, TRUE, 2);
-	//gtk_box_pack_start(GTK_BOX(preset_box), separator, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(preset_box), entry_box, TRUE, TRUE, 2);
-	gtk_box_pack_start(GTK_BOX(preset_box), freq_box, TRUE, TRUE, 2);
-	//gtk_box_pack_start(GTK_BOX(preset_box), button_box, TRUE, TRUE, 2);
-
-	gtk_box_pack_start(GTK_BOX(hbox), preset_box, TRUE, TRUE, 2);
-	gtk_box_pack_start(GTK_BOX(hbox), button_box, TRUE, FALSE, 10);
-
-	//g_signal_connect(GTK_OBJECT(freq_spin), "button-press-event", GTK_SIGNAL_FUNC(freq_spin_button_press_event_cb), NULL);
-	g_signal_connect(GTK_OBJECT(device_entry), "focus-out-event", GTK_SIGNAL_FUNC(device_entry_focus_out_event_cb), NULL);
-	g_signal_connect(GTK_OBJECT(GTK_COMBO(mixer_combo)->entry), "focus-out-event", GTK_SIGNAL_FUNC(mixer_entry_focus_out_event_cb), NULL);
+	g_signal_connect(GTK_OBJECT(device_entry), "hide", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
+	g_signal_connect(GTK_OBJECT(device_entry), "activate", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
+	g_signal_connect(GTK_OBJECT(mixer_combo), "changed", GTK_SIGNAL_FUNC(mixer_combo_change_cb), NULL);
 	g_signal_connect(GTK_OBJECT(mute_on_exit_cb), "toggled", GTK_SIGNAL_FUNC(mute_on_exit_toggled_cb), NULL);
 	g_signal_connect(GTK_OBJECT(add_button), "clicked", GTK_SIGNAL_FUNC(add_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(del_button), "clicked", GTK_SIGNAL_FUNC(del_button_clicked_cb), NULL);
-	g_signal_connect(GTK_OBJECT(update_button), "clicked", GTK_SIGNAL_FUNC(update_button_clicked_cb), NULL);
-	//g_signal_connect(GTK_OBJECT(clist), "select-row", GTK_SIGNAL_FUNC(clist_select_row_cb), NULL);
-	//g_signal_connect(GTK_OBJECT(clist), "unselect-row", GTK_SIGNAL_FUNC(clist_unselect_row_cb), NULL);
 	g_signal_connect(GTK_OBJECT(list_view), "key-press-event", GTK_SIGNAL_FUNC(list_view_key_press_event_cb), NULL);
-	/* FIXME: Does not really work :-( */
-	/*g_signal_connect_after(GTK_OBJECT(freq_spin), "activate", GTK_SIGNAL_FUNC(freq_spin_activate_cb), NULL);
-	g_signal_connect(GTK_OBJECT(name_entry), "key-press-event", GTK_SIGNAL_FUNC(enter_key_press_event_cb), NULL);*/
-	g_signal_connect(GTK_OBJECT(spin), "value-changed", GTK_SIGNAL_FUNC(spin_value_changed_cb), NULL);
-	g_signal_connect(GTK_OBJECT(list_view), "cursor-changed", GTK_SIGNAL_FUNC(list_view_cursor_changed_cb), NULL);
 
-
-	for (i=0;i<g_list_length(tmp_settings.presets);i++)
+	for (i=0;i<g_list_length(settings.presets);i++)
 	{
 		GtkTreeIter iter = {0};
 		char *buffer;
-		ps = g_list_nth_data(tmp_settings.presets, i);
+		ps = g_list_nth_data(settings.presets, i);
 		buffer = g_strdup_printf("%0.2f", ps->freq);
 		gtk_list_store_append(list_store, &iter);
-		gtk_list_store_set(list_store, &iter, 0, ps->name, 1, buffer, -1);
+		gtk_list_store_set(list_store, &iter, 0, ps->title, 1, buffer, -1);
 		g_free(buffer);
 	}
 
 	gtk_tooltips_set_tip(tooltips, device_entry, _("Specify the radio-device (in most cases /dev/radio)"), NULL);
-	gtk_tooltips_set_tip(tooltips, GTK_COMBO(mixer_combo)->entry, 
+	gtk_tooltips_set_tip(tooltips, mixer_combo, 
 	_("Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"), NULL);
 	gtk_tooltips_set_tip(tooltips, mute_on_exit_cb, _("If unchecked, gnomeradio won't mute after exiting"), NULL);
 	gtk_tooltips_set_tip(tooltips, add_button, _("Add a new preset"), NULL);
 	gtk_tooltips_set_tip(tooltips, del_button, _("Remove preset from List"), NULL);
-	gtk_tooltips_set_tip(tooltips, update_button, _("Update the preset in the List"), NULL);
 
 	gtk_widget_show_all(dialog);
 

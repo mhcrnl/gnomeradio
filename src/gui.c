@@ -58,7 +58,7 @@ static GtkWidget *tray_icon;
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
 gboolean tray_menu_disabled = FALSE;
 
-void start_radio(gboolean restart, GtkWidget *app)
+void start_radio(gboolean restart)
 {
 	if (restart)
 		radio_stop();
@@ -67,7 +67,7 @@ void start_radio(gboolean restart, GtkWidget *app)
 	{
 		GtkWidget *dialog;
 		
-		dialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
  				_("Could not open device \"%s\" !\n\nCheck your Settings and make sure that no other\n"
 				"program is using %s.\nMake also sure that you have read-access to it."), 
 				settings.device, settings.device);
@@ -76,7 +76,7 @@ void start_radio(gboolean restart, GtkWidget *app)
 	}		
 }
 
-void start_mixer(gboolean restart, GtkWidget *app)
+void start_mixer(gboolean restart)
 {
 	gint res, vol;
 	
@@ -94,7 +94,7 @@ void start_mixer(gboolean restart, GtkWidget *app)
 		else 
 			buffer = g_strdup_printf(_("Could not open \"%s\"!"), settings.mixer_dev);
 
-		dialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, buffer);
+		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, buffer);
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		
@@ -446,7 +446,7 @@ static void update_preset_menu(void)
 	for (i=0;i<count;i++)
 	{
 		ps = g_list_nth_data(settings.presets, i);
-		item = gtk_menu_item_new_with_label(ps->name);
+		item = gtk_menu_item_new_with_label(ps->title);
 		g_signal_connect(GTK_OBJECT(item), "activate", GTK_SIGNAL_FUNC(pref_item_activate_cb), (gpointer)i);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
 	}
@@ -482,8 +482,6 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 	GtkWidget* dialog;
 	gint choise;
 	
-	backup_settings();
-	
 	dialog = prefs_window();
 	
 	/* Michael Jochum <e9725005@stud3.tuwien.ac.at> proposed to not use gnome_dialog_set_parent()
@@ -500,18 +498,14 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 		choise = gtk_dialog_run(GTK_DIALOG(dialog)); 
 		switch (choise)
 		{
-			case GTK_RESPONSE_OK:
-				gtk_widget_destroy(dialog);
-				commit_settings(app);
-				update_preset_menu();
-				break;
-		
 			case GTK_RESPONSE_HELP:
 				display_help_cb("gnomeradio-settings");
 			break;
 			default:
+				/* We need the hide signal to get the value of the device_entry */
+				gtk_widget_hide_all(dialog);
 				gtk_widget_destroy(dialog);
-				rollback_settings();
+				update_preset_menu();
 		}
 	}
 	tray_menu_disabled = FALSE;
@@ -1116,9 +1110,9 @@ int main(int argc, char* argv[])
 	//g_print("momps: %i\n", mom_ps);
 	preset_menu_set_item(mom_ps);
 
-	start_radio(FALSE, app);
+	start_radio(FALSE);
 	
-	start_mixer(FALSE, app);
+	start_mixer(FALSE);
 	adj_value_changed_cb(NULL, (gpointer) app);
 	volume_value_changed_cb(NULL, NULL);
 
