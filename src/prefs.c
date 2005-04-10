@@ -672,17 +672,18 @@ GtkWidget* prefs_window(void)
 	encoder_combo = gtk_combo_box_new_text();
 	gtk_container_add(GTK_CONTAINER(encoder_eb), encoder_combo);
 	encoders = get_installed_encoders();
+	if (!encoders) rec_settings.mp3 = FALSE;
 	ptr = encoders = g_list_prepend(encoders, (gpointer)g_strdup(_("Wave file")));
 	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
 		gtk_combo_box_append_text(GTK_COMBO_BOX(encoder_combo), ptr->data);
 		if (g_str_equal(ptr->data, rec_settings.encoder)) active = i;
 		++i;
 	}
-
+	
 	if (!rec_settings.mp3) active = 0;
 	gtk_combo_box_set_active(GTK_COMBO_BOX(encoder_combo), active);
 	if (encoders) g_object_set_data_full(G_OBJECT(encoder_combo), "encoders", encoders, (GDestroyNotify)free_string_list);
-
+	
 	bitrate_eb = gtk_event_box_new();
 	bitrate_combo = gtk_combo_box_new_text();
 	gtk_container_add(GTK_CONTAINER(bitrate_eb), bitrate_combo);

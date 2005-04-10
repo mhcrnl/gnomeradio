@@ -1,6 +1,7 @@
 2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* gui.c: use GTK_STOCK_MEDIA_* instead of GTK_STOCK_GO_*
+	* prefs.c: set to wave-recording, if no mp3/ogg-encoders are installed
 
 2005-04-09  Jörgen Scheibengruber <mfcn@gmx.de>
 	
