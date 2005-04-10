@@ -1,3 +1,7 @@
+2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* gui.c: use GTK_STOCK_MEDIA_* instead of GTK_STOCK_GO_*
+
 2005-04-09  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* lots of changes. HIG-ifieing continued, recording dialog removed/reworked

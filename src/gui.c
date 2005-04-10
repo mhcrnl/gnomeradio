@@ -757,16 +757,16 @@ GtkWidget* gnome_radio_gui(void)
 
 	frame = gtk_frame_new(NULL);
 	
-	quit_pixmap = gtk_image_new_from_stock(GTK_STOCK_QUIT, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	quit_pixmap = gtk_image_new_from_stock(GTK_STOCK_QUIT, GTK_ICON_SIZE_BUTTON);
 	prefs_pixmap = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	scfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GOTO_LAST, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	scbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GOTO_FIRST, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	stfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GO_FORWARD, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	stbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_GO_BACK, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	about_pixmap = gtk_image_new_from_stock(GNOME_STOCK_ABOUT, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	scfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_FORWARD, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	scbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_REWIND, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	stfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_NEXT, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	stbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_PREVIOUS, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	about_pixmap = gtk_image_new_from_stock(GTK_STOCK_ABOUT, GTK_ICON_SIZE_LARGE_TOOLBAR);
 	mute_pixmap = gtk_image_new_from_stock(GNOME_STOCK_VOLUME, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	rec_pixmap = gtk_image_new_from_stock(GNOME_STOCK_MIC, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	//help_pixmap = gtk_image_new_from_stock(GTK_STOCK_HELP, GTK_ICON_SIZE_BUTTON);
+	rec_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_RECORD, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	//help_pixmap = gtk_image_new_from_stock(GTK_STOCK_HELP, GTK_ICON_SIZE_LARGE_TOOLBAR);
 	
 	quit_button = gtk_button_new();
 	prefs_button = gtk_button_new();
