@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnomeradio CVS (HEAD)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-09 23:44+0200\n"
-"PO-Revision-Date: 2005-04-09 23:59+0100\n"
+"POT-Creation-Date: 2005-04-11 02:25+0200\n"
+"PO-Revision-Date: 2005-04-11 02:33+0200\n"
 "Last-Translator: Jörgen Scheibengruber <mfcn@gmx.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -150,14 +150,14 @@ msgid "Whether the output should be in stereo or mono"
 msgstr "Ob die Ausgabedatei in Mono oder Stereo vorliegen soll"
 
 #: ../gnomeradio.desktop.in.h:1
-msgid "A Gnome FM-Tuner"
-msgstr "Ein FM-Tuner für GNOME"
+msgid "FM-Radio Tuner"
+msgstr "FM-Radio Empfänger"
 
-#: ../gnomeradio.desktop.in.h:2 ../src/gui.c:752
-msgid "Gnomeradio"
-msgstr "Gnomeradio"
+#: ../gnomeradio.desktop.in.h:2
+msgid "Listen to FM-radio"
+msgstr "FM-Radio hören"
 
-#: ../src/prefs.c:248 ../src/prefs.c:675
+#: ../src/prefs.c:248 ../src/prefs.c:676
 msgid "Wave file"
 msgstr "Wave-Datei"
 
@@ -217,12 +217,12 @@ msgstr "Bitrate:"
 msgid "Destination directory:"
 msgstr "Zielordner:"
 
-#: ../src/prefs.c:691
+#: ../src/prefs.c:692
 #, c-format
 msgid "%s kb/s"
 msgstr "%s kb/s"
 
-#: ../src/prefs.c:713
+#: ../src/prefs.c:714
 msgid ""
 "Choose the mp3-/ogg-encoder that should be used, or to record as a "
 "uncompressed wave file"
@@ -230,11 +230,11 @@ msgstr ""
 "Wählen Sie den zu verwendenden MP3-/OGG-Encoder oder das Aufnehmen als "
 "unkomprimierte Wave-Datei"
 
-#: ../src/prefs.c:714
+#: ../src/prefs.c:715
 msgid "Choose the bitrate in which the mp3/ogg will be encoded"
 msgstr "Wählen Sie die Bitrate, mit der die MP3/OGG-Datei kodiert werden soll"
 
-#: ../src/gui.c:68
+#: ../src/gui.c:70
 #, c-format
 msgid ""
 "Could not open device \"%s\" !\n"
@@ -249,32 +249,32 @@ msgstr ""
 "dass kein anderes Programm auf %s zugreift.\n"
 "Stellen Sie auch sicher, dass Sie Schreibzugriff auf dieses Gerät haben."
 
-#: ../src/gui.c:90
+#: ../src/gui.c:92
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr "Die Mixerquelle »%s« ist keine gültige Quelle!"
 
-#: ../src/gui.c:92
+#: ../src/gui.c:94
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr "»%s« konnte nicht geöffnet werden!"
 
-#: ../src/gui.c:247 ../src/gui.c:255 ../src/gui.c:732
+#: ../src/gui.c:249 ../src/gui.c:257 ../src/gui.c:733
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:251 ../src/gui.c:918
+#: ../src/gui.c:253 ../src/gui.c:927
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Frequenz: %.2f MHz"
 
-#: ../src/gui.c:275 ../src/gui.c:921
+#: ../src/gui.c:277 ../src/gui.c:930
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Lautstärke: %d%%"
 
-#: ../src/gui.c:556
+#: ../src/gui.c:558
 msgid ""
 "Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr ""
@@ -282,17 +282,17 @@ msgstr ""
 "Umgebungsvariable »$PATH« enthaltenen Verzeichnisse befindet. "
 
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:570
+#: ../src/gui.c:572
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%d-%B-%Y_%H-%M-%S"
 
 #. Only change the "MHz" part here (if applicable)
-#: ../src/gui.c:573
+#: ../src/gui.c:575
 #, c-format
 msgid "%s/%.2fMHz_%s%s"
 msgstr "%s/%.2fMHz_%s%s"
 
-#: ../src/gui.c:582
+#: ../src/gui.c:584
 #, c-format
 msgid ""
 "Error opening file '%s':\n"
@@ -301,22 +301,24 @@ msgstr ""
 "Fehler beim Öffnen der Datei »%s«:\n"
 "%s"
 
-#: ../src/gui.c:597 ../src/gui.c:916
+#. gtk_image_set_from_pixbuf(GTK_IMAGE(mute_pixmap), unmute_pixbuf);
+#: ../src/gui.c:599 ../src/gui.c:925
 msgid "Mute"
 msgstr "Stummschalten"
 
-#: ../src/gui.c:603
+#. gtk_image_set_from_pixbuf(GTK_IMAGE(mute_pixmap), mute_pixbuf);
+#: ../src/gui.c:604
 msgid "Unmute"
 msgstr "Ton an"
 
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:615
+#: ../src/gui.c:616
 msgid "TRANSLATORS"
 msgstr ""
 "Jörgen Scheibengruber <mfcn@gmx.de>\n"
 "Christian Neumair <chris@gnome-de.org>"
 
-#: ../src/gui.c:626
+#: ../src/gui.c:627
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -328,7 +330,7 @@ msgstr ""
 "\n"
 "Diese Version wurde mit LIRC-Unterstützung kompiliert."
 
-#: ../src/gui.c:630
+#: ../src/gui.c:631
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -340,43 +342,47 @@ msgstr ""
 "\n"
 "Diese Version wurde ohne LIRC-Unterstützung kompiliert."
 
-#: ../src/gui.c:806
+#: ../src/gui.c:754
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: ../src/gui.c:815
 msgid "Presets:"
 msgstr "Sender:"
 
-#: ../src/gui.c:909
+#: ../src/gui.c:918
 msgid "Scan Backwards"
 msgstr "Suchlauf rückwärts"
 
-#: ../src/gui.c:910
+#: ../src/gui.c:919
 msgid "Scan Forwards"
 msgstr "Suchlauf vorwärts"
 
-#: ../src/gui.c:911
+#: ../src/gui.c:920
 msgid "0.05 MHz Backwards"
 msgstr "0.05 MHz zurück"
 
-#: ../src/gui.c:912
+#: ../src/gui.c:921
 msgid "0.05 MHz Forwards"
 msgstr "0.05 MHz vor"
 
-#: ../src/gui.c:913
+#: ../src/gui.c:922
 msgid "About Gnomeradio"
 msgstr "Info zu Gnomeradio"
 
-#: ../src/gui.c:914
+#: ../src/gui.c:923
 msgid "Record radio as Wave, OGG or MP3"
 msgstr "Das Radioprogramm als Wave, OGG oder MP3 aufnehmen"
 
-#: ../src/gui.c:915
+#: ../src/gui.c:924
 msgid "Edit your Preferences"
 msgstr "Die Einstellungen festlegen"
 
-#: ../src/gui.c:917
+#: ../src/gui.c:926
 msgid "Quit"
 msgstr "Beenden"
 
-#: ../src/gui.c:1036
+#: ../src/gui.c:1045
 #, c-format
 msgid ""
 "Failed to init GConf: %s\n"
@@ -385,7 +391,7 @@ msgstr ""
 "GConf-Initialisierung fehlgeschlagen: %s\n"
 "Änderungen an den Einstellungen werden nicht gespeichert\n"
 
-#: ../src/gui.c:1050
+#: ../src/gui.c:1059
 msgid "manual"
 msgstr "manuell"
 
@@ -395,7 +401,7 @@ msgstr "manuell"
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1073
+#: ../src/gui.c:1082
 msgid "Could not start lirc!\n"
 msgstr "lirc konnte nicht gestartet werden!\n"
 
@@ -524,3 +530,6 @@ msgstr "Dateigröße:"
 #: ../src/record.c:559
 msgid "Stop Recording"
 msgstr "Aufnahme beenden"
+
+#~ msgid "A Gnome FM-Tuner"
+#~ msgstr "Ein FM-Tuner für GNOME"
