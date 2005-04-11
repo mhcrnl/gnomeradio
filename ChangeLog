@@ -1,5 +1,11 @@
 2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
 	
+	* gnomeradio.desktop.in: better Name and Comment
+	* gnomeradio.schemas.in: 
+	* prefs.c: record as wave + use oggenc instead of lame per default
+
+2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
+	
 	* gui.c: use GTK_STOCK_MEDIA_* instead of GTK_STOCK_GO_*
 	* prefs.c: set to wave-recording, if no mp3/ogg-encoders are installed
 

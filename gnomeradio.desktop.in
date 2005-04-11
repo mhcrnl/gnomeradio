@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=Gnomeradio
-_Comment=A Gnome FM-Tuner
+_Name=FM-Radio Tuner
+_Comment=Listen to FM-radio
 Exec=gnomeradio
 Icon=radio.png
 Categories=Application;AudioVideo;

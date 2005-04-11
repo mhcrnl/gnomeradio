@@ -115,7 +115,7 @@
       <applyto>/apps/gnomeradio/recording/record-as-mp3</applyto>
       <owner>gnomeradio</owner>
       <type>bool</type>
-      <default>TRUE</default>
+      <default>FALSE</default>
       <locale name="C">
 	<short>Record as mp3- or wave-file</short>
 	<long>Whether the output should be a mp3- or a wave-file</long>
@@ -139,7 +139,7 @@
       <applyto>/apps/gnomeradio/recording/encoder</applyto>
       <owner>gnomeradio</owner>
       <type>string</type>
-      <default>lame</default>
+      <default>oggenc</default>
       <locale name="C">
 	<short>MP3 encoder</short>
 	<long>Choose the mp3 encoder that should be used</long>

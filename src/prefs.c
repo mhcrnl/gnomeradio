@@ -131,10 +131,10 @@ gboolean load_settings(void)
 	rec_settings.stereo = gconf_client_get_bool(client, "/apps/gnomeradio/recording/record-in-stereo", NULL);
 	rec_settings.encoder = gconf_client_get_string(client, "/apps/gnomeradio/recording/encoder", NULL);
 	if (!rec_settings.encoder)
-		rec_settings.encoder = g_strdup("lame");
+		rec_settings.encoder = g_strdup("oggenc");
 	rec_settings.bitrate = gconf_client_get_string(client, "/apps/gnomeradio/recording/bitrate", NULL);
 	if (!rec_settings.bitrate)
-		rec_settings.bitrate = g_strdup("128");
+		rec_settings.bitrate = g_strdup("192");
 	
 	/* Load the presets */
 	count = gconf_client_get_int(client, "/apps/gnomeradio/presets/presets", NULL);
