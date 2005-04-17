@@ -1,5 +1,9 @@
 2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
 	
+	* configure.in: 1.6
+
+2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
+	
 	* gnomeradio.desktop.in: better Name and Comment
 	* gnomeradio.schemas.in: 
 	* prefs.c: record as wave + use oggenc instead of lame per default
