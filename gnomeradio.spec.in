@@ -35,23 +35,23 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-make prefix=$RPM_BUILD_ROOT%{prefix} install
 %makeinstall
 unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
+rm -rf $RPM_BUILD_ROOT/var/scrollkeeper
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
-
-%doc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README
-
-%{prefix}/bin/*
-%{prefix}/share/locale/*
-%{prefix}/share/pixmaps/radio.png
-%{prefix}/share/pixmaps/gnome-radio.png
-%{prefix}/share/gnome/apps/Multimedia/gnomeradio.desktop
+%{_bindir}/*
+%{_datadir}/locale/*
+%{_datadir}/pixmaps/radio.png
+%{_datadir}/gnome/help/gnomeradio
+%{_datadir}/pixmaps/gnomeradio.png
+%{_datadir}/omf/gnomeradio/gnomeradio-C.omf
+%{_datadir}/applications/gnomeradio.desktop
+%{_sysconfdir}/gconf/schemas/gnomeradio.schemas
 
 %post
 export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
@@ -59,3 +59,8 @@ SCHEMAS="gnomeradio.schemas"
 for S in $SCHEMAS; do
   gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/$S > /dev/null
 done
+scrollkeeper-update
+
+%postun
+scrollkeeper-update
+

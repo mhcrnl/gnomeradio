@@ -1,4 +1,8 @@
-2005-04-10  Jörgen Scheibengruber <mfcn@gmx.de>
+2005-04-19  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* gnomeradio.spec.in: Update of Nickolay V. Shmyrev
+
+2005-04-17  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* configure.in: 1.6
 

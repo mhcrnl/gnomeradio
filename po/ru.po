@@ -4,209 +4,234 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
-"POT-Creation-Date: 2003-01-08 16:14+0100\n"
-"PO-Revision-Date: 2002-07-11 11:33+0000\n"
-"Last-Translator: Andrey Kiselev <a_kissel@eudoramail.com>\n"
-"Language-Team: RU\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-19 01:00+0200\n"
+"PO-Revision-Date: 2005-04-18 11:33+0000\n"
+"Last-Translator: Nickolay V. Shmyrev <nshmyrev@yandex.ru>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gnomeradio.schemas.in.h:1
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:1
 msgid "Audio device"
-msgstr "Устройство радио:"
+msgstr "Устройство ввода звука:"
 
-#: gnomeradio.schemas.in.h:2 src/record.c:351
+#: ../gnomeradio.schemas.in.h:2 ../src/record.c:355
 msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr ""
+msgstr "Выберите плотность потока записи файлов mp3 (битрейт)"
 
-#: gnomeradio.schemas.in.h:3 src/prefs.c:699
+#: ../gnomeradio.schemas.in.h:3 ../src/prefs.c:562
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Выберите миксер (линейный вход, линейный вход 1 и т.д.) для регулировки "
+"Выберите микшер (линейный вход, линейный вход 1 и т.д.) для регулировки "
 "громкости звучания радио"
 
-#: gnomeradio.schemas.in.h:4 src/record.c:350
+#: ../gnomeradio.schemas.in.h:4 ../src/record.c:354
 msgid "Choose the mp3 encoder that should be used"
-msgstr ""
+msgstr "Выберите программу кодирования mp3 файлов"
 
-#: gnomeradio.schemas.in.h:5 src/prefs.c:700
+#: ../gnomeradio.schemas.in.h:5 ../src/prefs.c:563
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr ""
 "Если не выбрано, то gnomeradio не будет выключать звук при завершении работы"
 
-#: gnomeradio.schemas.in.h:6
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:6
 msgid "Last frequency"
-msgstr "Частота:"
+msgstr "Последняя частота:"
 
-#: gnomeradio.schemas.in.h:7
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:7
 msgid "Last presets"
-msgstr "Станции"
+msgstr "Последние станции"
 
-#: gnomeradio.schemas.in.h:8
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:8
 msgid "MP3 bitrate"
 msgstr "Плотность потока MP3 (битрейт)"
 
-#: gnomeradio.schemas.in.h:9
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:9
 msgid "MP3 encoder"
 msgstr "MP3-кодер"
 
-#: gnomeradio.schemas.in.h:10
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:10
 msgid "Mixer Device"
-msgstr "Устройство радио:"
+msgstr "Устройство управления громкостью:"
 
-#: gnomeradio.schemas.in.h:11
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:11
 msgid "Mixer source"
-msgstr "Миксер:"
+msgstr "Источник записи"
 
-#: gnomeradio.schemas.in.h:12
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:12
 msgid "Mute on exit"
-msgstr "Выключить звук при завершении работы?"
+msgstr "Выключать звук при завершении работы"
 
-#: gnomeradio.schemas.in.h:13
+#: ../gnomeradio.schemas.in.h:13
 msgid "Number of presets"
-msgstr ""
+msgstr "Число предустановленных станций"
 
-#: gnomeradio.schemas.in.h:14
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:14
 msgid "Radio device"
 msgstr "Устройство радио:"
 
-#: gnomeradio.schemas.in.h:15
+#: ../gnomeradio.schemas.in.h:15
 msgid "Record as mp3- or wave-file"
-msgstr ""
+msgstr "Записывать файл mp3 или wav"
 
-#: gnomeradio.schemas.in.h:16
+#: ../gnomeradio.schemas.in.h:16
 msgid "Record in stereo or mono"
-msgstr ""
+msgstr "Записывать стерео или моно"
 
-#: gnomeradio.schemas.in.h:17
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:17
 msgid "Sample format"
-msgstr "Разрядность:"
+msgstr "Формат записи"
 
-#: gnomeradio.schemas.in.h:18
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:18
 msgid "Sample rate"
 msgstr "Частота дискретизации"
 
-#: gnomeradio.schemas.in.h:19 src/prefs.c:697
+#: ../gnomeradio.schemas.in.h:19 ../src/prefs.c:560
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr "Выберите устройство радио (в большинстве случаев /dev/radio)"
 
-#: gnomeradio.schemas.in.h:20 src/record.c:352
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:20 ../src/record.c:356
 msgid "The audio device to use (usually /dev/audio)"
-msgstr "Выберите устройство радио (в большинстве случаев /dev/radio)"
+msgstr "Выберите звуковое устройство (в большинстве случаев /dev/audio)"
 
-#: gnomeradio.schemas.in.h:21 src/record.c:348
+#: ../gnomeradio.schemas.in.h:21 ../src/record.c:352
 msgid "The audio sample-rate of the wave-file"
-msgstr ""
+msgstr "Частота дискретизации аудио WAV-файла"
 
-#: gnomeradio.schemas.in.h:22 src/record.c:349
+#: ../gnomeradio.schemas.in.h:22 ../src/record.c:353
 msgid "The format (8 or 16 bit) of the wave-file"
-msgstr ""
+msgstr "Формат (8 или 16 бит) WAV-файла"
 
-#: gnomeradio.schemas.in.h:23
+#: ../gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
-msgstr ""
+msgstr "Последняя используемая частота (в МГц)"
 
-#: gnomeradio.schemas.in.h:24
+#: ../gnomeradio.schemas.in.h:24
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
+"Устройство микширования, которое gnomeradio будет использовать. Можно "
+"изменять только с помощью этого ключа (нет настройки в интерфейсе)"
 
-#: gnomeradio.schemas.in.h:25
+#: ../gnomeradio.schemas.in.h:25
 msgid "The number of presets"
-msgstr ""
+msgstr "Число станций"
 
-#: gnomeradio.schemas.in.h:26
+#: ../gnomeradio.schemas.in.h:26
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
+"Станция которая была активной во время завершения работы gnomeradio. "
+"Промежуток от 0до 'число станций - 1'. Просто -1 обозначает не выбрано."
 
-#: gnomeradio.schemas.in.h:27
+#: ../gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
-msgstr ""
+msgstr "Сохраненное значение громкости (0-100)"
 
-#: gnomeradio.schemas.in.h:28
-#, fuzzy
+#: ../gnomeradio.schemas.in.h:28
 msgid "Volume"
-msgstr "Громкость: %d%%"
+msgstr "Громкость"
 
-#: gnomeradio.schemas.in.h:29 src/record.c:353 src/record.c:354
+#: ../gnomeradio.schemas.in.h:29 ../src/record.c:357 ../src/record.c:358
 msgid "Whether the output should be a mp3- or a wave-file"
-msgstr ""
+msgstr "Должен ли вывод быт mp3 или wav-файлом"
 
-#: gnomeradio.schemas.in.h:30 src/record.c:355 src/record.c:356
+#: ../gnomeradio.schemas.in.h:30 ../src/record.c:359 ../src/record.c:360
 msgid "Whether the output should be in stereo or mono"
-msgstr ""
+msgstr "Должен ли вывод быть стерео или моно"
 
-#: gnomeradio.desktop.in.h:1
-msgid "A Gnome FM-Tuner"
-msgstr "FM-тюнер для GNOME"
+#: ../gnomeradio.desktop.in.h:1
+msgid "FM-Radio Tuner"
+msgstr "FM радио-приемник"
 
-#: gnomeradio.desktop.in.h:2 src/gui.c:739
-msgid "Gnomeradio"
-msgstr "Gnomeradio"
+#: ../gnomeradio.desktop.in.h:2
+msgid "Listen to FM-radio"
+msgstr "Прослушать FM-радио"
 
-#: src/prefs.c:519
+#: ../src/prefs.c:248 ../src/prefs.c:676
+msgid "Wave file"
+msgstr "Файл WAV"
+
+#: ../src/prefs.c:268
+msgid "unamed"
+msgstr "безымянный"
+
+#: ../src/prefs.c:333
+msgid "Choose a destination folder"
+msgstr "Выберите каталог сохранения"
+
+#: ../src/prefs.c:472
 msgid "Gnomeradio Settings"
 msgstr "Параметры gnomeradio"
 
-#: src/prefs.c:526
-msgid "Misc Settings"
-msgstr "Разные параметры"
+#: ../src/prefs.c:488
+msgid "General Settings"
+msgstr "Параметры"
 
-#: src/prefs.c:527
+#: ../src/prefs.c:498
 msgid "Presets"
 msgstr "Станции"
 
-#: src/prefs.c:539
+#: ../src/prefs.c:508
+msgid "Record Settings"
+msgstr "Параметры записи"
+
+#: ../src/prefs.c:526
 msgid "Radio Device:"
 msgstr "Устройство радио:"
 
-#: src/prefs.c:547
+#: ../src/prefs.c:533
 msgid "Mixer Source:"
-msgstr "Миксер:"
+msgstr "Микшер:"
 
-#: src/prefs.c:561
+#: ../src/prefs.c:550
 msgid "Mute on exit?"
 msgstr "Выключить звук при завершении работы?"
 
-#: src/prefs.c:609
-msgid "Name:"
-msgstr "Название:"
-
-#: src/prefs.c:643
-msgid "Frequency:"
-msgstr "Частота:"
-
-#: src/prefs.c:701
+#: ../src/prefs.c:632
 msgid "Add a new preset"
 msgstr "Добавить новую станцию"
 
-#: src/prefs.c:702
+#: ../src/prefs.c:633
 msgid "Remove preset from List"
 msgstr "Удалить станцию из списка"
 
-#: src/prefs.c:703
-msgid "Update the preset in the List"
-msgstr "Обновить станцию в списке"
+#: ../src/prefs.c:661 ../src/record.c:275
+msgid "Encoder:"
+msgstr "Программа кодировки:"
 
-#: src/gui.c:67
+#: ../src/prefs.c:662 ../src/record.c:276
+msgid "Bitrate:"
+msgstr "Плотность потока MP3:"
+
+#: ../src/prefs.c:663
+msgid "Destination directory:"
+msgstr "Каталог сохранения"
+
+#: ../src/prefs.c:692
+#, c-format
+msgid "%s kb/s"
+msgstr "%s kb/s"
+
+#: ../src/prefs.c:714
+msgid ""
+"Choose the mp3-/ogg-encoder that should be used, or to record as a "
+"uncompressed wave file"
+msgstr ""
+"Выберите используемый кодировщик mp3 или ogg файлов. Или запись в виде "
+"несжатого wav-файла"
+
+#: ../src/prefs.c:715
+msgid "Choose the bitrate in which the mp3/ogg will be encoded"
+msgstr "Выберите плотность потока кодирования mp3/ogg"
+
+#: ../src/gui.c:70
 #, c-format
 msgid ""
 "Could not open device \"%s\" !\n"
@@ -221,50 +246,49 @@ msgstr ""
 "другая программа не использует %s.\n"
 "Убедитесь также, что у Вас есть доступ на чтение к нему."
 
-#: src/gui.c:89
+#: ../src/gui.c:92
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr "Миксер \"%s\" недопустим!"
+msgstr "Микшер \"%s\" недопустим!"
 
-#: src/gui.c:91
+#: ../src/gui.c:94
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr "Невозможно открыть \"%s\"!"
 
-#: src/gui.c:279
+#: ../src/gui.c:249 ../src/gui.c:257 ../src/gui.c:733
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f МГц"
 
-#: src/gui.c:283 src/gui.c:934
+#: ../src/gui.c:253 ../src/gui.c:927
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Частота: %.2f МГц"
 
-#: src/gui.c:303 src/gui.c:937
+#: ../src/gui.c:277 ../src/gui.c:930
 #, c-format
 msgid "Volume: %d%%"
 msgstr "Громкость: %d%%"
 
-#: src/gui.c:468
-msgid "manual"
-msgstr "вручную"
-
-#: src/gui.c:579
+#: ../src/gui.c:558
 msgid ""
 "Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr ""
+"Не найдена программа sox. Проверьте, что программа есть в вашем пути запуска."
 
-#: src/gui.c:614
+#. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
+#: ../src/gui.c:572
+msgid "%B-%d-%Y_%H-%M-%S"
+msgstr "%d-%B-%Y_%H-%M-%S"
+
+#. Only change the "MHz" part here (if applicable)
+#: ../src/gui.c:575
 #, c-format
-msgid ""
-"File '%s' exists.\n"
-"Overwrite it?"
-msgstr ""
-"Файл '%s' существует.\n"
-"Переписать его?"
+msgid "%s/%.2fMHz_%s%s"
+msgstr "%s/%.2fМГц_%s%s"
 
-#: src/gui.c:625
+#: ../src/gui.c:584
 #, c-format
 msgid ""
 "Error opening file '%s':\n"
@@ -273,262 +297,232 @@ msgstr ""
 "Ошибка при открытии файла '%s':\n"
 "%s"
 
-#: src/gui.c:653 src/gui.c:932
+#. gtk_image_set_from_pixbuf(GTK_IMAGE(mute_pixmap), unmute_pixbuf);
+#: ../src/gui.c:599 ../src/gui.c:925
 msgid "Mute"
 msgstr "Выключить звук"
 
-#: src/gui.c:659
+#. gtk_image_set_from_pixbuf(GTK_IMAGE(mute_pixmap), mute_pixbuf);
+#: ../src/gui.c:604
 msgid "Unmute"
 msgstr "Включить звук"
 
 #. Feel free to put your names here translators :-)
-#: src/gui.c:671
+#: ../src/gui.c:616
 msgid "TRANSLATORS"
 msgstr "ПЕРЕВОДЧИК: Андрей Киселев <a_kissel@eudoramail.com>"
 
-#: src/gui.c:682
+#: ../src/gui.c:627
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
+"Gnomeradio это приложения для приема FM-радио в рабочей среде GNOME. Оно "
+"должно работать со всем оборудованием, которое поддерживается драйверами "
+"video4linux.\n"
+"\n"
+"Эта версия была собрана с поддержкой LIRC (управлением через пульт)."
 
-#: src/gui.c:686
+#: ../src/gui.c:631
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
+"Gnomeradio это приложения для приема FM-радио в рабочей среде GNOME. Оно "
+"должно работать со всем оборудованием, которое поддерживается драйверами "
+"video4linux.\n"
+"\n"
+"Эта версия была собрана с без поддержки LIRC (управления через пульт)."
 
-#: src/gui.c:814
+#: ../src/gui.c:754
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: ../src/gui.c:815
 msgid "Presets:"
 msgstr "Станции:"
 
-#: src/gui.c:925
+#: ../src/gui.c:918
 msgid "Scan Backwards"
 msgstr "Сканировать назад"
 
-#: src/gui.c:926
+#: ../src/gui.c:919
 msgid "Scan Forwards"
 msgstr "Сканировать вперед"
 
-#: src/gui.c:927
+#: ../src/gui.c:920
 msgid "0.05 MHz Backwards"
 msgstr "0,05 МГц назад"
 
-#: src/gui.c:928
+#: ../src/gui.c:921
 msgid "0.05 MHz Forwards"
 msgstr "0,05 МГц вперед"
 
-#: src/gui.c:929
+#: ../src/gui.c:922
 msgid "About Gnomeradio"
 msgstr "О gnomeradio"
 
-#: src/gui.c:930
-msgid "Record radio as Wave or MP3"
-msgstr "Записать звук в файл (WAV или MP3)"
+#: ../src/gui.c:923
+msgid "Record radio as Wave, OGG or MP3"
+msgstr "Записать звук как WAV, Ogg или MP3"
 
-#: src/gui.c:931
+#: ../src/gui.c:924
 msgid "Edit your Preferences"
 msgstr "Изменить настройки"
 
-#: src/gui.c:933
+#: ../src/gui.c:926
 msgid "Quit"
 msgstr "Выход"
 
-#: src/gui.c:1051
+#: ../src/gui.c:1045
 #, c-format
 msgid ""
 "Failed to init GConf: %s\n"
 "Changes to the settings won't be saved\n"
 msgstr ""
+"При инициализации GConf возникла ошибка: %s\n"
+"Изменения в настройких не будут сохранены\n"
 
-#: src/gui.c:1076
-msgid "Could not start lirc"
-msgstr "Невозможно запустить LIRC"
+#: ../src/gui.c:1059
+msgid "manual"
+msgstr "вручную"
 
-#: src/record.c:150
+#. GtkWidget *dialog;
+#. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+#. _("Could not start lirc"));
+#. gtk_dialog_run (GTK_DIALOG (dialog));
+#. gtk_widget_destroy (dialog);
+#.
+#: ../src/gui.c:1082
+msgid "Could not start lirc!\n"
+msgstr "Невозможно запустить lirc!\n"
+
+#: ../src/record.c:154
 msgid "Start"
-msgstr ""
+msgstr "Начать"
 
-#: src/record.c:158
+#: ../src/record.c:162
 msgid "Gnomeradio Record"
 msgstr "Запись"
 
-#: src/record.c:166
+#: ../src/record.c:170
 msgid "General"
 msgstr "Общие"
 
-#: src/record.c:167
+#: ../src/record.c:171
 msgid "Wave Settings"
 msgstr "Настройки WAV"
 
-#: src/record.c:168
-#, fuzzy
+#: ../src/record.c:172
 msgid "Mp3/Ogg Settings"
-msgstr "Настройки MP3"
+msgstr "Настройки MP3/Ogg"
 
-#: src/record.c:180
+#: ../src/record.c:184
 msgid "Audio device:"
 msgstr "Устройство радио:"
 
-#: src/record.c:183
+#: ../src/record.c:187
 msgid "Filename:"
 msgstr "Имя файла:"
 
 #. path_entry = gtk_entry_new();
-#: src/record.c:185
+#: ../src/record.c:189
 msgid "Choose a filename"
 msgstr "Выберите имя файла"
 
 #. choose_button = gtk_button_new_with_label(_("Choose..."));
-#: src/record.c:191
+#: ../src/record.c:195
 msgid "Record as:"
 msgstr "Записать как:"
 
-#: src/record.c:192
+#: ../src/record.c:196
 msgid "Wave (.wav)"
 msgstr "WAV (.wav)"
 
-#: src/record.c:193
-#, fuzzy
+#: ../src/record.c:197
 msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3 (.mp3)"
+msgstr "MP3/Ogg (.mp3/.ogg)"
 
-#: src/record.c:217
+#: ../src/record.c:221
 msgid "Sample rate:"
 msgstr "Частота дискретизации"
 
-#: src/record.c:218
+#: ../src/record.c:222
 msgid "Sample format:"
 msgstr "Разрядность:"
 
-#: src/record.c:219
+#: ../src/record.c:223
 msgid "Record in:"
 msgstr "Записать в:"
 
-#: src/record.c:252
+#: ../src/record.c:256
 msgid "Mono"
 msgstr "Моно"
 
-#: src/record.c:253
+#: ../src/record.c:257
 msgid "Stereo"
 msgstr "Стерео"
 
-#: src/record.c:271
-#, fuzzy
-msgid "Encoder:"
-msgstr "MP3-кодер"
-
-#: src/record.c:272
-#, fuzzy
-msgid "Bitrate:"
-msgstr "Плотность потока MP3 (битрейт)"
-
-#: src/record.c:299 src/record.c:306
+#: ../src/record.c:303 ../src/record.c:310
 msgid "no supported encoder installed"
-msgstr ""
+msgstr "Не найдено поддерживаемых программ кодировки"
 
-#: src/record.c:422
+#: ../src/record.c:431
 #, c-format
 msgid ""
 "%s has stopped:\n"
 "%s\n"
 msgstr ""
+"%s остановлено:\n"
+"%s\n"
 
-#: src/record.c:423
-#, fuzzy
+#: ../src/record.c:432
 msgid "MP3/Ogg encoder"
-msgstr "MP3-кодер"
+msgstr "MP3 или Ogg кодер"
 
-#: src/record.c:424
-#, fuzzy
+#: ../src/record.c:433
 msgid "unknown reason"
-msgstr "неизвестная ошибка"
+msgstr "причина неизвестна"
 
-#: src/record.c:476
+#: ../src/record.c:482
 #, c-format
 msgid "%i byte"
 msgstr "%i байт"
 
-#: src/record.c:479
-#, fuzzy, c-format
+#: ../src/record.c:484
+#, c-format
 msgid "%i kB"
 msgstr "%i килобайт"
 
-#: src/record.c:481
-#, fuzzy, c-format
+#: ../src/record.c:485
+#, c-format
 msgid "%.2f MB"
-msgstr "%.1f мегабайт"
+msgstr "%.2f мегабайт"
 
-#: src/record.c:486
+#: ../src/record.c:487
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/record.c:488
+#: ../src/record.c:488
 msgid "0 byte"
 msgstr "0 байт"
 
-#: src/record.c:527
+#: ../src/record.c:528
 msgid "Gnomeradio recording status"
 msgstr "Статус записи gnomeradio"
 
-#: src/record.c:541
+#: ../src/record.c:541
 msgid "Recording:"
 msgstr "Запись:"
 
-#: src/record.c:542
+#: ../src/record.c:542
 msgid "Filesize:"
 msgstr "Размер файла:"
 
-#: src/record.c:552
+#: ../src/record.c:559
 msgid "Stop Recording"
 msgstr "Остановить запись"
-
-#~ msgid ""
-#~ "Yet another Gnome FM-Tuner. But this one is the best ;-)\n"
-#~ "(Hopefully) works with all FM-Tunercards supported by video4linux."
-#~ msgstr ""
-#~ "Еще один FM-тюнер для GNOME. Но это --- лучший! ;-)\n"
-#~ "Работает (возможно) с любой FM-картой, поддерживаемой интерфейсом "
-#~ "video4linux."
-
-#~ msgid "Start Recording"
-#~ msgstr "Начать запись"
-
-#~ msgid "Choose..."
-#~ msgstr "Выбор..."
-
-#~ msgid ""
-#~ "Mp3 encoder has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "MP3-кодер остановлен:\n"
-#~ "%s\n"
-#~ "Запустите gnomeradio из командной строки для получениядополнительной "
-#~ "информации"
-
-#~ msgid ""
-#~ "sox has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "sox остановлен:\n"
-#~ "%s\n"
-#~ "Запустите gnomeradio из командной строки для получениядополнительной "
-#~ "информации"
-
-#, fuzzy
-#~ msgid "Mute on Exit"
-#~ msgstr "Выключить звук при завершении работы?"
-
-#, fuzzy
-#~ msgid "The audio device"
-#~ msgstr "Устройство радио:"
-
-#, fuzzy
-#~ msgid "The radio device"
-#~ msgstr "Устройство радио:"
