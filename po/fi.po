@@ -240,7 +240,7 @@ msgstr "Taajuus: %.2f MHz"
 #: ../src/gui.c:311 ../src/gui.c:1018
 #, c-format
 msgid "Volume: %d%%"
-msgstr "Äänenvoimakkuus: %d%%"
+msgstr "Äänenvoimakkuus: %d %%"
 
 #: ../src/gui.c:476
 msgid "manual"
