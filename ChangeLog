@@ -1,3 +1,7 @@
+2005-08-05  Amanpreet Singh Brar <aalam@redhat.com>
+
+	*configure.in: pa [Punjabi] is added to ALL_LINGUAS
+
 2005-04-19  Jörgen Scheibengruber <mfcn@gmx.de>
 	
 	* gnomeradio.spec.in: Update of Nickolay V. Shmyrev
