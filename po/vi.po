@@ -1,204 +1,237 @@
 # Vietnamese Translation For GnomeRadio.
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright © 2005 Gnome i18n Project for Vietnamese.
 # T.M.Thanh <tmthanh@yahoo.com>, 2002-2003.
+# Clytie Siddall <clytie@riverland.net.au>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Gnome-Radio.vi\n"
+"Project-Id-Version: gnome-radio Gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-13 04:11+0200\n"
-"PO-Revision-Date: 2003-09-13 14:57+0700\n"
-"Last-Translator: Trinh Minh Thanh <tmthanh@yahoo.com>\n"
+"POT-Creation-Date: 2005-08-17 03:40+0000\n"
+"PO-Revision-Date: 2005-08-17 21:59+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.2.2\n"
 
-#: gnomeradio.schemas.in.h:1
+#: ../gnomeradio.schemas.in.h:1
 msgid "Audio device"
 msgstr "Thiết bị âm thanh"
 
-#: gnomeradio.schemas.in.h:2 src/record.c:353
+#: ../gnomeradio.schemas.in.h:2 ../src/record.c:355
 msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr "Hãy chọn bitrate để mp3 sẽ được mã hóa trong đó"
+msgstr "Hãy chọn tỷ lệ bit mà tập tin mp3 sẽ được mã hóa trong đó."
 
-#: gnomeradio.schemas.in.h:3 src/prefs.c:699
+#: ../gnomeradio.schemas.in.h:3 ../src/prefs.c:562
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Chọn nguồn của bộ trộn âm (line, line1, v.v...) để điều khiển âm lượng cho "
-"radio"
+"Hãy chọn nguồn của bộ hoà tiếng (line, line1, v.v...) để điều khiển âm lượng cho rađiô bạn."
 
-#: gnomeradio.schemas.in.h:4 src/record.c:352
+#: ../gnomeradio.schemas.in.h:4 ../src/record.c:354
 msgid "Choose the mp3 encoder that should be used"
-msgstr "Hãy chọn trình mã hóa mp3 sẽ được dùng"
+msgstr "Hãy chọn trình mã hóa mp3 cần dùng."
 
-#: gnomeradio.schemas.in.h:5 src/prefs.c:700
+#: ../gnomeradio.schemas.in.h:5 ../src/prefs.c:563
 msgid "If unchecked, gnomeradio won't mute after exiting"
-msgstr "Nếu không chọn, gnomeradio sẽ không câm tiếng sau khi thoát ra"
+msgstr "Nếu không chọn, gnomeradio sẽ không câm tiếng sau khi thoát ra."
 
-#: gnomeradio.schemas.in.h:6
+#: ../gnomeradio.schemas.in.h:6
 msgid "Last frequency"
 msgstr "Tần số vừa dùng"
 
-#: gnomeradio.schemas.in.h:7
+#: ../gnomeradio.schemas.in.h:7
 msgid "Last presets"
 msgstr "Lập trước vừa dùng"
 
-#: gnomeradio.schemas.in.h:8
+#: ../gnomeradio.schemas.in.h:8
 msgid "MP3 bitrate"
-msgstr "MP3 bitrate"
+msgstr "Tỷ lệ bit MP3"
 
-#: gnomeradio.schemas.in.h:9
+#: ../gnomeradio.schemas.in.h:9
 msgid "MP3 encoder"
-msgstr "MP3 encoder"
+msgstr "Bộ mã hóa MP3"
 
-#: gnomeradio.schemas.in.h:10
+#: ../gnomeradio.schemas.in.h:10
 msgid "Mixer Device"
-msgstr "Thiết Bị Bộ Trộn Âm"
+msgstr "Thiết bị hoà tiếng"
 
-#: gnomeradio.schemas.in.h:11
+#: ../gnomeradio.schemas.in.h:11
 msgid "Mixer source"
-msgstr "Nguồn bộ trộn âm"
+msgstr "Nguồn bộ hoà tiếng"
 
-#: gnomeradio.schemas.in.h:12
+#: ../gnomeradio.schemas.in.h:12
 msgid "Mute on exit"
 msgstr "Câm khi thoát"
 
-#: gnomeradio.schemas.in.h:13
+#: ../gnomeradio.schemas.in.h:13
 msgid "Number of presets"
 msgstr "Số các lập trước"
 
-#: gnomeradio.schemas.in.h:14
+#: ../gnomeradio.schemas.in.h:14
 msgid "Radio device"
-msgstr "Thiết bị Radio"
+msgstr "Thiết bị Rađiô"
 
-#: gnomeradio.schemas.in.h:15
+#: ../gnomeradio.schemas.in.h:15
 msgid "Record as mp3- or wave-file"
 msgstr "Ghi theo tập tin mp3 hay wave"
 
-#: gnomeradio.schemas.in.h:16
+#: ../gnomeradio.schemas.in.h:16
 msgid "Record in stereo or mono"
-msgstr "Ghi chế độ stereo hay mono"
+msgstr "Ghi trong chế độ âm lập thể hay nguồn đơn"
 
-#: gnomeradio.schemas.in.h:17
+#: ../gnomeradio.schemas.in.h:17
 msgid "Sample format"
 msgstr "Định dạng mẫu"
 
-#: gnomeradio.schemas.in.h:18
+#: ../gnomeradio.schemas.in.h:18
 msgid "Sample rate"
-msgstr "Mức mẫu"
+msgstr "Tỷ lệ mẫu"
 
-#: gnomeradio.schemas.in.h:19 src/prefs.c:697
+#: ../gnomeradio.schemas.in.h:19 ../src/prefs.c:560
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr "Định rõ thiết bị radio (thường là /dev/radio)"
+msgstr "Định rõ thiết bị rađiô (thường là « /dev/radio »)"
 
-#: gnomeradio.schemas.in.h:20 src/record.c:354
+#: ../gnomeradio.schemas.in.h:20 ../src/record.c:356
 msgid "The audio device to use (usually /dev/audio)"
-msgstr "Thiết bị radio để dùng (thường là /dev/audio)"
+msgstr "Thiết bị âm thanh cần dùng (thường là « /dev/audio »)"
 
-#: gnomeradio.schemas.in.h:21 src/record.c:350
+#: ../gnomeradio.schemas.in.h:21 ../src/record.c:352
 msgid "The audio sample-rate of the wave-file"
-msgstr "Audio sample-rate của wave-file"
+msgstr "Sample-rate (tỷ lệ mẫu) âm thanh của tập tin .wav"
 
-#: gnomeradio.schemas.in.h:22 src/record.c:351
+#: ../gnomeradio.schemas.in.h:22 ../src/record.c:353
 msgid "The format (8 or 16 bit) of the wave-file"
-msgstr "Định dạng (8 hay 16 bit) của wave-file"
+msgstr "Định dạng (8 hay 16 bit) của tập tin .wav"
 
-#: gnomeradio.schemas.in.h:23
+#: ../gnomeradio.schemas.in.h:23
 msgid "The last frequency (in MHz) in use"
 msgstr "Tần số gần đây đang dùng (theo MHz)"
 
-#: gnomeradio.schemas.in.h:24
+#: ../gnomeradio.schemas.in.h:24
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
-"Thiết bị trộn âm mà gnomeradio sẽ dùng. Chỉ thay đổi được qua phím này "
-"(không có tùy chọn GUI)"
+"Thiết bị hoà tiếng mà gnomeradio nên dùng. Chỉ thay đổi được qua phím này "
+"(không có tùy chọn GUI)."
 
-#: gnomeradio.schemas.in.h:25
+#: ../gnomeradio.schemas.in.h:25
 msgid "The number of presets"
-msgstr "Số của các đặt trước"
+msgstr "Số các tùy chọn đặt trước"
 
-#: gnomeradio.schemas.in.h:26
+#: ../gnomeradio.schemas.in.h:26
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
-"Đặt trước đã được bật chạy khi gnomeradio đã kết thúc. Range là 0 ... (# "
+"Tùy chọn đặt trước đã được bật chạy khi gnomeradio đã kết thúc. Phạm vị là 0 ... (# "
 "presets - 1). Không là -1"
 
-#: gnomeradio.schemas.in.h:27
+#: ../gnomeradio.schemas.in.h:27
 msgid "The stored value of the volume (0-100)"
 msgstr "Giá trị lưu của âm lượng (0-100)"
 
-#: gnomeradio.schemas.in.h:28
+#: ../gnomeradio.schemas.in.h:28
 msgid "Volume"
-msgstr "Âm Lượng"
+msgstr "Âm lượng"
 
-#: gnomeradio.schemas.in.h:29 src/record.c:355 src/record.c:356
+#: ../gnomeradio.schemas.in.h:29 ../src/record.c:357 ../src/record.c:358
 msgid "Whether the output should be a mp3- or a wave-file"
-msgstr "Output nên là tập tin mp3 hay wave không"
+msgstr "Có nên dữ liệu xuất là tập tin mp3 hay .wav không."
 
-#: gnomeradio.schemas.in.h:30 src/record.c:357 src/record.c:358
+#: ../gnomeradio.schemas.in.h:30 ../src/record.c:359 ../src/record.c:360
 msgid "Whether the output should be in stereo or mono"
-msgstr "Output nên là chế độ stereo hay mono"
+msgstr "Có nên dữ liệu xuất là chế độ âm lập thể hay nguồn đơn."
 
-#: gnomeradio.desktop.in.h:1
-msgid "A Gnome FM-Tuner"
-msgstr "Chỉnh Sóng FM của Gnome"
+#: ../gnomeradio.desktop.in.h:1
+msgid "FM-Radio Tuner"
+msgstr "Bộ điều chỉnh Rađiô FM"
 
-#: gnomeradio.desktop.in.h:2 src/gui.c:820
-msgid "Gnomeradio"
-msgstr "Gnomeradio"
+#: ../gnomeradio.desktop.in.h:2
+msgid "Listen to FM-radio"
+msgstr "Nghe rađiô FM"
 
-#: src/prefs.c:519
+#: ../src/prefs.c:248 ../src/prefs.c:676
+msgid "Wave file"
+msgstr "Tập tin .wav"
+
+#: ../src/prefs.c:268
+msgid "unamed"
+msgstr "không tên"
+
+#: ../src/prefs.c:333
+msgid "Choose a destination folder"
+msgstr "Hãy chọn danh mục đích."
+
+#: ../src/prefs.c:472
 msgid "Gnomeradio Settings"
-msgstr "Thiết lập Gnomeradio"
+msgstr "Thiết lập GnomeRadio"
 
-#: src/prefs.c:526
-msgid "Misc Settings"
-msgstr "Thiết lập Linh tinh"
+#: ../src/prefs.c:488
+msgid "General Settings"
+msgstr "Thiết lập chung"
 
-#: src/prefs.c:527
+#: ../src/prefs.c:498
 msgid "Presets"
-msgstr "Lập trước"
+msgstr "Đặt trước"
 
-#: src/prefs.c:539
+#: ../src/prefs.c:508
+msgid "Record Settings"
+msgstr "Thiết lập ghi âm:"
+
+#: ../src/prefs.c:526
 msgid "Radio Device:"
-msgstr "Thiết bị Radio:"
+msgstr "Thiết bị Rađiô:"
 
-#: src/prefs.c:547
+#: ../src/prefs.c:533
 msgid "Mixer Source:"
-msgstr "Nguồn bộ trộn âm:"
+msgstr "Nguồn bộ hoà tiếng:"
 
-#: src/prefs.c:561
+#: ../src/prefs.c:550
 msgid "Mute on exit?"
-msgstr "Im lặng khi ra khỏi?"
+msgstr "Câm khi ra khỏi?"
 
-#: src/prefs.c:609
-msgid "Name:"
-msgstr "Tên:"
-
-#: src/prefs.c:643
-msgid "Frequency:"
-msgstr "Tần số:"
-
-#: src/prefs.c:701
+#: ../src/prefs.c:632
 msgid "Add a new preset"
-msgstr "Thêm Lập Trước mới"
+msgstr "Thêm tùy chọn đặt trước mới"
 
-#: src/prefs.c:702
+#: ../src/prefs.c:633
 msgid "Remove preset from List"
-msgstr "Bỏ Lập Trước khỏi danh sách"
+msgstr "Bỏ tùy chọn đặt trước khỏi danh sách"
 
-#: src/prefs.c:703
-msgid "Update the preset in the List"
-msgstr "Cập nhật Lập Trước trong Danh Sách"
+#: ../src/prefs.c:661 ../src/record.c:275
+msgid "Encoder:"
+msgstr "Bộ mã hóa:"
 
-#: src/gui.c:71
+#: ../src/prefs.c:662 ../src/record.c:276
+msgid "Bitrate:"
+msgstr "Tỷ lệ bit:"
+
+#: ../src/prefs.c:663
+msgid "Destination directory:"
+msgstr "Thư mục đích:"
+
+#: ../src/prefs.c:692
+#, c-format
+msgid "%s kb/s"
+msgstr "%s kb/giây"
+
+#: ../src/prefs.c:714
+msgid ""
+"Choose the mp3-/ogg-encoder that should be used, or to record as a "
+"uncompressed wave file"
+msgstr "Hãy chọn bộ mã hóa mp3/ogg cần dùng, hoặc cần ghi dạng tập tin .wav chưa nén."
+
+#: ../src/prefs.c:715
+msgid "Choose the bitrate in which the mp3/ogg will be encoded"
+msgstr "Hãy chọn tỷ lệ bit mà tập tin mp3/ogg sẽ được mã hóa trong đó."
+
+#: ../src/gui.c:68
 #, c-format
 msgid ""
 "Could not open device \"%s\" !\n"
@@ -207,228 +240,234 @@ msgid ""
 "program is using %s.\n"
 "Make also sure that you have read-access to it."
 msgstr ""
-"Không thể mở thiết bị \"%s\" !\n"
+"• Không thể mở thiết bị « %s ». •\n"
 "\n"
 "Hãy kiểm tra thiết lập và chắc rằng không có\n"
 "chương trình khác đang dùng %s.\n"
-"Hãy đảm bảo là bạn có quyền truy cập để đọc nó."
+"Cũng hãy đảm bảo là bạn có quyền truy cập để đọc nó."
 
-#: src/gui.c:93
+#: ../src/gui.c:90
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr "Nguồn bộ trộn âm \"%s\" không hợp lệ!"
+msgstr "• Nguồn bộ hoà tiếng « %s » không hợp lệ. •"
 
-#: src/gui.c:95
+#: ../src/gui.c:92
 #, c-format
 msgid "Could not open \"%s\"!"
-msgstr "Không thể mở \"%s\"!"
+msgstr "• Không thể mở « %s ». •"
 
-#: src/gui.c:283 src/gui.c:291 src/gui.c:800
+#: ../src/gui.c:247 ../src/gui.c:255 ../src/gui.c:732
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
-msgstr "Gnomeradio - %.2f MHz"
+msgstr "Gnomeradio — %.2f MHz"
 
-#: src/gui.c:287 src/gui.c:1015
+#: ../src/gui.c:251 ../src/gui.c:918
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Tần số: %.2f MHz"
 
-#: src/gui.c:311 src/gui.c:1018
+#: ../src/gui.c:275 ../src/gui.c:921
 #, c-format
 msgid "Volume: %d%%"
-msgstr "Âm Lượng: %d%%"
+msgstr "Âm lượng: %d%%"
 
-#: src/gui.c:476
-msgid "manual"
-msgstr "Thủ công"
-
-#: src/gui.c:588
-msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr "Không phát hiện được Sox. Hãy đảm bảo là nó có trong đường dẫn của bạn."
-
-#: src/gui.c:624
-#, c-format
+#: ../src/gui.c:556
 msgid ""
-"File '%s' exists.\n"
-"Overwrite it?"
+"Sox could not be detected. Please ensure that it is installed in your PATH."
 msgstr ""
-"Tập tin '%s' tồn tại.\n"
-"Ghi đè lên nó?"
+"Không phát hiện được Sox. Hãy đảm bảo là nó có trong đường dẫn (PATH) của bạn."
 
-#: src/gui.c:635
+#. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
+#: ../src/gui.c:570
+msgid "%B-%d-%Y_%H-%M-%S"
+msgstr "%d-%B-%Y_%H-%M-%S"
+
+#. Only change the "MHz" part here (if applicable)
+#: ../src/gui.c:573
+#, c-format
+msgid "%s/%.2fMHz_%s%s"
+msgstr "%s/%.2fMHz_%s%s"
+
+#: ../src/gui.c:582
 #, c-format
 msgid ""
 "Error opening file '%s':\n"
 "%s"
 msgstr ""
-"Lỗi khi mở tập tin '%s':\n"
+"Gặp lỗi khi mở tập tin « %s »:\n"
 "%s"
 
-#: src/gui.c:664 src/gui.c:1013
+#: ../src/gui.c:597 ../src/gui.c:916
 msgid "Mute"
-msgstr "Im tiếng"
+msgstr "Câm"
 
-#: src/gui.c:670
+#: ../src/gui.c:603
 msgid "Unmute"
 msgstr "Thôi câm tiếng"
 
 #. Feel free to put your names here translators :-)
-#: src/gui.c:682
+#: ../src/gui.c:615
 msgid "TRANSLATORS"
-msgstr "NGƯỜI DỊCH"
+msgstr "Nhóm Việt hóa Gnome <gnomevi-list@lists.sourceforge.net>"
 
-#: src/gui.c:693
+#: ../src/gui.c:626
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
-"Gnomeradio là chương trình FM-Tuner cho GNOME desktop. Nó sẽ làm việc với "
-"mọi phần cứng mà các video4linux driver hỗ trợ.\n"
+"Gnomeradio là chương trình điều chỉnh FM cho màn hình nền GNOME. Nó nên làm việc với "
+"mọi phần cứng điều chỉnh mà các trình điều khiển video4linux hỗ trợ.\n"
 "\n"
 "Phiên bản này đã được biên dịch hỗ trợ LIRC."
 
-#: src/gui.c:697
+#: ../src/gui.c:630
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
-"Gnomeradio là chương trình FM-Tuner cho GNOME desktop. Nó sẽ làm việc với "
-"mọi phần cứng mà các video4linux driver hỗ trợ.\n"
+"Gnomeradio là chương trình điều chỉnh FM cho màn hình nền GNOME. Nó nên làm việc với "
+"mọi phần cứng điều chỉnh mà các trình điều khiển video4linux hỗ trợ.\n"
 "\n"
-"Phiên bản này đã được biên dịch hỗ trợ LIRC."
+"Phiên bản này đã được biên dịch mà không hỗ trợ LIRC."
 
-#: src/gui.c:895
+#: ../src/gui.c:752
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: ../src/gui.c:806
 msgid "Presets:"
-msgstr "Lập Trước:"
+msgstr "Đặt Trước:"
 
-#: src/gui.c:1006
+#: ../src/gui.c:909
 msgid "Scan Backwards"
-msgstr "Quét Lùi lại:"
+msgstr "Quét lùi lại:"
 
-#: src/gui.c:1007
+#: ../src/gui.c:910
 msgid "Scan Forwards"
-msgstr "Quét Đi"
+msgstr "Quét tới đi"
 
-#: src/gui.c:1008
+#: ../src/gui.c:911
 msgid "0.05 MHz Backwards"
 msgstr "Lùi lại 0.05 MHz"
 
-#: src/gui.c:1009
+#: ../src/gui.c:912
 msgid "0.05 MHz Forwards"
-msgstr "Đi thêm 0.05 MHz"
+msgstr "Đi tới 0.05 MHz"
 
-#: src/gui.c:1010
+#: ../src/gui.c:913
 msgid "About Gnomeradio"
 msgstr "Giới thiệu Gnomeradio"
 
-#: src/gui.c:1011
-msgid "Record radio as Wave or MP3"
-msgstr "Ghi radio thành Wave hay MP3"
+#: ../src/gui.c:914
+msgid "Record radio as Wave, OGG or MP3"
+msgstr "Ghi rađiô thành .wav, OGG hay MP3"
 
-#: src/gui.c:1012
+#: ../src/gui.c:915
 msgid "Edit your Preferences"
-msgstr "Biên soạn Tùy Thích"
+msgstr "Biên soạn Sở thích"
 
-#: src/gui.c:1014
+#: ../src/gui.c:917
 msgid "Quit"
 msgstr "Thoát"
 
-#: src/gui.c:1134
+#: ../src/gui.c:1036
 #, c-format
 msgid ""
 "Failed to init GConf: %s\n"
 "Changes to the settings won't be saved\n"
 msgstr ""
 "Không sơ khởi được GConf: %s\n"
-"Thay đổi các thiết lập sẽ không được lưu\n"
+"Thay đổi các thiết lập sẽ không được lưu.\n"
 
-#: src/gui.c:1163
-msgid "Could not start lirc"
-msgstr "Không thể chạy lirc"
+#: ../src/gui.c:1050
+msgid "manual"
+msgstr "thủ công"
 
-#: src/record.c:152
+#. GtkWidget *dialog;
+#. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+#. _("Could not start lirc"));
+#. gtk_dialog_run (GTK_DIALOG (dialog));
+#. gtk_widget_destroy (dialog);
+#.
+#: ../src/gui.c:1073
+msgid "Could not start lirc!\n"
+msgstr "• Không thể chạy lirc. •\n"
+
+#: ../src/record.c:154
 msgid "Start"
 msgstr "Bắt đầu"
 
-#: src/record.c:160
+#: ../src/record.c:162
 msgid "Gnomeradio Record"
 msgstr "Ghi Gnomeradio"
 
-#: src/record.c:168
+#: ../src/record.c:170
 msgid "General"
 msgstr "Chung"
 
-#: src/record.c:169
+#: ../src/record.c:171
 msgid "Wave Settings"
-msgstr "Thiết lập WAVE"
+msgstr "Thiết lập .wav"
 
-#: src/record.c:170
+#: ../src/record.c:172
 msgid "Mp3/Ogg Settings"
 msgstr "Thiết lập MP3/OGG"
 
-#: src/record.c:182
+#: ../src/record.c:184
 msgid "Audio device:"
 msgstr "Thiết bị âm thanh:"
 
-#: src/record.c:185
+#: ../src/record.c:187
 msgid "Filename:"
 msgstr "Tên tập tin:"
 
 #. path_entry = gtk_entry_new();
-#: src/record.c:187
+#: ../src/record.c:189
 msgid "Choose a filename"
 msgstr "Chọn tên tập tin"
 
 #. choose_button = gtk_button_new_with_label(_("Choose..."));
-#: src/record.c:193
+#: ../src/record.c:195
 msgid "Record as:"
 msgstr "Ghi lại thành:"
 
-#: src/record.c:194
+#: ../src/record.c:196
 msgid "Wave (.wav)"
 msgstr "Wave (.wav)"
 
-#: src/record.c:195
+#: ../src/record.c:197
 msgid "MP3/Ogg (.mp3/.ogg)"
 msgstr "MP3/OGG (.mp3/.ogg)"
 
-#: src/record.c:219
+#: ../src/record.c:221
 msgid "Sample rate:"
-msgstr "Ví dụ mức:"
+msgstr "Tỷ lệ mẫu:"
 
-#: src/record.c:220
+#: ../src/record.c:222
 msgid "Sample format:"
-msgstr "Ví dụ định dạng:"
+msgstr "Định dạng mẫu:"
 
-#: src/record.c:221
+#: ../src/record.c:223
 msgid "Record in:"
 msgstr "Ghi trong:"
 
-#: src/record.c:254
+#: ../src/record.c:256
 msgid "Mono"
-msgstr "Mono"
+msgstr "Nguồn đơn"
 
-#: src/record.c:255
+#: ../src/record.c:257
 msgid "Stereo"
-msgstr "Stereo"
+msgstr "Âm lập thể"
 
-#: src/record.c:273
-msgid "Encoder:"
-msgstr "Trình mã hóa:"
-
-#: src/record.c:274
-msgid "Bitrate:"
-msgstr "Bitrate:"
-
-#: src/record.c:301 src/record.c:308
+#: ../src/record.c:303 ../src/record.c:310
 msgid "no supported encoder installed"
-msgstr "đã cài đặt trình mã hóa không được hỗ trợ"
+msgstr "chưa cài đặt bộ mã hóa được hỗ trợ"
 
-#: src/record.c:425
+#: ../src/record.c:431
 #, c-format
 msgid ""
 "%s has stopped:\n"
@@ -437,87 +476,49 @@ msgstr ""
 "%s đã dừng:\n"
 "%s\n"
 
-#: src/record.c:426
+#: ../src/record.c:432
 msgid "MP3/Ogg encoder"
-msgstr "Trình mã hóa MP3/OGG"
+msgstr "Bộ mã hóa MP3/OGG"
 
-#: src/record.c:427
+#: ../src/record.c:433
 msgid "unknown reason"
-msgstr "Lý do không xác định"
+msgstr "không biết sao"
 
-#: src/record.c:479
+#: ../src/record.c:482
 #, c-format
 msgid "%i byte"
 msgstr "%i byte"
 
-#: src/record.c:482
+#: ../src/record.c:484
 #, c-format
 msgid "%i kB"
 msgstr "%i kB"
 
-#: src/record.c:484
+#: ../src/record.c:485
 #, c-format
 msgid "%.2f MB"
 msgstr "%.2f MB"
 
-#: src/record.c:489
+#: ../src/record.c:487
 msgid "Error"
 msgstr "Lỗi"
 
-#: src/record.c:491
+#: ../src/record.c:488
 msgid "0 byte"
 msgstr "0 byte"
 
-#: src/record.c:530
+#: ../src/record.c:528
 msgid "Gnomeradio recording status"
-msgstr "Trạng Thái Ghi Âm của GnomeRadio"
+msgstr "Trạng thái ghi âm của GnomeRadio"
 
-#: src/record.c:544
+#: ../src/record.c:541
 msgid "Recording:"
-msgstr "Đang Ghi Âm:"
+msgstr "Đang ghi âm:"
 
-#: src/record.c:545
+#: ../src/record.c:542
 msgid "Filesize:"
 msgstr "Kích thước tập tin:"
 
-#: src/record.c:555
+#: ../src/record.c:559
 msgid "Stop Recording"
-msgstr "Dừng Ghi Âm"
-
-#~ msgid "with"
-#~ msgstr "với"
-
-#~ msgid "withtout"
-#~ msgstr "không kèm với"
-
-#~ msgid ""
-#~ "Yet another Gnome FM-Tuner. But this one is the best ;-)\n"
-#~ "(Hopefully) works with all FM-Tunercards supported by video4linux."
-#~ msgstr ""
-#~ "Có chương trình bắt sóng FM khác nhưng chương trình này\n"
-#~ "làm việc tốt nhất với mọi FM-Tunercards do video4linux hỗ trợ."
-
-#~ msgid "Start Recording"
-#~ msgstr "Bắt đầu Ghi"
-
-#~ msgid "Choose..."
-#~ msgstr "Chọn..."
-
-#~ msgid ""
-#~ "Mp3 encoder has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "Mp3 encoder đã dừng.\n"
-#~ "%s\n"
-#~ "Chạy gnomeradio từ dòng lệnh để thêm thông tin"
-
-#~ msgid ""
-#~ "sox has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "sox đã dừng:\n"
-#~ "%s\n"
-#~ "Chạy gnomeradio từ dòng lệnh để biết thêm thông tin"
-
+msgstr "Dừng ghi âm"
