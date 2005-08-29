@@ -5,7 +5,7 @@
 # This file is distributed under the same license as the gnomeradio.HEAD package.
 # Copyright (C) 2005 THE gnomeradio.HEAD'S COPYRIGHT HOLDER, 2003
 # Marko Ivanoski <marko@programmer.net>, 2003
-#  <ufo@linux.net.mk>, 2005.
+# Arangel Angov <ufo@linux.net.mk>, 2005.
 # 
 # 
 msgid ""
@@ -33,12 +33,12 @@ msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Избери го изворот на миксерот (линија, линија1 итн) кој е способен да го "
+"Изберете го изворот на миксерот (линија, линија1 итн) кој е способен да го "
 "контролира гласот на вашето радио"
 
 #: ../gnomeradio.schemas.in.h:4 ../src/record.c:354
 msgid "Choose the mp3 encoder that should be used"
-msgstr "Одбери кодирање на мр3 кое ќе се користи"
+msgstr "Изберете кодирање на мр3 кое ќе се користи"
 
 #: ../gnomeradio.schemas.in.h:5 ../src/prefs.c:563
 msgid "If unchecked, gnomeradio won't mute after exiting"
