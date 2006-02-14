@@ -1,4 +1,8 @@
-2005-12-06  Kjartan Maraas  <kmaraas@gnome.org>
+2006-02-14  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* src/prefs.c: Fixed typo: "unamed" -> "unnamed"
+
+22005-12-06  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Add nb to ALL_LINGUAS.
 

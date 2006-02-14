@@ -265,7 +265,7 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	GtkTreePath *path = NULL;
 	
 	ps = malloc(sizeof(preset));
-	ps->title = g_strdup(_("unamed"));
+	ps->title = g_strdup(_("unnamed"));
 	ps->freq = rint(adj->value) / STEPS;
 	settings.presets = g_list_append(settings.presets, (gpointer) ps);
 	buffer = g_strdup_printf("%.2f", ps->freq);
