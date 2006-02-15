@@ -114,51 +114,17 @@ GList* get_mixer_recdev_list(void)
 	array = mixer_get_rec_devices();
 	if (!array)
 		return NULL;
-
-	if (!gconf_is_initialized())
-		return NULL;
-	
-	client = gconf_client_get_default();
-	
-	sndcard_name = mixer_get_sndcard_name();
-	if (sndcard_name)
-	{
-		g_strdelimit (sndcard_name, " ", '_');
-		gconf_path = g_strdup_printf("/apps/gnome-volume-control/OSS-%s-%d/%%s/title", sndcard_name, 1);
-		//puts(gconf_path);
-		free(sndcard_name);
-	}
 	
 	i = 0;	
 	dev = array[i];
 	while (dev)
 	{
-		char *gconf_dev = NULL;
-		char *text = NULL;
-		
-		if (client && gconf_path)
-		{
-			char *path = g_strdup_printf(gconf_path, dev);
-			gconf_dev = gconf_client_get_string(client, path , NULL);
-			g_free(path);
-		}
-		if (gconf_dev)
-		{
-			if (strcmp(gconf_dev, dev))
-				text = g_strdup_printf("%s (%s)", dev, gconf_dev);
-			else
-				text = g_strdup(dev);
-			g_free(gconf_dev);
-			gconf_dev = NULL;
-		}
-		else
-			text = g_strdup(dev);
+		char *text = g_strdup(dev);
 		result = g_list_append(result, text);
 		free(dev);
 		dev = array[++i];
 	}			
 	free(array);
-	g_free(gconf_path);
 	
 	return result;
 }
@@ -238,22 +204,45 @@ void exit_gnome_radio(void)
 	gtk_main_quit();
 }
 
+const char* get_preset(float freq, int *num)
+{
+	GList *node = settings.presets;
+
+	int i = *num = -1;
+	for (;node;)
+	{
+		++i;
+		preset *ps = (preset*)node->data;
+		if (fabs(ps->freq - freq) < 0.01)
+		{
+			*num = i;
+			return ps->title;
+		}
+		node = node->next;
+	}
+	return NULL;
+}
+
 static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 {
-	gchar *buffer;
+	char *buffer;
+	float freq = rint(adj->value)/STEPS;
+	const char *preset_title = get_preset(freq, &mom_ps);
+
+	preset_combo_set_item(mom_ps);
 	
 	redraw_status_window();
 	
-	buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), rint(adj->value)/STEPS);
-	gtk_window_set_title (GTK_WINDOW(window), buffer);
-	g_free(buffer);
-	
-	buffer = g_strdup_printf(_("Frequency: %.2f MHz"), rint(adj->value)/STEPS);
-	gtk_tooltips_set_tip(tooltips, freq_scale, buffer, NULL);
-	g_free(buffer);
-	
-	buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), rint(adj->value)/STEPS);
+	if (preset_title)
+		buffer = g_strdup_printf(_("Gnomeradio - %s"), preset_title);
+	else
+		buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), freq);
+	gtk_window_set_title(GTK_WINDOW(window), buffer);
 	gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
+	g_free(buffer);
+	
+	buffer = g_strdup_printf(_("Frequency: %.2f MHz"), freq);
+	gtk_tooltips_set_tip(tooltips, freq_scale, buffer, NULL);
 	g_free(buffer);
 
 	radio_setfreq(adj->value/STEPS);
@@ -261,8 +250,10 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 
 static gboolean freq_scale_focus_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
+/*
 	mom_ps = -1;
 	preset_combo_set_item(mom_ps);
+*/
 	return FALSE;
 }
 
@@ -336,16 +327,20 @@ static void step_button_pressed_cb(GtkButton *button, gpointer data)
 	//change_frequency(data);
 	bp_timeout_id = gtk_timeout_add(500, (GtkFunction)change_frequency_timeout, data);
 	
+/*
 	mom_ps = -1;
 	preset_combo_set_item(mom_ps);
+*/
 }
 
 static void step_button_clicked_cb(GtkButton *button, gpointer data)
 {
 	change_frequency(data);
 
+/*
 	mom_ps = -1;
 	preset_combo_set_item(mom_ps);
+*/
 }
 
 static void step_button_released_cb(GtkButton *button, gpointer data)
@@ -400,9 +395,11 @@ void scfw_button_clicked_cb(GtkButton *button, gpointer data)
 	}
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)1);	
+
+/*
 	mom_ps = -1;
 	preset_combo_set_item(mom_ps);
-
+*/
 }
 
 void scbw_button_clicked_cb(GtkButton *button, gpointer data)
@@ -414,8 +411,10 @@ void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 	}
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)(-1));	
+/*
 	mom_ps = -1;
 	preset_combo_set_item(mom_ps);
+*/
 }
 
 void preset_combo_set_item(gint i)
