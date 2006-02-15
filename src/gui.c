@@ -52,8 +52,11 @@ static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
 static GtkWidget *freq_scale, *vol_scale;
 static GtkWidget *tray_icon;
+static GtkWidget *mute_menuitem;
 
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
+static int mute_button_toggled_cb_id;
+static int mute_menuitem_toggled_cb_id;
 
 void start_radio(gboolean restart)
 {
@@ -260,13 +263,20 @@ static gboolean freq_scale_focus_cb(GtkWidget *widget, GdkEventFocus *event, gpo
 static void volume_value_changed_cb(GtkAdjustment* data, gpointer window)
 {
 	char *text;
+	int vol = (int)volume->value;
 	
-	mixer_set_volume((gint)volume->value);
+	mixer_set_volume(vol);
 	
-	text = g_strdup_printf(_("Volume: %d%%"), (gint)volume->value);
+	text = g_strdup_printf(_("Volume: %d%%"), vol);
 	gtk_tooltips_set_tip(tooltips, vol_scale, text, NULL);
 	g_free(text);
-
+	
+	g_signal_handler_block(G_OBJECT(mute_button), mute_button_toggled_cb_id);
+	g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_button), vol == 0);
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
+	g_signal_handler_unblock(G_OBJECT(mute_button), mute_button_toggled_cb_id);
+	g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
 }
 
 #if 0
@@ -585,22 +595,32 @@ static void rec_button_clicked_cb(GtkButton *button, gpointer app)
 	g_free(filename);		
 }
 
-void mute_button_toggled_cb(GtkButton *button, gpointer data)
+void toggle_volume(void)
 {
-	static gboolean muted = FALSE;
+	static int old_vol;
+	int vol = mixer_get_volume();
 	
-	if (muted)
-	{
-		radio_unmute();
-		muted = FALSE;
+	if (vol) {
+		old_vol = vol;
+		vol = 0;
+	} else {
+		vol = old_vol;
+	}	
+	mixer_set_volume(vol);
+	gtk_adjustment_set_value(volume, vol);
+}	
+
+static void mute_button_toggled_cb(GtkButton *button, gpointer data)
+{
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mute_button)))
+	{		
 		gtk_tooltips_set_tip(tooltips, mute_button, _("Mute"), NULL);
 	}
 	else
 	{
-		radio_mute();
-		muted = TRUE;
 		gtk_tooltips_set_tip(tooltips, mute_button, _("Unmute"), NULL);
 	}
+	toggle_volume();
 }
 
 static void about_button_clicked_cb(GtkButton *button, gpointer data)
@@ -663,35 +683,38 @@ void display_help_cb(char *topic)
 	}
 }
 
+static void toggle_mainwindow_visibility(GtkWidget *app)
+{
+	static gint posx, posy;
+	if (GTK_WIDGET_VISIBLE(app))
+	{
+		gtk_window_get_position(GTK_WINDOW(app), &posx, &posy);
+		gtk_widget_hide(app);
+	}
+	else
+	{
+		if ((posx >= 0) && (posy >= 0))
+			gtk_window_move(GTK_WINDOW(app), posx, posy);
+		gtk_window_present(GTK_WINDOW(app));
+	}
+}	
+
 gboolean
 tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
-	static gint posx, posy;
 	GtkWidget *app = GTK_WIDGET(data);
 	switch (event->button)
 	{
 		case 1:
 			if (event->type != GDK_BUTTON_PRESS)
 				break;
-			if (GTK_WIDGET_VISIBLE(app))
-			{
-				gtk_window_get_position(GTK_WINDOW(app), &posx, &posy);
-				gtk_widget_hide(app);
-			}
-			else
-			{
-				if ((posx >= 0) && (posy >= 0))
-					gtk_window_move(GTK_WINDOW(app), posx, posy);
-				gtk_window_present(GTK_WINDOW(app));
-			}
+			toggle_mainwindow_visibility(app);
 			break;
 		case 3:
 			if (event->type != GDK_BUTTON_PRESS)
 				break;
-/*			if (tray_menu_disabled)
-				break;
-			gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
-				NULL, NULL, event->button, event->time);*/
+			gtk_menu_popup(GTK_MENU(tray_menu), NULL, NULL, 
+				NULL, NULL, event->button, event->time);
 			break;
 	}			
 	return FALSE;
@@ -837,6 +860,8 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_scale_set_digits(GTK_SCALE(vol_scale), 0);
 	gtk_scale_set_draw_value(GTK_SCALE(vol_scale), FALSE);
 
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_button), mixer_get_volume() == 0);
+
 	gtk_widget_set_size_request(drawing_area, DIGIT_WIDTH*6+10+SIGNAL_WIDTH+STEREO_WIDTH, DIGIT_HEIGTH+10);
 
 	gtk_container_add(GTK_CONTAINER(frame), drawing_area);
@@ -900,7 +925,8 @@ GtkWidget* gnome_radio_gui(void)
 	g_signal_connect(GTK_OBJECT(scfw_button), "clicked", GTK_SIGNAL_FUNC(scfw_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(scbw_button), "clicked", GTK_SIGNAL_FUNC(scbw_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(about_button), "clicked", GTK_SIGNAL_FUNC(about_button_clicked_cb), NULL);
-	g_signal_connect(GTK_OBJECT(mute_button), "toggled", GTK_SIGNAL_FUNC(mute_button_toggled_cb), NULL);
+	mute_button_toggled_cb_id =
+		g_signal_connect(GTK_OBJECT(mute_button), "toggled", GTK_SIGNAL_FUNC(mute_button_toggled_cb), NULL);
 	g_signal_connect(GTK_OBJECT(rec_button), "clicked", GTK_SIGNAL_FUNC(rec_button_clicked_cb), (gpointer) app);
 	g_signal_connect(GTK_OBJECT(prefs_button), "clicked", GTK_SIGNAL_FUNC(prefs_button_clicked_cb), (gpointer) app);
 	g_signal_connect(GTK_OBJECT(drawing_area), "expose-event", GTK_SIGNAL_FUNC(expose_event_cb), NULL);
@@ -995,6 +1021,84 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 	return FALSE;
 }
 
+static void mute_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)
+{
+	toggle_volume();
+}	
+
+static void record_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+{
+	rec_button_clicked_cb(NULL, user_data);
+}	
+
+static void showwindow_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)
+{
+	GtkWidget* app = GTK_WIDGET(user_data);
+	toggle_mainwindow_visibility(app);
+}	
+
+static void quit_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+{
+	exit_gnome_radio();
+}	
+
+void preset_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+{
+	preset* ps;
+	mom_ps = (int)user_data;
+	
+	g_assert(mom_ps >= 0 &&	mom_ps < g_list_length(settings.presets));
+	
+	ps = (preset*)g_list_nth_data(settings.presets, mom_ps);
+	gtk_adjustment_set_value(adj, ps->freq * STEPS);
+}
+
+static void create_tray_menu(GtkWidget *app) {
+	GList *node = settings.presets;
+	int i;
+	
+	tray_menu = gtk_menu_new();
+
+	for (i = 0; node; i++, node = node->next)
+	{
+		preset *ps = (preset*)node->data;
+		GtkWidget *menuitem = gtk_menu_item_new_with_label(ps->title); 
+		
+		gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, i);		
+		g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)i);
+		gtk_widget_show(menuitem);
+	}
+	
+	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), gtk_separator_menu_item_new());
+
+	mute_menuitem = gtk_check_menu_item_new_with_label(_("Muted"));
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), mixer_get_volume() == 0);
+	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), mute_menuitem);
+	mute_menuitem_toggled_cb_id = 
+		g_signal_connect(G_OBJECT(mute_menuitem), "toggled", (GCallback)mute_menuitem_toggled_cb, (gpointer)app);
+	gtk_widget_show(mute_menuitem);
+
+	GtkWidget *record_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_RECORD, NULL);
+	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), record_menuitem);		
+	g_signal_connect(G_OBJECT(record_menuitem), "activate", (GCallback)record_menuitem_activate_cb, app);
+	gtk_widget_show(record_menuitem);
+
+	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), gtk_separator_menu_item_new());
+	
+	GtkWidget *showwindow_menuitem = gtk_check_menu_item_new_with_label(_("Show Window"));
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), GTK_WIDGET_VISIBLE(app));
+	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), showwindow_menuitem);
+	g_signal_connect(G_OBJECT(showwindow_menuitem), "activate", (GCallback)showwindow_menuitem_toggled_cb, (gpointer)app);
+	gtk_widget_show(showwindow_menuitem);
+
+	GtkWidget *quit_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
+	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), quit_menuitem);		
+	g_signal_connect(G_OBJECT(quit_menuitem), "activate", (GCallback)quit_menuitem_activate_cb, NULL);
+	gtk_widget_show(quit_menuitem);
+
+	gtk_widget_show_all(tray_menu);
+}	
+
 int main(int argc, char* argv[])
 {
 	GtkWidget* app;
@@ -1016,10 +1120,8 @@ int main(int argc, char* argv[])
 	app_icon = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
 	icons = g_list_append(NULL, (gpointer)app_icon);
 	gtk_window_set_default_icon_list(icons);
-
 	
 	/* Main app */
-
 	app = gnome_radio_gui();
 
 	gtk_widget_show_all(app);
@@ -1052,6 +1154,7 @@ int main(int argc, char* argv[])
 		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
 	}
 	preset_combo_set_item(mom_ps);
+	create_tray_menu(app);
 	
 	start_radio(FALSE);
 	

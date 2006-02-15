@@ -1,3 +1,9 @@
+2006-02-15  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* src/gui.c, src/gui.h, src/prefs.c, src/lirc.c:
+	Added a context menu to the trayicon
+	* src/gui.c: made the mute-functionality more sane
+
 2006-02-14  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* src/gui.c: Applied (and modified) Patch from "iceberg"

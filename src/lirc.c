@@ -47,7 +47,7 @@ static void execute_lirc_command (char *cmd)
 	}
 	else if (strcasecmp (cmd, "mute") == 0)
 	{
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(mute_button), !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(mute_button)));
+		toggle_volume();
 	}
 	else if (strcasecmp (cmd, "tv") == 0)
 	{

@@ -263,6 +263,8 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	GtkTreeIter iter = {0};
 	GtkAdjustment* v_scb;
 	GtkTreePath *path = NULL;
+	GList* menuitems;
+	GtkWidget *menuitem;
 	
 	ps = malloc(sizeof(preset));
 	ps->title = g_strdup(_("unnamed"));
@@ -282,7 +284,14 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
 	mom_ps = g_list_length(settings.presets) - 1;
 	preset_combo_set_item(mom_ps);
-	
+
+	menuitems = GTK_MENU_SHELL(tray_menu)->children;
+	menuitem = gtk_menu_item_new_with_label(ps->title); 
+		
+	gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, mom_ps);		
+	g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, mom_ps);
+	gtk_widget_show(menuitem);
+
 	buffer = g_strdup_printf("%d", g_list_length(settings.presets) - 1);
 	path = gtk_tree_path_new_from_string(buffer);
 	g_free(buffer);
@@ -298,6 +307,8 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	GtkTreeIter iter;
 	preset *ps;
 	int *row;
+	GList* menuitems;
+	GtkWidget *menuitem;
 	
 	gtk_tree_view_get_cursor(GTK_TREE_VIEW(list_view), &path, &focus_column);
 	
@@ -320,6 +331,11 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	if (--mom_ps < 0) mom_ps = 0;
 	if (!g_list_length(settings.presets)) mom_ps = -1;
 	preset_combo_set_item(mom_ps);
+
+	menuitems = GTK_MENU_SHELL(tray_menu)->children;
+	g_assert(*row < g_list_length(menuitems));
+	menuitem = g_list_nth_data(menuitems, *row);
+	gtk_widget_destroy(menuitem);
 	
 	gtk_tree_path_prev(path);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
@@ -361,6 +377,8 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	GtkTreeIter iter;
 	preset *ps;
 	int *row;
+	GList* menuitems;
+	GtkWidget *menuitem;
 	
 	path = gtk_tree_path_new_from_string(path_str);
 
@@ -376,6 +394,16 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
 	gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row + 1, ps->title);
 	preset_combo_set_item(mom_ps);
+	
+	menuitems = GTK_MENU_SHELL(tray_menu)->children;
+	g_assert(mom_ps < g_list_length(menuitems));
+	menuitem = g_list_nth_data(menuitems, mom_ps);
+	gtk_widget_destroy(menuitem);
+	menuitem = gtk_menu_item_new_with_label(ps->title); 
+		
+	gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, *row);		
+	g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)mom_ps);
+	gtk_widget_show(menuitem);
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 0, new_val, -1);
