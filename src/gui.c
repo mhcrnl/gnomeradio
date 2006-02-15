@@ -524,6 +524,36 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 	}
 }
 
+void tray_icon_items_set_sensible(gboolean sensible)
+{
+	GList* menuitems;
+	GtkWidget *menuitem;
+	int i, cnt = g_list_length(settings.presets);
+	
+	
+	menuitems = GTK_MENU_SHELL(tray_menu)->children;
+	
+	g_assert(cnt + 6 == g_list_length(menuitems));
+	
+	/* Disable the presets */
+	for (i = 0; i < cnt; i++) {
+		menuitem = g_list_nth_data(menuitems, i);
+		gtk_widget_set_sensitive(menuitem, sensible);
+	}	
+	
+	/* Disable the mute button (separator => +1) */
+	menuitem = g_list_nth_data(menuitems, cnt + 1);
+	gtk_widget_set_sensitive(menuitem, sensible);
+
+	/* Disable the record button */
+	menuitem = g_list_nth_data(menuitems, cnt + 2);
+	gtk_widget_set_sensitive(menuitem, sensible);
+	
+	/* Disable the quit button */
+	menuitem = g_list_nth_data(menuitems, cnt + 5);
+	gtk_widget_set_sensitive(menuitem, sensible);
+}
+
 static int
 start_recording(const gchar *filename)
 {
@@ -539,6 +569,8 @@ start_recording(const gchar *filename)
 		gtk_widget_destroy (dialog);
 		return -1;
 	}
+	
+	tray_icon_items_set_sensible(FALSE);
 	
 	if (rec_settings.mp3)
 		record_as_mp3(&wavioc, &mp3ioc, filename);

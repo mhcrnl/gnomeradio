@@ -378,6 +378,8 @@ void close_status_window(void)
 
 	if (status_dialog) gtk_widget_destroy(GTK_WIDGET(status_dialog));
 	status_dialog = NULL;
+	
+	tray_icon_items_set_sensible(TRUE);
 }
 
 static gboolean

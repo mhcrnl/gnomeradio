@@ -69,6 +69,8 @@ void preset_combo_set_item(gint i);
 
 void preset_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data);
 
+void tray_icon_items_set_sensible(gboolean sensible);
+
 void display_help_cb(char *topic);
 
 void change_preset(gboolean next);
