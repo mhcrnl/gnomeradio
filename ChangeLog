@@ -1,3 +1,9 @@
+2006-02-16  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* src/*.c, *.h: Changes mentioned by iceberg in #330444
+	(fix memory leak, toggle menu-togglebutton when mainwindow
+	is hidden/shown, fix compiler warnings)
+
 2006-02-15  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* src/gui.c, src/gui.h, src/record.c:

@@ -47,7 +47,7 @@ gboolean save_settings(void)
 	gconf_client_set_string(client, "/apps/gnomeradio/mixer", settings.mixer, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/mixer-device", settings.mixer_dev, NULL);
 	gconf_client_set_bool(client, "/apps/gnomeradio/mute-on-exit", settings.mute_on_exit, NULL);
-	//gconf_client_set_float(client, "/apps/gnomeradio/volume", volume->value, NULL);
+	/*gconf_client_set_float(client, "/apps/gnomeradio/volume", volume->value, NULL);*/
 	gconf_client_set_float(client, "/apps/gnomeradio/last-freq", adj->value/STEPS, NULL);
 
 	/* Store recording settings */
@@ -107,7 +107,7 @@ gboolean load_settings(void)
 	if (!settings.mixer_dev)
 		settings.mixer_dev = g_strdup("/dev/mixer");
 	settings.mute_on_exit = gconf_client_get_bool(client, "/apps/gnomeradio/mute-on-exit", NULL);
-	//volume->value = gconf_client_get_float(client, "/apps/gnomeradio/volume", NULL);
+	/*volume->value = gconf_client_get_float(client, "/apps/gnomeradio/volume", NULL);*/
 	freq = gconf_client_get_float(client, "/apps/gnomeradio/last-freq", NULL);
 	if ((freq < FREQ_MIN) || (freq > FREQ_MAX))
 		adj->value = FREQ_MIN * STEPS;
@@ -140,14 +140,12 @@ gboolean load_settings(void)
 	count = gconf_client_get_int(client, "/apps/gnomeradio/presets/presets", NULL);
 	for (i=0;i<count;i++)
 	{
-		char *tmp;
 		ps = malloc(sizeof(preset));
 		buffer = g_strdup_printf("/apps/gnomeradio/presets/%d/name", i);
-		tmp = gconf_client_get_string(client, buffer, NULL); 
-		if (!tmp)
-			tmp = "unnamed";
-		ps->title = g_strdup(tmp);
+		ps->title = gconf_client_get_string(client, buffer, NULL); 
 		g_free(buffer);
+		if (!ps->title)
+			ps->title = g_strdup(_("unnamed"));
 		buffer = g_strdup_printf("/apps/gnomeradio/presets/%d/freqency", i);
 		freq = gconf_client_get_float(client, buffer, NULL); 
 		if ((freq < FREQ_MIN) || (freq > FREQ_MAX))
@@ -289,7 +287,7 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	menuitem = gtk_menu_item_new_with_label(ps->title); 
 		
 	gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, mom_ps);		
-	g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, mom_ps);
+	g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)mom_ps);
 	gtk_widget_show(menuitem);
 
 	buffer = g_strdup_printf("%d", g_list_length(settings.presets) - 1);

@@ -17,23 +17,6 @@
 #ifndef _REC_TECH_H
 #define _REC_TECH_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <sys/time.h>
-#include <sys/ioctl.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <assert.h>
-#include <stdarg.h>
-
-#include <linux/videodev.h>
-#include <sys/soundcard.h>
-
 typedef struct Recording_Settings recording_settings;
 struct Recording_Settings
 {

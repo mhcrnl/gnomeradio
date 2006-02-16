@@ -17,15 +17,6 @@
 #ifndef _LIRC_H
 #define _LIRC_H
 
-#include <fcntl.h>
-#include <gnome.h>
-
-#ifdef HAVE_LIRC
-
-#include <lirc/lirc_client.h>
-
-#endif
-
 int my_lirc_init(void);
 
 void my_lirc_deinit(void);
@@ -33,4 +24,3 @@ void my_lirc_deinit(void);
 void start_lirc(void);
 
 #endif
-

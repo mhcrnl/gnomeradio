@@ -19,6 +19,15 @@
 #ifdef HAVE_LIRC
 
 #include <string.h>
+#include <fcntl.h>
+#include <gnome.h>
+
+#ifdef HAVE_LIRC
+
+#include <lirc/lirc_client.h>
+
+#endif
+
 #include "lirc.h"
 #include "gui.h"
 
@@ -88,7 +97,8 @@ static void execute_lirc_command (char *cmd)
 static char* map_code_to_default(char *code)
 {
 	char event[21];
-	int dummy, repeat = 0, key = 0;
+	unsigned int dummy, repeat = 0;
+	int	key = 0;
 	
 	if (sscanf(code,"%x %x %20s", &dummy, &repeat, event) != 3)
 	{
@@ -153,7 +163,7 @@ void my_lirc_deinit(void)
 	if (fd <= 0)
 		return;
 	printf("Shutting down lirc\n");
-	//gdk_input_remove (input_tag);
+	/*gdk_input_remove (input_tag);*/
 	lirc_freeconfig(config);
 	lirc_deinit ();
 }	
@@ -185,11 +195,11 @@ static gboolean lirc_has_data_cb(GIOChannel *source, GIOCondition condition, gpo
 		free (code);
 	}
 
-	// on LIRC error, shutdown added input
+	/* on LIRC error, shutdown added input*/
 	if (ret == -1) 
 	{
 		printf("An lirc error occured\n");
-		//gdk_input_remove (input_tag);
+		/*gdk_input_remove (input_tag);*/
 		lirc_freeconfig (config);
 		config = NULL;
 		lirc_deinit ();

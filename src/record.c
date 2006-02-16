@@ -21,6 +21,9 @@
 /*** the recording functionality */
 
 #include <config.h>
+
+#include <sys/types.h>
+#include <signal.h>
 #include <gnome.h>
 #include "gui.h"
 #include "tech.h"
@@ -58,7 +61,7 @@ static gboolean path_entry_changed_cb(GtkWidget *widget, gpointer data)
 static void mp3_rb_toggled_cb(GtkWidget* widget, gpointer data)
 {
 	gboolean state;
-	//g_print("mp3 %s\n", gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mp3_rb)) ? "TRUE":"FALSE");
+	/*g_print("mp3 %s\n", gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mp3_rb)) ? "TRUE":"FALSE");*/
 	state = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mp3_rb));
 	
 	rec_settings.mp3 = state;
@@ -87,7 +90,7 @@ static gboolean sample_combo_changed_cb(GtkWidget *widget, gpointer data)
 
 static void stereo_rb_toggled_cb(GtkWidget* widget, gpointer data)
 {
-	//g_print("stereo %s\n", gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stereo_rb)) ? "TRUE":"FALSE");
+	/*g_print("stereo %s\n", gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stereo_rb)) ? "TRUE":"FALSE");*/
 	rec_settings.stereo = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stereo_rb));
 }	
 
@@ -108,7 +111,7 @@ static gboolean bitrate_combo_changed_cb(GtkWidget *widget, gpointer data)
 	return TRUE;
 }
 
-/*
+#if 0
 static void filesel_ok_clicked_cb(GtkWidget *widget, gpointer filesel)
 {
 	gtk_entry_set_text(GTK_ENTRY(path_entry), gtk_file_selection_get_filename(GTK_FILE_SELECTION(filesel)));
@@ -121,7 +124,7 @@ static void choose_button_clicked_cb(GtkWidget *widget, gpointer data)
 	filesel = gtk_file_selection_new(_("Choose a filename"));
 	gtk_file_selection_set_filename(GTK_FILE_SELECTION(filesel), gtk_entry_get_text(GTK_ENTRY(path_entry)));
 	
-	//gtk_file_selection_complete(GTK_FILE_SELECTION(filesel), "*.mp3");
+	/*gtk_file_selection_complete(GTK_FILE_SELECTION(filesel), "*.mp3");*/
 	
 	g_signal_connect(GTK_OBJECT (GTK_FILE_SELECTION(filesel)->ok_button), "clicked", 
 						GTK_SIGNAL_FUNC(filesel_ok_clicked_cb), (gpointer)filesel);
@@ -133,7 +136,7 @@ static void choose_button_clicked_cb(GtkWidget *widget, gpointer data)
 	gtk_window_set_modal(GTK_WINDOW(filesel), TRUE);
 	gtk_widget_show_all(filesel);
 }	
-*/
+#endif
 
 GtkWidget* record_prefs_window(void)
 {
@@ -185,13 +188,13 @@ GtkWidget* record_prefs_window(void)
 	audiodev_entry = gtk_entry_new();
 	gtk_entry_set_text(GTK_ENTRY(audiodev_entry),rec_settings.audiodevice);
 	path_label = gtk_label_new(_("Filename:"));
-	//path_entry = gtk_entry_new();
+	/*path_entry = gtk_entry_new();*/
 	path_entry = gnome_file_entry_new("gnomeradio_filename", _("Choose a filename"));
 	gtk_entry_set_text(GTK_ENTRY(
 		gnome_file_entry_gtk_entry(GNOME_FILE_ENTRY(path_entry))), rec_settings.filename);
-	//gnome_entry_load_history("gnomeradio_filename");
+	/*gnome_entry_load_history("gnomeradio_filename");*/
 	gnome_file_entry_set_modal(GNOME_FILE_ENTRY(path_entry), TRUE);
-	//choose_button = gtk_button_new_with_label(_("Choose..."));
+	/*choose_button = gtk_button_new_with_label(_("Choose..."));*/
 	type_label = gtk_label_new(_("Record as:"));
 	wav_rb = gtk_radio_button_new_with_label(NULL, _("Wave (.wav)"));
 	mp3_rb = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(wav_rb),_("MP3/Ogg (.mp3/.ogg)"));
@@ -205,7 +208,7 @@ GtkWidget* record_prefs_window(void)
 	gtk_table_attach_defaults(GTK_TABLE(gen_table), audiodev_entry, 1, 2, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(gen_table), path_label, 0, 1, 1, 2);
 	gtk_table_attach_defaults(GTK_TABLE(gen_table), path_entry, 1, 3, 1, 2);
-	//gtk_table_attach_defaults(GTK_TABLE(gen_table), choose_button, 2, 3, 1, 2);
+	/*gtk_table_attach_defaults(GTK_TABLE(gen_table), choose_button, 2, 3, 1, 2);*/
 	gtk_table_attach_defaults(GTK_TABLE(gen_table), type_label, 0, 1, 2, 3);
 	gtk_table_attach_defaults(GTK_TABLE(gen_table), wav_rb, 1, 3, 2, 3);
 	gtk_table_attach_defaults(GTK_TABLE(gen_table), mp3_rb, 1, 3, 3, 4);
@@ -339,7 +342,7 @@ GtkWidget* record_prefs_window(void)
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), wav_frame, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), mp3_frame, TRUE, TRUE, 0);
 
-	//g_signal_connect(GTK_OBJECT(choose_button), "clicked", GTK_SIGNAL_FUNC(choose_button_clicked_cb), NULL);
+	/*g_signal_connect(GTK_OBJECT(choose_button), "clicked", GTK_SIGNAL_FUNC(choose_button_clicked_cb), NULL);*/
 	g_signal_connect(GTK_OBJECT(audiodev_entry), "changed", GTK_SIGNAL_FUNC(audiodev_entry_changed_cb), NULL);
 	g_signal_connect(GTK_OBJECT(path_entry), "changed", GTK_SIGNAL_FUNC(path_entry_changed_cb), NULL);
 	g_signal_connect(GTK_OBJECT(mp3_rb), "toggled", GTK_SIGNAL_FUNC(mp3_rb_toggled_cb), NULL);
@@ -387,10 +390,10 @@ monitor_ioc(GIOChannel *source, GIOCondition condition, gboolean is_mp3_chan)
 {
 	GError *err = NULL;
 	char buffer[1024], *text;
-	int n = 0;
+	unsigned int n = 0;
 	static char *wav_buf = NULL, *mp3_buf = NULL; 
 	
-	//g_print("condition is %d and is_mp3_chan is %d\n", condition, is_mp3_chan);
+	/*g_print("condition is %d and is_mp3_chan is %d\n", condition, is_mp3_chan);*/
 	if ((condition & G_IO_IN) || (condition & G_IO_PRI))
 	{
 		if (g_io_channel_read_chars(source, buffer, 1023, &n, &err) != G_IO_STATUS_NORMAL)
@@ -408,22 +411,22 @@ monitor_ioc(GIOChannel *source, GIOCondition condition, gboolean is_mp3_chan)
 			if (mp3_buf)
 				g_free(mp3_buf);
 			mp3_buf = g_strdup(buffer);
-			//g_print("mp3_buf: %s\n", mp3_buf);
+			/*g_print("mp3_buf: %s\n", mp3_buf);*/
 		}
 		else
 		{
 			if (wav_buf)
 				g_free(wav_buf);
 			wav_buf = g_strdup(buffer);
-			//g_print("wav_buf: %s\n", wav_buf);
+			/*g_print("wav_buf: %s\n", wav_buf);*/
 		}
 	}
 	if (condition & G_IO_HUP)
 	{
 		int exitcode = 0, exitsignal;
 		exitsignal = record_get_exit_status(is_mp3_chan, &exitcode);
-		//g_print("Signal was %d and Code %d\n", -exitsignal, exitcode);
-		//g_print(">>%s<<\n", is_mp3_chan ? mp3_buf : wav_buf);
+		/*g_print("Signal was %d and Code %d\n", -exitsignal, exitcode);*/
+		/*g_print(">>%s<<\n", is_mp3_chan ? mp3_buf : wav_buf);*/
 
 		close_status_window();		
 		if (exitcode)
@@ -528,7 +531,7 @@ GtkWidget* record_status_window(void)
 
 	status_dialog = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title(GTK_WINDOW(status_dialog),_("Gnomeradio recording status"));
-	//gtk_window_set_resizable(GTK_WINDOW(status_dialog), FALSE);
+	/*gtk_window_set_resizable(GTK_WINDOW(status_dialog), FALSE);*/
 	gtk_window_set_default_size(GTK_WINDOW(status_dialog), 300, -1);
 
 	vbox = gtk_vbox_new(FALSE, 5);

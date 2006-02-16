@@ -14,6 +14,17 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+#include <assert.h>
+
+#include <linux/videodev.h>
+#include <sys/soundcard.h>
+
 #include "tech.h"
 
 static int freq_fact, fd = -1, mixer_fd = -1, mixer_src = -1;
@@ -129,7 +140,7 @@ int mixer_set_volume(int volume)
 	i_vol = volume;  
 	i_vol += volume << 8;
 
-	//printf("Setting %s to vol %i\n", devices[mixer_src], volume);
+	/*printf("Setting %s to vol %i\n", devices[mixer_src], volume);*/
 	if ((ioctl(mixer_fd, MIXER_WRITE(mixer_src), &i_vol)) < 0)
 		return 0;
 		
@@ -152,7 +163,7 @@ int mixer_get_volume(void)
 	r = i_vol >> 8;
 	l = i_vol % (1 << 8);
 	volume = (r + l)/2;
-	//printf("%d %d %d %d\n", r, l, volume, i_vol);
+	/*printf("%d %d %d %d\n", r, l, volume, i_vol);*/
 	
 	assert((volume >= 0) && (volume <= 100));
 	
@@ -223,7 +234,7 @@ void radio_unmute(void)
 
     if (ioctl(fd, VIDIOCGAUDIO, &vid_aud))
 		perror("VIDIOCGAUDIO");
-    //if (vid_aud.volume == 0)
+    /*if (vid_aud.volume == 0)*/
 	vid_aud.volume = 0xFFFF;
     vid_aud.flags &= ~VIDEO_AUDIO_MUTE;
 	vid_aud.mode = VIDEO_SOUND_STEREO;

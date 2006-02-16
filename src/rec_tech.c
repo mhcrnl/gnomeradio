@@ -14,6 +14,24 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <sys/time.h>
+#include <sys/ioctl.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <assert.h>
+#include <stdarg.h>
+
+#include <linux/videodev.h>
+#include <sys/soundcard.h>
+
 #include <glib.h>
 #include "rec_tech.h"
 
@@ -77,7 +95,7 @@ execute_command(int *pid, const char *arg1, ...)
 			g_free(cmd);
 			return NULL; 
 		default:
-			//g_print("fd for %s is %d\n", cmd[0], pipefds[0]);
+			/*g_print("fd for %s is %d\n", cmd[0], pipefds[0]);*/
 			g_free(cmd);
 	}	
 	close(pipefds[1]);
@@ -229,7 +247,7 @@ record_get_exit_status(gboolean mp3, int *exitcode)
 
 void record_stop(int sig)
 {
-	//g_print("wav_pid is %d mp3_pid is %d\n", wav_pid, mp3_pid);
+	/*g_print("wav_pid is %d mp3_pid is %d\n", wav_pid, mp3_pid);*/
 	if (wav_pid>-1)
 	{
 		if (kill(wav_pid, sig))

@@ -17,17 +17,6 @@
 #ifndef _TECH_H
 #define _TECH_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <assert.h>
-
-#include <linux/videodev.h>
-#include <sys/soundcard.h>
-
 int mixer_init(char *mixer_device, char *mixer_source);
 
 char* mixer_get_sndcard_name(void);
