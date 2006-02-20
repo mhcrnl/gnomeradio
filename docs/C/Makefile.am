@@ -5,12 +5,12 @@ figs = \
 	figures/recording-general.png \
 	figures/recording-mp3.png \
 	figures/recording-wav.png \
-	figures/recording_status.png \	
+	figures/recording_status.png \
 	figures/settings-misc.png \
 	figures/settings-presets.png \
 	figures/status-window.png \
 	figures/volume-controls.png
-	
+
 figdir = figures
 docname = gnomeradio
 lang = C

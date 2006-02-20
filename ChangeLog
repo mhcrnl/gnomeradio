@@ -1,3 +1,7 @@
+2006-02-20  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* doc/C/Makefile.am: Remove trailing whitespace after backslash
+
 2006-02-16  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* src/*.c, *.h: Changes mentioned by iceberg in #330444
