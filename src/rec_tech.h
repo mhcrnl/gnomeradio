@@ -16,39 +16,34 @@
 
 #ifndef _REC_TECH_H
 #define _REC_TECH_H
+#include <gst/gst.h>
 
 typedef struct Recording_Settings recording_settings;
 struct Recording_Settings
 {
-	gchar *audiodevice;
+	gchar *profile;
 	gchar *destination;
+/*	gchar *audiodevice;
 	gboolean mp3;
 	gchar *rate;
 	gchar *sample;
 	gboolean stereo;
 	gchar *encoder;
-	gchar *bitrate;
+	gchar *bitrate;*/
 };
 
 recording_settings rec_settings;
 
-GList *
-get_installed_encoders(void);
+typedef struct {
+	GstElement* pipeline;
+	char* filename;
+} Recording;
 
-int 
-check_sox_installation(void);
-
-void
-record_as_wave(GIOChannel **wavioc, const gchar *filename);
-
-void
-record_as_mp3(GIOChannel **wavioc, GIOChannel **mp3ioc, const gchar *filename);
-
-int 
-record_get_exit_status(gboolean mp3, int *exitcode);
+Recording*
+recording_start(const char* filename);
 
 void
-record_stop(int sig);
+recording_stop(Recording* recording);
 
 int
 check_filename(const char *filename);

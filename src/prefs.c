@@ -15,6 +15,7 @@
  */
 
 #include <gconf/gconf-client.h>
+#include <profiles/audio-profile-choose.h>
 #include <string.h>
 #include "config.h"
 #include "prefs.h"
@@ -51,14 +52,17 @@ gboolean save_settings(void)
 	gconf_client_set_float(client, "/apps/gnomeradio/last-freq", adj->value/STEPS, NULL);
 
 	/* Store recording settings */
-	gconf_client_set_string(client, "/apps/gnomeradio/recording/audiodevice", rec_settings.audiodevice, NULL);
-	gconf_client_set_string(client, "/apps/gnomeradio/recording/destination", rec_settings.destination, NULL);
+/*	gconf_client_set_string(client, "/apps/gnomeradio/recording/audiodevice", rec_settings.audiodevice, NULL);
 	gconf_client_set_bool(client, "/apps/gnomeradio/recording/record-as-mp3", rec_settings.mp3, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/sample-rate", rec_settings.rate, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/sample-format", rec_settings.sample, NULL);
 	gconf_client_set_bool(client, "/apps/gnomeradio/recording/record-in-stereo", rec_settings.stereo, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/encoder", rec_settings.encoder, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/recording/bitrate", rec_settings.bitrate, NULL);
+*/
+
+	gconf_client_set_string(client, "/apps/gnomeradio/recording/destination", rec_settings.destination, NULL);
+	gconf_client_set_string(client, "/apps/gnomeradio/recording/profile", rec_settings.profile, NULL);
 
 	/* Store the presets */
 	count = g_list_length(settings.presets);
@@ -115,12 +119,9 @@ gboolean load_settings(void)
 		adj->value = freq * STEPS;
 	
 	/* Load recording settings */
-	rec_settings.audiodevice = gconf_client_get_string(client, "/apps/gnomeradio/recording/audiodevice", NULL);
+/*	rec_settings.audiodevice = gconf_client_get_string(client, "/apps/gnomeradio/recording/audiodevice", NULL);
 	if (!rec_settings.audiodevice)
 		rec_settings.audiodevice = g_strdup("/dev/audio");
-	rec_settings.destination = gconf_client_get_string(client, "/apps/gnomeradio/recording/destination", NULL);
-	if (!rec_settings.destination)
-		rec_settings.destination = g_strdup(g_get_home_dir());
 	rec_settings.mp3 = gconf_client_get_bool(client, "/apps/gnomeradio/recording/record-as-mp3", NULL);
 	rec_settings.rate = gconf_client_get_string(client, "/apps/gnomeradio/recording/sample-rate", NULL);
 	if (!rec_settings.rate)
@@ -134,7 +135,14 @@ gboolean load_settings(void)
 		rec_settings.encoder = g_strdup("oggenc");
 	rec_settings.bitrate = gconf_client_get_string(client, "/apps/gnomeradio/recording/bitrate", NULL);
 	if (!rec_settings.bitrate)
-		rec_settings.bitrate = g_strdup("192");
+		rec_settings.bitrate = g_strdup("192");*/
+
+	rec_settings.destination = gconf_client_get_string(client, "/apps/gnomeradio/recording/destination", NULL);
+	if (!rec_settings.destination)
+		rec_settings.destination = g_strdup(g_get_home_dir());
+	rec_settings.profile = gconf_client_get_string(client, "/apps/gnomeradio/recording/profile", NULL);
+	if (!rec_settings.profile)
+		rec_settings.profile = g_strdup("cdlossy");
 	
 	/* Load the presets */
 	count = gconf_client_get_int(client, "/apps/gnomeradio/presets/presets", NULL);
@@ -209,7 +217,7 @@ static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 	return FALSE;
 }
 
-static gboolean bitrate_combo_change_cb(GtkComboBox *combo, gpointer data)
+/*static gboolean bitrate_combo_change_cb(GtkComboBox *combo, gpointer data)
 {
 	GList *bitrates;
 	gint active;
@@ -227,9 +235,9 @@ static gboolean bitrate_combo_change_cb(GtkComboBox *combo, gpointer data)
 	rec_settings.bitrate = g_strdup(bitrate);
 	
 	return FALSE;
-}
+}*/
 
-static gboolean encoder_combo_change_cb(GtkComboBox *combo, gpointer bitrate_combo)
+/*static gboolean encoder_combo_change_cb(GtkComboBox *combo, gpointer bitrate_combo)
 {
 	GList *encoders;
 	gint active;
@@ -251,6 +259,17 @@ static gboolean encoder_combo_change_cb(GtkComboBox *combo, gpointer bitrate_com
 	}
 	gtk_widget_set_sensitive(bitrate_combo, rec_settings.mp3);
 	
+	return FALSE;
+}*/
+
+static gboolean profile_combo_change_cb(GtkComboBox *combo, gpointer userdata)
+{
+	GMAudioProfile* profile = gm_audio_profile_choose_get_active(GTK_WIDGET(combo));
+
+	g_assert(rec_settings.profile);
+	g_free(rec_settings.profile);
+	rec_settings.profile = g_strdup(gm_audio_profile_get_id(profile));
+
 	return FALSE;
 }
 
@@ -478,10 +497,10 @@ GtkWidget* prefs_window(void)
 	GtkWidget *settings_box, *presets_box, *record_box;
 	GtkWidget *settings_label, *presets_label, *record_label;
 	GtkWidget *s_indent_label, *p_indent_label, *r_indent_label;
-	GtkWidget *encoder_label, *bitrate_label, *destination_label;
+	GtkWidget *profile_label, *destination_label;
 	GtkWidget *destination_button;
-	GtkWidget *encoder_combo, *bitrate_combo;
-	GtkWidget *mixer_eb, *encoder_eb, *bitrate_eb;
+	GtkWidget *profile_combo;
+	GtkWidget *mixer_eb, *profile_eb;
 	GtkWidget *preset_box;
 	GtkWidget *settings_table, *record_table;
 	GtkWidget *device_label, *mixer_label;
@@ -490,7 +509,7 @@ GtkWidget* prefs_window(void)
 	GtkWidget *scrolled_window;
 	GtkCellRenderer *cellrenderer;
 	GtkTreeViewColumn *list_column;
-	GList *mixer_devs, *encoders, *bitrates, *ptr;
+	GList *mixer_devs, *profiles, *ptr;
 	gint i, active;
 	char *settings_hdr, *presets_hdr, *record_hdr;
 	preset* ps;
@@ -665,80 +684,32 @@ GtkWidget* prefs_window(void)
 	r_indent_label = gtk_label_new("    ");
 	gtk_box_pack_start(GTK_BOX(rbox), r_indent_label, FALSE, FALSE, 0);
 
-	bitrates = g_list_append(NULL, g_strdup("32"));
-	bitrates = g_list_append(bitrates, g_strdup("40"));
-	bitrates = g_list_append(bitrates, g_strdup("48"));
-	bitrates = g_list_append(bitrates, g_strdup("56"));
-	bitrates = g_list_append(bitrates, g_strdup("64"));
-	bitrates = g_list_append(bitrates, g_strdup("80"));
-	bitrates = g_list_append(bitrates, g_strdup("96"));
-	bitrates = g_list_append(bitrates, g_strdup("112"));
-	bitrates = g_list_append(bitrates, g_strdup("128"));
-	bitrates = g_list_append(bitrates, g_strdup("160"));
-	bitrates = g_list_append(bitrates, g_strdup("192"));
-	bitrates = g_list_append(bitrates, g_strdup("224"));
-	bitrates = g_list_append(bitrates, g_strdup("256"));
-	bitrates = g_list_append(bitrates, g_strdup("320"));
-
-	record_table = gtk_table_new(3, 2, FALSE);
+	record_table = gtk_table_new(2, 2, FALSE);
 	gtk_table_set_col_spacings(GTK_TABLE(record_table), 15);
 	gtk_table_set_row_spacings(GTK_TABLE(record_table), 5);
 	
-	encoder_label = gtk_label_new(_("Encoder:"));
-	bitrate_label = gtk_label_new(_("Bitrate:"));
+	profile_label = gtk_label_new(_("Profile:"));
 	destination_label = gtk_label_new(_("Destination directory:"));
-	gtk_misc_set_alignment(GTK_MISC(encoder_label), 0.0f, 0.5f); 
-	gtk_misc_set_alignment(GTK_MISC(bitrate_label), 0.0f, 0.5f);
+	gtk_misc_set_alignment(GTK_MISC(profile_label), 0.0f, 0.5f); 
 	gtk_misc_set_alignment(GTK_MISC(destination_label), 0.0f, 0.5f);
 
 	destination_button = gtk_button_new();
 	gtk_button_set_label(GTK_BUTTON(destination_button), rec_settings.destination);
 	
-	encoder_eb = gtk_event_box_new();
-	encoder_combo = gtk_combo_box_new_text();
-	gtk_container_add(GTK_CONTAINER(encoder_eb), encoder_combo);
-	encoders = get_installed_encoders();
-	if (!encoders) rec_settings.mp3 = FALSE;
-	ptr = encoders = g_list_prepend(encoders, (gpointer)g_strdup(_("Wave file")));
-	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
-		gtk_combo_box_append_text(GTK_COMBO_BOX(encoder_combo), ptr->data);
-		if (g_str_equal(ptr->data, rec_settings.encoder)) active = i;
-		++i;
-	}
-	
-	if (!rec_settings.mp3) active = 0;
-	gtk_combo_box_set_active(GTK_COMBO_BOX(encoder_combo), active);
-	if (encoders) g_object_set_data_full(G_OBJECT(encoder_combo), "encoders", encoders, (GDestroyNotify)free_string_list);
-	
-	bitrate_eb = gtk_event_box_new();
-	bitrate_combo = gtk_combo_box_new_text();
-	gtk_container_add(GTK_CONTAINER(bitrate_eb), bitrate_combo);
-	ptr = bitrates;
-	for (i = 0, active = 0; ptr; ptr = g_list_next(ptr)) {
-		gchar *buffer = g_strdup_printf(_("%s kb/s"), (gchar*)ptr->data);
-		gtk_combo_box_append_text(GTK_COMBO_BOX(bitrate_combo), buffer);
-		g_free(buffer);
-		if (!strncmp(ptr->data, rec_settings.bitrate, strlen(rec_settings.bitrate))) active = i;
-		++i;
-	}
-	gtk_combo_box_set_active(GTK_COMBO_BOX(bitrate_combo), active);
-	g_object_set_data_full(G_OBJECT(bitrate_combo), "bitrates", bitrates, (GDestroyNotify)free_string_list);
-
-	gtk_widget_set_sensitive(bitrate_combo, rec_settings.mp3);
+	profile_eb = gtk_event_box_new();
+	profile_combo = gm_audio_profile_choose_new();
+	gtk_container_add(GTK_CONTAINER(profile_eb), profile_combo);
+	gm_audio_profile_choose_set_active(profile_combo, rec_settings.profile);
 
 	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_label, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_button, 1, 2, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_label, 0, 1, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), encoder_eb, 1, 2, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_label, 0, 1, 2, 3);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), bitrate_eb, 1, 2, 2, 3);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), profile_label, 0, 1, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), profile_eb, 1, 2, 1, 2);
 
 	g_signal_connect(GTK_OBJECT(destination_button), "clicked", GTK_SIGNAL_FUNC(destination_button_clicked_cb), NULL);
-	g_signal_connect(GTK_OBJECT(encoder_combo), "changed", GTK_SIGNAL_FUNC(encoder_combo_change_cb), (gpointer)bitrate_combo);
-	g_signal_connect(GTK_OBJECT(bitrate_combo), "changed", GTK_SIGNAL_FUNC(bitrate_combo_change_cb), NULL);
+	g_signal_connect(GTK_OBJECT(profile_combo), "changed", GTK_SIGNAL_FUNC(profile_combo_change_cb), NULL);
 
-	gtk_tooltips_set_tip(tooltips, encoder_eb, _("Choose the mp3-/ogg-encoder that should be used, or to record as a uncompressed wave file"), NULL);
-	gtk_tooltips_set_tip(tooltips, bitrate_eb, _("Choose the bitrate in which the mp3/ogg will be encoded"), NULL);
+	gtk_tooltips_set_tip(tooltips, profile_eb, _("Choose the Media Profile that should be used to record."), NULL);
 	
 	gtk_box_pack_start(GTK_BOX(rbox), record_table, TRUE, TRUE, 0);
 

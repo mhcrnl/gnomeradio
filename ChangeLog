@@ -1,3 +1,7 @@
+2006-02-22  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* Ported Recording to gstreamer
+
 2006-02-20  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* doc/C/Makefile.am: Remove trailing whitespace after backslash

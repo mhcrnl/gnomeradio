@@ -65,14 +65,12 @@ void start_radio(gboolean restart)
 	
 	if (!radio_init(settings.device)) 
 	{
-		GtkWidget *dialog;
-		
-		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
- 				_("Could not open device \"%s\" !\n\nCheck your Settings and make sure that no other\n"
-				"program is using %s.\nMake also sure that you have read-access to it."), 
-				settings.device, settings.device);
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
+		char *caption = g_strdup_printf(_("Could not open device \"%s\"!"), settings.device);
+		char *detail = g_strdup_printf(_("Check your settings and make sure that no other\n"
+				"program is using %s.\nAlso make sure that you have read-access to it."), settings.device);
+		show_error_message(caption, detail);
+		g_free(caption);
+		g_free(detail);
 	}		
 }
 
@@ -553,8 +551,8 @@ void tray_icon_items_set_sensible(gboolean sensible)
 static int
 start_recording(const gchar *filename)
 {
-	GIOChannel *wavioc = NULL, *mp3ioc = NULL;
 	GtkWidget *dialog;
+	Recording* recording;
 	
 	if (!mixer_set_rec_device())
 	{
@@ -566,16 +564,15 @@ start_recording(const gchar *filename)
 		return -1;
 	}
 	
+	recording = recording_start(filename);
+	if (!recording)
+		return -1;
+	
 	tray_icon_items_set_sensible(FALSE);
 	
-	if (rec_settings.mp3)
-		record_as_mp3(&wavioc, &mp3ioc, filename);
-	else	
-		record_as_wave(&wavioc, filename);
-
-	dialog = record_status_window();
+	dialog = record_status_window(recording);
 	
-	run_status_window(wavioc, mp3ioc, filename);
+	run_status_window(recording);
 
 	return 1;
 }
@@ -583,43 +580,39 @@ start_recording(const gchar *filename)
 static void rec_button_clicked_cb(GtkButton *button, gpointer app)
 {
 	GtkWidget *dialog;
-	gchar *filename, *suffix;
+	gchar *filename;
 	char time_str[100];
 	time_t t;
-	
-	if (!check_sox_installation())
-	{
-		dialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-				_("Sox could not be detected. Please ensure"
-				" that it is installed in your PATH."));
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
-		return;
-	}
-
-	if (rec_settings.mp3) {
-		if (g_str_equal(rec_settings.encoder, "oggenc")) suffix = ".ogg";
-		else suffix = ".mp3";
-	} else suffix = ".wav";
 	
 	t = time(NULL);
 	/* consult man strftime to translate this. This is a filename, so don't use "/" or ":", please */
 	strftime(time_str, 100, _("%B-%d-%Y_%H-%M-%S"), localtime(&t));
 	
-	/* Only change the "MHz" part here (if applicable) */
-	filename = g_strdup_printf(_("%s/%.2fMHz_%s%s"), 
-		rec_settings.destination, 
-		rint(adj->value)/STEPS, 
-		time_str,
-		suffix);
-	
-	if (!check_filename(filename)) {
+	if (mom_ps < 0) {
+		/* Only change the "MHz" part here (if applicable) */
+		filename = g_strdup_printf(_("%s/%.2fMHz_%s"), 
+			rec_settings.destination, 
+			rint(adj->value)/STEPS, 
+			time_str);
+	} else {
+		g_assert(mom_ps < g_list_length(settings.presets));
+		preset* ps = g_list_nth_data(settings.presets, mom_ps);
+		g_assert(ps);
+		
+		filename = g_strdup_printf(_("%s/%s_%s"), 
+			rec_settings.destination, 
+			ps->title, 
+			time_str);
+	}	
+		
+/*	if (!check_filename(filename)) {
 		GtkWidget *errdialog;
 		errdialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 					_("Error opening file '%s':\n%s"), filename, strerror(errno));
 		gtk_dialog_run (GTK_DIALOG (errdialog));
 		gtk_widget_destroy (errdialog);
-	} else start_recording(filename);
+	} else */
+	start_recording(filename);
 	g_free(filename);		
 }
 
@@ -1160,6 +1153,9 @@ int main(int argc, char* argv[])
 	/* Create an tray icon */
 	create_tray_icon(app);
 	
+	/* Initizialize GStreamer */
+	gst_init(&argc, &argv);
+	
 	/* Initizialize Gconf */
 	if (!gconf_init(argc, argv, &err))
 	{
@@ -1176,8 +1172,9 @@ int main(int argc, char* argv[])
 	{
 		gconf_client_set_global_default_error_handler((GConfClientErrorHandlerFunc)gconf_error_handler);
 		gconf_client_set_error_handling(gconf_client_get_default(),  GCONF_CLIENT_HANDLE_ALL);
+		gnome_media_profiles_init(gconf_client_get_default());
 	}
-		
+	
 	load_settings();
 	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), _("manual"));
 	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
@@ -1237,4 +1234,27 @@ int main(int argc, char* argv[])
 #endif
 
 	return 0;
+}
+
+static show_message(GtkMessageType type, const char* caption, const char* error_msg)
+{
+	GtkWidget *dialog;
+	
+	char *text = g_strdup_printf("<b>%s</b>\n\n%s", caption, error_msg);
+	
+	dialog = gtk_message_dialog_new_with_markup(NULL, DIALOG_FLAGS, type, GTK_BUTTONS_CLOSE,
+			text);
+	gtk_dialog_run(GTK_DIALOG (dialog));
+	gtk_widget_destroy(dialog);
+	g_free(text);
+}	
+
+void show_error_message(const char* caption, const char* error_msg)
+{
+	show_message(GTK_MESSAGE_ERROR, caption, error_msg);
+}	
+
+void show_warning_message(const char* caption, const char* error_msg)
+{
+	show_message(GTK_MESSAGE_WARNING, caption, error_msg);
 }

@@ -19,12 +19,8 @@
 
 #include <gnome.h>
 
-GtkWidget* record_prefs_window(void);
+void run_status_window(Recording *recording);
 
-void run_status_window(GIOChannel *wavioc, GIOChannel *mp3ioc, const gchar* fn);
-
-void show_error_msg(gboolean mp3);
-
-GtkWidget* record_status_window(void);	
+GtkWidget* record_status_window(Recording *recording);	
 
 #endif

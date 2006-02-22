@@ -77,4 +77,7 @@ void change_preset(gboolean next);
 
 void create_tray_icon(GtkWidget *app);
 
+void show_error_message(const char* caption, const char* error_msg);
+void show_warning_message(const char* caption, const char* error_msg);
+
 #endif

@@ -3,4 +3,4 @@ gnomeradio.desktop.in
 src/prefs.c
 src/gui.c
 src/record.c
-
+src/rec_tech.c
