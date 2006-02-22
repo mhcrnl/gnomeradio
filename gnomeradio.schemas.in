@@ -24,20 +24,6 @@
       </locale>
     </schema>
 
-<!-- No longer needed
-    <schema>
-      <key>/schemas/apps/gnomeradio/volume</key>
-      <applyto>/apps/gnomeradio/volume</applyto>
-      <owner>gnomeradio</owner>
-      <type>float</type>
-      <default>100</default>
-      <locale name="C">
-	<short>Volume</short>
-	<long>The stored value of the volume (0-100)</long>
-      </locale>
-    </schema>
--->
-
     <schema>
       <key>/schemas/apps/gnomeradio/device</key>
       <applyto>/apps/gnomeradio/device</applyto>
@@ -99,86 +85,14 @@
     </schema>
 	
     <schema>
-      <key>/schemas/apps/gnomeradio/recording/record-in-stereo</key>
-      <applyto>/apps/gnomeradio/recording/record-in-stereo</applyto>
-      <owner>gnomeradio</owner>
-      <type>bool</type>
-      <default>TRUE</default>
-      <locale name="C">
-	<short>Record in stereo or mono</short>
-	<long>Whether the output should be in stereo or mono</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gnomeradio/recording/record-as-mp3</key>
-      <applyto>/apps/gnomeradio/recording/record-as-mp3</applyto>
-      <owner>gnomeradio</owner>
-      <type>bool</type>
-      <default>FALSE</default>
-      <locale name="C">
-	<short>Record as mp3- or wave-file</short>
-	<long>Whether the output should be a mp3- or a wave-file</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gnomeradio/recording/audio-device</key>
-      <applyto>/apps/gnomeradio/recording/audio-device</applyto>
+      <key>/schemas/apps/gnomeradio/recording/profile</key>
+      <applyto>/apps/gnomeradio/recording/profile</applyto>
       <owner>gnomeradio</owner>
       <type>string</type>
-      <default>/dev/audio</default>
+      <default>cdlossy</default>
       <locale name="C">
-	<short>Audio device</short>
-	<long>The audio device to use (usually /dev/audio)</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gnomeradio/recording/encoder</key>
-      <applyto>/apps/gnomeradio/recording/encoder</applyto>
-      <owner>gnomeradio</owner>
-      <type>string</type>
-      <default>oggenc</default>
-      <locale name="C">
-	<short>MP3 encoder</short>
-	<long>Choose the mp3 encoder that should be used</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gnomeradio/recording/bitrate</key>
-      <applyto>/apps/gnomeradio/recording/bitrate</applyto>
-      <owner>gnomeradio</owner>
-      <type>string</type>
-      <default>192</default>
-      <locale name="C">
-	<short>MP3 bitrate</short>
-	<long>Choose the bitrate in which the mp3 will be encoded</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gnomeradio/recording/sample-rate</key>
-      <applyto>/apps/gnomeradio/recording/sample-rate</applyto>
-      <owner>gnomeradio</owner>
-      <type>string</type>
-      <default>44100</default>
-      <locale name="C">
-	<short>Sample rate</short>
-	<long>The audio sample-rate of the wave-file</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gnomeradio/recording/sample-format</key>
-      <applyto>/apps/gnomeradio/recording/sample-format</applyto>
-      <owner>gnomeradio</owner>
-      <type>string</type>
-      <default>16</default>
-      <locale name="C">
-	<short>Sample format</short>
-	<long>The format (8 or 16 bit) of the wave-file</long>
+	<short>GnomeMedia Profile</short>
+	<long>Choose the GnomeMedia Profile that should be used for recording</long>
       </locale>
     </schema>
 
