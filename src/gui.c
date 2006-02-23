@@ -26,6 +26,7 @@
 #include <math.h>
 #include "eggtrayicon.h"
 #include "gui.h"
+#include "trayicon.h"
 #include "tech.h"
 #include "rec_tech.h"
 #include "lirc.h"
@@ -51,12 +52,9 @@
 static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
 static GtkWidget *freq_scale, *vol_scale;
-static GtkWidget *tray_icon;
-static GtkWidget *mute_menuitem, *showwindow_menuitem;
 
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
 static int mute_button_toggled_cb_id;
-static int mute_menuitem_toggled_cb_id;
 
 void start_radio(gboolean restart)
 {
@@ -128,8 +126,7 @@ GList* get_mixer_recdev_list(void)
 	return result;
 }
 
-static gboolean
-redraw_status_window(void)
+static gboolean redraw_status_window(void)
 {
 
 	GdkWindow *real_window, *window;
@@ -184,8 +181,7 @@ redraw_status_window(void)
 }
 	
 
-static gboolean
-expose_event_cb(GtkWidget *widget, GdkEventExpose *event, gpointer data)
+static gboolean expose_event_cb(GtkWidget *widget, GdkEventExpose *event, gpointer data)
 {
 	redraw_status_window();
 	return TRUE;
@@ -247,15 +243,6 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	radio_setfreq(adj->value/STEPS);
 }
 
-static gboolean freq_scale_focus_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data)
-{
-/*
-	mom_ps = -1;
-	preset_combo_set_item(mom_ps);
-*/
-	return FALSE;
-}
-
 static void volume_value_changed_cb(GtkAdjustment* data, gpointer window)
 {
 	char *text;
@@ -292,8 +279,7 @@ static gboolean poll_volume_change(gpointer data)
 }
 #endif
 
-static void
-change_frequency(gpointer data)
+static void change_frequency(gpointer data)
 {
 	gboolean increase = (gboolean)data;
 	
@@ -313,8 +299,7 @@ change_frequency(gpointer data)
 	}
 }
 
-static gboolean
-change_frequency_timeout(gpointer data)
+static gboolean change_frequency_timeout(gpointer data)
 {
 	change_frequency(data);
 	if (bp_timeout_steps < 10)
@@ -330,21 +315,11 @@ change_frequency_timeout(gpointer data)
 static void step_button_pressed_cb(GtkButton *button, gpointer data)
 {
 	bp_timeout_id = gtk_timeout_add(500, (GtkFunction)change_frequency_timeout, data);
-	
-/*
-	mom_ps = -1;
-	preset_combo_set_item(mom_ps);
-*/
 }
 
 static void step_button_clicked_cb(GtkButton *button, gpointer data)
 {
 	change_frequency(data);
-
-/*
-	mom_ps = -1;
-	preset_combo_set_item(mom_ps);
-*/
 }
 
 static void step_button_released_cb(GtkButton *button, gpointer data)
@@ -399,11 +374,6 @@ void scfw_button_clicked_cb(GtkButton *button, gpointer data)
 	}
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)1);	
-
-/*
-	mom_ps = -1;
-	preset_combo_set_item(mom_ps);
-*/
 }
 
 void scbw_button_clicked_cb(GtkButton *button, gpointer data)
@@ -415,10 +385,6 @@ void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 	}
 	radio_mute();
 	timeout_id = gtk_timeout_add(1000/SCAN_SPEED, (GtkFunction)scan_freq, (gpointer)(-1));	
-/*
-	mom_ps = -1;
-	preset_combo_set_item(mom_ps);
-*/
 }
 
 void preset_combo_set_item(gint i)
@@ -438,34 +404,7 @@ static void preset_combo_change_cb(GtkWidget *combo, gpointer data)
 	gtk_adjustment_set_value(adj, ps->freq * STEPS);
 }
 
-/*static void update_preset_menu(void)
-{
-	gint i, count;
-	GtkWidget *item;
-	preset *ps;
-	
-	if (menu)
-		gtk_widget_destroy(menu);
-	menu = gtk_menu_new();
-	
-	count = g_list_length(settings.presets);
-	
-	item = gtk_menu_item_new_with_label(_("manual"));
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-	
-	for (i=0;i<count;i++)
-	{
-		ps = g_list_nth_data(settings.presets, i);
-		item = gtk_menu_item_new_with_label(ps->title);
-		g_signal_connect(GTK_OBJECT(item), "activate", GTK_SIGNAL_FUNC(pref_item_activate_cb), (gpointer)i);
-		gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-	}
-	gtk_widget_show_all(menu);
-	gtk_option_menu_set_menu(GTK_OPTION_MENU(preset_menu), menu);
-}*/
-
-void
-change_preset(gboolean next)
+void change_preset(gboolean next)
 {
 	preset *ps;
 	int len = g_list_length(settings.presets);
@@ -548,8 +487,7 @@ void tray_icon_items_set_sensible(gboolean sensible)
 	gtk_widget_set_sensitive(menuitem, sensible);
 }
 
-static int
-start_recording(const gchar *filename)
+static int start_recording(const gchar *filename)
 {
 	GtkWidget *dialog;
 	Recording* recording;
@@ -577,7 +515,7 @@ start_recording(const gchar *filename)
 	return 1;
 }
 
-static void rec_button_clicked_cb(GtkButton *button, gpointer app)
+void rec_button_clicked_cb(GtkButton *button, gpointer app)
 {
 	GtkWidget *dialog;
 	gchar *filename;
@@ -704,7 +642,7 @@ void display_help_cb(char *topic)
 	}
 }
 
-static void toggle_mainwindow_visibility(GtkWidget *app)
+void toggle_mainwindow_visibility(GtkWidget *app)
 {
 	static gint posx, posy;
 	if (GTK_WIDGET_VISIBLE(app))
@@ -718,66 +656,6 @@ static void toggle_mainwindow_visibility(GtkWidget *app)
 			gtk_window_move(GTK_WINDOW(app), posx, posy);
 		gtk_window_present(GTK_WINDOW(app));
 	}
-}	
-
-gboolean
-tray_clicked(GtkWidget *widget, GdkEventButton *event, gpointer data)
-{
-	/*GtkWidget *app = GTK_WIDGET(data);*/
-	gboolean active;
-	switch (event->button)
-	{
-		case 1:
-			if (event->type != GDK_BUTTON_PRESS)
-				break;
-			/*toggle_mainwindow_visibility(app);*/
-			active = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem));
-			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), !active);
-			break;
-		case 3:
-			if (event->type != GDK_BUTTON_PRESS)
-				break;
-			gtk_menu_popup(GTK_MENU(tray_menu), NULL, NULL, 
-				NULL, NULL, event->button, event->time);
-			break;
-	}			
-	return FALSE;
-}	
-
-gboolean
-tray_destroyed (GtkWidget *widget, GdkEvent *event, gpointer data)
-{
-	create_tray_icon(GTK_WIDGET(data));
-	return TRUE;
-}
-
-void create_tray_icon(GtkWidget *app)
-{
-	GdkPixbuf *pixbuf, *scaled;
-	GtkWidget *tray_icon_image;
-	GtkWidget *eventbox;
-	char *text;
-	
-	tray_icon = GTK_WIDGET(egg_tray_icon_new (PACKAGE));
-	pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
-	scaled = gdk_pixbuf_scale_simple(pixbuf, 16, 16, GDK_INTERP_HYPER);
-	gdk_pixbuf_unref(pixbuf);
-	tray_icon_image = gtk_image_new_from_pixbuf(scaled);
-	gdk_pixbuf_unref(scaled);
-
-	eventbox = gtk_event_box_new();
-	gtk_container_add(GTK_CONTAINER(eventbox), tray_icon_image);
-	gtk_container_add (GTK_CONTAINER(tray_icon), eventbox);
-
-	g_signal_connect(G_OBJECT(eventbox), "button-press-event", 
-		G_CALLBACK(tray_clicked), (gpointer)app);
-	g_signal_connect(G_OBJECT(tray_icon), "destroy-event",
-		G_CALLBACK(tray_destroyed), (gpointer)app);
-	gtk_widget_show_all(GTK_WIDGET(tray_icon));
-	
-	text = g_strdup_printf(_("Gnomeradio - %.2f MHz"), adj->value/STEPS);
-	gtk_tooltips_set_tip(tooltips, tray_icon, text, NULL);
-	g_free(text);
 }	
 
 GtkWidget* gnome_radio_gui(void)
@@ -938,7 +816,6 @@ GtkWidget* gnome_radio_gui(void)
 	g_signal_connect(GTK_OBJECT(app), "delete_event", GTK_SIGNAL_FUNC(delete_event_cb), NULL);
 	g_signal_connect(GTK_OBJECT(quit_button), "clicked", GTK_SIGNAL_FUNC(quit_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(adj), "value-changed", GTK_SIGNAL_FUNC(adj_value_changed_cb), (gpointer) app);
-	g_signal_connect(GTK_OBJECT(freq_scale), "button-release-event", GTK_SIGNAL_FUNC(freq_scale_focus_cb), NULL);
 	g_signal_connect(GTK_OBJECT(volume), "value-changed", GTK_SIGNAL_FUNC(volume_value_changed_cb), NULL);
 	g_signal_connect(GTK_OBJECT(stfw_button), "pressed", GTK_SIGNAL_FUNC(step_button_pressed_cb), (gpointer)TRUE);
 	g_signal_connect(GTK_OBJECT(stbw_button), "pressed", GTK_SIGNAL_FUNC(step_button_pressed_cb), (gpointer)FALSE);
@@ -1044,84 +921,6 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 	}
 	return FALSE;
 }
-
-static void mute_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)
-{
-	toggle_volume();
-}	
-
-static void record_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
-{
-	rec_button_clicked_cb(NULL, user_data);
-}	
-
-static void showwindow_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)
-{
-	GtkWidget* app = GTK_WIDGET(user_data);
-	toggle_mainwindow_visibility(app);
-}	
-
-static void quit_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
-{
-	exit_gnome_radio();
-}	
-
-void preset_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
-{
-	preset* ps;
-	mom_ps = (int)user_data;
-	
-	g_assert(mom_ps >= 0 &&	mom_ps < g_list_length(settings.presets));
-	
-	ps = (preset*)g_list_nth_data(settings.presets, mom_ps);
-	gtk_adjustment_set_value(adj, ps->freq * STEPS);
-}
-
-static void create_tray_menu(GtkWidget *app) {
-	GList *node = settings.presets;
-	int i;
-	
-	tray_menu = gtk_menu_new();
-
-	for (i = 0; node; i++, node = node->next)
-	{
-		preset *ps = (preset*)node->data;
-		GtkWidget *menuitem = gtk_menu_item_new_with_label(ps->title); 
-		
-		gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, i);		
-		g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)i);
-		gtk_widget_show(menuitem);
-	}
-	
-	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), gtk_separator_menu_item_new());
-
-	mute_menuitem = gtk_check_menu_item_new_with_label(_("Muted"));
-	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), mixer_get_volume() == 0);
-	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), mute_menuitem);
-	mute_menuitem_toggled_cb_id = 
-		g_signal_connect(G_OBJECT(mute_menuitem), "toggled", (GCallback)mute_menuitem_toggled_cb, (gpointer)app);
-	gtk_widget_show(mute_menuitem);
-
-	GtkWidget *record_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_RECORD, NULL);
-	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), record_menuitem);		
-	g_signal_connect(G_OBJECT(record_menuitem), "activate", (GCallback)record_menuitem_activate_cb, app);
-	gtk_widget_show(record_menuitem);
-
-	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), gtk_separator_menu_item_new());
-	
-	showwindow_menuitem = gtk_check_menu_item_new_with_label(_("Show Window"));
-	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), GTK_WIDGET_VISIBLE(app));
-	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), showwindow_menuitem);
-	g_signal_connect(G_OBJECT(showwindow_menuitem), "activate", (GCallback)showwindow_menuitem_toggled_cb, (gpointer)app);
-	gtk_widget_show(showwindow_menuitem);
-
-	GtkWidget *quit_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
-	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), quit_menuitem);		
-	g_signal_connect(G_OBJECT(quit_menuitem), "activate", (GCallback)quit_menuitem_activate_cb, NULL);
-	gtk_widget_show(quit_menuitem);
-
-	gtk_widget_show_all(tray_menu);
-}	
 
 int main(int argc, char* argv[])
 {

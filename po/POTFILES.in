@@ -2,5 +2,6 @@ gnomeradio.schemas.in
 gnomeradio.desktop.in
 src/prefs.c
 src/gui.c
+src/trayicon.c
 src/record.c
 src/rec_tech.c

@@ -19,6 +19,7 @@
 #include <string.h>
 #include "config.h"
 #include "prefs.h"
+#include "trayicon.h"
 #include "gui.h"
 #include "rec_tech.h"
 
@@ -497,7 +498,7 @@ GtkWidget* prefs_window(void)
 	GtkWidget *settings_box, *presets_box, *record_box;
 	GtkWidget *settings_label, *presets_label, *record_label;
 	GtkWidget *s_indent_label, *p_indent_label, *r_indent_label;
-	GtkWidget *profile_label, *destination_label;
+	GtkWidget *destination_label;
 	GtkWidget *destination_button;
 	GtkWidget *profile_combo;
 	GtkWidget *mixer_eb, *profile_eb;
@@ -688,9 +689,7 @@ GtkWidget* prefs_window(void)
 	gtk_table_set_col_spacings(GTK_TABLE(record_table), 15);
 	gtk_table_set_row_spacings(GTK_TABLE(record_table), 5);
 	
-	profile_label = gtk_label_new(_("Profile:"));
 	destination_label = gtk_label_new(_("Destination directory:"));
-	gtk_misc_set_alignment(GTK_MISC(profile_label), 0.0f, 0.5f); 
 	gtk_misc_set_alignment(GTK_MISC(destination_label), 0.0f, 0.5f);
 
 	destination_button = gtk_button_new();
@@ -703,8 +702,7 @@ GtkWidget* prefs_window(void)
 
 	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_label, 0, 1, 0, 1);
 	gtk_table_attach_defaults(GTK_TABLE(record_table), destination_button, 1, 2, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), profile_label, 0, 1, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(record_table), profile_eb, 1, 2, 1, 2);
+	gtk_table_attach_defaults(GTK_TABLE(record_table), profile_eb, 0, 2, 1, 2);
 
 	g_signal_connect(GTK_OBJECT(destination_button), "clicked", GTK_SIGNAL_FUNC(destination_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(profile_combo), "changed", GTK_SIGNAL_FUNC(profile_combo_change_cb), NULL);

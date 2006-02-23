@@ -43,7 +43,7 @@ struct Preset
 	gfloat freq;
 };
 
-GtkWidget* mute_button, *preset_combo, *tray_menu;
+GtkWidget* mute_button, *preset_combo;
 GtkAdjustment *adj, *volume;
 GtkTooltips *tooltips;
 
@@ -63,7 +63,11 @@ void scfw_button_clicked_cb(GtkButton *button, gpointer data);
 
 void scbw_button_clicked_cb(GtkButton *button, gpointer data);
 
+void rec_button_clicked_cb(GtkButton *button, gpointer app);
+
 void toggle_volume(void);
+
+void toggle_mainwindow_visibility(GtkWidget *app);
 
 void preset_combo_set_item(gint i);
 
@@ -75,7 +79,6 @@ void display_help_cb(char *topic);
 
 void change_preset(gboolean next);
 
-void create_tray_icon(GtkWidget *app);
 
 void show_error_message(const char* caption, const char* error_msg);
 void show_warning_message(const char* caption, const char* error_msg);

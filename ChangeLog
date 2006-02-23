@@ -1,3 +1,8 @@
+2006-02-23  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* po/POTFILES.in, src/Makefile.am, trayicon.*, gui.*, prefs.c:
+	Move trayicon related stuff to trayicon.c/.h
+
 2006-02-22  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* Ported Recording to gstreamer
