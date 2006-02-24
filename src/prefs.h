@@ -23,6 +23,6 @@
 gboolean save_settings(void);
 gboolean load_settings(void);
 
-GtkWidget* prefs_window(void);
+GtkWidget* prefs_window(GtkWidget *app);
 
 #endif

@@ -51,9 +51,9 @@ int mom_ps;
 
 gnomeradio_settings settings;
 
-void start_radio(gboolean restart);
+void start_radio(gboolean restart, GtkWidget *app);
 
-void start_mixer(gboolean restart);
+void start_mixer(gboolean restart, GtkWidget *app);
 
 GList* get_mixer_recdev_list(void);
 
@@ -80,7 +80,7 @@ void display_help_cb(char *topic);
 void change_preset(gboolean next);
 
 
-void show_error_message(const char* caption, const char* error_msg);
-void show_warning_message(const char* caption, const char* error_msg);
+void show_error_message(const char* error, const char* details);
+void show_warning_message(const char* warning, const char* details);
 
 #endif

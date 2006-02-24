@@ -56,7 +56,167 @@ static GtkWidget *freq_scale, *vol_scale;
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
 static int mute_button_toggled_cb_id;
 
-void start_radio(gboolean restart)
+static gboolean is_first_start(void)
+{
+	GConfClient *client = gconf_client_get_default();
+	if (!client)
+		return TRUE;
+
+	return !gconf_client_get_bool(client, "/apps/gnomeradio/first_time_flag", NULL);
+}
+
+static void set_first_time_flag(void)
+{
+	GConfClient *client = gconf_client_get_default();
+	if (!client)
+		return;
+
+	gconf_client_set_bool(client, "/apps/gnomeradio/first_time_flag", TRUE, NULL);
+}
+
+typedef struct {
+	GtkWidget *dialog;
+	GtkWidget *progress;
+	GList *stations;
+	GtkWidget *label;
+} FreqScanData;
+
+static gboolean initial_frequency_scan_cb(gpointer data)
+{
+	static gfloat freq = FREQ_MIN - 4.0f/STEPS;
+	FreqScanData *fsd = data;
+	
+	g_assert(fsd);
+	
+	if (freq > FREQ_MAX) {
+		gtk_widget_destroy(fsd->dialog);
+		timeout_id = 0;
+		return FALSE;
+	}
+	
+	if (radio_check_station(freq)) {
+		char *text = g_strdup_printf(_("%d stations found"), g_list_length(fsd->stations) + 1);
+		gfloat *f = g_malloc(sizeof(gfloat));
+		gtk_label_set_text(GTK_LABEL(fsd->label), text);
+		g_free(text);
+		
+		g_print("%.2f is a station\n", freq);
+		
+		*f = freq;
+		fsd->stations = g_list_append(fsd->stations, f);
+	}
+
+	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsd->progress), MAX(0, (freq - FREQ_MIN)/(FREQ_MAX - FREQ_MIN)));	
+	
+	freq += 1.0/STEPS;
+	radio_setfreq(freq);
+	
+	return TRUE;
+}
+
+static void initial_frequency_scan(GtkWidget *app)
+{
+	FreqScanData data;
+	GtkWidget *title;
+	char *title_hdr;
+	
+	data.stations = NULL;
+	
+	data.dialog = gtk_dialog_new_with_buttons(_("Scanning"),
+		GTK_WINDOW(app), DIALOG_FLAGS, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
+	gtk_dialog_set_has_separator(GTK_DIALOG(data.dialog), FALSE);
+	gtk_window_set_resizable(GTK_WINDOW(data.dialog), FALSE);
+	
+	title_hdr = g_strconcat("<span weight=\"bold\">", _("Scanning for available stations:"), "</span>", NULL);
+	title = gtk_label_new(title_hdr);
+	gtk_misc_set_alignment(GTK_MISC(title), 0, 0.5);
+	gtk_label_set_use_markup(GTK_LABEL(title), TRUE);
+	g_free(title_hdr);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(data.dialog)->vbox), title, FALSE, FALSE, 6);
+	
+	data.progress = gtk_progress_bar_new();
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(data.dialog)->vbox), data.progress, TRUE, FALSE, 6);
+	
+	data.label = gtk_label_new(_("No stations found"));
+	gtk_misc_set_alignment(GTK_MISC(data.label), 0, 0.5);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(data.dialog)->vbox), data.label, TRUE, FALSE, 6);
+	
+	gtk_widget_show_all(data.dialog);
+	
+	radio_mute();
+	timeout_id = g_timeout_add(1000/SCAN_SPEED, (GSourceFunc)initial_frequency_scan_cb, (gpointer)&data);	
+	int response = gtk_dialog_run(GTK_DIALOG(data.dialog));
+
+	radio_unmute();
+	if (timeout_id) {
+		g_source_remove(timeout_id);
+		timeout_id = 0;
+		gtk_widget_destroy(data.dialog);
+	} else {
+		if (g_list_length(data.stations) > 0) {
+			gfloat f = *((gfloat*)data.stations->data);
+			adj->value = f*STEPS;
+			radio_setfreq(f);
+			
+			GtkWidget *dialog;
+			GList *ptr;
+			char *text;
+			
+			text = g_strdup_printf(_("%d stations found. \nDo you want to add them as presets?\n"),
+					g_list_length(data.stations));
+			
+			dialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_QUESTION,
+					GTK_BUTTONS_YES_NO, text);
+			g_free(text);
+			
+			int response = gtk_dialog_run(GTK_DIALOG(dialog));
+			gtk_widget_destroy(dialog);
+
+			for (ptr = data.stations; ptr; ptr = ptr->next) {
+				if (response == GTK_RESPONSE_YES) {
+					preset *ps = g_malloc0(sizeof(preset));
+					ps->title = g_strdup(_("unnamed"));
+					ps->freq = *((gfloat*)ptr->data);
+					settings.presets = g_list_append(settings.presets, ps);
+				}
+				g_free(ptr->data);
+			}	
+		}
+	}	
+}	
+
+static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
+{
+	GtkWidget* dialog;
+	gint choise;
+	
+	dialog = prefs_window(app);
+	
+	/* Michael Jochum <e9725005@stud3.tuwien.ac.at> proposed to not use gnome_dialog_set_parent()
+	   but following instead. */
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(app));
+	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
+	
+	/*gnome_dialog_set_parent(GNOME_DIALOG(dialog), GTK_WINDOW(app));*/
+	
+	choise = GTK_RESPONSE_HELP;
+	while (choise == GTK_RESPONSE_HELP)
+	{
+		choise = gtk_dialog_run(GTK_DIALOG(dialog)); 
+		switch (choise)
+		{
+			case GTK_RESPONSE_HELP:
+				display_help_cb("gnomeradio-settings");
+			break;
+			default:
+				/* We need the hide signal to get the value of the device_entry */
+				gtk_widget_hide_all(dialog);
+				gtk_widget_destroy(dialog);
+		}
+	}
+}
+
+void start_radio(gboolean restart, GtkWidget *app)
 {
 	if (restart)
 		radio_stop();
@@ -69,10 +229,17 @@ void start_radio(gboolean restart)
 		show_error_message(caption, detail);
 		g_free(caption);
 		g_free(detail);
-	}		
+		
+		if (!restart)
+			prefs_button_clicked_cb(NULL, app);
+	}
+	if (is_first_start() && radio_is_init()) {
+		initial_frequency_scan(app);
+		set_first_time_flag();
+	}
 }
 
-void start_mixer(gboolean restart)
+void start_mixer(gboolean restart, GtkWidget *app)
 {
 	gint res, vol;
 	
@@ -82,24 +249,21 @@ void start_mixer(gboolean restart)
 	res = mixer_init(settings.mixer_dev, settings.mixer);
 	if (res <1) 
 	{
-		GtkWidget *dialog;
 		char *buffer;
 		
 		if (res == -1)
 			buffer = g_strdup_printf(_("Mixer source \"%s\" is not a valid source!"), settings.mixer);
 		else 
 			buffer = g_strdup_printf(_("Could not open \"%s\"!"), settings.mixer_dev);
-
-		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, buffer);
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
+		
+		show_error_message(buffer, NULL);
 		
 		g_free(buffer);
 	}		
 	vol = mixer_get_volume();
-	
-	if (vol >= 0)
+	if (vol >= 0) {
 		gtk_adjustment_set_value(volume, (double)vol);
+	}
 }
 
 GList* get_mixer_recdev_list(void)
@@ -254,12 +418,14 @@ static void volume_value_changed_cb(GtkAdjustment* data, gpointer window)
 	gtk_tooltips_set_tip(tooltips, vol_scale, text, NULL);
 	g_free(text);
 	
+	if (tray_menu) {
+		g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
+		g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+	}
 	g_signal_handler_block(G_OBJECT(mute_button), mute_button_toggled_cb_id);
-	g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_button), vol == 0);
-	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
 	g_signal_handler_unblock(G_OBJECT(mute_button), mute_button_toggled_cb_id);
-	g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
 }
 
 #if 0
@@ -330,38 +496,34 @@ static void step_button_released_cb(GtkButton *button, gpointer data)
 	bp_timeout_steps = 0;
 }
 
-
 static gboolean scan_freq(gpointer data)
 {
-	static gint signal, a, b, c;	
 	static gint start, mom, max;
 	gint dir = (gint)(data);
 	
-	if (!max)
+	if (!max) {
 		max = (FREQ_MAX - FREQ_MIN) * STEPS;
-
-	if ((a + b + c > 8) || (start > max))	
-	{
-		start = mom = a = b = c = 0;
+	}	
+		
+	if (radio_check_station(adj->value/STEPS) || (start > max))	{
+		start = mom = 0;
 		radio_unmute();
 		timeout_id = 0;
 		return FALSE;
 	}
-	if (!mom)
-	mom= adj->value;
+	if (!mom) {
+		mom = adj->value;
+	}
+		
 	if (mom > FREQ_MAX*STEPS) 
 		mom = FREQ_MIN*STEPS;
-	else
-	if (mom < FREQ_MIN*STEPS)
+	else if (mom < FREQ_MIN*STEPS)
 		mom = FREQ_MAX*STEPS;
 	else	
 		mom = mom + dir;
 	start += 1;
 	gtk_adjustment_set_value(adj, mom);
-	signal = radio_getsignal();
-	a = b;
-	b = c;
-	c = signal;
+
 	return TRUE;
 }
 
@@ -370,6 +532,7 @@ void scfw_button_clicked_cb(GtkButton *button, gpointer data)
 	if (timeout_id) {
 		gtk_timeout_remove(timeout_id);
 		timeout_id = 0;
+		radio_unmute();
 		return;
 	}
 	radio_mute();
@@ -381,6 +544,7 @@ void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 	if (timeout_id) {
 		gtk_timeout_remove(timeout_id);
 		timeout_id = 0;
+		radio_unmute();
 		return;
 	}
 	radio_mute();
@@ -424,37 +588,6 @@ void change_preset(gboolean next)
 static void quit_button_clicked_cb(GtkButton *button, gpointer data)
 {
 	exit_gnome_radio();
-}
-
-static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
-{
-	GtkWidget* dialog;
-	gint choise;
-	
-	dialog = prefs_window();
-	
-	/* Michael Jochum <e9725005@stud3.tuwien.ac.at> proposed to not use gnome_dialog_set_parent()
-	   but following instead. */
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(app));
-	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
-	
-	/*gnome_dialog_set_parent(GNOME_DIALOG(dialog), GTK_WINDOW(app));*/
-	
-	choise = GTK_RESPONSE_HELP;
-	while (choise == GTK_RESPONSE_HELP)
-	{
-		choise = gtk_dialog_run(GTK_DIALOG(dialog)); 
-		switch (choise)
-		{
-			case GTK_RESPONSE_HELP:
-				display_help_cb("gnomeradio-settings");
-			break;
-			default:
-				/* We need the hide signal to get the value of the device_entry */
-				gtk_widget_hide_all(dialog);
-				gtk_widget_destroy(dialog);
-		}
-	}
 }
 
 void tray_icon_items_set_sensible(gboolean sensible)
@@ -573,11 +706,11 @@ static void mute_button_toggled_cb(GtkButton *button, gpointer data)
 {
 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mute_button)))
 	{		
-		gtk_tooltips_set_tip(tooltips, mute_button, _("Mute"), NULL);
+		gtk_tooltips_set_tip(tooltips, mute_button, _("Unmute"), NULL);
 	}
 	else
 	{
-		gtk_tooltips_set_tip(tooltips, mute_button, _("Unmute"), NULL);
+		gtk_tooltips_set_tip(tooltips, mute_button, _("Mute"), NULL);
 	}
 	toggle_volume();
 }
@@ -921,7 +1054,7 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 	}
 	return FALSE;
 }
-
+	
 int main(int argc, char* argv[])
 {
 	GtkWidget* app;
@@ -947,11 +1080,6 @@ int main(int argc, char* argv[])
 	/* Main app */
 	app = gnome_radio_gui();
 
-	gtk_widget_show_all(app);
-
-	/* Create an tray icon */
-	create_tray_icon(app);
-	
 	/* Initizialize GStreamer */
 	gst_init(&argc, &argv);
 	
@@ -973,22 +1101,28 @@ int main(int argc, char* argv[])
 		gconf_client_set_error_handling(gconf_client_get_default(),  GCONF_CLIENT_HANDLE_ALL);
 		gnome_media_profiles_init(gconf_client_get_default());
 	}
-	
+
 	load_settings();
+
+	tray_menu = NULL;
+	start_mixer(FALSE, app);
+	start_radio(FALSE, app);
+
 	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), _("manual"));
 	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
 		preset *ps = (preset*)ptr->data;
 		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
 	}
 	preset_combo_set_item(mom_ps);
-	create_tray_menu(app);
 	
-	start_radio(FALSE);
-	
-	start_mixer(FALSE);
-	adj_value_changed_cb(NULL, (gpointer) app);
-	volume_value_changed_cb(NULL, NULL);
+	gtk_widget_show_all(app);
 
+	/* Create an tray icon */
+	create_tray_icon(app);
+	create_tray_menu(app);
+
+	adj_value_changed_cb(NULL, (gpointer) app);
+	//volume_value_changed_cb(NULL, NULL);
 	
 #ifdef HAVE_LIRC
 	if(!my_lirc_init())
@@ -1035,25 +1169,27 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-static show_message(GtkMessageType type, const char* caption, const char* error_msg)
+static show_message(GtkMessageType type, const char* text, const char* details)
 {
 	GtkWidget *dialog;
 	
-	char *text = g_strdup_printf("<b>%s</b>\n\n%s", caption, error_msg);
+	g_assert(text);
 	
-	dialog = gtk_message_dialog_new_with_markup(NULL, DIALOG_FLAGS, type, GTK_BUTTONS_CLOSE,
+	dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, type, GTK_BUTTONS_CLOSE,
 			text);
+	if (details) {
+		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), details);
+	}
 	gtk_dialog_run(GTK_DIALOG (dialog));
 	gtk_widget_destroy(dialog);
-	g_free(text);
 }	
 
-void show_error_message(const char* caption, const char* error_msg)
+void show_error_message(const char* error, const char* details)
 {
-	show_message(GTK_MESSAGE_ERROR, caption, error_msg);
+	show_message(GTK_MESSAGE_ERROR, error, details);
 }	
 
-void show_warning_message(const char* caption, const char* error_msg)
+void show_warning_message(const char* warning, const char* details)
 {
-	show_message(GTK_MESSAGE_WARNING, caption, error_msg);
+	show_message(GTK_MESSAGE_WARNING, warning, details);
 }

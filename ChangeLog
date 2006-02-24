@@ -1,3 +1,10 @@
+2006-02-24  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* src/gui.c, src/gui.h, src/prefs.c, src/prefs.h, src/tech.c,
+	src/tech.h, src/trayicon.h: added an function that scans for
+	stations on first run, and adds them to the presets.
+	* Code cleanup here and there
+
 2006-02-23  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* po/POTFILES.in, src/Makefile.am, trayicon.*, gui.*, prefs.c:

@@ -185,7 +185,7 @@ static gboolean device_entry_activate_cb(GtkWidget *widget, gpointer data)
 	if (settings.device) g_free(settings.device);
 	settings.device = g_strdup(text);
 	
-	start_radio(TRUE);
+	start_radio(TRUE, data);
 	
 	return FALSE;
 }
@@ -213,7 +213,7 @@ static gboolean mixer_combo_change_cb(GtkComboBox *combo, gpointer data)
 	if ((tmp = strstr(settings.mixer, " (")))
 		tmp[0] = '\0';
 	
-	start_mixer(TRUE);
+	start_mixer(TRUE, data);
 	
 	return FALSE;
 }
@@ -491,7 +491,7 @@ static void free_string_list(GList *list)
 	g_list_free(list);
 }
 
-GtkWidget* prefs_window(void)
+GtkWidget* prefs_window(GtkWidget *app)
 {
 	GtkWidget *dialog;
 	GtkWidget *box, *sbox, *pbox, *rbox;
@@ -515,7 +515,7 @@ GtkWidget* prefs_window(void)
 	char *settings_hdr, *presets_hdr, *record_hdr;
 	preset* ps;
 	
-	dialog = gtk_dialog_new_with_buttons(_("Gnomeradio Settings"), NULL, 
+	dialog = gtk_dialog_new_with_buttons(_("Gnomeradio Settings"), GTK_WINDOW(app), 
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
 			GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, 
 			GTK_STOCK_HELP, GTK_RESPONSE_HELP,
@@ -598,9 +598,9 @@ GtkWidget* prefs_window(void)
 
 	gtk_table_attach_defaults(GTK_TABLE(settings_table), mute_on_exit_cb, 0, 2, 2, 3);
 
-	g_signal_connect(GTK_OBJECT(device_entry), "hide", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
+	g_signal_connect(GTK_OBJECT(device_entry), "hide", GTK_SIGNAL_FUNC(device_entry_activate_cb), app);
 	g_signal_connect(GTK_OBJECT(device_entry), "activate", GTK_SIGNAL_FUNC(device_entry_activate_cb), NULL);
-	g_signal_connect(GTK_OBJECT(mixer_combo), "changed", GTK_SIGNAL_FUNC(mixer_combo_change_cb), NULL);
+	g_signal_connect(GTK_OBJECT(mixer_combo), "changed", GTK_SIGNAL_FUNC(mixer_combo_change_cb), app);
 	g_signal_connect(GTK_OBJECT(mute_on_exit_cb), "toggled", GTK_SIGNAL_FUNC(mute_on_exit_toggled_cb), NULL);
 
 	gtk_tooltips_set_tip(tooltips, device_entry, _("Specify the radio-device (in most cases /dev/radio)"), NULL);

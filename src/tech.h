@@ -33,9 +33,13 @@ int mixer_set_rec_device(void);
 
 int radio_init(char *device);
 
+int radio_is_init(void);
+
 void radio_stop(void);
 
 int radio_setfreq(float freq);
+
+int radio_check_station(float freq);
 
 void radio_unmute();
 

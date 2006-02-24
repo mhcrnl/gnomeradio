@@ -17,7 +17,7 @@
 #ifndef _TRAYICON_H
 #define _TRAYICON_H
 
-GtkWidget* tray_menu;
+GtkWidget *tray_menu;
 GtkWidget *tray_icon;
 GtkWidget *mute_menuitem;
 

@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <math.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <assert.h>
@@ -192,18 +193,21 @@ int radio_init(char *device)
 			freq_fact = 16000;
 	}		
 	
-	
-	
 	radio_unmute();
 	
 	return 1;
+}
+
+int radio_is_init(void)
+{
+	return (fd >= 0);
 }
 
 void radio_stop(void)
 {
 	radio_mute();
 	
-	if (fd > 0)
+	if (fd >= 0)
 		close(fd);
 }
 
@@ -224,6 +228,28 @@ int radio_setfreq(float freq)
 
     return ioctl(fd, VIDIOCSFREQ, &ifreq);
 }
+
+int radio_check_station(float freq)
+{
+	static int a, b;
+	static float last;
+	int signal;
+	
+	signal = radio_getsignal();
+	
+	if (last == 0.0f)
+		last = freq;
+	
+	if ((a + b + signal > 8) && (fabsf(freq - last) > 0.25f)) {
+		a = b = 0;
+		last = freq;
+		return 1;
+	}
+	a = b;
+	b = signal;
+	return 0;
+}	
+
 
 void radio_unmute(void)
 {
