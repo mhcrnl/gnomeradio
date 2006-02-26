@@ -26,8 +26,11 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", GETTEXT_PACKAGE)
 
 
 PKG_CHECK_MODULES(GNOMERADIO, libgnomeui-2.0 >= 2.12 gconf-2.0 >= 2.12 gnome-vfs-2.0 >= 2.12 gnome-media-profiles >= 2.12)
+PKG_CHECK_MODULES(GNOME14, libgnomeui-2.0 >= 2.14, GNOME_14="1";echo "yes", GNOME_14="0";echo "no")
 AC_SUBST(GNOMERADIO_CFLAGS)
 AC_SUBST(GNOMERADIO_LIBS)
+AC_SUBST(GNOME_14)
+AC_DEFINE_UNQUOTED(GNOME_14, ${GNOME_14}, "Is GNOME 2.14 installed")
 AC_SUBST(LIRC)
 
 PKG_CHECK_MODULES(GSTREAMER, gstreamer-0.10 gstreamer-plugins-base-0.10)
@@ -45,7 +48,7 @@ AM_GCONF_SOURCE_2
 LIRC=""
 if test "$enable_lirc" != "no"; then
   AC_CHECK_LIB(lirc_client, lirc_init,
-    AC_DEFINE(HAVE_LIRC, 1, HAVE_LIRC) LIRC="-llirc_client",,)
+    AC_DEFINE(HAVE_LIRC, 1, "Is LIRC installed") LIRC="-llirc_client",,)
 else
   echo "*** lirc disabled"
 fi

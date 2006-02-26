@@ -79,7 +79,7 @@ gboolean save_settings(void)
 		g_free(buffer);
 	}	
 	gconf_client_set_int(client, "/apps/gnomeradio/presets/last", mom_ps, NULL);
-	g_print("Storing Settings in GConf database\n");
+	/*g_print("Storing Settings in GConf database\n");*/
 	
 	return TRUE;
 }			

@@ -232,10 +232,6 @@ void start_radio(gboolean restart, GtkWidget *app)
 		if (!restart)
 			prefs_button_clicked_cb(NULL, app);
 	}
-	if (is_first_start() && radio_is_init()) {
-		initial_frequency_scan(app);
-		set_first_time_flag();
-	}
 }
 
 void start_mixer(gboolean restart, GtkWidget *app)
@@ -418,11 +414,10 @@ static void volume_value_changed_cb(BaconVolumeButton *button, gpointer user_dat
 	gtk_tooltips_set_tip(tooltips, vol_scale, text, NULL);
 	g_free(text);*/
 	
-	if (tray_menu) {
-		g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
-		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
-		g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
-	}
+	g_assert(tray_menu);
+	g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
+	g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
 }
 
 #if 0
@@ -1052,7 +1047,7 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 	}
 	return FALSE;
 }
-	
+
 int main(int argc, char* argv[])
 {
 	GtkWidget* app;
@@ -1061,16 +1056,35 @@ int main(int argc, char* argv[])
 	GnomeClient *client;
 	GError *err = NULL;
 	int redraw_timeout_id;
-	
+	gboolean do_scan = FALSE;
+#if GNOME_14 
+	GOptionContext *ctx;
+	const GOptionEntry entries[] = {
+		{ "scan", 0, 0, G_OPTION_ARG_NONE, &do_scan, N_("Scan for stations"), NULL },
+		{ NULL }
+	};
+#endif	
 	bindtextdomain(PACKAGE, GNOMELOCALEDIR);  
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain(PACKAGE);
 
+	g_set_application_name(_("Gnomeradio"));
+	
+#if GNOME_14
+	ctx = g_option_context_new("- Gnomeradio");
+	g_option_context_add_main_entries(ctx, entries, GETTEXT_PACKAGE);  
+	g_option_context_add_group(ctx, gst_init_get_option_group());
+	g_option_context_set_ignore_unknown_options(ctx, TRUE);	
+#endif	
+
 	gnome_program_init(PACKAGE, VERSION, 
 					LIBGNOMEUI_MODULE, argc, argv, 
-					GNOME_PROGRAM_STANDARD_PROPERTIES, 
+					GNOME_PROGRAM_STANDARD_PROPERTIES,
+#if GNOME_14
+					GNOME_PARAM_GOPTION_CONTEXT, ctx,
+#endif
 					NULL);
-		
+	
 	app_icon = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
 	icons = g_list_append(NULL, (gpointer)app_icon);
 	gtk_window_set_default_icon_list(icons);
@@ -1082,45 +1096,46 @@ int main(int argc, char* argv[])
 	gst_init(&argc, &argv);
 	
 	/* Initizialize Gconf */
-	if (!gconf_init(argc, argv, &err))
-	{
-		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
-						_("Failed to init GConf: %s\n"
-						"Changes to the settings won't be saved\n"), err->message);
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
+	if (!gconf_init(argc, argv, &err)) {
+		char *details;
+		details = g_strdup_printf(_("%s\n\nChanges to the settings won't be saved."), err->message);
+		show_warning_message(_("Failed to init GConf!"), details);
 		g_error_free(err); 
+		g_free(details);
 		err = NULL;
-	}
-	else
-	{
+	} else {
 		gconf_client_set_global_default_error_handler((GConfClientErrorHandlerFunc)gconf_error_handler);
 		gconf_client_set_error_handling(gconf_client_get_default(),  GCONF_CLIENT_HANDLE_ALL);
 		gnome_media_profiles_init(gconf_client_get_default());
 	}
 
 	load_settings();
-
-	tray_menu = NULL;
-	start_mixer(FALSE, app);
-	start_radio(FALSE, app);
-
+	create_tray_menu(app);
+	
 	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), _("manual"));
 	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
 		preset *ps = (preset*)ptr->data;
 		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
 	}
 	preset_combo_set_item(mom_ps);
-	
+
+	start_mixer(FALSE, app);
+	start_radio(FALSE, app);
+	if (is_first_start() || do_scan) {
+		if (!radio_is_init()) {
+			g_message(_("Could not scan. Radio is not initialized."));
+		} else {
+			initial_frequency_scan(app);
+			set_first_time_flag();
+		}
+	}
 	gtk_widget_show_all(app);
 
 	/* Create an tray icon */
 	create_tray_icon(app);
-	create_tray_menu(app);
 
 	adj_value_changed_cb(NULL, (gpointer) app);
-	//volume_value_changed_cb(NULL, NULL);
+	/*volume_value_changed_cb(NULL, NULL);*/
 	
 #ifdef HAVE_LIRC
 	if(!my_lirc_init())
@@ -1131,7 +1146,7 @@ int main(int argc, char* argv[])
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 */
-		g_print(_("Could not start lirc!\n"));
+		g_message(_("Could not start lirc!"));
 	}
 	else
 		start_lirc();

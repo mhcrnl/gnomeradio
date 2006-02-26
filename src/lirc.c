@@ -138,7 +138,7 @@ static char* map_code_to_default(char *code)
 	
 int my_lirc_init(void)
 {
-	printf("Trying to bring up lirc\n");
+	/*printf("Trying to bring up lirc\n");*/
 	if ((fd = lirc_init ("gnomeradio", 0)) <=0) 
 	{
 		perror("lirc_init");
@@ -166,7 +166,7 @@ void my_lirc_deinit(void)
 {
 	if (fd <= 0)
 		return;
-	printf("Shutting down lirc\n");
+	/*printf("Shutting down lirc\n");*/
 	/*gdk_input_remove (input_tag);*/
 	lirc_freeconfig(config);
 	lirc_deinit ();

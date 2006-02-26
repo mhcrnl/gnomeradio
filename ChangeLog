@@ -1,5 +1,14 @@
 2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
 	
+	* remove config.h.in
+	* src/gui.c, src/lirc.c, src/prefs.c: Remove some g_print(),
+	substitute others with g_message()
+	* configure.in: check for GNOME >= 2.14; define GNOME_14
+	* src/gui.c: add an option commandline option "--scan" 
+	(requires GNOME >= 2.14)
+
+2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
+	
 	* Add src/bacon-volume.c, src/bacon-volume.h from totem
 	* src/Makfile.am: add src/bacon-volume.c, src/bacon-volume.h
 	* configure.in: version 1.6.99
