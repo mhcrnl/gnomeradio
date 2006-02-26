@@ -1,5 +1,9 @@
 2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
-	
+
+	* configure.in, src/Makefile.am: PKG_CHECK_VERSION() use GNOME instead of GNOMERADIO
+
+2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
+
 	* remove config.h.in
 	* src/gui.c, src/lirc.c, src/prefs.c: Remove some g_print(),
 	substitute others with g_message()
@@ -8,7 +12,7 @@
 	(requires GNOME >= 2.14)
 
 2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
-	
+
 	* Add src/bacon-volume.c, src/bacon-volume.h from totem
 	* src/Makfile.am: add src/bacon-volume.c, src/bacon-volume.h
 	* configure.in: version 1.6.99
