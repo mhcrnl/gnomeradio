@@ -44,8 +44,9 @@ struct Preset
 };
 
 GtkWidget* mute_button, *preset_combo;
-GtkAdjustment *adj, *volume;
+GtkAdjustment *adj;
 GtkTooltips *tooltips;
+
 
 int mom_ps;
 

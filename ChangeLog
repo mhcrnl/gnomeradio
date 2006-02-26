@@ -1,3 +1,11 @@
+2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
+	
+	* Add src/bacon-volume.c, src/bacon-volume.h from totem
+	* src/Makfile.am: add src/bacon-volume.c, src/bacon-volume.h
+	* configure.in: version 1.6.99
+	* src/gui.c, src/gui.h, src/lirc.c: Remove volume-slider and
+	mute-button and use bacon-volume-button instead
+
 2006-02-24  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* src/gui.c, src/gui.h, src/prefs.c, src/prefs.h, src/tech.c,

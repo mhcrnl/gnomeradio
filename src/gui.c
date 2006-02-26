@@ -25,6 +25,7 @@
 #include <gconf/gconf-client.h>
 #include <math.h>
 #include "eggtrayicon.h"
+#include "bacon-volume.h"
 #include "gui.h"
 #include "trayicon.h"
 #include "tech.h"
@@ -35,8 +36,6 @@
 #include "../pixmaps/digits.xpm"
 #include "../pixmaps/signal.xpm"
 #include "../pixmaps/stereo.xpm"
-#include "../pixmaps/vol_up.xpm"
-#include "../pixmaps/vol_down.xpm"
 #include "../pixmaps/freq_up.xpm"
 #include "../pixmaps/freq_down.xpm"
 #include "../pixmaps/radio.xpm"
@@ -51,10 +50,10 @@
 
 static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
-static GtkWidget *freq_scale, *vol_scale;
+static GtkWidget *freq_scale;
+static GtkWidget *rec_pixmap;
 
 static int timeout_id, bp_timeout_id = -1, bp_timeout_steps = 0;
-static int mute_button_toggled_cb_id;
 
 static gboolean is_first_start(void)
 {
@@ -262,7 +261,8 @@ void start_mixer(gboolean restart, GtkWidget *app)
 	}		
 	vol = mixer_get_volume();
 	if (vol >= 0) {
-		gtk_adjustment_set_value(volume, (double)vol);
+		bacon_volume_button_set_value(BACON_VOLUME_BUTTON(mute_button), vol);
+		/*gtk_adjustment_set_value(volume, (double)vol);*/
 	}
 }
 
@@ -407,25 +407,22 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	radio_setfreq(adj->value/STEPS);
 }
 
-static void volume_value_changed_cb(GtkAdjustment* data, gpointer window)
+static void volume_value_changed_cb(BaconVolumeButton *button, gpointer user_data)
 {
 	char *text;
-	int vol = (int)volume->value;
+	int vol = (int)(bacon_volume_button_get_value(BACON_VOLUME_BUTTON(mute_button)) + 0.5f);
 	
 	mixer_set_volume(vol);
 	
-	text = g_strdup_printf(_("Volume: %d%%"), vol);
+/*	text = g_strdup_printf(_("Volume: %d%%"), vol);
 	gtk_tooltips_set_tip(tooltips, vol_scale, text, NULL);
-	g_free(text);
+	g_free(text);*/
 	
 	if (tray_menu) {
 		g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
 		g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
 	}
-	g_signal_handler_block(G_OBJECT(mute_button), mute_button_toggled_cb_id);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_button), vol == 0);
-	g_signal_handler_unblock(G_OBJECT(mute_button), mute_button_toggled_cb_id);
 }
 
 #if 0
@@ -699,7 +696,8 @@ void toggle_volume(void)
 		vol = old_vol;
 	}	
 	mixer_set_volume(vol);
-	gtk_adjustment_set_value(volume, vol);
+	bacon_volume_button_set_value(BACON_VOLUME_BUTTON(mute_button), vol);
+	/*gtk_adjustment_set_value(volume, vol);*/
 }	
 
 static void mute_button_toggled_cb(GtkButton *button, gpointer data)
@@ -790,18 +788,18 @@ void toggle_mainwindow_visibility(GtkWidget *app)
 		gtk_window_present(GTK_WINDOW(app));
 	}
 }	
-
+	
 GtkWidget* gnome_radio_gui(void)
 {
 	GtkWidget *app;
 	GtkWidget *prefs_button, *quit_button, *scfw_button, *scbw_button;
 	GtkWidget *stfw_button, *stbw_button, *about_button, *rec_button;
 	GtkWidget *prefs_pixmap, *quit_pixmap, *scfw_pixmap, *scbw_pixmap;
-	GtkWidget *stfw_pixmap, *stbw_pixmap, *about_pixmap, *mute_pixmap, *rec_pixmap;
+	GtkWidget *stfw_pixmap, *stbw_pixmap, *about_pixmap;
 	GtkWidget *vol_up_pixmap, *vol_down_pixmap, *freq_up_pixmap, *freq_down_pixmap;
 	GdkPixbuf *vol_up_pixbuf, *vol_down_pixbuf, *freq_up_pixbuf, *freq_down_pixbuf;
 	GtkWidget *hbox1, *hbox2, *vbox, *menubox, *freq_vol_box;
-	GtkWidget *vseparator1, *vseparator2, *vseparator3, *vseparator4;
+	GtkWidget *vseparator1, *vseparator2, *vseparator4;
 	GtkWidget *label;
 	GtkWidget *frame;
 	gchar *text;
@@ -821,7 +819,7 @@ GtkWidget* gnome_radio_gui(void)
 	stfw_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_NEXT, GTK_ICON_SIZE_LARGE_TOOLBAR);
 	stbw_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_PREVIOUS, GTK_ICON_SIZE_LARGE_TOOLBAR);
 	about_pixmap = gtk_image_new_from_stock(GTK_STOCK_ABOUT, GTK_ICON_SIZE_LARGE_TOOLBAR);
-	mute_pixmap = gtk_image_new_from_stock(GNOME_STOCK_VOLUME, GTK_ICON_SIZE_LARGE_TOOLBAR);
+	/*mute_pixmap = gtk_image_new_from_stock(GNOME_STOCK_VOLUME, GTK_ICON_SIZE_LARGE_TOOLBAR);*/
 	rec_pixmap = gtk_image_new_from_stock(GTK_STOCK_MEDIA_RECORD, GTK_ICON_SIZE_LARGE_TOOLBAR);
 	/*help_pixmap = gtk_image_new_from_stock(GTK_STOCK_HELP, GTK_ICON_SIZE_LARGE_TOOLBAR);*/
 	
@@ -832,7 +830,9 @@ GtkWidget* gnome_radio_gui(void)
 	stfw_button = gtk_button_new();
 	stbw_button = gtk_button_new();
 	about_button = gtk_button_new();
-	mute_button = gtk_toggle_button_new();
+	/*mute_button = gtk_toggle_button_new();*/
+	mute_button = bacon_volume_button_new(GTK_ICON_SIZE_LARGE_TOOLBAR, 0, 100, 1);
+	gtk_button_set_relief(GTK_BUTTON(mute_button), GTK_RELIEF_NORMAL);
 	rec_button = gtk_button_new();
 	/*help_button = gtk_button_new();*/
 
@@ -843,7 +843,7 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_container_add(GTK_CONTAINER(stfw_button), stfw_pixmap);
 	gtk_container_add(GTK_CONTAINER(stbw_button), stbw_pixmap);
 	gtk_container_add(GTK_CONTAINER(about_button), about_pixmap);
-	gtk_container_add(GTK_CONTAINER(mute_button), mute_pixmap);
+	/*gtk_container_add(GTK_CONTAINER(mute_button), mute_pixmap);*/
 	gtk_container_add(GTK_CONTAINER(rec_button), rec_pixmap);
 	/*gtk_container_add(GTK_CONTAINER(help_button), help_pixmap);*/
 
@@ -854,7 +854,7 @@ GtkWidget* gnome_radio_gui(void)
 	freq_vol_box = gtk_hbox_new(FALSE, 0);
 	
 	adj = GTK_ADJUSTMENT(gtk_adjustment_new(SUNSHINE*STEPS, FREQ_MIN*STEPS, FREQ_MAX*STEPS+1, 1, STEPS, 1));
-	volume = GTK_ADJUSTMENT(gtk_adjustment_new(100, 0, 101, 1, 10, 1));
+/*	volume = GTK_ADJUSTMENT(gtk_adjustment_new(100, 0, 101, 1, 10, 1)); */
 	
 	preset_combo = gtk_combo_box_new_text();
 	g_signal_connect(GTK_OBJECT(preset_combo), "changed", GTK_SIGNAL_FUNC(preset_combo_change_cb), NULL);
@@ -864,20 +864,20 @@ GtkWidget* gnome_radio_gui(void)
 	
 	freq_scale = gtk_hscale_new(adj);
 	/*gtk_range_set_update_policy(GTK_RANGE(freq_scale), GTK_UPDATE_DELAYED);*/
-	vol_scale = gtk_hscale_new(volume);
+	/*vol_scale = gtk_hscale_new(volume);*/
 	
-	vol_up_pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)vol_up_xpm);
-	vol_down_pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)vol_down_xpm);
+	/*vol_up_pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)vol_up_xpm);
+	vol_down_pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)vol_down_xpm);*/
 	freq_up_pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)freq_up_xpm);
 	freq_down_pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)freq_down_xpm);
 
-	vol_up_pixmap = gtk_image_new_from_pixbuf(vol_up_pixbuf);
-	vol_down_pixmap = gtk_image_new_from_pixbuf(vol_down_pixbuf);
+	/*vol_up_pixmap = gtk_image_new_from_pixbuf(vol_up_pixbuf);
+	vol_down_pixmap = gtk_image_new_from_pixbuf(vol_down_pixbuf);*/
 	freq_up_pixmap = gtk_image_new_from_pixbuf(freq_up_pixbuf);
 	freq_down_pixmap = gtk_image_new_from_pixbuf(freq_down_pixbuf);
 
 	/*gtk_widget_set_usize(freq_scale, 160, 10);*/
-	gtk_widget_set_size_request(freq_scale, 160, -1);
+	/*gtk_widget_set_size_request(freq_scale, 160, -1);*/
 
 	gtk_widget_realize(app);
 	drawing_area = gtk_drawing_area_new();
@@ -887,15 +887,15 @@ GtkWidget* gnome_radio_gui(void)
 	
 	vseparator1 = gtk_vseparator_new();
 	vseparator2 = gtk_vseparator_new();
-	vseparator3 = gtk_vseparator_new();
+	/*vseparator3 = gtk_vseparator_new();*/
 	vseparator4 = gtk_vseparator_new();
 	
 	gtk_scale_set_digits(GTK_SCALE(freq_scale), 0);
 	gtk_scale_set_draw_value(GTK_SCALE(freq_scale), FALSE);
-	gtk_scale_set_digits(GTK_SCALE(vol_scale), 0);
+/*	gtk_scale_set_digits(GTK_SCALE(vol_scale), 0);
 	gtk_scale_set_draw_value(GTK_SCALE(vol_scale), FALSE);
 
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_button), mixer_get_volume() == 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mute_button), mixer_get_volume() == 0);*/
 
 	gtk_widget_set_size_request(drawing_area, DIGIT_WIDTH*6+10+SIGNAL_WIDTH+STEREO_WIDTH, DIGIT_HEIGTH+10);
 
@@ -922,12 +922,12 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_box_pack_start(GTK_BOX(menubox), preset_combo, TRUE, TRUE, 0);
 
 	gtk_box_pack_start(GTK_BOX(freq_vol_box), freq_down_pixmap, FALSE, FALSE, 2);
-	gtk_box_pack_start(GTK_BOX(freq_vol_box), freq_scale, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(freq_vol_box), freq_scale, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(freq_vol_box), freq_up_pixmap, FALSE, FALSE, 2);
-	gtk_box_pack_start(GTK_BOX(freq_vol_box), vseparator3, FALSE, FALSE, 2);
+	/*gtk_box_pack_start(GTK_BOX(freq_vol_box), vseparator3, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(freq_vol_box), vol_down_pixmap, FALSE, FALSE, 2);
 	gtk_box_pack_start(GTK_BOX(freq_vol_box), vol_scale, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(freq_vol_box), vol_up_pixmap, FALSE, FALSE, 2);
+	gtk_box_pack_start(GTK_BOX(freq_vol_box), vol_up_pixmap, FALSE, FALSE, 2);*/
 
 	gtk_box_pack_start(GTK_BOX(vbox), hbox1, FALSE, FALSE, 4);
 	gtk_box_pack_start(GTK_BOX(vbox), freq_vol_box, TRUE, TRUE, 2);
@@ -949,7 +949,7 @@ GtkWidget* gnome_radio_gui(void)
 	g_signal_connect(GTK_OBJECT(app), "delete_event", GTK_SIGNAL_FUNC(delete_event_cb), NULL);
 	g_signal_connect(GTK_OBJECT(quit_button), "clicked", GTK_SIGNAL_FUNC(quit_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(adj), "value-changed", GTK_SIGNAL_FUNC(adj_value_changed_cb), (gpointer) app);
-	g_signal_connect(GTK_OBJECT(volume), "value-changed", GTK_SIGNAL_FUNC(volume_value_changed_cb), NULL);
+	g_signal_connect(GTK_OBJECT(mute_button), "value-changed", GTK_SIGNAL_FUNC(volume_value_changed_cb), NULL);
 	g_signal_connect(GTK_OBJECT(stfw_button), "pressed", GTK_SIGNAL_FUNC(step_button_pressed_cb), (gpointer)TRUE);
 	g_signal_connect(GTK_OBJECT(stbw_button), "pressed", GTK_SIGNAL_FUNC(step_button_pressed_cb), (gpointer)FALSE);
 	g_signal_connect(GTK_OBJECT(stfw_button), "clicked", GTK_SIGNAL_FUNC(step_button_clicked_cb), (gpointer)TRUE);
@@ -959,8 +959,6 @@ GtkWidget* gnome_radio_gui(void)
 	g_signal_connect(GTK_OBJECT(scfw_button), "clicked", GTK_SIGNAL_FUNC(scfw_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(scbw_button), "clicked", GTK_SIGNAL_FUNC(scbw_button_clicked_cb), NULL);
 	g_signal_connect(GTK_OBJECT(about_button), "clicked", GTK_SIGNAL_FUNC(about_button_clicked_cb), NULL);
-	mute_button_toggled_cb_id =
-		g_signal_connect(GTK_OBJECT(mute_button), "toggled", GTK_SIGNAL_FUNC(mute_button_toggled_cb), NULL);
 	g_signal_connect(GTK_OBJECT(rec_button), "clicked", GTK_SIGNAL_FUNC(rec_button_clicked_cb), (gpointer) app);
 	g_signal_connect(GTK_OBJECT(prefs_button), "clicked", GTK_SIGNAL_FUNC(prefs_button_clicked_cb), (gpointer) app);
 	g_signal_connect(GTK_OBJECT(drawing_area), "expose-event", GTK_SIGNAL_FUNC(expose_event_cb), NULL);
@@ -977,9 +975,9 @@ GtkWidget* gnome_radio_gui(void)
 	text = g_strdup_printf(_("Frequency: %.2f MHz"), adj->value/STEPS);
 	gtk_tooltips_set_tip(tooltips, freq_scale, text, NULL);
 	g_free(text);
-	text = g_strdup_printf(_("Volume: %d%%"), (gint)volume->value);
+/*	text = g_strdup_printf(_("Volume: %d%%"), (gint)volume->value);
 	gtk_tooltips_set_tip(tooltips, vol_scale, text, NULL);
-	g_free(text);
+	g_free(text);*/
 	
 	return app;
 }
@@ -1017,6 +1015,8 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 	GtkToggleButton *tb = GTK_TOGGLE_BUTTON(mute_button);
 	gboolean state = gtk_toggle_button_get_active(tb);
 	/*g_print("%s key pressed: %d\n",  gdk_keyval_name(event->keyval), event->keyval);*/
+
+	int vol = (int)(bacon_volume_button_get_value(BACON_VOLUME_BUTTON(mute_button)) + 0.5f);
 	
 	switch (event->keyval)
 	{
@@ -1045,11 +1045,13 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 				break;
 		case GDK_KP_Add:
 		case GDK_plus:	
-				gtk_adjustment_set_value(volume, (volume->value > 95) ? 100 : volume->value+5);
+				bacon_volume_button_set_value(BACON_VOLUME_BUTTON(mute_button), vol > 95 ? 100 : vol + 5);
+				/*gtk_adjustment_set_value(volume, (volume->value > 95) ? 100 : volume->value+5);*/
 				break;
 		case GDK_minus:
 		case GDK_KP_Subtract: 
-				gtk_adjustment_set_value(volume,(volume->value < 5) ? 0 : volume->value-5);
+				bacon_volume_button_set_value(BACON_VOLUME_BUTTON(mute_button), vol < 5 ? 0 : vol - 5);
+				/*gtk_adjustment_set_value(volume,(volume->value < 5) ? 0 : volume->value-5);*/
 				break;
 	}
 	return FALSE;

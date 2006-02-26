@@ -28,6 +28,7 @@
 
 #endif
 
+#include "bacon-volume.h"
 #include "lirc.h"
 #include "gui.h"
 
@@ -37,6 +38,7 @@ static struct lirc_config *config = NULL;
 static void execute_lirc_command (char *cmd)
 {
 	printf("lirc command: %s\n", cmd);
+	int vol = (int)(bacon_volume_button_get_value(BACON_VOLUME_BUTTON(mute_button)) + 0.5f);
 
 	if (strcasecmp (cmd, "tune up") == 0) 
 	{
@@ -48,11 +50,13 @@ static void execute_lirc_command (char *cmd)
 	}
 	else if (strcasecmp (cmd, "volume up") == 0) 
 	{
-		gtk_adjustment_set_value(volume, (volume->value > 95) ? 100 : volume->value+5);
+		bacon_volume_button_set_value(BACON_VOLUME_BUTTON(mute_button), vol > 95 ? 100 : vol + 5);
+		/*gtk_adjustment_set_value(volume, (volume->value > 95) ? 100 : volume->value+5);*/
 	}
 	else if (strcasecmp (cmd, "volume down") == 0) 
 	{
-		gtk_adjustment_set_value(volume,(volume->value < 5) ? 0 : volume->value-5);
+		bacon_volume_button_set_value(BACON_VOLUME_BUTTON(mute_button), vol < 5 ? 0 : vol - 5);
+		/*gtk_adjustment_set_value(volume,(volume->value < 5) ? 0 : volume->value-5);*/
 	}
 	else if (strcasecmp (cmd, "mute") == 0)
 	{
