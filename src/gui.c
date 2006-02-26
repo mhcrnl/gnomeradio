@@ -970,7 +970,7 @@ GtkWidget* gnome_radio_gui(void)
 	gtk_tooltips_set_tip(tooltips, about_button, _("About Gnomeradio"), NULL);
 	gtk_tooltips_set_tip(tooltips, rec_button, _("Record radio as Wave, OGG or MP3"), NULL);
 	gtk_tooltips_set_tip(tooltips, prefs_button, _("Edit your Preferences"), NULL);
-	gtk_tooltips_set_tip(tooltips, mute_button, _("Mute"), NULL);
+	gtk_tooltips_set_tip(tooltips, mute_button, _("Adjust the Volume"), NULL);
 	gtk_tooltips_set_tip(tooltips, quit_button, _("Quit"), NULL);
 	text = g_strdup_printf(_("Frequency: %.2f MHz"), adj->value/STEPS);
 	gtk_tooltips_set_tip(tooltips, freq_scale, text, NULL);
@@ -1012,10 +1012,6 @@ gconf_error_handler(GConfClient *client, GError *error)
 static gboolean
 key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 {
-	GtkToggleButton *tb = GTK_TOGGLE_BUTTON(mute_button);
-	gboolean state = gtk_toggle_button_get_active(tb);
-	/*g_print("%s key pressed: %d\n",  gdk_keyval_name(event->keyval), event->keyval);*/
-
 	int vol = (int)(bacon_volume_button_get_value(BACON_VOLUME_BUTTON(mute_button)) + 0.5f);
 	
 	switch (event->keyval)
@@ -1023,7 +1019,7 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 		case GDK_F1: display_help_cb(NULL);
 				break;
 		case GDK_m: 
-				gtk_toggle_button_set_active(tb, !state);
+				toggle_volume();
 				break;
 		case GDK_q: 
 				exit_gnome_radio();
