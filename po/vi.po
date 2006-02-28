@@ -7,8 +7,8 @@ msgid ""
 ""
 msgstr "Project-Id-Version: gnome-radio Gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-24 11:12+0100\n"
-"PO-Revision-Date: 2006-02-24 22:57+1030\n"
+"POT-Creation-Date: 2006-02-28 03:08+0100\n"
+"PO-Revision-Date: 2006-02-28 16:51+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Bộ điều chỉnh Rađiô FM"
 msgid "Listen to FM-radio"
 msgstr "Nghe rađiô FM"
 
-#:../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:178
+#:../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:177
 msgid "unnamed"
 msgstr "không tên"
 
@@ -150,24 +150,24 @@ msgstr "Thư mục đích:"
 msgid "Choose the Media Profile that should be used to record."
 msgstr "Hãy chọn hồ sơ vật chứa cần dùng khi thu nhạc."
 
-#:../src/gui.c:98
+#:../src/gui.c:97
 #,c-format
 msgid "%d stations found"
 msgstr "Tìm thấy %d trăm"
 
-#:../src/gui.c:125
+#:../src/gui.c:124
 msgid "Scanning"
 msgstr "Đang quét"
 
-#:../src/gui.c:130
+#:../src/gui.c:129
 msgid "Scanning for available stations:"
 msgstr "Đang quét tìm các trăm sẵn sàng:"
 
-#:../src/gui.c:140
+#:../src/gui.c:139
 msgid "No stations found"
 msgstr "Không tìm thấy"
 
-#:../src/gui.c:165
+#:../src/gui.c:164
 #,c-format
 msgid ""
 "%d stations found. \n"
@@ -175,12 +175,12 @@ msgid ""
 msgstr "Tìm thấy %d trăm.\n"
 "Bạn có muốn thêm chúng dạng định sẵn không?\n"
 
-#:../src/gui.c:226
+#:../src/gui.c:225
 #,c-format
 msgid "Could not open device \"%s\"!"
 msgstr "• Không thể mở thiết bị « %s ». •"
 
-#:../src/gui.c:227
+#:../src/gui.c:226
 #,c-format
 msgid ""
 "Check your settings and make sure that no other\n"
@@ -190,66 +190,61 @@ msgstr "Hãy kiểm tra thiết lập và chắc rằng không có\n"
 "chương trình khác đang dùng %s.\n"
 "Cũng hãy đảm bảo là bạn có quyền truy cập để đọc nó."
 
-#:../src/gui.c:255
+#:../src/gui.c:250
 #,c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr "• Nguồn bộ hoà tiếng « %s » không hợp lệ. •"
 
-#:../src/gui.c:257
+#:../src/gui.c:252
 #,c-format
 msgid "Could not open \"%s\"!"
 msgstr "• Không thể mở « %s ». •"
 
-#:../src/gui.c:396
+#:../src/gui.c:392
 #,c-format
 msgid "Gnomeradio - %s"
 msgstr "Gnomeradio — %s"
 
-#:../src/gui.c:398 ../src/trayicon.c:157
+#:../src/gui.c:394 ../src/trayicon.c:157
 #,c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio — %.2f MHz"
 
-#:../src/gui.c:403 ../src/gui.c:977
+#:../src/gui.c:399 ../src/gui.c:970
 #,c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Tần số : %.2f MHz"
 
-#:../src/gui.c:417 ../src/gui.c:980
-#,c-format
-msgid "Volume: %d%%"
-msgstr "Âm lượng: %d%%"
-
 #.consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#:../src/gui.c:660
+#:../src/gui.c:652
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%d-%B-%Y_%H-%M-%S"
 
 #.Only change the "MHz" part here (if applicable)
-#:../src/gui.c:664
+#:../src/gui.c:656
 #,c-format
 msgid "%s/%.2fMHz_%s"
 msgstr "%s/%.2fMHz_%s"
 
-#:../src/gui.c:673
+#:../src/gui.c:665
 #,c-format
 msgid "%s/%s_%s"
 msgstr "%s/%s_%s"
 
-#:../src/gui.c:709
+#:../src/gui.c:702
 msgid "Unmute"
 msgstr "Bỏ câm"
 
-#:../src/gui.c:713 ../src/gui.c:975
+#:../src/gui.c:706
 msgid "Mute"
 msgstr "Câm"
 
 #.Feel free to put your names here translators :-)
-#:../src/gui.c:726
+#:../src/gui.c:719
 msgid "TRANSLATORS"
 msgstr "Nhóm Việt hóa Gnome <gnomevi-list@lists.sourceforge.net>"
 
-#:../src/gui.c:737
+#:../src/gui.c:730
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -261,7 +256,7 @@ msgstr "Gnomeradio là chương trình điều chỉnh FM cho môi trường GNO
 "\n"
 "Phiên bản này đã được biên dịch hỗ trợ LIRC."
 
-#:../src/gui.c:741
+#:../src/gui.c:734
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -273,57 +268,75 @@ msgstr "Gnomeradio là chương trình điều chỉnh FM cho môi trường GNO
 "\n"
 "Phiên bản này đã được biên dịch mà không hỗ trợ LIRC."
 
-#:../src/gui.c:809
+#:../src/gui.c:802 ../src/gui.c:1071
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
-#:../src/gui.c:863
+#:../src/gui.c:858
 msgid "Presets:"
 msgstr "Định sẵn:"
 
-#:../src/gui.c:968
+#:../src/gui.c:961
 msgid "Scan Backwards"
 msgstr "Quét ngược"
 
-#:../src/gui.c:969
+#:../src/gui.c:962
 msgid "Scan Forwards"
 msgstr "Quét tiếp"
 
-#:../src/gui.c:970
+#:../src/gui.c:963
 msgid "0.05 MHz Backwards"
 msgstr "0.05 MHz ngược"
 
-#:../src/gui.c:971
+#:../src/gui.c:964
 msgid "0.05 MHz Forwards"
 msgstr "0.05 MHz tiếp"
 
-#:../src/gui.c:972
+#:../src/gui.c:965
 msgid "About Gnomeradio"
 msgstr "Giới thiệu về Gnomeradio"
 
-#:../src/gui.c:973
+#:../src/gui.c:966
 msgid "Record radio as Wave, OGG or MP3"
 msgstr "Thu rađiô thành Wave, OGG hay MP3"
 
-#:../src/gui.c:974
+#:../src/gui.c:967
 msgid "Edit your Preferences"
 msgstr "Biên soạn Tùy thích"
 
-#:../src/gui.c:976
+#:../src/gui.c:968
+msgid "Adjust the Volume"
+msgstr "Chỉnh âm lượng"
+
+#:../src/gui.c:969
 msgid "Quit"
 msgstr "Thoát"
 
-#:../src/gui.c:1091
+#:../src/gui.c:1063
+msgid "Scan for stations"
+msgstr "Quét tìm trăm"
+
+#:../src/gui.c:1101
 #,c-format
 msgid ""
-"Failed to init GConf: %s\n"
-"Changes to the settings won't be saved\n"
-msgstr "Việc sơ khởi GConf bị lỗi: %s\n"
-"Thay đổi các thiết lập sẽ không được lưu.\n"
+"%s\n"
+"\n"
+"Changes to the settings won't be saved."
+msgstr "%s\n"
+"\n"
+"Thay đổi các thiết lập sẽ không được lưu."
 
-#:../src/gui.c:1111
+#:../src/gui.c:1102
+msgid "Failed to init GConf!"
+msgstr "• Lỗi khởi chạy GConf. •"
+
+#:../src/gui.c:1115
 msgid "manual"
 msgstr "thủ công"
+
+#:../src/gui.c:1126
+msgid "Could not scan. Radio is not initialized."
+msgstr "Không thể quét. Máy rađiô chưa được sở khởi."
 
 #.GtkWidget *dialog;
 #.dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -331,9 +344,9 @@ msgstr "thủ công"
 #.gtk_dialog_run (GTK_DIALOG (dialog));
 #.gtk_widget_destroy (dialog);
 #.
-#:../src/gui.c:1136
-msgid "Could not start lirc!\n"
-msgstr "• Không thể chạy lirc. •\n"
+#:../src/gui.c:1149
+msgid "Could not start lirc!"
+msgstr "• Không thể khởi chạy lirc. •"
 
 #:../src/trayicon.c:79
 msgid "Muted"
