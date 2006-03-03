@@ -1,34 +1,33 @@
+# translation of eu.po to Basque
 # translation of eu.po to basque
 # Basque translation of gnomeradio.
 # Copyright (C) 2003 THE gnomeradio'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the
 # gnomeradio package.
 # Alberto Silva Gago <alberto@nmp.es>, 2003.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003, 2005.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003, 2005, 2006.
 #
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-09 17:37+0200\n"
-"PO-Revision-Date: 2005-09-09 17:37+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
-"Language-Team: basque <itzulpena@euskalgnu.org>\n"
+"POT-Creation-Date: 2006-03-02 22:37+0100\n"
+"PO-Revision-Date: 2006-03-03 13:06+0100\n"
+"Last-Translator: Iñaki Larrañaga <dooteo@euskalgnu.org>\n"
+"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+"\n"
 
 #: ../gnomeradio.schemas.in.h:1
-msgid "Audio device"
-msgstr "Soinu-gailua"
+msgid "Choose the GnomeMedia Profile that should be used for recording"
+msgstr "Aukeratu GnomeMedia-ren profila grabazioan erabiltzeko"
 
-#: ../gnomeradio.schemas.in.h:2 ../src/record.c:355
-msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr "Hautatu mp3 kodeketan erabiliko den bit-tasa"
-
-#: ../gnomeradio.schemas.in.h:3 ../src/prefs.c:562
+#: ../gnomeradio.schemas.in.h:2 ../src/prefs.c:608
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
@@ -36,87 +35,51 @@ msgstr ""
 "Hautatu zure irratiaren bolumena kontrolatzen duen nahasgailuaren iturria "
 "(line, line1, e.a.)"
 
-#: ../gnomeradio.schemas.in.h:4 ../src/record.c:354
-msgid "Choose the mp3 encoder that should be used"
-msgstr "Hautatu erabiliko den mp3 kodeketa"
+#: ../gnomeradio.schemas.in.h:3
+msgid "GnomeMedia Profile"
+msgstr "GnomeMedia-ren profila"
 
-#: ../gnomeradio.schemas.in.h:5 ../src/prefs.c:563
+#: ../gnomeradio.schemas.in.h:4 ../src/prefs.c:609
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr "Aukeratu ezean, gnomeradio ez da mututuko irten eta gero"
 
-#: ../gnomeradio.schemas.in.h:6
+#: ../gnomeradio.schemas.in.h:5
 msgid "Last frequency"
 msgstr "Azken frekuentzia"
 
-#: ../gnomeradio.schemas.in.h:7
+#: ../gnomeradio.schemas.in.h:6
 msgid "Last presets"
 msgstr "Azken ezarpenak"
 
-#: ../gnomeradio.schemas.in.h:8
-msgid "MP3 bitrate"
-msgstr "MP3 bit-tasa"
-
-#: ../gnomeradio.schemas.in.h:9
-msgid "MP3 encoder"
-msgstr "MP3 kodetzailea"
-
-#: ../gnomeradio.schemas.in.h:10
+#: ../gnomeradio.schemas.in.h:7
 msgid "Mixer Device"
 msgstr "Nahasgailua"
 
-#: ../gnomeradio.schemas.in.h:11
+#: ../gnomeradio.schemas.in.h:8
 msgid "Mixer source"
 msgstr "Nahasgailuaren iturria"
 
-#: ../gnomeradio.schemas.in.h:12
+#: ../gnomeradio.schemas.in.h:9
 msgid "Mute on exit"
 msgstr "Mututu irtetean"
 
-#: ../gnomeradio.schemas.in.h:13
+#: ../gnomeradio.schemas.in.h:10
 msgid "Number of presets"
 msgstr "Ezarpen-kopurua"
 
-#: ../gnomeradio.schemas.in.h:14
+#: ../gnomeradio.schemas.in.h:11
 msgid "Radio device"
 msgstr "Irrati-gailua"
 
-#: ../gnomeradio.schemas.in.h:15
-msgid "Record as mp3- or wave-file"
-msgstr "Grabatu Mp3 edo wave-fitxategi gisa"
-
-#: ../gnomeradio.schemas.in.h:16
-msgid "Record in stereo or mono"
-msgstr "Grabatu Mono edo estereo moduan"
-
-#: ../gnomeradio.schemas.in.h:17
-msgid "Sample format"
-msgstr "Lagin-formatua"
-
-#: ../gnomeradio.schemas.in.h:18
-msgid "Sample rate"
-msgstr "Lagin-tasa"
-
-#: ../gnomeradio.schemas.in.h:19 ../src/prefs.c:560
+#: ../gnomeradio.schemas.in.h:12 ../src/prefs.c:606
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr "Zehaztu irrati-gailua (normalean /dev/radio)"
 
-#: ../gnomeradio.schemas.in.h:20 ../src/record.c:356
-msgid "The audio device to use (usually /dev/audio)"
-msgstr "Erabiliko den soinu-gailua (normalean /dev/audio)"
-
-#: ../gnomeradio.schemas.in.h:21 ../src/record.c:352
-msgid "The audio sample-rate of the wave-file"
-msgstr "Wave fitxategiko soinuaren lagin-tasa"
-
-#: ../gnomeradio.schemas.in.h:22 ../src/record.c:353
-msgid "The format (8 or 16 bit) of the wave-file"
-msgstr "Wave fitxategiaren formatua (8 edo 16 bitekoa)"
-
-#: ../gnomeradio.schemas.in.h:23
+#: ../gnomeradio.schemas.in.h:13
 msgid "The last frequency (in MHz) in use"
 msgstr "Erabilitako azken frekuentzia (Mhz-tan)"
 
-#: ../gnomeradio.schemas.in.h:24
+#: ../gnomeradio.schemas.in.h:14
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
@@ -124,33 +87,17 @@ msgstr ""
 "Gnomeradiok erabiliko duen nahasgailua. Bakarrik gako honen bitartez alda "
 "daiteke (ez dago aukera grafikorik)"
 
-#: ../gnomeradio.schemas.in.h:25
+#: ../gnomeradio.schemas.in.h:15
 msgid "The number of presets"
 msgstr "Ezarpenen kopurua"
 
-#: ../gnomeradio.schemas.in.h:26
+#: ../gnomeradio.schemas.in.h:16
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
 "Gnomeradio irtetean gaitutako ezarpena. Bitartea 0 da ... (# ezarpenak - 1). "
 "Bat ere ez -1 da"
-
-#: ../gnomeradio.schemas.in.h:27
-msgid "The stored value of the volume (0-100)"
-msgstr "Gordetako bolumenaren balioa (0-100)"
-
-#: ../gnomeradio.schemas.in.h:28
-msgid "Volume"
-msgstr "Bolumena"
-
-#: ../gnomeradio.schemas.in.h:29 ../src/record.c:357 ../src/record.c:358
-msgid "Whether the output should be a mp3- or a wave-file"
-msgstr "Irteera-formatua mp3- edo wave-fitxategia izango den adierazten du"
-
-#: ../gnomeradio.schemas.in.h:30 ../src/record.c:359 ../src/record.c:360
-msgid "Whether the output should be in stereo or mono"
-msgstr "Irteera-formatua estereo edo mono izango den adierazten du"
 
 #: ../gnomeradio.desktop.in.h:1
 msgid "FM-Radio Tuner"
@@ -160,164 +107,157 @@ msgstr "FM irrati-sintonizadorea"
 msgid "Listen to FM-radio"
 msgstr "Entzun FM irratia"
 
-#: ../src/prefs.c:248 ../src/prefs.c:676
-msgid "Wave file"
-msgstr "Wave fitxategia"
-
-#: ../src/prefs.c:268
-msgid "unamed"
+#: ../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:177
+msgid "unnamed"
 msgstr "izenik gabe"
 
-#: ../src/prefs.c:333
+#: ../src/prefs.c:367
 msgid "Choose a destination folder"
 msgstr "Hautatu helburuko karpeta"
 
-#: ../src/prefs.c:472
+#: ../src/prefs.c:518
 msgid "Gnomeradio Settings"
 msgstr "Gnomeradio ezarpenak"
 
-#: ../src/prefs.c:488
+#: ../src/prefs.c:534
 msgid "General Settings"
 msgstr "Ezarpen orokorrak"
 
-#: ../src/prefs.c:498
+#: ../src/prefs.c:544
 msgid "Presets"
 msgstr "Irratiak"
 
-#: ../src/prefs.c:508
+#: ../src/prefs.c:554
 msgid "Record Settings"
 msgstr "Grabazio-ezarpenak"
 
-#: ../src/prefs.c:526
+#: ../src/prefs.c:572
 msgid "Radio Device:"
 msgstr "Irrati-gailua:"
 
-#: ../src/prefs.c:533
+#: ../src/prefs.c:579
 msgid "Mixer Source:"
 msgstr "Nahasgailuren iturria:"
 
-#: ../src/prefs.c:550
+#: ../src/prefs.c:596
 msgid "Mute on exit?"
 msgstr "Isildu irtetean?"
 
-#: ../src/prefs.c:632
+#: ../src/prefs.c:678
 msgid "Add a new preset"
 msgstr "Gehitu ezarpen berria"
 
-#: ../src/prefs.c:633
+#: ../src/prefs.c:679
 msgid "Remove preset from List"
 msgstr "Kendu ezarpena zerrendatik"
 
-#: ../src/prefs.c:661 ../src/record.c:275
-msgid "Encoder:"
-msgstr "Kodetzailea:"
-
-#: ../src/prefs.c:662 ../src/record.c:276
-msgid "Bitrate:"
-msgstr "Bit-tasa:"
-
-#: ../src/prefs.c:663
+#: ../src/prefs.c:692
 msgid "Destination directory:"
 msgstr "Helburuko direktorioa:"
 
-#: ../src/prefs.c:692
-#, c-format
-msgid "%s kb/s"
-msgstr "%s Kb/s"
+#: ../src/prefs.c:710
+msgid "Choose the Media Profile that should be used to record."
+msgstr "Aukeratu Media-ren profila grabazioan erabiltzeko."
 
-#: ../src/prefs.c:714
+#: ../src/gui.c:97
+#, c-format
+msgid "%d stations found"
+msgstr "%d emisiogune aurkitu dira"
+
+#: ../src/gui.c:124
+msgid "Scanning"
+msgstr "Eskaneatzea"
+
+#: ../src/gui.c:129
+msgid "Scanning for available stations:"
+msgstr "Emisiogune erabilgarriak eskaneatzen:"
+
+#: ../src/gui.c:139
+msgid "No stations found"
+msgstr "Ez da emisiogunerik aurkitu"
+
+#: ../src/gui.c:164
+#, c-format
 msgid ""
-"Choose the mp3-/ogg-encoder that should be used, or to record as a "
-"uncompressed wave file"
+"%d stations found. \n"
+"Do you want to add them as presets?\n"
 msgstr ""
-"Aukeratu erabiliko den mp3/ogg kodeketa, edo konpresiorik gabeko "
-"'wave' fitxategi-mota gisa grabatzea"
+"%d emisiogune aurkitu dira.\n"
+"Nahi duzu ezarpenetan gehitzea?\n"
 
-#: ../src/prefs.c:715
-msgid "Choose the bitrate in which the mp3/ogg will be encoded"
-msgstr "Aukeratu mp3/ogg kodeketan erabiliko den bit-tasa"
+#: ../src/gui.c:225
+#, c-format
+msgid "Could not open device \"%s\"!"
+msgstr "Ezin izan da \"%s\" gailua ireki!"
 
-#: ../src/gui.c:68
+#: ../src/gui.c:226
 #, c-format
 msgid ""
-"Could not open device \"%s\" !\n"
-"\n"
-"Check your Settings and make sure that no other\n"
+"Check your settings and make sure that no other\n"
 "program is using %s.\n"
-"Make also sure that you have read-access to it."
+"Also make sure that you have read-access to it."
 msgstr ""
-"\"%s\" gailua ezin izan da ireki!\n"
-"\n"
 "Egiaztatu zure ezarpenak eta ziurtatu ez dagoela %s gailua erabiltzen ari "
 "den beste programarik.\n"
 "Honetaz gain, ziurtatu gailu hori irakurtzeko baimena baduzula."
 
-#: ../src/gui.c:90
+#: ../src/gui.c:250
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr "\"%s\" nahasgailuaren iturria ez da iturri baliogarri bat!"
 
-#: ../src/gui.c:92
+#: ../src/gui.c:252
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr "Ezin izan da \"%s\" ireki!"
 
-#: ../src/gui.c:247 ../src/gui.c:255 ../src/gui.c:732
+#: ../src/gui.c:392
+#, c-format
+msgid "Gnomeradio - %s"
+msgstr "Gnomeradio - %s"
+
+#: ../src/gui.c:394 ../src/trayicon.c:157
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:251 ../src/gui.c:918
+#: ../src/gui.c:399 ../src/gui.c:970
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Frekuentzia: %.2f MHz"
 
-#: ../src/gui.c:275 ../src/gui.c:921
-#, c-format
-msgid "Volume: %d%%"
-msgstr "Bolumena: %d%%"
-
-#: ../src/gui.c:556
-msgid ""
-"Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr "Sox ezin izan da antzeman. Zure PATH-ean instalatuta dagoela ziurtatu."
-
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:570
+#: ../src/gui.c:652
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%Y-%B-%d_%H-%M-%S"
 
 #. Only change the "MHz" part here (if applicable)
-#: ../src/gui.c:573
+#: ../src/gui.c:656
 #, c-format
-msgid "%s/%.2fMHz_%s%s"
-msgstr "%s/%.2fMHz_%s%s"
+msgid "%s/%.2fMHz_%s"
+msgstr "%s/%.2fMHz_%s"
 
-#: ../src/gui.c:582
+#: ../src/gui.c:665
 #, c-format
-msgid ""
-"Error opening file '%s':\n"
-"%s"
-msgstr ""
-"Errorea '%s' fitxategia irekitzean:\n"
-"%s"
+msgid "%s/%s_%s"
+msgstr "%s/%s_%s"
 
-#: ../src/gui.c:597 ../src/gui.c:916
-msgid "Mute"
-msgstr "Mututu"
-
-#: ../src/gui.c:603
+#: ../src/gui.c:702
 msgid "Unmute"
 msgstr "Ez mututu"
 
+#: ../src/gui.c:706
+msgid "Mute"
+msgstr "Mututu"
+
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:615
+#: ../src/gui.c:719
 msgid "TRANSLATORS"
 msgstr ""
 "Alberto Silva <alberto@nmp.es>\n"
 "Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>"
 
-#: ../src/gui.c:626
+#: ../src/gui.c:730
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -330,7 +270,7 @@ msgstr ""
 "\n"
 "Bertsio hau LIRC euskarriarekin konpilatua izan da."
 
-#: ../src/gui.c:630
+#: ../src/gui.c:734
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -343,58 +283,76 @@ msgstr ""
 "\n"
 "Bertsio hau LIRC euskarririk gabe konpilatua izan da."
 
-#: ../src/gui.c:752
+#: ../src/gui.c:802 ../src/gui.c:1071
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
-#: ../src/gui.c:806
+#: ../src/gui.c:858
 msgid "Presets:"
 msgstr "Ezarpenak:"
 
-#: ../src/gui.c:909
+#: ../src/gui.c:961
 msgid "Scan Backwards"
 msgstr "Eskaneatu atzerantz"
 
-#: ../src/gui.c:910
+#: ../src/gui.c:962
 msgid "Scan Forwards"
 msgstr "Eskaneatu aurrerantz"
 
-#: ../src/gui.c:911
+#: ../src/gui.c:963
 msgid "0.05 MHz Backwards"
 msgstr "0.05 MHz atzerantz"
 
-#: ../src/gui.c:912
+#: ../src/gui.c:964
 msgid "0.05 MHz Forwards"
 msgstr "0.05 MHz aurrerantz"
 
-#: ../src/gui.c:913
+#: ../src/gui.c:965
 msgid "About Gnomeradio"
 msgstr "Gnomeradio-ri buruz"
 
-#: ../src/gui.c:914
+#: ../src/gui.c:966
 msgid "Record radio as Wave, OGG or MP3"
 msgstr "Grabatu irratia Wave, OGG edo MP3 gisa"
 
-#: ../src/gui.c:915
+#: ../src/gui.c:967
 msgid "Edit your Preferences"
 msgstr "Editatu ezarpenak"
 
-#: ../src/gui.c:917
+#: ../src/gui.c:968
+msgid "Adjust the Volume"
+msgstr "Doitu bolumena"
+
+#: ../src/gui.c:969
 msgid "Quit"
 msgstr "Itxi"
 
-#: ../src/gui.c:1036
+#: ../src/gui.c:1063
+msgid "Scan for stations"
+msgstr "Bilatu emisioguneak"
+
+#: ../src/gui.c:1101
 #, c-format
 msgid ""
-"Failed to init GConf: %s\n"
-"Changes to the settings won't be saved\n"
+"%s\n"
+"\n"
+"Changes to the settings won't be saved."
 msgstr ""
-"GConf ezin izan da abiarazi: %s\n"
-"Ezarpenetan egindako aldaketak ez dira gordeko\n"
+"%s\n"
+"\n"
+"Ezarpenetan egindako aldaketak ez dira gordeko."
 
-#: ../src/gui.c:1050
+#: ../src/gui.c:1102
+msgid "Failed to init GConf!"
+msgstr "Huts egin du GConf hasieratzean."
+
+#: ../src/gui.c:1115
 msgid "manual"
 msgstr "eskuliburua"
+
+#: ../src/gui.c:1126
+msgid "Could not scan. Radio is not initialized."
+msgstr "Ezin izan da eskaneatu. Irratia ez da hasieratu."
 
 #. GtkWidget *dialog;
 #. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -402,133 +360,87 @@ msgstr "eskuliburua"
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1073
-msgid "Could not start lirc!\n"
-msgstr "Ezin izan da 'lirc' abiarazi\n"
+#: ../src/gui.c:1149
+msgid "Could not start lirc!"
+msgstr "Ezin izan da 'lirc' abiarazi."
 
-#: ../src/record.c:154
-msgid "Start"
-msgstr "Hasi"
+#: ../src/trayicon.c:79
+msgid "Muted"
+msgstr "Mutututa"
 
-#: ../src/record.c:162
-msgid "Gnomeradio Record"
-msgstr "Gnomeradio grabaketa"
+#: ../src/trayicon.c:93
+msgid "Show Window"
+msgstr "Erakutsi leihoa"
 
-#: ../src/record.c:170
-msgid "General"
-msgstr "Orokorra"
-
-#: ../src/record.c:171
-msgid "Wave Settings"
-msgstr "Wave ezarpenak"
-
-#: ../src/record.c:172
-msgid "Mp3/Ogg Settings"
-msgstr "Mp3/Ogg ezarpenak"
-
-#: ../src/record.c:184
-msgid "Audio device:"
-msgstr "Soinu-gailua:"
-
-#: ../src/record.c:187
-msgid "Filename:"
-msgstr "Fitxategi-izena:"
-
-#. path_entry = gtk_entry_new();
-#: ../src/record.c:189
-msgid "Choose a filename"
-msgstr "Aukeratu fitxategi-izena"
-
-#. choose_button = gtk_button_new_with_label(_("Choose..."));
-#: ../src/record.c:195
-msgid "Record as:"
-msgstr "Grabatu honela:"
-
-#: ../src/record.c:196
-msgid "Wave (.wav)"
-msgstr "Wave (.wav)"
-
-#: ../src/record.c:197
-msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3/Ogg (.mp3/.ogg)"
-
-#: ../src/record.c:221
-msgid "Sample rate:"
-msgstr "Lagin-tasa:"
-
-#: ../src/record.c:222
-msgid "Sample format:"
-msgstr "Lagin-formatua:"
-
-#: ../src/record.c:223
-msgid "Record in:"
-msgstr "Grabatu hemen:"
-
-#: ../src/record.c:256
-msgid "Mono"
-msgstr "Mono"
-
-#: ../src/record.c:257
-msgid "Stereo"
-msgstr "Estereo"
-
-#: ../src/record.c:303 ../src/record.c:310
-msgid "no supported encoder installed"
-msgstr "instalatutako kodetzailea ez dago onartua"
-
-#: ../src/record.c:431
-#, c-format
-msgid ""
-"%s has stopped:\n"
-"%s\n"
-msgstr ""
-"%s gelditu egin da:\n"
-"%s\n"
-
-#: ../src/record.c:432
-msgid "MP3/Ogg encoder"
-msgstr "MP3/Ogg kodetzailea"
-
-#: ../src/record.c:433
-msgid "unknown reason"
-msgstr "arrazoi ezezaguna"
-
-#: ../src/record.c:482
+#: ../src/record.c:65
 #, c-format
 msgid "%i byte"
 msgstr "%i byte"
 
-#: ../src/record.c:484
+#: ../src/record.c:67
 #, c-format
 msgid "%i kB"
 msgstr "%i kB"
 
-#: ../src/record.c:485
+#: ../src/record.c:68
 #, c-format
 msgid "%.2f MB"
 msgstr "%.2f MB"
 
-#: ../src/record.c:487
+#: ../src/record.c:70
 msgid "Error"
 msgstr "Errorea"
 
-#: ../src/record.c:488
+#: ../src/record.c:71
 msgid "0 byte"
 msgstr "0 byte"
 
-#: ../src/record.c:528
+#: ../src/record.c:106
 msgid "Gnomeradio recording status"
 msgstr "Gnomeradioren grabazio egoera"
 
-#: ../src/record.c:541
+#: ../src/record.c:119
 msgid "Recording:"
 msgstr "Grabatzen:"
 
-#: ../src/record.c:542
+#: ../src/record.c:120
 msgid "Filesize:"
 msgstr "Fitxategi-tamainua:"
 
-#: ../src/record.c:559
+#: ../src/record.c:137
 msgid "Stop Recording"
 msgstr "Utzi grabatzeari"
+
+#: ../src/rec_tech.c:42
+msgid "GStreamer runtime error."
+msgstr "GStreamer-en exekuzio-denborako errorea."
+
+#: ../src/rec_tech.c:58
+msgid "Could not create GStreamer pipeline."
+msgstr "Ezin izan da GStreamer-en kanalizazioa sortu."
+
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
+msgid "Check your Gstreamer installation!"
+msgstr "Egiaztatu GStreamer-en instalazioa."
+
+#: ../src/rec_tech.c:65
+msgid "Could not open Gstreamer OSS Source."
+msgstr "Ezin izan da GStreamer OSS iturburua ireki."
+
+#: ../src/rec_tech.c:66
+msgid "Verify your Gstreamer OSS subsystem installation!"
+msgstr "Egiaztatu GStreamer OSS azpisistemaren instalazioa."
+
+#: ../src/rec_tech.c:78
+#, c-format
+msgid "Could not create encoder \"%s\"."
+msgstr "Ezin izan da \"%s\" kodeketa sortu."
+
+#: ../src/rec_tech.c:80
+msgid "Verify your Gstreamer plugins installation!"
+msgstr "Egiaztatu GStreamer-en plugin-en instalazioa"
+
+#: ../src/rec_tech.c:88
+msgid "Could not create Gstreamer filesink."
+msgstr "Ezin izan da GStreamer-en sink.-fitxategia sortu."
 
