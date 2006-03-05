@@ -1,3 +1,7 @@
+2006-03-05  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* src/trayicon.c: Make "show-window"-toggle in menu active on startup
+
 2006-02-26  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* configure.in, src/Makefile.am: PKG_CHECK_VERSION() use GNOME instead of GNOMERADIO

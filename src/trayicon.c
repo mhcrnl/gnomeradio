@@ -29,23 +29,23 @@ static GtkWidget *showwindow_menuitem;
 static void mute_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)
 {
 	toggle_volume();
-}	
+}
 
 static void record_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
 	rec_button_clicked_cb(NULL, user_data);
-}	
+}
 
 static void showwindow_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)
 {
 	GtkWidget* app = GTK_WIDGET(user_data);
 	toggle_mainwindow_visibility(app);
-}	
+}
 
 static void quit_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
 	exit_gnome_radio();
-}	
+}
 
 void preset_menuitem_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
@@ -80,7 +80,7 @@ void create_tray_menu(GtkWidget *app) {
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), mixer_get_volume() == 0);
 	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), mute_menuitem);
 	mute_menuitem_toggled_cb_id = 
-		g_signal_connect(G_OBJECT(mute_menuitem), "toggled", (GCallback)mute_menuitem_toggled_cb, (gpointer)app);
+	g_signal_connect(G_OBJECT(mute_menuitem), "toggled", (GCallback)mute_menuitem_toggled_cb, (gpointer)app);
 	gtk_widget_show(mute_menuitem);
 
 	GtkWidget *record_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_MEDIA_RECORD, NULL);
@@ -91,7 +91,8 @@ void create_tray_menu(GtkWidget *app) {
 	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), gtk_separator_menu_item_new());
 	
 	showwindow_menuitem = gtk_check_menu_item_new_with_label(_("Show Window"));
-	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), GTK_WIDGET_VISIBLE(app));
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), TRUE);
+	/*gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), GTK_WIDGET_VISIBLE(app));*/
 	gtk_menu_shell_append(GTK_MENU_SHELL(tray_menu), showwindow_menuitem);
 	g_signal_connect(G_OBJECT(showwindow_menuitem), "activate", (GCallback)showwindow_menuitem_toggled_cb, (gpointer)app);
 	gtk_widget_show(showwindow_menuitem);

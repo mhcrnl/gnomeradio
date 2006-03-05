@@ -5,3 +5,4 @@ src/gui.c
 src/trayicon.c
 src/record.c
 src/rec_tech.c
+src/bacon-volume.c
