@@ -7,8 +7,8 @@ msgid ""
 ""
 msgstr "Project-Id-Version: gnome-radio Gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-28 03:08+0100\n"
-"PO-Revision-Date: 2006-02-28 16:51+1030\n"
+"POT-Creation-Date: 2006-03-10 03:10+0100\n"
+"PO-Revision-Date: 2006-03-10 21:13+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -205,7 +205,7 @@ msgstr "• Không thể mở « %s ». •"
 msgid "Gnomeradio - %s"
 msgstr "Gnomeradio — %s"
 
-#:../src/gui.c:394 ../src/trayicon.c:157
+#:../src/gui.c:394 ../src/trayicon.c:158
 #,c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio — %.2f MHz"
@@ -427,3 +427,13 @@ msgstr "• Hãy kiểm tra bản cài đặt bộ cầm phít GStreamer là đ�
 #:../src/rec_tech.c:88
 msgid "Could not create Gstreamer filesink."
 msgstr "Không thể tạo ổ chìm tập tin GStreamer."
+
+#.+
+#:../src/bacon-volume.c:187
+msgid "+"
+msgstr "+"
+
+#.-
+#:../src/bacon-volume.c:203
+msgid "-"
+msgstr "-"
