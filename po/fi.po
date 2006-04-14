@@ -1,16 +1,16 @@
-# translation of fi.po to Suomi
+# Finnish messages for gnomeradio
 # Finnish Gnomeradio translation
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnomeradio package.
 # Jouni Rinne <l33tmmx@sci.fi>, 2005.
-# Ilkka Tuohela <hile@iki.fi>, 2005.
+# Ilkka Tuohela <hile@iki.fi>, 2005-2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Gnomeradio 1.5\n"
+"Project-Id-Version: gnomeradio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-28 21:57+0200\n"
-"PO-Revision-Date: 2006-02-28 22:10+0200\n"
+"POT-Creation-Date: 2006-04-14 21:42+0300\n"
+"PO-Revision-Date: 2006-04-14 21:45+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr ""
 "Haluatko lisätä ne esivalinnoiksi?\n"
 
 #: ../src/gui.c:225
-#,  c-format
+#, c-format
 msgid "Could not open device \"%s\"!"
 msgstr "Laitetta \"%s\" ei voi avata!"
 
@@ -212,7 +212,7 @@ msgstr "Laitetta \"%s\" ei voi avata!"
 msgid "Gnomeradio - %s"
 msgstr "Gnomeradio - %s"
 
-#: ../src/gui.c:394 ../src/trayicon.c:157
+#: ../src/gui.c:394 ../src/trayicon.c:158
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
@@ -439,6 +439,16 @@ msgstr "Tarkista GStreamer-liitännäisten asennus!"
 #: ../src/rec_tech.c:88
 msgid "Could not create Gstreamer filesink."
 msgstr "GStreamerin tiedostoulostuloa ei voi luoda."
+
+#. +
+#: ../src/bacon-volume.c:187
+msgid "+"
+msgstr "+"
+
+#. -
+#: ../src/bacon-volume.c:203
+msgid "-"
+msgstr "-"
 
 #~ msgid "Audio device"
 #~ msgstr "Äänilaite"
