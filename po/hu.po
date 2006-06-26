@@ -2,149 +2,97 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Sári Gábor <saga@uhulinux.hu>, 2003.
-# Gabor Kelemen <kelemeng@gnome.hu>, 2005.
+# Gabor Kelemen <kelemeng@gnome.hu>, 2005, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-20 11:19+0000\n"
-"PO-Revision-Date: 2005-05-24 16:20+0200\n"
+"POT-Creation-Date: 2006-06-23 03:37+0200\n"
+"PO-Revision-Date: 2006-06-25 11:50+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.10.2\n"
 "Plural-Forms:  nplurals=1; plural=0;\n"
 
 #: ../gnomeradio.schemas.in.h:1
-msgid "Audio device"
-msgstr "Hangeszköz"
+msgid "Choose the GnomeMedia Profile that should be used for recording"
+msgstr "Válassza ki a felvételhez használni kívánt GnomeMedia profilt"
 
-#: ../gnomeradio.schemas.in.h:2 ../src/record.c:355
-msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr "Válassza ki a bitsebességet az mp3 kódoláshoz"
-
-#: ../gnomeradio.schemas.in.h:3 ../src/prefs.c:562
+#: ../gnomeradio.schemas.in.h:2 ../src/prefs.c:608
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Válassza ki a keverő bemenet (vonal, vonal1, stb.), ami szabályozza a "
-"rádió hangerejét"
+"Válassza ki a keverő bemenet (vonal, vonal1, stb.), ami szabályozza a rádió "
+"hangerejét"
 
-#: ../gnomeradio.schemas.in.h:4 ../src/record.c:354
-msgid "Choose the mp3 encoder that should be used"
-msgstr "Válassza ki a használni kívánt mp3 tömörítőt"
+#: ../gnomeradio.schemas.in.h:3
+msgid "GnomeMedia Profile"
+msgstr "GnomeMedia profil"
 
-#: ../gnomeradio.schemas.in.h:5 ../src/prefs.c:563
+#: ../gnomeradio.schemas.in.h:4 ../src/prefs.c:609
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr "Ha nincs bejelölve, a gnomeradio kilépés után nem hallgat el"
 
-#: ../gnomeradio.schemas.in.h:6
+#: ../gnomeradio.schemas.in.h:5
 msgid "Last frequency"
 msgstr "Utolsó frekvencia"
 
-#: ../gnomeradio.schemas.in.h:7
+#: ../gnomeradio.schemas.in.h:6
 msgid "Last presets"
 msgstr "Utolsó állomás"
 
-#: ../gnomeradio.schemas.in.h:8
-msgid "MP3 bitrate"
-msgstr "MP3 bitsebesség"
-
-#: ../gnomeradio.schemas.in.h:9
-msgid "MP3 encoder"
-msgstr "MP3 tömörítő"
-
-#: ../gnomeradio.schemas.in.h:10
+#: ../gnomeradio.schemas.in.h:7
 msgid "Mixer Device"
 msgstr "Keverőeszköz"
 
-#: ../gnomeradio.schemas.in.h:11
+#: ../gnomeradio.schemas.in.h:8
 msgid "Mixer source"
 msgstr "Keverő forrás"
 
-#: ../gnomeradio.schemas.in.h:12
+#: ../gnomeradio.schemas.in.h:9
 msgid "Mute on exit"
 msgstr "Némítás kilépéskor"
 
-#: ../gnomeradio.schemas.in.h:13
+#: ../gnomeradio.schemas.in.h:10
 msgid "Number of presets"
 msgstr "Állomások száma"
 
-#: ../gnomeradio.schemas.in.h:14
+#: ../gnomeradio.schemas.in.h:11
 msgid "Radio device"
 msgstr "Rádióeszköz"
 
-#: ../gnomeradio.schemas.in.h:15
-msgid "Record as mp3- or wave-file"
-msgstr "A felvétel mp3 vagy wav fájlba készüljön?"
-
-#: ../gnomeradio.schemas.in.h:16
-msgid "Record in stereo or mono"
-msgstr "A felvétel sztereo vagy monó formátumú legyen?"
-
-#: ../gnomeradio.schemas.in.h:17
-msgid "Sample format"
-msgstr "Minta formátuma"
-
-#: ../gnomeradio.schemas.in.h:18
-msgid "Sample rate"
-msgstr "Mintavételi frekvencia"
-
-#: ../gnomeradio.schemas.in.h:19 ../src/prefs.c:560
+#: ../gnomeradio.schemas.in.h:12 ../src/prefs.c:606
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr "Adja meg a rádió eszközt (legtöbbször /dev/radio)"
 
-#: ../gnomeradio.schemas.in.h:20 ../src/record.c:356
-msgid "The audio device to use (usually /dev/audio)"
-msgstr "A használandó hangeszköz (legtöbbször /dev/audio)"
-
-#: ../gnomeradio.schemas.in.h:21 ../src/record.c:352
-msgid "The audio sample-rate of the wave-file"
-msgstr "A wav fájl mintavételi frekvenciája"
-
-#: ../gnomeradio.schemas.in.h:22 ../src/record.c:353
-msgid "The format (8 or 16 bit) of the wave-file"
-msgstr "A wav fájl formátuma (8 vagy 16 bit)"
-
-#: ../gnomeradio.schemas.in.h:23
+#: ../gnomeradio.schemas.in.h:13
 msgid "The last frequency (in MHz) in use"
 msgstr "A legutóbb használt frekvencia MHz-ben"
 
-#: ../gnomeradio.schemas.in.h:24
+#: ../gnomeradio.schemas.in.h:14
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
-msgstr "A gnomeradio által használandó keverőeszköz. Csak ezen a kulcson keresztül változtatható meg (nincs GUI opció)."
+msgstr ""
+"A gnomeradio által használandó keverőeszköz. Csak ezen a kulcson keresztül "
+"változtatható meg (nincs GUI opció)."
 
-#: ../gnomeradio.schemas.in.h:25
+#: ../gnomeradio.schemas.in.h:15
 msgid "The number of presets"
 msgstr "Az állomások száma"
 
-#: ../gnomeradio.schemas.in.h:26
+#: ../gnomeradio.schemas.in.h:16
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
-msgstr "A gnomeradio leállításakor bekapcsolt állomás. A tartomány 0 és az állomások száma-1 között van, -1 esetén nincs megadva."
-
-#: ../gnomeradio.schemas.in.h:27
-msgid "The stored value of the volume (0-100)"
-msgstr "A hangerő tárolt értéke (0-100)"
-
-#: ../gnomeradio.schemas.in.h:28
-msgid "Volume"
-msgstr "Hangerő"
-
-#: ../gnomeradio.schemas.in.h:29 ../src/record.c:357 ../src/record.c:358
-msgid "Whether the output should be a mp3- or a wave-file"
-msgstr "Az elkészülő fájl mp3 vagy wav legyen-e?"
-
-#: ../gnomeradio.schemas.in.h:30 ../src/record.c:359 ../src/record.c:360
-msgid "Whether the output should be in stereo or mono"
-msgstr "Az elkészülő fájl formátuma (sztereó vagy mono)"
+msgstr ""
+"A gnomeradio leállításakor bekapcsolt állomás. A tartomány 0 és az állomások "
+"száma-1 között van, -1 esetén nincs megadva."
 
 #: ../gnomeradio.desktop.in.h:1
 msgid "FM-Radio Tuner"
@@ -154,161 +102,157 @@ msgstr "FM rádióvevő"
 msgid "Listen to FM-radio"
 msgstr "FM-rádió hallgatása"
 
-#: ../src/prefs.c:248 ../src/prefs.c:676
-msgid "Wave file"
-msgstr "Hangfájl"
-
-#: ../src/prefs.c:268
-msgid "unamed"
+#: ../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:177
+msgid "unnamed"
 msgstr "névtelen"
 
-#: ../src/prefs.c:333
+#: ../src/prefs.c:367
 msgid "Choose a destination folder"
 msgstr "Válassza ki a célmappát"
 
-#: ../src/prefs.c:472
+#: ../src/prefs.c:518
 msgid "Gnomeradio Settings"
 msgstr "A Gnomeradio beállításai"
 
-#: ../src/prefs.c:488
+#: ../src/prefs.c:534
 msgid "General Settings"
 msgstr "Általános beállítások"
 
-#: ../src/prefs.c:498
+#: ../src/prefs.c:544
 msgid "Presets"
 msgstr "Állomások"
 
-#: ../src/prefs.c:508
+#: ../src/prefs.c:554
 msgid "Record Settings"
 msgstr "Felvétel beállításai"
 
-#: ../src/prefs.c:526
+#: ../src/prefs.c:572
 msgid "Radio Device:"
 msgstr "Rádióeszköz:"
 
-#: ../src/prefs.c:533
+#: ../src/prefs.c:579
 msgid "Mixer Source:"
 msgstr "Keverőforrás:"
 
-#: ../src/prefs.c:550
+#: ../src/prefs.c:596
 msgid "Mute on exit?"
 msgstr "Némítás kilépéskor?"
 
-#: ../src/prefs.c:632
+#: ../src/prefs.c:678
 msgid "Add a new preset"
 msgstr "Új állomás hozzáadása"
 
-#: ../src/prefs.c:633
+#: ../src/prefs.c:679
 msgid "Remove preset from List"
 msgstr "Állomás eltávolítása a listából"
 
-#: ../src/prefs.c:661 ../src/record.c:275
-msgid "Encoder:"
-msgstr "Tömörítő:"
-
-#: ../src/prefs.c:662 ../src/record.c:276
-msgid "Bitrate:"
-msgstr "Bitsebesség:"
-
-#: ../src/prefs.c:663
+#: ../src/prefs.c:692
 msgid "Destination directory:"
 msgstr "Célkönyvtár:"
 
-#: ../src/prefs.c:692
+#: ../src/prefs.c:710
+msgid "Choose the Media Profile that should be used to record."
+msgstr "Válassza ki a felvételhez használni kívánt médiaprofilt."
+
+#: ../src/gui.c:97
 #, c-format
-msgid "%s kb/s"
-msgstr "%s kb/mp"
+msgid "%d stations found"
+msgstr "%d állomás található"
 
-#: ../src/prefs.c:714
-msgid ""
-"Choose the mp3-/ogg-encoder that should be used, or to record as a "
-"uncompressed wave file"
-msgstr "Válassza ki a használni kívánt mp3/ogg tömörítőt, vagy a felvétel tömörítetlen wav fájlba készüljön"
+#: ../src/gui.c:124
+msgid "Scanning"
+msgstr "Keresés"
 
-#: ../src/prefs.c:715
-msgid "Choose the bitrate in which the mp3/ogg will be encoded"
-msgstr "Válassza ki a bitsebességet, mellyel az mp3/ogg tömörítve lesz"
+#: ../src/gui.c:129
+msgid "Scanning for available stations:"
+msgstr "Elérhető állomások keresése:"
 
-#: ../src/gui.c:68
+#: ../src/gui.c:139
+msgid "No stations found"
+msgstr "Nincsenek állomások"
+
+#: ../src/gui.c:164
 #, c-format
 msgid ""
-"Could not open device \"%s\" !\n"
-"\n"
-"Check your Settings and make sure that no other\n"
-"program is using %s.\n"
-"Make also sure that you have read-access to it."
+"%d stations found. \n"
+"Do you want to add them as presets?\n"
 msgstr ""
-"Nem lehet megnyitni a(z) \"%s\" eszközt!\n"
-"\n"
+"%d állomás található.\n"
+"Fel kívánja venni őket az állomások közé?\n"
+
+#: ../src/gui.c:225
+#, c-format
+msgid "Could not open device \"%s\"!"
+msgstr "A(z) \"%s\" eszköz nem nyitható meg!"
+
+#: ../src/gui.c:226
+#, c-format
+msgid ""
+"Check your settings and make sure that no other\n"
+"program is using %s.\n"
+"Also make sure that you have read-access to it."
+msgstr ""
 "Ellenőrizze a beállításait és győződjön meg, hogy\n"
 "más program nem használja %s-t\n"
 "valamint, hogy van rá olvasási jogosultsága."
 
-#: ../src/gui.c:90
+#: ../src/gui.c:250
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr "A megadott \"%s\" keverőforrás nem érvényes forrás!"
 
-#: ../src/gui.c:92
+#: ../src/gui.c:252
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr "\"%s\" nem nyitható meg!"
 
-#: ../src/gui.c:247 ../src/gui.c:255 ../src/gui.c:732
+#: ../src/gui.c:392
+#, c-format
+msgid "Gnomeradio - %s"
+msgstr "Gnomeradio - %s"
+
+#: ../src/gui.c:394 ../src/trayicon.c:158
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:251 ../src/gui.c:918
+#: ../src/gui.c:399 ../src/gui.c:970
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Frekvencia: %.2f MHz"
 
-#: ../src/gui.c:275 ../src/gui.c:921
-#, c-format
-msgid "Volume: %d%%"
-msgstr "Hangerő: %d%%"
-
-#: ../src/gui.c:556
-msgid "Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr "A Sox nem található. Győződjön meg, hogy telepítve van-e a keresési útvonalon."
-
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:570
+#: ../src/gui.c:652
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%Y-%B-%d_%k-%M-%S"
 
 #. Only change the "MHz" part here (if applicable)
-#: ../src/gui.c:573
+#: ../src/gui.c:656
 #, c-format
-msgid "%s/%.2fMHz_%s%s"
-msgstr "%s/%.2fMHz_%s%s"
+msgid "%s/%.2fMHz_%s"
+msgstr "%s/%.2fMHz_%s"
 
-#: ../src/gui.c:582
+#: ../src/gui.c:665
 #, c-format
-msgid ""
-"Error opening file '%s':\n"
-"%s"
-msgstr ""
-"Hiba a(z) \"%s\" fájl megnyitásakor:\n"
-"%s"
+msgid "%s/%s_%s"
+msgstr "%s/%s_%s"
 
-#: ../src/gui.c:597 ../src/gui.c:916
-msgid "Mute"
-msgstr "Némítás"
-
-#: ../src/gui.c:603
+#: ../src/gui.c:702
 msgid "Unmute"
 msgstr "Hang"
 
+#: ../src/gui.c:706
+msgid "Mute"
+msgstr "Némítás"
+
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:615
+#: ../src/gui.c:719
 msgid "TRANSLATORS"
 msgstr ""
 "Kelemen Gábor <kelemeng@gnome.hu>\n"
 "Sári Gábor <saga@uhulinux.hu>"
 
-#: ../src/gui.c:626
+#: ../src/gui.c:730
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -320,7 +264,7 @@ msgstr ""
 "\n"
 "Ez a verzió LIRC támogatással lett lefordítva."
 
-#: ../src/gui.c:630
+#: ../src/gui.c:734
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -332,58 +276,76 @@ msgstr ""
 "\n"
 "Ez a verzió LIRC támogatás nélkül lett lefordítva."
 
-#: ../src/gui.c:752
+#: ../src/gui.c:802 ../src/gui.c:1071
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
-#: ../src/gui.c:806
+#: ../src/gui.c:858
 msgid "Presets:"
 msgstr "Állomások:"
 
-#: ../src/gui.c:909
+#: ../src/gui.c:961
 msgid "Scan Backwards"
 msgstr "Keresés visszafelé"
 
-#: ../src/gui.c:910
+#: ../src/gui.c:962
 msgid "Scan Forwards"
 msgstr "Keresés előre"
 
-#: ../src/gui.c:911
+#: ../src/gui.c:963
 msgid "0.05 MHz Backwards"
 msgstr "0,05 MHz vissza"
 
-#: ../src/gui.c:912
+#: ../src/gui.c:964
 msgid "0.05 MHz Forwards"
 msgstr "0,05 MHz előre"
 
-#: ../src/gui.c:913
+#: ../src/gui.c:965
 msgid "About Gnomeradio"
 msgstr "A Gnomeradio névjegye"
 
-#: ../src/gui.c:914
+#: ../src/gui.c:966
 msgid "Record radio as Wave, OGG or MP3"
 msgstr "Az adás rögzítése Wav, Ogg vagy MP3 formátumban"
 
-#: ../src/gui.c:915
+#: ../src/gui.c:967
 msgid "Edit your Preferences"
 msgstr "Beállítások szerkesztése"
 
-#: ../src/gui.c:917
+#: ../src/gui.c:968
+msgid "Adjust the Volume"
+msgstr "Hangerő módosítása"
+
+#: ../src/gui.c:969
 msgid "Quit"
 msgstr "Kilépés"
 
-#: ../src/gui.c:1036
+#: ../src/gui.c:1063
+msgid "Scan for stations"
+msgstr "Állomások keresése"
+
+#: ../src/gui.c:1101
 #, c-format
 msgid ""
-"Failed to init GConf: %s\n"
-"Changes to the settings won't be saved\n"
+"%s\n"
+"\n"
+"Changes to the settings won't be saved."
 msgstr ""
-"Hiba a GConf inicializálása közben: %s\n"
-"A megváltoztatott beállítások nem kerültek mentésre\n"
+"%s\n"
+"\n"
+"A megváltoztatott beállítások nem kerültek mentésre."
 
-#: ../src/gui.c:1050
+#: ../src/gui.c:1102
+msgid "Failed to init GConf!"
+msgstr "A GConf inicializálása meghiúsult!"
+
+#: ../src/gui.c:1115
 msgid "manual"
 msgstr "kézi hangolás"
+
+#: ../src/gui.c:1126
+msgid "Could not scan. Radio is not initialized."
+msgstr "Nem lehetséges a keresés. A rádió nincs inicializálva."
 
 #. GtkWidget *dialog;
 #. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -391,133 +353,97 @@ msgstr "kézi hangolás"
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1073
-msgid "Could not start lirc!\n"
-msgstr "Nem sikerült elindítani a lirc-et\n"
+#: ../src/gui.c:1149
+msgid "Could not start lirc!"
+msgstr "Nem sikerült elindítani a lirc-et!"
 
-#: ../src/record.c:154
-msgid "Start"
-msgstr "Indítás"
+#: ../src/trayicon.c:79
+msgid "Muted"
+msgstr "Némítva"
 
-#: ../src/record.c:162
-msgid "Gnomeradio Record"
-msgstr "Gnomeradio felvétel"
+#: ../src/trayicon.c:93
+msgid "Show Window"
+msgstr "Ablak megjelenítése"
 
-#: ../src/record.c:170
-msgid "General"
-msgstr "Általános"
-
-#: ../src/record.c:171
-msgid "Wave Settings"
-msgstr "Wav beállítások"
-
-#: ../src/record.c:172
-msgid "Mp3/Ogg Settings"
-msgstr "Mp3/Ogg beállítások"
-
-#: ../src/record.c:184
-msgid "Audio device:"
-msgstr "Hangeszköz:"
-
-#: ../src/record.c:187
-msgid "Filename:"
-msgstr "Fájlnév:"
-
-#. path_entry = gtk_entry_new();
-#: ../src/record.c:189
-msgid "Choose a filename"
-msgstr "Válasszon egy fájlnevet"
-
-#. choose_button = gtk_button_new_with_label(_("Choose..."));
-#: ../src/record.c:195
-msgid "Record as:"
-msgstr "Rögzítés:"
-
-#: ../src/record.c:196
-msgid "Wave (.wav)"
-msgstr "Hang (.wav)"
-
-#: ../src/record.c:197
-msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3/Ogg (.mp3/.ogg)"
-
-#: ../src/record.c:221
-msgid "Sample rate:"
-msgstr "Mintavételi frekvencia:"
-
-#: ../src/record.c:222
-msgid "Sample format:"
-msgstr "Minta formátuma:"
-
-#: ../src/record.c:223
-msgid "Record in:"
-msgstr "Rögzítés:"
-
-#: ../src/record.c:256
-msgid "Mono"
-msgstr "Mono"
-
-#: ../src/record.c:257
-msgid "Stereo"
-msgstr "Sztereó"
-
-#: ../src/record.c:303 ../src/record.c:310
-msgid "no supported encoder installed"
-msgstr "nincs telepítve egy tömörítő sem"
-
-#: ../src/record.c:431
-#, c-format
-msgid ""
-"%s has stopped:\n"
-"%s\n"
-msgstr ""
-"%s leállt:\n"
-"%s\n"
-
-#: ../src/record.c:432
-msgid "MP3/Ogg encoder"
-msgstr "MP3/Ogg tömörítő"
-
-#: ../src/record.c:433
-msgid "unknown reason"
-msgstr "ismeretlen ok"
-
-#: ../src/record.c:482
+#: ../src/record.c:65
 #, c-format
 msgid "%i byte"
 msgstr "%i bájt"
 
-#: ../src/record.c:484
+#: ../src/record.c:67
 #, c-format
 msgid "%i kB"
 msgstr "%i kB"
 
-#: ../src/record.c:485
+#: ../src/record.c:68
 #, c-format
 msgid "%.2f MB"
 msgstr "%.2f MB"
 
-#: ../src/record.c:487
+#: ../src/record.c:70
 msgid "Error"
 msgstr "Hiba"
 
-#: ../src/record.c:488
+#: ../src/record.c:71
 msgid "0 byte"
 msgstr "0 bájt"
 
-#: ../src/record.c:528
+#: ../src/record.c:106
 msgid "Gnomeradio recording status"
 msgstr "Gnomeradio felvétel állapota"
 
-#: ../src/record.c:541
+#: ../src/record.c:119
 msgid "Recording:"
 msgstr "Felvétel:"
 
-#: ../src/record.c:542
+#: ../src/record.c:120
 msgid "Filesize:"
 msgstr "Fájlméret:"
 
-#: ../src/record.c:559
+#: ../src/record.c:137
 msgid "Stop Recording"
 msgstr "Rögzítés leállítása"
+
+#: ../src/rec_tech.c:42
+msgid "GStreamer runtime error."
+msgstr "Futás közbeni GStreamer hiba."
+
+#: ../src/rec_tech.c:58
+msgid "Could not create GStreamer pipeline."
+msgstr "Nem hozható létre GStreamer csővezeték."
+
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
+msgid "Check your Gstreamer installation!"
+msgstr "Ellenőrizze a GStreamer telepítését!"
+
+#: ../src/rec_tech.c:65
+msgid "Could not open Gstreamer OSS Source."
+msgstr "A Gstreamer OSS forrás nem nyitható meg."
+
+#: ../src/rec_tech.c:66
+msgid "Verify your Gstreamer OSS subsystem installation!"
+msgstr "Ellenőrizze a Gstreamer OSS alrendszer telepítését!"
+
+#: ../src/rec_tech.c:78
+#, c-format
+msgid "Could not create encoder \"%s\"."
+msgstr "A(z) \"%s\" kódoló nem hozható létre."
+
+#: ../src/rec_tech.c:80
+msgid "Verify your Gstreamer plugins installation!"
+msgstr "Ellenőrizze a Gstreamer bővítmények telepítését!"
+
+#: ../src/rec_tech.c:88
+msgid "Could not create Gstreamer filesink."
+msgstr "A Gstreamer fájlnyelő nem hozható létre."
+
+#. +
+#: ../src/bacon-volume.c:187
+msgid "+"
+msgstr "+"
+
+#. -
+#: ../src/bacon-volume.c:203
+msgid "-"
+msgstr "-"
 
