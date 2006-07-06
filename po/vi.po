@@ -87,7 +87,7 @@ msgstr "Số định sẵn"
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
-msgstr "Định sẵn đã được bật khi gnomeradio đã kết thúc. Phạm vị là 0 ... (số định "
+msgstr "Định sẵn đã được bật khi gnomeradio đã kết thúc. Phạm vi là 0 ... (số định "
 "sẵn - 1). Không là -1"
 
 #:../gnomeradio.desktop.in.h:1
