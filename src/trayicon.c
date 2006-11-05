@@ -22,7 +22,6 @@
 #include <gnome.h>
 #include "gui.h"
 #include "trayicon.h"
-#include "../pixmaps/radio.xpm"
 
 static GtkWidget *showwindow_menuitem;
 
@@ -133,17 +132,18 @@ static gboolean tray_clicked_cb(GtkWidget *widget, GdkEventButton *event, gpoint
 
 void create_tray_icon(GtkWidget *app)
 {
-	GdkPixbuf *pixbuf, *scaled;
+	GdkPixbuf *pixbuf;
 	GtkWidget *tray_icon_image;
 	GtkWidget *eventbox;
+	GtkIconTheme *icontheme;
 	char *text;
 	
 	tray_icon = GTK_WIDGET(egg_tray_icon_new (PACKAGE));
-	pixbuf = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
-	scaled = gdk_pixbuf_scale_simple(pixbuf, 16, 16, GDK_INTERP_HYPER);
+	icontheme = gtk_icon_theme_get_default();
+	pixbuf = gtk_icon_theme_load_icon(icontheme, "gnomeradio", 22, 0, NULL);
+	g_return_if_fail(pixbuf);
+	tray_icon_image = gtk_image_new_from_pixbuf(pixbuf);
 	gdk_pixbuf_unref(pixbuf);
-	tray_icon_image = gtk_image_new_from_pixbuf(scaled);
-	gdk_pixbuf_unref(scaled);
 
 	eventbox = gtk_event_box_new();
 	gtk_container_add(GTK_CONTAINER(eventbox), tray_icon_image);

@@ -4,11 +4,9 @@ AC_INIT(gnomeradio, 1.6.99, http://mfcn.ilo.de/gnomeradio)
 AC_CONFIG_SRCDIR(src/gui.c)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 
-ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
-
 AM_MAINTAINER_MODE
 AM_CONFIG_HEADER(config.h)
-
+AC_CONFIG_MACRO_DIR([m4])
 AC_PROG_INTLTOOL([0.21])
 
 AM_PROG_LIBTOOL
@@ -37,6 +35,8 @@ PKG_CHECK_MODULES(GSTREAMER, gstreamer-0.10 gstreamer-plugins-base-0.10)
 AC_SUBST(GSTREAMER_CFLAGS)
 AC_SUBST(GSTREAMER_LIBS)
 
+GNOME_DOC_INIT
+
 AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
 
 if test x"$GCONFTOOL" = xno; then
@@ -62,7 +62,14 @@ gnomeradio.spec
 Makefile
 src/Makefile
 po/Makefile.in
-pixmaps/Makefile
-docs/Makefile
-docs/C/Makefile
+data/Makefile
+data/pixmaps/Makefile
+data/icons/Makefile
+data/icons/16x16/Makefile
+data/icons/22x22/Makefile
+data/icons/24x24/Makefile
+data/icons/32x32/Makefile
+data/icons/48x48/Makefile
+data/icons/scalable/Makefile
+help/Makefile
 ])

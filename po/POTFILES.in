@@ -1,5 +1,5 @@
-gnomeradio.schemas.in
-gnomeradio.desktop.in
+data/gnomeradio.schemas.in
+data/gnomeradio.desktop.in
 src/prefs.c
 src/gui.c
 src/trayicon.c

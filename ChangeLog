@@ -1,3 +1,101 @@
+2006-11-05  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* .cvsignore:
+	* COPYING:
+	* Makefile.am:
+	* autogen.sh:
+	* configure.in:
+	* data/.cvsignore:
+	* data/Makefile.am:
+	* data/example.lircrc:
+	* data/gnomeradio.desktop.in:
+	* data/gnomeradio.schemas.in:
+	* data/icons/.cvsignore:
+	* data/icons/16x16/.cvsignore:
+	* data/icons/16x16/Makefile.am:
+	* data/icons/16x16/gnomeradio.png:
+	* data/icons/22x22/.cvsignore:
+	* data/icons/22x22/Makefile.am:
+	* data/icons/22x22/gnomeradio.png:
+	* data/icons/24x24/.cvsignore:
+	* data/icons/24x24/Makefile.am:
+	* data/icons/24x24/gnomeradio.png:
+	* data/icons/32x32/.cvsignore:
+	* data/icons/32x32/Makefile.am:
+	* data/icons/32x32/gnomeradio.png:
+	* data/icons/48x48/.cvsignore:
+	* data/icons/48x48/Makefile.am:
+	* data/icons/48x48/gnomeradio.png:
+	* data/icons/Makefile.am:
+	* data/icons/scalable/.cvsignore:
+	* data/icons/scalable/Makefile.am:
+	* data/icons/scalable/gnomeradio.svg:
+	* data/pixmaps/.cvsignore:
+	* data/pixmaps/digits.xpm:
+	* data/pixmaps/freq_down.xpm:
+	* data/pixmaps/freq_up.xpm:
+	* data/pixmaps/signal.xpm:
+	* data/pixmaps/stereo.xpm:
+	* data/pixmaps/vol_down.xpm:
+	* data/pixmaps/vol_up.xpm:
+	* help/.cvsignore:
+	* help/C/figures/freq-controls.png:
+	* help/C/figures/misc-controls.png:
+	* help/C/figures/presets-box.png:
+	* help/C/figures/recording-general.png:
+	* help/C/figures/recording-mp3.png:
+	* help/C/figures/recording-wav.png:
+	* help/C/figures/recording_status.png:
+	* help/C/figures/settings-misc.png:
+	* help/C/figures/settings-presets.png:
+	* help/C/figures/status-window.png:
+	* help/C/figures/volume-controls.png:
+	* help/C/gnomeradio.xml:
+	* help/C/legal.xml:
+	* help/Makefile.am:
+	* help/gnomeradio.omf.in:
+	* src/.cvsignore:
+	Added
+	* docs/C/Makefile.am:
+	* docs/C/figures/freq-controls.png:
+	* docs/C/figures/misc-controls.png:
+	* docs/C/figures/presets-box.png:
+	* docs/C/figures/recording-general.png:
+	* docs/C/figures/recording-mp3.png:
+	* docs/C/figures/recording-wav.png:
+	* docs/C/figures/recording_status.png:
+	* docs/C/figures/settings-misc.png:
+	* docs/C/figures/settings-presets.png:
+	* docs/C/figures/status-window.png:
+	* docs/C/figures/volume-controls.png:
+	* docs/C/gnomeradio-C.omf:
+	* docs/C/gnomeradio.xml:
+	* docs/C/legal.xml:
+	* docs/Makefile.am:
+	* example.lircrc:
+	* omf.make:
+	* pixmaps/Makefile.am:
+	* pixmaps/digits.xpm:
+	* pixmaps/freq_down.xpm:
+	* pixmaps/freq_up.xpm:
+	* pixmaps/gnomeradio.png:
+	* pixmaps/radio.png:
+	* pixmaps/radio.xpm:
+	* pixmaps/signal.xpm:
+	* pixmaps/stereo.xpm:
+	* pixmaps/vol_down.xpm:
+	* pixmaps/vol_up.xpm:
+	* xmldocs.make:
+	Removed
+	* po/POTFILES.in:
+	* src/gui.c: (about_button_clicked_cb), (main):
+	* src/trayicon.c: (create_tray_icon):
+	Updated
+
+	* Migration to gnome-doc-utils; make distcheck works now;
+	* Added new icons from Josef Vybíra; thanks - you rock!
+	* updated source to used these icons
+
 2006-04-17  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Remove obsolete entry for no_NO.

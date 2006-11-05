@@ -1,0 +1,100 @@
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/apps/gnomeradio/mute-on-exit</key>
+      <applyto>/apps/gnomeradio/mute-on-exit</applyto>
+      <owner>gnomeradio</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+      <locale name="C">
+	<short>Mute on exit</short>
+	<long>If unchecked, gnomeradio won't mute after exiting</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnomeradio/last-freq</key>
+      <applyto>/apps/gnomeradio/last-freq</applyto>
+      <owner>gnomeradio</owner>
+      <type>float</type>
+      <default>100.00</default>
+      <locale name="C">
+	<short>Last frequency</short>
+	<long>The last frequency (in MHz) in use</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnomeradio/device</key>
+      <applyto>/apps/gnomeradio/device</applyto>
+      <owner>gnomeradio</owner>
+      <type>string</type>
+      <default>/dev/radio</default>
+      <locale name="C">
+	<short>Radio device</short>
+	<long>Specify the radio-device (in most cases /dev/radio)</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnomeradio/mixer</key>
+      <applyto>/apps/gnomeradio/mixer</applyto>
+      <owner>gnomeradio</owner>
+      <type>string</type>
+      <default>line</default>
+      <locale name="C">
+	<short>Mixer source</short>
+	<long>Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnomeradio/mixer-device</key>
+      <applyto>/apps/gnomeradio/mixer-device</applyto>
+      <owner>gnomeradio</owner>
+      <type>string</type>
+      <default>/dev/mixer</default>
+      <locale name="C">
+	<short>Mixer Device</short>
+	<long>The mixer device that gnomeradio should use. Only changeable via this key (no GUI option)</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnomeradio/presets/presets</key>
+      <applyto>/apps/gnomeradio/presets/presets</applyto>
+      <owner>gnomeradio</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+	<short>Number of presets</short>
+	<long>The number of presets</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gnomeradio/presets/last</key>
+      <applyto>/apps/gnomeradio/presets/last</applyto>
+      <owner>gnomeradio</owner>
+      <type>int</type>
+      <default>-1</default>
+      <locale name="C">
+	<short>Last presets</short>
+	<long>The preset that was enabled when gnomeradio was terminated. Range is 0 ... (# presets - 1). None is -1</long>
+      </locale>
+    </schema>
+	
+    <schema>
+      <key>/schemas/apps/gnomeradio/recording/profile</key>
+      <applyto>/apps/gnomeradio/recording/profile</applyto>
+      <owner>gnomeradio</owner>
+      <type>string</type>
+      <default>cdlossy</default>
+      <locale name="C">
+	<short>GnomeMedia Profile</short>
+	<long>Choose the GnomeMedia Profile that should be used for recording</long>
+      </locale>
+    </schema>
+
+  </schemalist>
+</gconfschemafile>

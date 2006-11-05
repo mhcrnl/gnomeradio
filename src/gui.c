@@ -33,12 +33,11 @@
 #include "lirc.h"
 #include "prefs.h"
 #include "record.h"
-#include "../pixmaps/digits.xpm"
-#include "../pixmaps/signal.xpm"
-#include "../pixmaps/stereo.xpm"
-#include "../pixmaps/freq_up.xpm"
-#include "../pixmaps/freq_down.xpm"
-#include "../pixmaps/radio.xpm"
+#include "../data/pixmaps/digits.xpm"
+#include "../data/pixmaps/signal.xpm"
+#include "../data/pixmaps/stereo.xpm"
+#include "../data/pixmaps/freq_up.xpm"
+#include "../data/pixmaps/freq_down.xpm"
 
 #define DIGIT_WIDTH 20
 #define DIGIT_HEIGTH 30
@@ -711,6 +710,7 @@ static void mute_button_toggled_cb(GtkButton *button, gpointer data)
 static void about_button_clicked_cb(GtkButton *button, gpointer data)
 {
 	GdkPixbuf *app_icon;
+	GtkIconTheme *icontheme;
 	static GtkWidget *about;
 	const char *authors[] = {"Jörgen Scheibengruber <mfcn@gmx.de>", NULL};
 	char *text;
@@ -723,8 +723,8 @@ static void about_button_clicked_cb(GtkButton *button, gpointer data)
 		gtk_window_present(GTK_WINDOW(about));
 		return;
 	}
-
-	app_icon = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
+	icontheme = gtk_icon_theme_get_default();
+	app_icon = gtk_icon_theme_load_icon(icontheme, "gnomeradio", 48, 0, NULL);
 
 #ifdef HAVE_LIRC	
 	text =_("Gnomeradio is a FM-Tuner application for the GNOME desktop. "
@@ -743,6 +743,7 @@ static void about_button_clicked_cb(GtkButton *button, gpointer data)
 
 	gtk_widget_show(about);
 	g_object_add_weak_pointer(G_OBJECT(about), (gpointer)&about);
+	g_object_add_weak_pointer(G_OBJECT(about), (gpointer)&app_icon);
 }
 
 static gint delete_event_cb(GtkWidget* window, GdkEventAny* e, gpointer data)
@@ -1051,8 +1052,7 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 int main(int argc, char* argv[])
 {
 	GtkWidget* app;
-	GList *icons, *ptr;
-	GdkPixbuf *app_icon;
+	GList *ptr;
 	GnomeClient *client;
 	GError *err = NULL;
 	int redraw_timeout_id;
@@ -1084,11 +1084,7 @@ int main(int argc, char* argv[])
 					GNOME_PARAM_GOPTION_CONTEXT, ctx,
 #endif
 					NULL);
-	
-	app_icon = gdk_pixbuf_new_from_xpm_data((const char**)radio_xpm);
-	icons = g_list_append(NULL, (gpointer)app_icon);
-	gtk_window_set_default_icon_list(icons);
-	
+	gtk_window_set_default_icon_name("gnomradio");
 	/* Main app */
 	app = gnome_radio_gui();
 

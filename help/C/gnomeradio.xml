@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appversion "1.3">
   <!ENTITY manrevision "1.0">
@@ -34,16 +34,15 @@
   </copyright>
 
    -->
-
-	 <publisher> 
+	<publisher> 
 		<publishername>GNOME Documentation Project</publishername> 
-	 </publisher> 
+	</publisher> 
 
 &legal;
 
 
 	 <authorgroup> 
-		<author> 
+		<author role="maintainer"> 
 		  <firstname>Jörgen</firstname> 
 		  <surname>Scheibengruber</surname> 
 		  <affiliation> 
@@ -51,18 +50,6 @@
 			 <address> <email>mfcn@gmx.de</email> </address> 
 		  </affiliation> 
 		</author>
-      <!-- This is appropriate place for other contributors: translators,
-           maintainers,  etc. Commented out by default.
-           <othercredit role="translator">
-	     <firstname>Latin</firstname> 
-	     <surname>Translator 1</surname> 
-	     <affiliation> 
-	       <orgname>Latin Translation Team</orgname> 
-	       <address> <email>translator@gnome.org</email> </address> 
-	     </affiliation>
-	     <contrib>Latin translation</contrib>
-           </othercredit>
--->
 	 </authorgroup>
 
 	 <revhistory>
@@ -298,6 +285,10 @@ You can edit presets in the  <xref linkend="gnomeradio-settings"/> Dialog.
 <para>
 To open the preferences dialog, click the <guibutton>preferences</guibutton> button in the main window.
 </para>
+<para>
+If you are finished click <guibutton>OK</guibutton> to accept your changes
+or <guibutton>Cancel</guibutton> to undo the changes.
+</para>
 <!-- ============= Misc Settings ========================= --> 
 <sect2 id="gnomeradio-settings-misc">
 <title>General preferences</title>
@@ -391,10 +382,6 @@ using the <xref linkend="gnomeradio-usage-presets"/> or your
     </listitem>
 </itemizedlist> 
 </sect2>
-<para>
-If you are finished click <guibutton>OK</guibutton> to accept your changes
-or <guibutton>Cancel</guibutton> to undo the changes.
-</para>
 </sect1>
 
 <!-- ============= Section Recording ========================= --> 
@@ -404,7 +391,7 @@ or <guibutton>Cancel</guibutton> to undo the changes.
 You can use gnomeradio to (live)record radio. In this dialog you 
 have to give some information, on how this shall be done.
 </para>
-<important>You need the external application <application>sox</application> 
+<important><para>You need the external application <application>sox</application> 
 installed in order to use the recording functionality of &app;. 
 If you want to record as MP3,
 you have to install a MP3 encoder, too. Currently the MP3 encoders
@@ -412,9 +399,13 @@ you have to install a MP3 encoder, too. Currently the MP3 encoders
 <ulink url="http://bladeenc.mp3.no/" type="http">bladeenc</ulink> are supported.
 To record files as ogg vorbis you need
 <ulink url="http://www.xiph.org/ogg/vorbis/index.html" type="http">oggenc</ulink>.
-</important> 
+</para></important> 
 <para>
 To open this dialog, click the <guibutton>record</guibutton> button in the main window.
+</para>
+<para>
+Use the <guibutton>Start</guibutton> button to start recording. 
+Otherwise click <guibutton>Cancel</guibutton> to close the dialog.
 </para>
 <!-- ============= Recording: General ========================= --> 
 <sect2 id="gnomeradio-recording-general">
@@ -538,10 +529,6 @@ These settings apply to the mp3 file, too.
     </listitem>
 </itemizedlist>
 </sect2>
-<para>
-Use the <guibutton>Start</guibutton> button to start recording. 
-Otherwise click <guibutton>Cancel</guibutton> to close the dialog.
-</para>
 <!-- ============= Recording: status window ========================= --> 
 <sect2 id="gnomeradio-recording-status">
 <title>Recording status window</title>
@@ -677,8 +664,9 @@ You can use a remote control supported by <ulink url="http://www.lirc.org/" type
 (Linux infrared remote control) to control <application>&app;</application>.
 </para>
 <important>
-Your remote control will only work if <application>&app;</application> has been compiled with 
+<para>Your remote control will only work if <application>&app;</application> has been compiled with 
 LIRC support enabled. If you are unsure wether this is the case or not, check the about dialog.
+</para>
 </important>
 <!-- ============= LIRC: .lircrc ========================= --> 
 <sect2 id="gnomeradio-lirc-lircrc">
