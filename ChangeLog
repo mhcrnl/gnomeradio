@@ -1,3 +1,10 @@
+2006-11-06  Jörgen Scheibengruber <mfcn@gmx.de>
+
+	* data/icons/Makefile.am:
+	Run gtk-update-icon-cache on make install
+	* src/gui.c: (main):
+	Fix typo
+
 2006-11-05  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* .cvsignore:

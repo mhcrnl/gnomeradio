@@ -1084,7 +1084,7 @@ int main(int argc, char* argv[])
 					GNOME_PARAM_GOPTION_CONTEXT, ctx,
 #endif
 					NULL);
-	gtk_window_set_default_icon_name("gnomradio");
+	gtk_window_set_default_icon_name("gnomeradio");
 	/* Main app */
 	app = gnome_radio_gui();
 
