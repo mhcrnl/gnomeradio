@@ -1,5 +1,12 @@
 2006-11-06  Jörgen Scheibengruber <mfcn@gmx.de>
 
+	* .cvsignore:
+	* src/.cvsignore:
+	* src/record.c: (delete_event_cb), (record_status_window):
+	Fix crash
+
+2006-11-06  Jörgen Scheibengruber <mfcn@gmx.de>
+
 	* data/icons/Makefile.am:
 	Run gtk-update-icon-cache on make install
 	* src/gui.c: (main):

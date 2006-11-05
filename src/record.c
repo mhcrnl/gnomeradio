@@ -92,7 +92,7 @@ static void button_clicked_cb(GtkButton *button, gpointer data)
 
 static gint delete_event_cb(GtkWidget* window, GdkEventAny* e, gpointer data)
 {
-	button_clicked_cb(NULL, (gpointer)window);
+	button_clicked_cb(NULL, data);
 	return TRUE;
 }
 
@@ -150,7 +150,7 @@ GtkWidget* record_status_window(Recording *recording)
 
 	gtk_container_add(GTK_CONTAINER(status_dialog), vbox);
 
-	g_signal_connect(GTK_OBJECT(status_dialog), "delete_event", GTK_SIGNAL_FUNC(delete_event_cb), NULL);
+	g_signal_connect(GTK_OBJECT(status_dialog), "delete_event", GTK_SIGNAL_FUNC(delete_event_cb), recording);
 	g_signal_connect(GTK_OBJECT(button), "clicked", GTK_SIGNAL_FUNC(button_clicked_cb), recording);
 
 	gtk_window_set_modal(GTK_WINDOW(status_dialog), TRUE);
