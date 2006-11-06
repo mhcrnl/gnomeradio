@@ -2,7 +2,7 @@
 _Name=FM-Radio Tuner
 _Comment=Listen to FM-radio
 Exec=gnomeradio
-Icon=radio.png
+Icon=gnomeradio
 Categories=Application;AudioVideo;
 StartupNotify=true
 Terminal=false
