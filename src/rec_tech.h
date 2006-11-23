@@ -37,6 +37,7 @@ recording_settings rec_settings;
 typedef struct {
 	GstElement* pipeline;
 	char* filename;
+	char* station;
 } Recording;
 
 Recording*

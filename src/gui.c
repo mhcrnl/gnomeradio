@@ -611,10 +611,11 @@ void tray_icon_items_set_sensible(gboolean sensible)
 	gtk_widget_set_sensitive(menuitem, sensible);
 }
 
-static int start_recording(const gchar *filename)
+static int start_recording(const gchar *destination, const char* station, const char* time)
 {
 	GtkWidget *dialog;
 	Recording* recording;
+	char *filename;
 	
 	if (!mixer_set_rec_device())
 	{
@@ -626,12 +627,21 @@ static int start_recording(const gchar *filename)
 		return -1;
 	}
 	
+	/* You can translate the filename for a recording:
+	 * args for this format are: path, station title, time 
+	 */ 
+	filename = g_strdup_printf(_("%s/%s_%s"), 
+ 		destination, 
+ 		station, 
+ 		time);
 	recording = recording_start(filename);
+	g_free(filename);
 	if (!recording)
 		return -1;
 	
 	tray_icon_items_set_sensible(FALSE);
 	
+	recording->station = g_strdup(station);
 	dialog = record_status_window(recording);
 	
 	run_status_window(recording);
@@ -642,7 +652,7 @@ static int start_recording(const gchar *filename)
 void rec_button_clicked_cb(GtkButton *button, gpointer app)
 {
 	GtkWidget *dialog;
-	gchar *filename;
+	char *station;
 	char time_str[100];
 	time_t t;
 	
@@ -652,19 +662,13 @@ void rec_button_clicked_cb(GtkButton *button, gpointer app)
 	
 	if (mom_ps < 0) {
 		/* Only change the "MHz" part here (if applicable) */
-		filename = g_strdup_printf(_("%s/%.2fMHz_%s"), 
-			rec_settings.destination, 
-			rint(adj->value)/STEPS, 
-			time_str);
+		station = g_strdup_printf(_("%.2fMHz"), rint(adj->value)/STEPS);
 	} else {
 		g_assert(mom_ps < g_list_length(settings.presets));
 		preset* ps = g_list_nth_data(settings.presets, mom_ps);
 		g_assert(ps);
-		
-		filename = g_strdup_printf(_("%s/%s_%s"), 
-			rec_settings.destination, 
-			ps->title, 
-			time_str);
+	
+		station = g_strdup(ps->title);
 	}	
 		
 /*	if (!check_filename(filename)) {
@@ -674,8 +678,8 @@ void rec_button_clicked_cb(GtkButton *button, gpointer app)
 		gtk_dialog_run (GTK_DIALOG (errdialog));
 		gtk_widget_destroy (errdialog);
 	} else */
-	start_recording(filename);
-	g_free(filename);		
+	start_recording(rec_settings.destination, station, time_str);
+	g_free(station);
 }
 
 void toggle_volume(void)

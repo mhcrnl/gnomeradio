@@ -136,6 +136,7 @@ recording_stop(Recording *recording)
 	}
 	gst_object_unref(GST_OBJECT(recording->pipeline));
 	g_free(recording->filename);
+	g_free(recording->station);
 	g_free(recording);
 }	
 

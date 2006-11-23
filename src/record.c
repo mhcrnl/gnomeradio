@@ -99,38 +99,57 @@ static gint delete_event_cb(GtkWidget* window, GdkEventAny* e, gpointer data)
 GtkWidget* record_status_window(Recording *recording)
 {
 	GtkWidget *btn_label, *btn_pixmap, *button;
-	GtkWidget *vbox, *btn_box, *hbox, *lbl_hbox, *lbl_vbox1, *lbl_vbox2;
-	GtkWidget *f_lbl, *s_lbl;
+	GtkWidget *vbox, *btn_box, *hbox;
+	GtkWidget *table;
+	GtkWidget *title, *f_lbl, *s_lbl;
+	char *text, *str;
 
 	status_dialog = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title(GTK_WINDOW(status_dialog),_("Gnomeradio recording status"));
 	/*gtk_window_set_resizable(GTK_WINDOW(status_dialog), FALSE);*/
-	gtk_window_set_default_size(GTK_WINDOW(status_dialog), 300, -1);
+	gtk_window_set_default_size(GTK_WINDOW(status_dialog), 400, -1);
 
 	vbox = gtk_vbox_new(FALSE, 5);
-	gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
 
-	lbl_hbox = gtk_hbox_new(FALSE, 10);	
-	lbl_vbox1 = gtk_vbox_new(FALSE, 5);
-	lbl_vbox2 = gtk_vbox_new(FALSE, 5);
-	gtk_box_pack_start(GTK_BOX(lbl_hbox), lbl_vbox1, FALSE, FALSE, 0);
-	gtk_box_pack_end(GTK_BOX(lbl_hbox), lbl_vbox2, TRUE, TRUE, 0);
+	table = gtk_table_new(3, 2, FALSE);
+	gtk_table_set_row_spacings(GTK_TABLE(table), 10);	
+	gtk_table_set_col_spacings(GTK_TABLE(table), 12);	
+	gtk_container_set_border_width(GTK_CONTAINER(table), 6);
 	
-	f_lbl = gtk_label_new(_("Recording:"));
-	s_lbl = gtk_label_new(_("Filesize:"));
+	str = g_strdup_printf(_("Recording from station %s"), recording->station);
+	text = g_strdup_printf("<b><big>%s</big></b>", str);
+	g_free(str);
+	title = gtk_label_new(text);
+	g_free(text);
+	gtk_label_set_use_markup(GTK_LABEL(title), TRUE);
+	
+	text = g_strdup_printf("  <b>%s</b>", _("Destination:"));
+	f_lbl = gtk_label_new(text);
+	g_free(text);
+	gtk_label_set_use_markup(GTK_LABEL(f_lbl), TRUE);
+
+	text = g_strdup_printf("  <b>%s</b>", _("Filesize:"));
+	s_lbl = gtk_label_new(text);
+	g_free(text);
+	gtk_label_set_use_markup(GTK_LABEL(s_lbl), TRUE);
+	
 	file_lbl = gtk_label_new("");
 	gtk_label_set_ellipsize(GTK_LABEL(file_lbl), PANGO_ELLIPSIZE_START);
 	size_lbl = gtk_label_new("");
-	gtk_misc_set_alignment(GTK_MISC(f_lbl), 0.0f, 0.5f); 
-	gtk_misc_set_alignment(GTK_MISC(s_lbl), 0.0f, 0.5f); 
-	gtk_misc_set_alignment(GTK_MISC(file_lbl), 1.0f, 0.5f); 
-	gtk_misc_set_alignment(GTK_MISC(size_lbl), 1.0f, 0.5f);
+	
+	gtk_misc_set_alignment(GTK_MISC(title), 0.0f, 0.0f); 
+	gtk_misc_set_alignment(GTK_MISC(f_lbl), 1.0f, 0.5f); 
+	gtk_misc_set_alignment(GTK_MISC(s_lbl), 1.0f, 0.5f); 
+	gtk_misc_set_alignment(GTK_MISC(file_lbl), 0.0f, 0.5f); 
+	gtk_misc_set_alignment(GTK_MISC(size_lbl), 0.0f, 0.5f);
 
-	gtk_box_pack_start(GTK_BOX(lbl_vbox1), f_lbl, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(lbl_vbox1), s_lbl, FALSE, FALSE, 0);
+	gtk_table_attach(GTK_TABLE(table), title, 0, 2, 0, 1, GTK_FILL | GTK_SHRINK, GTK_FILL | GTK_EXPAND, 0, 0);
+	gtk_table_attach(GTK_TABLE(table), f_lbl, 0, 1, 1, 2, GTK_FILL | GTK_SHRINK, GTK_FILL, 0, 0);
+	gtk_table_attach(GTK_TABLE(table), s_lbl, 0, 1, 2, 3, GTK_FILL | GTK_SHRINK, GTK_FILL, 0, 0);
 
-	gtk_box_pack_start(GTK_BOX(lbl_vbox2), file_lbl, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(lbl_vbox2), size_lbl, FALSE, FALSE, 0);
+	gtk_table_attach(GTK_TABLE(table), file_lbl, 1, 2, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
+	gtk_table_attach(GTK_TABLE(table), size_lbl, 1, 2, 2, 3, GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
 
 	button = gtk_button_new();
 	btn_box = gtk_hbox_new(FALSE, 0);
@@ -145,7 +164,7 @@ GtkWidget* record_status_window(Recording *recording)
 	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_end (GTK_BOX(hbox), button, TRUE, FALSE, 0);
 	
-	gtk_box_pack_start (GTK_BOX(vbox), lbl_hbox, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX(vbox), table, TRUE, TRUE, 0);
 	gtk_box_pack_start (GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
 	gtk_container_add(GTK_CONTAINER(status_dialog), vbox);

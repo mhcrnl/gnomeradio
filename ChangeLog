@@ -1,3 +1,11 @@
+2006-11-24  Jörgen Scheibengruber  <mfcn@gmx.de>
+
+	* src/gui.c: (start_recording), (rec_button_clicked_cb):
+	* src/rec_tech.c: (recording_stop):
+	* src/rec_tech.h:
+	* src/record.c: (record_status_window):
+	Made record status window more HIG compliant
+
 2006-11-16  Daniel Nylander <po@danielnylander.se>
 
 	* help/sv/sv.po: Added initial Swedish translation.
