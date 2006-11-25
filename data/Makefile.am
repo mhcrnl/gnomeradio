@@ -24,4 +24,3 @@ EXTRA_DIST = $(applications_DATA) \
              example.lircrc
 
 CLEANFILES = $(schema_DATA) $(applications_DATA)
-DISTCLEANFILES = $(schema_in_files) $(applications_in_files)

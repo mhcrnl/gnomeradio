@@ -1,6 +1,6 @@
 AC_PREREQ(2.52)
 
-AC_INIT(gnomeradio, 1.6.99, http://mfcn.ilo.de/gnomeradio)
+AC_INIT(gnomeradio, 1.7, http://mfcn.ilo.de/gnomeradio)
 AC_CONFIG_SRCDIR(src/gui.c)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 

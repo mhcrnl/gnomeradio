@@ -743,7 +743,7 @@ static void about_button_clicked_cb(GtkButton *button, gpointer data)
 							"This version has been compiled without LIRC support.");
 #endif
 	
-	about = gnome_about_new ("Gnomeradio", VERSION, "Copyright 2001 - 2003 Jörgen Scheibengruber",
+	about = gnome_about_new ("Gnomeradio", VERSION, "Copyright 2001 - 2006 Jörgen Scheibengruber",
 							text, (const char **) authors, NULL, 
 							strcmp("TRANSLATORS", translators) ? translators : NULL, 
 							app_icon);

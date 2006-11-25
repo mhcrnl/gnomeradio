@@ -1,4 +1,11 @@
-2006-11-25  JÃrgen Scheibengruber  <mfcn@gmx.de>
+2006-11-25  Jörgen Scheibengruber  <mfcn@gmx.de>
+
+	* configure.in: 1.7
+	* data/Makefile.am: remove DISTCLEANFILES
+	* src/gui.c: (about_button_clicked_cb):
+	Update copyright
+
+2006-11-25  Jörgen Scheibengruber  <mfcn@gmx.de>
 
 	* src/gui.c: (redraw_status_window), (adj_value_changed_cb),
 	(preset_combo_set_item), (rec_button_clicked_cb):
