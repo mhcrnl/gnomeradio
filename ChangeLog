@@ -1,3 +1,11 @@
+2006-11-25  JÃrgen Scheibengruber  <mfcn@gmx.de>
+
+	* src/gui.c: (redraw_status_window), (adj_value_changed_cb),
+	(preset_combo_set_item), (rec_button_clicked_cb):
+	Fix warnings, when UI is not realized yet
+	* src/prefs.c: (prefs_window):
+	Move add/del button
+
 2006-11-24  Jörgen Scheibengruber  <mfcn@gmx.de>
 
 	* src/gui.c: (start_recording), (rec_button_clicked_cb):

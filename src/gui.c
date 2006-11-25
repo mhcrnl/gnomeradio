@@ -309,6 +309,9 @@ static gboolean redraw_status_window(void)
 	is_stereo = (is_stereo == 1) ? 1 : 0;
 	
 	real_window = drawing_area->window;
+	if (real_window == NULL)
+		/* UI has not been realized yet */
+		return TRUE;
 	gc = gdk_gc_new(real_window);
 	gdk_drawable_get_size(real_window, &win_width, &win_height);
 	
@@ -392,7 +395,7 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	else
 		buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), freq);
 	gtk_window_set_title(GTK_WINDOW(window), buffer);
-	gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
+	if (tray_icon) gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
 	g_free(buffer);
 	
 	buffer = g_strdup_printf(_("Frequency: %.2f MHz"), freq);
@@ -545,6 +548,7 @@ void scbw_button_clicked_cb(GtkButton *button, gpointer data)
 void preset_combo_set_item(gint i)
 {
 	if (i < -1) return;
+	if (preset_combo == NULL) return;
 	gtk_combo_box_set_active(GTK_COMBO_BOX(preset_combo), i + 1);
 }
 
@@ -661,8 +665,7 @@ void rec_button_clicked_cb(GtkButton *button, gpointer app)
 	strftime(time_str, 100, _("%B-%d-%Y_%H-%M-%S"), localtime(&t));
 	
 	if (mom_ps < 0) {
-		/* Only change the "MHz" part here (if applicable) */
-		station = g_strdup_printf(_("%.2fMHz"), rint(adj->value)/STEPS);
+		station = g_strdup_printf(_("%.2f MHz"), rint(adj->value)/STEPS);
 	} else {
 		g_assert(mom_ps < g_list_length(settings.presets));
 		preset* ps = g_list_nth_data(settings.presets, mom_ps);

@@ -615,7 +615,7 @@ GtkWidget* prefs_window(GtkWidget *app)
 	p_indent_label = gtk_label_new("    ");
 	gtk_box_pack_start(GTK_BOX(pbox), p_indent_label, FALSE, FALSE, 0);
 
-	preset_box = gtk_hbox_new(FALSE, 10);
+	preset_box = gtk_vbox_new(FALSE, 10);
 	gtk_box_pack_start(GTK_BOX(pbox), preset_box, TRUE, TRUE, 0);
 
 	scrolled_window = gtk_scrolled_window_new(NULL, NULL);
@@ -623,8 +623,8 @@ GtkWidget* prefs_window(GtkWidget *app)
 	list_view = gtk_tree_view_new_with_model(GTK_TREE_MODEL(list_store));
 	gtk_container_add(GTK_CONTAINER(scrolled_window), list_view);
 	gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(scrolled_window), GTK_SHADOW_IN);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-	gtk_widget_set_size_request(list_view, 200, 100);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+	gtk_widget_set_size_request(list_view, 200, 150);
 	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list_view), FALSE);
 	
 	selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(list_view));
@@ -636,8 +636,7 @@ GtkWidget* prefs_window(GtkWidget *app)
 	cellrenderer->mode = GTK_CELL_RENDERER_MODE_EDITABLE;
 	GTK_CELL_RENDERER_TEXT(cellrenderer)->editable = TRUE;
 	list_column = gtk_tree_view_column_new_with_attributes(NULL, cellrenderer, "text", 0, NULL);
-	gtk_tree_view_column_set_min_width(list_column, 130);
-	gtk_tree_view_column_set_max_width(list_column, 130);
+	gtk_tree_view_column_set_min_width(list_column, 150);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
 	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(name_cell_edited_cb), NULL);
 
@@ -649,13 +648,13 @@ GtkWidget* prefs_window(GtkWidget *app)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(list_view), list_column);
 	g_signal_connect(GTK_OBJECT(cellrenderer), "edited", GTK_SIGNAL_FUNC(freq_cell_edited_cb), NULL);
 
-	button_box = gtk_vbox_new(FALSE, 15);
+	button_box = gtk_hbox_new(FALSE, 12);
 
 	add_button = gtk_button_new_from_stock(GTK_STOCK_ADD);
 	del_button = gtk_button_new_from_stock(GTK_STOCK_DELETE);
 	
-	gtk_box_pack_start(GTK_BOX(button_box), add_button, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(button_box), del_button, FALSE, FALSE, 0);
+	gtk_box_pack_end(GTK_BOX(button_box), del_button, FALSE, FALSE, 0);
+	gtk_box_pack_end(GTK_BOX(button_box), add_button, FALSE, FALSE, 0);
 	
 	gtk_box_pack_start(GTK_BOX(preset_box), scrolled_window, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(preset_box), button_box, TRUE, TRUE, 0);
