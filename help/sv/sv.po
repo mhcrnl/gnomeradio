@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio doc\n"
 "POT-Creation-Date: 2006-11-16 04:02+0000\n"
-"PO-Revision-Date: 2006-11-16 20:19+0100\n"
+"PO-Revision-Date: 2006-11-29 00:44+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -148,7 +148,7 @@ msgstr "Återkoppling"
 
 #: C/gnomeradio.xml:71(para)
 msgid "To report a bug or make a suggestion regarding Gnomeradio or this manual, send a e-mail to <ulink url=\"mailto:mfcn@gmx.de\" type=\"mail\">Jörgen Scheibengruber</ulink>."
-msgstr ""
+msgstr "För att rapportera ett fel eller komma med förslag angående Gnomeradio eller den här handboken, skicka e-post till <ulink url=\"mailto:mfcn@gmx.de\" type=\"mail\">Jörgen Scheibengruber</ulink>."
 
 #: C/gnomeradio.xml:76(primary)
 msgid "Gnomeradio"
@@ -160,11 +160,11 @@ msgstr "Introduktion"
 
 #: C/gnomeradio.xml:83(para)
 msgid "<application>Gnomeradio</application> is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the <ulink url=\"http://roadrunner.swansea.uk.linux.org/v4l.shtml\" type=\"http\">video4linux</ulink> drivers."
-msgstr ""
+msgstr "<application>Gnomeradio</application> är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera med all mottagarhårdvara som stöds av <ulink url=\"http://roadrunner.swansea.uk.linux.org/v4l.shtml\" type=\"http\">video4linux</ulink>-drivrutinerna."
 
 #: C/gnomeradio.xml:88(para)
 msgid "To start <application>Gnomeradio</application> open the applications menu, then choose <menuchoice><guimenu>Multimedia</guimenu><guimenuitem>Gnomeradio</guimenuitem></menuchoice> or type <command>gnomeradio</command> in a shell."
-msgstr ""
+msgstr "För att starta <application>Gnomeradio</application>, öppna programmenyn, välj sedan <menuchoice><guimenu>Multimedia</guimenu><guimenuitem>Gnomeradio</guimenuitem></menuchoice> eller skriv in <command>gnomeradio</command> i ett skal."
 
 #: C/gnomeradio.xml:100(title)
 msgid "Usage"
@@ -176,321 +176,321 @@ msgstr "Statusfönster"
 
 #: C/gnomeradio.xml:105(title)
 msgid "The black box in the upper left of Gnomeradio is the status window"
-msgstr ""
+msgstr "Den svarta rutan i övre vänstra hörnet i Gnomeradio är statusfönstret"
 
 #: C/gnomeradio.xml:111(phrase)
 msgid "The black box in the upper left of Gnomeradio is the status window."
-msgstr ""
+msgstr "Den svarta rutan i övre vänstra hörnet i Gnomeradio är statusfönstret."
 
 #: C/gnomeradio.xml:116(para)
 msgid "The status window is located in the upper left corner of the Gnomeradio main window. It consists of:"
-msgstr ""
+msgstr "Statusfönstret är placerat i övre vänstra hörnet av Gnomeradios huvudfönster. Det innehåller:"
 
 #: C/gnomeradio.xml:121(para)
 msgid "a label showing wether the reception is mono or stereo,"
-msgstr ""
+msgstr "en etikett visar huruvida mottagningen är i mono eller stereo,"
 
 #: C/gnomeradio.xml:126(para)
 msgid "an icon indicating the quality of the reception and"
-msgstr ""
+msgstr "en ikon indikerar kvaliteten på mottagningen och"
 
 #: C/gnomeradio.xml:131(para)
 msgid "the current frequency."
-msgstr ""
+msgstr "aktuell frekvens."
 
 #: C/gnomeradio.xml:140(title)
 msgid "Frequency controls"
-msgstr ""
+msgstr "Frekvenskontroller"
 
 #: C/gnomeradio.xml:142(title)
 msgid "Use these controls to change the frequency"
-msgstr ""
+msgstr "Använd dessa kontroller för att ändra frekvensen"
 
 #: C/gnomeradio.xml:148(phrase)
 msgid "Use these controls to change the frequency."
-msgstr ""
+msgstr "Använd dessa kontroller för att ändra frekvensen."
 
 #: C/gnomeradio.xml:153(para)
 msgid "The following controls are available to change the frequency:"
-msgstr ""
+msgstr "Följande kontroller finns tillgängliga för att ändra frekvensen:"
 
 #: C/gnomeradio.xml:158(para)
 msgid "Using the slider you can change the frequency very quick."
-msgstr ""
+msgstr "Du kan ändra frekvensen mycket snabbt med draglisten."
 
 #: C/gnomeradio.xml:163(para)
 msgid "The <guibutton>scan backwards</guibutton> button (left-arrow with bar) will decrease the frequency until if detects the next radio station with good reception."
-msgstr ""
+msgstr "Knappen <guibutton>sök bakåt</guibutton> (vänsterpil) kommer att sänka frekvensen tills den detekterar nästa radiostation med bra mottagning."
 
 #: C/gnomeradio.xml:168(para)
 msgid "The <guibutton>0.5 MHz backwards</guibutton> button (left-arrow without bar) decreases the frequency by 0.5 MHz."
-msgstr ""
+msgstr "Knappen <guibutton>0.5 MHz bakåt</guibutton> (vänsterpil utan list) sänker frekvensen med 0.5 MHz."
 
 #: C/gnomeradio.xml:173(para)
 msgid "The <guibutton>0.5 MHz forward</guibutton> button (right-arrow without bar) increases the frequency by 0.5 MHz."
-msgstr ""
+msgstr "Knappen <guibutton>0.5 MHz framåt</guibutton> (högerpil utan list) ökar frekvensen med 0.5 MHz."
 
 #: C/gnomeradio.xml:178(para)
 msgid "The <guibutton>scan forwards</guibutton> button (right-arrow with bar) does the same as the \"scan backwards\" button, but it increases the frequency."
-msgstr ""
+msgstr "Knappen <guibutton>sök framåt</guibutton> (högerpil) gör samma sak som \"sök bakåt\"-knappen, men den ökar frekvensen."
 
 #: C/gnomeradio.xml:188(title)
 msgid "Volume controls"
-msgstr ""
+msgstr "Volymkontroller"
 
 #: C/gnomeradio.xml:190(title)
 msgid "Use these controls to change the volume"
-msgstr ""
+msgstr "Använd dessa kontroller för att ändra volymen"
 
 #: C/gnomeradio.xml:196(phrase)
 msgid "Use these controls to change the volume."
-msgstr ""
+msgstr "Använd dessa kontroller för att ändra volymen."
 
 #: C/gnomeradio.xml:201(para)
 msgid "Controls available to change the volume:"
-msgstr ""
+msgstr "Kontroller tillgängliga för att ändra volymen:"
 
 #: C/gnomeradio.xml:206(para)
 msgid "Use the slider to adjust the volume. Note that it will only work if you have picked the right <guilabel>mixer source</guilabel>, in the <xref linkend=\"gnomeradio-settings\"/> Dialog."
-msgstr ""
+msgstr "Använd draglisten för att justera volymen. Observera att det endast fungerar om du har valt rätt <guilabel>mixerkälla</guilabel> i dialogrutan <xref linkend=\"gnomeradio-settings\"/>."
 
 #: C/gnomeradio.xml:212(para)
 msgid "Toggling the button showing the speaker will mute/unmute Gnomeradio."
-msgstr ""
+msgstr "Växling av knappen som visar högtalaren kommer att ge tyst/normal volym i Gnomeradio."
 
 #: C/gnomeradio.xml:221(title)
 msgid "Presets menubutton"
-msgstr ""
+msgstr "Programmenyknappen"
 
 #: C/gnomeradio.xml:223(title)
 msgid "Choose a preset using the menubutton"
-msgstr ""
+msgstr "Välj ett program med menyknappen"
 
 #: C/gnomeradio.xml:229(phrase)
 msgid "Choose a preset using the menubutton."
-msgstr ""
+msgstr "Välj ett program med menyknappen."
 
 #: C/gnomeradio.xml:234(para)
 msgid "Use the menubutton in the upper right to choose a radio station preset. You can edit presets in the <xref linkend=\"gnomeradio-settings\"/> Dialog."
-msgstr ""
+msgstr "Använd menyknappen i övre högra hörnet för att välja en förinställd radiostation. Du kan redigera programmen i dialogrutan <xref linkend=\"gnomeradio-settings\"/>."
 
 #: C/gnomeradio.xml:242(title)
 msgid "Misc. controls"
-msgstr ""
+msgstr "Diverse kontroller"
 
 #: C/gnomeradio.xml:244(title)
 msgid "Remaining controls"
-msgstr ""
+msgstr "Återstående kontroller"
 
 #: C/gnomeradio.xml:250(phrase)
 msgid "Remaining controls."
-msgstr ""
+msgstr "Återstående kontroller."
 
 #: C/gnomeradio.xml:259(para)
 msgid "The <guibutton>record</guibutton> button opens the <xref linkend=\"gnomeradio-recording\"/> Dialog."
-msgstr ""
+msgstr "Knappen <guibutton>spela in</guibutton> öppnar dialogrutan <xref linkend=\"gnomeradio-recording\"/>."
 
 #: C/gnomeradio.xml:264(para)
 msgid "Clicking the <guibutton>about</guibutton> button will show a window with some credits."
-msgstr ""
+msgstr "Klicka på knappen <guibutton>om</guibutton> kommer att visa ett fönster med bidragsgivare."
 
 #: C/gnomeradio.xml:269(para)
 msgid "Behind the <guibutton>settings</guibutton> button hides the <xref linkend=\"gnomeradio-settings\"/> Dialog."
-msgstr ""
+msgstr "Bakom knappen <guibutton>inställningar</guibutton> döljer sig dialogrutan <xref linkend=\"gnomeradio-settings\"/>."
 
 #: C/gnomeradio.xml:274(para)
 msgid "The <guibutton>quit</guibutton> button will terminate Gnomeradio"
-msgstr ""
+msgstr "Knappen <guibutton>avsluta</guibutton> kommer att avsluta Gnomeradio"
 
 #: C/gnomeradio.xml:285(title)
 msgid "Preferences"
-msgstr ""
+msgstr "Inställningar"
 
 #: C/gnomeradio.xml:286(para)
 msgid "To open the preferences dialog, click the <guibutton>preferences</guibutton> button in the main window."
-msgstr ""
+msgstr "Klicka på knappen <guibutton>inställningar</guibutton> i huvudfönstret för att öppna inställningsdialogrutan."
 
 #: C/gnomeradio.xml:289(para)
 msgid "If you are finished click <guibutton>OK</guibutton> to accept your changes or <guibutton>Cancel</guibutton> to undo the changes."
-msgstr ""
+msgstr "Om du är färdig kan du klicka på <guibutton>OK</guibutton> för att acceptera dina ändringar eller <guibutton>Avbryt</guibutton> för att ångra ändringarna."
 
 #: C/gnomeradio.xml:295(title)
 #: C/gnomeradio.xml:297(title)
 msgid "General preferences"
-msgstr ""
+msgstr "Allmänna inställningar"
 
 #: C/gnomeradio.xml:303(phrase)
 msgid "General preferences."
-msgstr ""
+msgstr "Allmänna inställningar."
 
 #: C/gnomeradio.xml:312(para)
 msgid "<guilabel>Radio Device:</guilabel> Enter your radio device. Unless you have several radio tuners installed this is usually /dev/radio."
-msgstr ""
+msgstr "<guilabel>Radioenhet:</guilabel> Ange din radioenhet. Det här är vanligtvis /dev/radio såvida du inte har flera radiomottagare installerade."
 
 #: C/gnomeradio.xml:318(para)
 msgid "<guilabel>Mixer Source:</guilabel> Choose the mixer source that is able to control the volume of your radio tuner. The combobox lists all devices that you can choose as a recording source. You should usually pick one of these, otherwise you won't be able to record radio. If you have set up own names for the sources in gnome volume control, these names will be shown in paranthesis behind the \"official\" name."
-msgstr ""
+msgstr "<guilabel>Mixerkälla:</guilabel> Välj den mixerkälla som kan kontrollera volymen för din radiomottagare. Kombinationsrutan listar alla enheter som du kan välja som en inspelningskälla. Du bör vanligtvis välja en av dessa, annars kommer du inte kunna spela in radio. Om du har ställt in egna namn för källorna i Gnomes volymkontroller kommer dessa namn att visas inom parantes efter det \"officiella\" namnet."
 
 #: C/gnomeradio.xml:327(para)
 msgid "<guilabel>Mute on Exit:</guilabel> Uncheck this checkbox, if you want that the radio keeps on playing after you have terminated Gnomeradio."
-msgstr ""
+msgstr "<guilabel>Stäng av ljudet när programmet stängs:</guilabel> Kryssa inte för den här rutan om du vill att radion ska fortsätta att spela efter att du har avslutat Gnomeradio."
 
 #: C/gnomeradio.xml:336(title)
 #: C/gnomeradio.xml:338(title)
 msgid "Editing presets"
-msgstr ""
+msgstr "Redigera program"
 
 #: C/gnomeradio.xml:344(phrase)
 msgid "Editing presets."
-msgstr ""
+msgstr "Redigera program."
 
 #: C/gnomeradio.xml:349(para)
 msgid "Here you can add some preset radio stations. You can select one of these using the <xref linkend=\"gnomeradio-usage-presets\"/> or your <xref linkend=\"gnomeradio-lirc\"/> remote control."
-msgstr ""
+msgstr "Här kan du lägga till några förinställda radiostationer. Du kan välja en av dessa med <xref linkend=\"gnomeradio-usage-presets\"/> eller med din <xref linkend=\"gnomeradio-lirc\"/>-fjärrkontroll."
 
 #: C/gnomeradio.xml:356(para)
 msgid "<guilabel>Name:</guilabel> Enter a name for the preset (usually the name of the radio station)."
-msgstr ""
+msgstr "<guilabel>Namn:</guilabel> Ange ett namn för programmet (vanligtvis namnet på radiostationen)."
 
 #: C/gnomeradio.xml:362(para)
 msgid "<guilabel>Frequency:</guilabel> Choose the frequency for the radio station."
-msgstr ""
+msgstr "<guilabel>Frekvens:</guilabel> Välj frekvensen för radiostationen."
 
 #: C/gnomeradio.xml:367(para)
 msgid "Click the button <guibutton>add preset</guibutton> (shows a +) to add the preset to the list."
-msgstr ""
+msgstr "Klicka på knappen <guibutton>lägg till program</guibutton> (visas som +) för att lägga till programmet till listan."
 
 #: C/gnomeradio.xml:373(para)
 msgid "The button <guibutton>remove preset</guibutton> (shows a -) will remove the currently selected preset from the list."
-msgstr ""
+msgstr "Knappen <guibutton>ta bort program</guibutton> (visas som -) kommer att ta bort det markerade programmet från listan."
 
 #: C/gnomeradio.xml:379(para)
 msgid "Use the button <guibutton>update preset</guibutton> to update the selected preset with the values currently entered in the name and frequency entries."
-msgstr ""
+msgstr "Använd knappen <guibutton>uppdatera program</guibutton> för att uppdatera det valda programmet med de värden som för närvarande har matats in för namn och frekvens."
 
 #: C/gnomeradio.xml:390(title)
 msgid "Recording"
-msgstr ""
+msgstr "Spela in"
 
 #: C/gnomeradio.xml:391(para)
 msgid "You can use gnomeradio to (live)record radio. In this dialog you have to give some information, on how this shall be done."
-msgstr ""
+msgstr "Du kan använda Gnomeradio för att spela in radio. I den här dialogrutan kan du ange information om hur det ska göras."
 
 #: C/gnomeradio.xml:395(para)
 msgid "You need the external application <application>sox</application> installed in order to use the recording functionality of Gnomeradio. If you want to record as MP3, you have to install a MP3 encoder, too. Currently the MP3 encoders <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink> and <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink> are supported. To record files as ogg vorbis you need <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink>."
-msgstr ""
+msgstr "Du behöver det externa programmet <application>sox</application> installert för att kunna spela in i Gnomeradio. Om du vill spela in som MP3 måste du installera en MP3-kodare också. För närvarande stöds <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink> och <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink>. För att spela in filer som Ogg Vorbis behöver du <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink>."
 
 #: C/gnomeradio.xml:404(para)
 msgid "To open this dialog, click the <guibutton>record</guibutton> button in the main window."
-msgstr ""
+msgstr "Klicka på knappen <guibutton>spela in</guibutton> i huvudfönstret för att öppna den här dialogrutan."
 
 #: C/gnomeradio.xml:407(para)
 msgid "Use the <guibutton>Start</guibutton> button to start recording. Otherwise click <guibutton>Cancel</guibutton> to close the dialog."
-msgstr ""
+msgstr "Använd knappen <guibutton>Start</guibutton> för att påbörja inspelningen. Om inte, klicka på <guibutton>Avbryt</guibutton> för att stänga dialogrutan."
 
 #: C/gnomeradio.xml:413(title)
 msgid "General settings"
-msgstr ""
+msgstr "Allmänna inställningar"
 
 #: C/gnomeradio.xml:415(title)
 msgid "General recording settings"
-msgstr ""
+msgstr "Allmänna inspelningsinställningar"
 
 #: C/gnomeradio.xml:421(phrase)
 msgid "General recording settings."
-msgstr ""
+msgstr "Allmänna inspelningsinställningar."
 
 #: C/gnomeradio.xml:430(para)
 msgid "<guilabel>Audio Device:</guilabel> Enter your audio device. Unless you have several soundcards installed this is usually /dev/audio."
-msgstr ""
+msgstr "<guilabel>Ljudenhet:</guilabel> Ange din ljudenhet. Det här är vanligtvis /dev/audio såvida du inte har flera ljudkort installerade."
 
 #: C/gnomeradio.xml:436(para)
 msgid "<guilabel>Filename:</guilabel> Choose a filename and destination for the file in which the audio data should be stored. This file should usually have the suffix \".wav\", in case you want to record as wave data, \".mp3\", in case the audio should be stored in the mp3-format or \".ogg\", for ogg vorbis files."
-msgstr ""
+msgstr "<guilabel>Filnamn:</guilabel> Välj ett filnamn och mål för filen i vilken ljuddatat ska lagras. Den här filen bör normalt sett ha ändelsen \".wav\", om du vill spela in som wav-data, \".mp3\", om du vill att ljudet ska lagras i mp3-formatet eller \".ogg\", för Ogg Vorbis-filer."
 
 #: C/gnomeradio.xml:444(para)
 msgid "<guilabel>Record as:</guilabel> Select <guilabel>Wave (.wav)</guilabel>, if you want the audio data to be stored in the wave format (uncompressed - about 10 megabyte per minute playlength). Otherwise choose <guilabel>MP3/Ogg (.mp3/.ogg)</guilabel> which will lead to a much lower filesize, but also a little bit lower audio quality."
-msgstr ""
+msgstr "<guilabel>Spela in som:</guilabel> Välj <guilabel>Wave (.wav)</guilabel>, om du vill att ljuddatat ska lagras i Wave-formatet (okomprimerat - ungefär 10 megabyte per minut speltid). Välj annars <guilabel>MP3/Ogg (.mp3/.ogg)</guilabel> som innebär en mycket mindre filstorlek, men även en lite försämrad ljudkvalitet."
 
 #: C/gnomeradio.xml:456(title)
 msgid "Wave settings"
-msgstr ""
+msgstr "Wave-inställningar"
 
 #: C/gnomeradio.xml:458(title)
 msgid "The wave settings"
-msgstr ""
+msgstr "Wave-inställningarna"
 
 #: C/gnomeradio.xml:464(phrase)
 msgid "The wave settings."
-msgstr ""
+msgstr "Wave-inställningarna."
 
 #: C/gnomeradio.xml:469(para)
 msgid "These settings apply to the mp3 file, too."
-msgstr ""
+msgstr "Dessa inställningar gäller för mp3-filen också."
 
 #: C/gnomeradio.xml:474(para)
 msgid "<guilabel>Sample rate:</guilabel> Choose a sample rate for the recording audio file. Higher sampling rate means better quality. 44100 kHz is a good default (aprox. CD quality). If the reception is bad you can take a lower sampling rate, because the quality won't be that good anyways."
-msgstr ""
+msgstr "<guilabel>Samplingshastighet:</guilabel> Välj en samplingshastighet för ljudfilen som ska spelas in. Högre samplingshastighet betyder bättre kvalitet. 44100 kHz är ett bra standardvärde (ungefär som cd-kvalitet). Om mottagningen är dålig kan du använda en lägre samplingshastighet därför att kvaliteten inte kommer att bli så bra ändå."
 
 #: C/gnomeradio.xml:481(para)
 msgid "<guilabel>Sample format:</guilabel> Available options are 8 or 16 bit. Usually you want to take 16 bit."
-msgstr ""
+msgstr "<guilabel>Samplingsformat:</guilabel> Tillgängliga alternativ är 8 eller 16 bitar. Vanligtvis används 16 bitar."
 
 #: C/gnomeradio.xml:487(para)
 msgid "<guilabel>Record in:</guilabel> Select <guilabel>stereo</guilabel>, if you want to record in stereo or <guilabel>mono</guilabel> otherwise. It probably doen't make much sense to record in stereo, if the reception is only mono."
-msgstr ""
+msgstr "<guilabel>Spela in i:</guilabel> Välj <guilabel>stereo</guilabel>, om du vill spela in i stereo eller annars <guilabel>mono</guilabel>. Det är ganska meningslöst att spela in i stereo om mottagningen bara är i mono."
 
 #: C/gnomeradio.xml:498(title)
 msgid "MP3/Ogg settings"
-msgstr ""
+msgstr "MP3/Ogg-inställningar"
 
 #: C/gnomeradio.xml:500(title)
 msgid "The MP3/Ogg settings"
-msgstr ""
+msgstr "MP3/Ogg-inställningarna"
 
 #: C/gnomeradio.xml:506(phrase)
 msgid "The MP3 settings."
-msgstr ""
+msgstr "MP3-inställningarna."
 
 #: C/gnomeradio.xml:515(para)
 msgid "<guilabel>Encoder:</guilabel> A list of supported MP3/Ogg encoders that you have installed. Choose the one you like the best. Currently <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink>, <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink> and <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink> are supported. The encoder must be in your PATH, otherwise Gnomeradio can't find it."
-msgstr ""
+msgstr "<guilabel>Kodare:</guilabel> En lista över MP3/Ogg-kodare som stöds och som du har installerade. Välj den som du tycker är bäst. För närvarande stöds <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink>, <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink> och <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink>. Kodaren måste finnas i din PATH, annars kommer Gnomeradio inte att hitta den."
 
 #: C/gnomeradio.xml:524(para)
 msgid "<guilabel>Bitrate:</guilabel> Choose a bitrate. This will have the largest impact on the size and quality of the resulting MP3/Ogg file. The higher the bitrate the better the quality. 128 kb/s is usually a good value which will result in files that are aprox. 1 MB per minute playlength."
-msgstr ""
+msgstr "<guilabel>Bithastighet:</guilabel> Välj en bithastighet. Det här kommer att ha störst påverkan på storleken och kvaliteten på den resulterande MP3/Ogg-filen. Ju högre bithastighet, desto bättre kvalitet. 128 kbit/s är vanligtvis ett bra värde som kommer att resultera i att filerna är ungefär 1 MB per minut av speltid."
 
 #: C/gnomeradio.xml:535(title)
 msgid "Recording status window"
-msgstr ""
+msgstr "Fönster för inspelningsstatus"
 
 #: C/gnomeradio.xml:537(title)
 msgid "The status window"
-msgstr ""
+msgstr "Statusfönstret"
 
 #: C/gnomeradio.xml:543(phrase)
 msgid "The status window."
-msgstr ""
+msgstr "Statusfönstret."
 
 #: C/gnomeradio.xml:548(para)
 msgid "Click <guibutton>Stop Recording</guibutton> to stop the recording and return to the main window. The window shows the name and size of the file in which the audio data is being stored."
-msgstr ""
+msgstr "Klicka på <guibutton>Stoppa inspelning</guibutton> för att stoppa inspelningen och återvända till huvudfönstret. Fönstret visar namnet och storleken på filen som ljuddatat har lagrats i."
 
 #: C/gnomeradio.xml:558(title)
 msgid "Keybindings"
-msgstr ""
+msgstr "Snabbtangenter"
 
 #: C/gnomeradio.xml:559(para)
 msgid "Gnomeradio has a few keybindings."
-msgstr ""
+msgstr "Gnomeradio har ett antal snabbtangenter."
 
 #: C/gnomeradio.xml:563(title)
 msgid "Keyboard shortcuts in Gnomeradio"
-msgstr ""
+msgstr "Snabbtangenter i Gnomeradio"
 
 #: C/gnomeradio.xml:569(entry)
 msgid "Shortcut"
-msgstr ""
+msgstr "Snabbtangent"
 
 #: C/gnomeradio.xml:570(entry)
 #: C/gnomeradio.xml:715(entry)
@@ -499,89 +499,89 @@ msgstr "Beskrivning"
 
 #: C/gnomeradio.xml:576(keycap)
 msgid "F1"
-msgstr ""
+msgstr "F1"
 
 #: C/gnomeradio.xml:578(entry)
 msgid "Open this help."
-msgstr ""
+msgstr "Öppna den här hjälpen."
 
 #: C/gnomeradio.xml:584(keycap)
 msgid "r"
-msgstr ""
+msgstr "r"
 
 #: C/gnomeradio.xml:586(entry)
 msgid "Open the recording dialog."
-msgstr ""
+msgstr "Öppna inspelningsdialogrutan."
 
 #: C/gnomeradio.xml:592(keycap)
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: C/gnomeradio.xml:594(entry)
 #: C/gnomeradio.xml:771(entry)
 msgid "Mute/unmute the volume."
-msgstr ""
+msgstr "Tyst/normal volym."
 
 #: C/gnomeradio.xml:600(keycap)
 msgid "q"
-msgstr ""
+msgstr "q"
 
 #: C/gnomeradio.xml:602(entry)
 #: C/gnomeradio.xml:779(entry)
 msgid "Terminate Gnomeradio."
-msgstr ""
+msgstr "Avsluta Gnomeradio."
 
 #: C/gnomeradio.xml:608(keycap)
 msgid "f"
-msgstr ""
+msgstr "f"
 
 #: C/gnomeradio.xml:610(entry)
 #: C/gnomeradio.xml:723(entry)
 msgid "Scan forward."
-msgstr ""
+msgstr "Sök framåt."
 
 #: C/gnomeradio.xml:616(keycap)
 msgid "b"
-msgstr ""
+msgstr "b"
 
 #: C/gnomeradio.xml:618(entry)
 #: C/gnomeradio.xml:731(entry)
 msgid "Scan backwards."
-msgstr ""
+msgstr "Sök bakåt."
 
 #: C/gnomeradio.xml:624(keycap)
 msgid "n"
-msgstr ""
+msgstr "n"
 
 #: C/gnomeradio.xml:626(entry)
 #: C/gnomeradio.xml:739(entry)
 msgid "Select next preset."
-msgstr ""
+msgstr "Välj nästa program."
 
 #: C/gnomeradio.xml:632(keycap)
 msgid "p"
-msgstr ""
+msgstr "p"
 
 #: C/gnomeradio.xml:634(entry)
 #: C/gnomeradio.xml:747(entry)
 msgid "Select previous preset."
-msgstr ""
+msgstr "Välj föregående program."
 
 #: C/gnomeradio.xml:640(keycap)
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: C/gnomeradio.xml:642(entry)
 msgid "Increase volume."
-msgstr ""
+msgstr "Höj volymen."
 
 #: C/gnomeradio.xml:648(keycap)
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: C/gnomeradio.xml:650(entry)
 msgid "Decrease volume."
-msgstr ""
+msgstr "Sänk volymen."
 
 #: C/gnomeradio.xml:662(title)
 msgid "LIRC"
@@ -589,23 +589,23 @@ msgstr "LIRC"
 
 #: C/gnomeradio.xml:663(para)
 msgid "You can use a remote control supported by <ulink url=\"http://www.lirc.org/\" type=\"http\">LIRC</ulink> (Linux infrared remote control) to control <application>Gnomeradio</application>."
-msgstr ""
+msgstr "Du kan använda en fjärrkontroll som stöds av <ulink url=\"http://www.lirc.org/\" type=\"http\">LIRC</ulink> (Linux infrared remote control) för att kontrollera <application>Gnomeradio</application>."
 
 #: C/gnomeradio.xml:668(para)
 msgid "Your remote control will only work if <application>Gnomeradio</application> has been compiled with LIRC support enabled. If you are unsure wether this is the case or not, check the about dialog."
-msgstr ""
+msgstr "Din fjärrkontroll kommer endast att fungera om <application>Gnomeradio</application> har byggts med stöd för LIRC. Om du är osäker huruvida så är fallet, titta i Om-dialogrutan."
 
 #: C/gnomeradio.xml:674(title)
 msgid "The .lircrc config file"
-msgstr ""
+msgstr "Konfigurationsfilen .lircrc"
 
 #: C/gnomeradio.xml:675(para)
 msgid "In the file <filename>.lircrc</filename> in your home directory, you set up which keys on your remote control you want to associate with actions in Gnomeradio. A typical section in the file looks like this:"
-msgstr ""
+msgstr "Du ställer in vilka knappar på din fjärrkontroll som du vill ska motsvara åtgärderna i Gnomeradio i filen <filename>.lircrc</filename>, som finns i din hemkatalog. En typisk sektion i den filen ser ut så här:"
 
 #: C/gnomeradio.xml:680(title)
 msgid "Example for a .lircrc section"
-msgstr ""
+msgstr "Exempel på en .lircrc-sektion"
 
 #: C/gnomeradio.xml:681(programlisting)
 #, no-wrap
@@ -618,78 +618,85 @@ msgid ""
 "\trepeat = 1      \n"
 "end\n"
 msgstr ""
+"\n"
+"begin\n"
+"\tprog = gnomeradio\n"
+"\tbutton = VOL+\n"
+"\tconfig = volume up\n"
+"\trepeat = 1      \n"
+"end\n"
 
 #: C/gnomeradio.xml:690(para)
 msgid "This associates the button VOL+ (Attention: Buttonnames are remote control specific) with the command \"volume up\". \"repeat = 1\" means that in case you keep the button of your remote control pressed, the command is repeated as long as you press the button. It's of by default."
-msgstr ""
+msgstr "Det här associerar knappen VOL+ (Varning: Knappnamnen är fjärrkontrollspecifika) med kommandot \"volume up\". \"repeat = 1\" betyder att om du håller ner knappen på din fjärrkontroll kommer kommandot att upprepas så länge som du håller ner knappen. Det är inaktiverat som standard."
 
 #: C/gnomeradio.xml:696(para)
 msgid "For more information, please consult the LIRC documentation."
-msgstr ""
+msgstr "För mer information, konsultera LIRC-dokumentationen."
 
 #: C/gnomeradio.xml:703(title)
 msgid "Available commands"
-msgstr ""
+msgstr "Tillgängliga kommandon"
 
 #: C/gnomeradio.xml:704(para)
 msgid "The following commands are available in Gnomeradio:"
-msgstr ""
+msgstr "Följande kommandon finns tillgängliga i Gnomeradio:"
 
 #: C/gnomeradio.xml:708(title)
 msgid "LIRC commands"
-msgstr ""
+msgstr "LIRC-kommandon"
 
 #: C/gnomeradio.xml:714(entry)
 msgid "Command"
-msgstr ""
+msgstr "Kommando"
 
 #: C/gnomeradio.xml:721(command)
 msgid "tune up"
-msgstr ""
+msgstr "tune up"
 
 #: C/gnomeradio.xml:729(command)
 msgid "tune down"
-msgstr ""
+msgstr "tune down"
 
 #: C/gnomeradio.xml:737(command)
 msgid "preset up"
-msgstr ""
+msgstr "preset up"
 
 #: C/gnomeradio.xml:745(command)
 msgid "preset down"
-msgstr ""
+msgstr "preset down"
 
 #: C/gnomeradio.xml:753(command)
 msgid "volume up"
-msgstr ""
+msgstr "volume up"
 
 #: C/gnomeradio.xml:755(entry)
 msgid "Increase the volume."
-msgstr ""
+msgstr "Höj volymen."
 
 #: C/gnomeradio.xml:761(command)
 msgid "volume down"
-msgstr ""
+msgstr "volume down"
 
 #: C/gnomeradio.xml:763(entry)
 msgid "Decrease the volume."
-msgstr ""
+msgstr "Sänk volymen."
 
 #: C/gnomeradio.xml:769(command)
 msgid "mute"
-msgstr ""
+msgstr "mute"
 
 #: C/gnomeradio.xml:777(command)
 msgid "quit"
-msgstr ""
+msgstr "quit"
 
 #: C/gnomeradio.xml:785(command)
 msgid "preset x"
-msgstr ""
+msgstr "preset x"
 
 #: C/gnomeradio.xml:787(entry)
 msgid "Select preset x + 1 (where x is between 0 and 9)"
-msgstr ""
+msgstr "Välj program x + 1 (där x är mellan 0 och 9)"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 #: C/gnomeradio.xml:0(None)
