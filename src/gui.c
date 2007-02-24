@@ -1113,15 +1113,6 @@ int main(int argc, char* argv[])
 	}
 
 	load_settings();
-	create_tray_menu(app);
-	
-	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), _("manual"));
-	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
-		preset *ps = (preset*)ptr->data;
-		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
-	}
-	preset_combo_set_item(mom_ps);
-
 	start_mixer(FALSE, app);
 	start_radio(FALSE, app);
 	if (is_first_start() || do_scan) {
@@ -1132,6 +1123,15 @@ int main(int argc, char* argv[])
 			set_first_time_flag();
 		}
 	}
+	create_tray_menu(app);
+	
+	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), _("manual"));
+	for (ptr = settings.presets; ptr; ptr = g_list_next(ptr)) {
+		preset *ps = (preset*)ptr->data;
+		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
+	}
+	preset_combo_set_item(mom_ps);
+
 	gtk_widget_show_all(app);
 
 	/* Create an tray icon */
