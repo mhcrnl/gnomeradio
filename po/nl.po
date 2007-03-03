@@ -1,14 +1,14 @@
 # Dutch translation of Gnomeradio.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Heman Bruyninckx <herman.bruyninckx@mech.kuleuven.ac.be>, 2001.
-# Tino Meinen <a.t.meinen@chello.nl>, 2003, 2005, 2006.
+# Tino Meinen <a.t.meinen@chello.nl>, 2003, 2005, 2006, 2007
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnomeradio cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-30 11:50+0100\n"
-"PO-Revision-Date: 2006-11-30 16:18+0100\n"
+"POT-Creation-Date: 2007-01-02 04:21+0000\n"
+"PO-Revision-Date: 2007-02-23 02:45+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,10 +51,12 @@ msgstr "Mixer-apparaat"
 msgid "Mixer source"
 msgstr "Mixer bron"
 
+# deze is verbonden met de vertaling van "Muted"
 #: ../data/gnomeradio.schemas.in.h:9
 msgid "Mute on exit"
-msgstr "Bij afsluiten of Mute zetten"
+msgstr "Bij afsluiten op Mute zetten"
 
+# aantal voorkeuzes
 #: ../data/gnomeradio.schemas.in.h:10
 msgid "Number of presets"
 msgstr "Aantal voorkeuzestations"
@@ -65,7 +67,7 @@ msgstr "Radiotoestel"
 
 #: ../data/gnomeradio.schemas.in.h:12 ../src/prefs.c:606
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr "Geef het radiotoestel op (meestal /dev/radio)"
+msgstr "Geef het radiotoestel aan (meestal /dev/radio)"
 
 # hoogste ipv laatste?
 #: ../data/gnomeradio.schemas.in.h:13
@@ -88,9 +90,7 @@ msgstr "Het aantal voorkeuzestations"
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
-msgstr ""
-"Het voorkeurzestation die aanstond toen gnomeradio werd afgesloten. Bereik "
-"is 0 ... (# voorkeuzestation - 1). Geen is -1"
+msgstr "Het voorkeurzestation dat aanstond toen gnomeradio werd afgesloten. Bereik is 0 ... (# voorkeuzestation - 1). Geen is -1"
 
 #: ../data/gnomeradio.desktop.in.h:1
 msgid "FM-Radio Tuner"
@@ -344,9 +344,10 @@ msgstr ""
 msgid "Failed to init GConf!"
 msgstr "Kon GConf niet initialiseren!"
 
+# niet: handleiding (na een tip van Ernst Vaarties) (tino)
 #: ../src/gui.c:1118
 msgid "manual"
-msgstr "handleiding"
+msgstr "handmatig"
 
 #: ../src/gui.c:1129
 msgid "Could not scan. Radio is not initialized."
@@ -362,7 +363,7 @@ msgstr "Kon niet scannen. Radio is niet geïnitialiseerd."
 msgid "Could not start lirc!"
 msgstr "Kon lirc niet opstarten!"
 
-# stilzetten/mute/dimmen
+# stil/mute(d)/gedimd
 #: ../src/trayicon.c:78
 msgid "Muted"
 msgstr "Mute"
