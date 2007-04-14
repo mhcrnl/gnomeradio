@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GnomeRadio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-17 21:16+0000\n"
+"POT-Creation-Date: 2007-02-22 19:02+0000\n"
 "PO-Revision-Date: 2006-11-17 23:54+0100\n"
 "Last-Translator: Djihed Afifi <djihed@gmail.com>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
@@ -15,9 +15,10 @@ msgstr ""
 msgid "Choose the GnomeMedia Profile that should be used for recording"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:2
-#: ../src/prefs.c:608
-msgid "Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:608
+msgid ""
+"Choose the mixer source (line, line1, etc.) that is able to control the "
+"volume of your radio"
 msgstr ""
 
 #: ../data/gnomeradio.schemas.in.h:3
@@ -25,8 +26,7 @@ msgstr ""
 msgid "GnomeMedia Profile"
 msgstr "تحرير اللمحة المختصرة: %s"
 
-#: ../data/gnomeradio.schemas.in.h:4
-#: ../src/prefs.c:609
+#: ../data/gnomeradio.schemas.in.h:4 ../src/prefs.c:609
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr ""
 
@@ -63,8 +63,7 @@ msgstr "رقم ال_حساب:"
 msgid "Radio device"
 msgstr "جهاز راديو"
 
-#: ../data/gnomeradio.schemas.in.h:12
-#: ../src/prefs.c:606
+#: ../data/gnomeradio.schemas.in.h:12 ../src/prefs.c:606
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr ""
 
@@ -73,7 +72,9 @@ msgid "The last frequency (in MHz) in use"
 msgstr ""
 
 #: ../data/gnomeradio.schemas.in.h:14
-msgid "The mixer device that gnomeradio should use. Only changeable via this key (no GUI option)"
+msgid ""
+"The mixer device that gnomeradio should use. Only changeable via this key "
+"(no GUI option)"
 msgstr ""
 
 #: ../data/gnomeradio.schemas.in.h:15
@@ -82,7 +83,9 @@ msgid "The number of presets"
 msgstr "رقم ال_حساب:"
 
 #: ../data/gnomeradio.schemas.in.h:16
-msgid "The preset that was enabled when gnomeradio was terminated. Range is 0 ... (# presets - 1). None is -1"
+msgid ""
+"The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
+"(# presets - 1). None is -1"
 msgstr ""
 
 #: ../data/gnomeradio.desktop.in.h:1
@@ -95,9 +98,7 @@ msgstr "عنصر قائمة مشع"
 msgid "Listen to FM-radio"
 msgstr "واجهة الشبكة تستمع على"
 
-#: ../src/prefs.c:157
-#: ../src/prefs.c:288
-#: ../src/gui.c:176
+#: ../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:176
 #, fuzzy
 msgid "unnamed"
 msgstr "غير مسمّى"
@@ -140,22 +141,22 @@ msgstr "_مصدر الصفحة"
 msgid "Mute on exit?"
 msgstr "إفراغ مجلّدات القمامة عند الإنهاء"
 
-#: ../src/prefs.c:678
+#: ../src/prefs.c:677
 #, fuzzy
 msgid "Add a new preset"
 msgstr "_إضافة عمود أدوات جديد"
 
-#: ../src/prefs.c:679
+#: ../src/prefs.c:678
 #, fuzzy
 msgid "Remove preset from List"
 msgstr "احذف الصوت المختار من القائمة"
 
-#: ../src/prefs.c:692
+#: ../src/prefs.c:691
 #, fuzzy
 msgid "Destination directory:"
 msgstr "دليل المستخدمين"
 
-#: ../src/prefs.c:710
+#: ../src/prefs.c:709
 msgid "Choose the Media Profile that should be used to record."
 msgstr ""
 
@@ -209,124 +210,125 @@ msgstr "الموقع المدخل ليس سليماً."
 msgid "Could not open \"%s\"!"
 msgstr "تعذّر فتح `%s'"
 
-#: ../src/gui.c:391
+#: ../src/gui.c:394
 #, c-format
 msgid "Gnomeradio - %s"
 msgstr ""
 
-#: ../src/gui.c:393
-#: ../src/trayicon.c:158
+#: ../src/gui.c:396 ../src/trayicon.c:158
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr ""
 
-#: ../src/gui.c:398
-#: ../src/gui.c:971
+#: ../src/gui.c:401 ../src/gui.c:978
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr ""
 
-#. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:651
-msgid "%B-%d-%Y_%H-%M-%S"
-msgstr ""
-
-#. Only change the "MHz" part here (if applicable)
-#: ../src/gui.c:655
-#, c-format
-msgid "%s/%.2fMHz_%s"
-msgstr ""
-
-#: ../src/gui.c:664
+#. You can translate the filename for a recording:
+#. * args for this format are: path, station title, time
+#.
+#: ../src/gui.c:637
 #, c-format
 msgid "%s/%s_%s"
 msgstr ""
 
-#: ../src/gui.c:701
+#. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
+#: ../src/gui.c:665
+msgid "%B-%d-%Y_%H-%M-%S"
+msgstr ""
+
+#: ../src/gui.c:668
+#, fuzzy, c-format
+msgid "%.2f MHz"
+msgstr "%.2f ميلي بار"
+
+#: ../src/gui.c:708
 #, fuzzy
 msgid "Unmute"
 msgstr "سكون/تفعيل %s"
 
-#: ../src/gui.c:705
+#: ../src/gui.c:712
 msgid "Mute"
 msgstr "اصمت"
 
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:719
+#: ../src/gui.c:726
 msgid "TRANSLATORS"
 msgstr ""
 
-#: ../src/gui.c:730
+#: ../src/gui.c:737
 msgid ""
-"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the video4linux drivers.\n"
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
 
-#: ../src/gui.c:734
+#: ../src/gui.c:741
 msgid ""
-"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the video4linux drivers.\n"
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
 
-#: ../src/gui.c:803
-#: ../src/gui.c:1071
+#: ../src/gui.c:810 ../src/gui.c:1078
 msgid "Gnomeradio"
 msgstr "راديو جينوم"
 
-#: ../src/gui.c:859
+#: ../src/gui.c:866
 msgid "Presets:"
 msgstr ""
 
-#: ../src/gui.c:962
+#: ../src/gui.c:969
 #, fuzzy
 msgid "Scan Backwards"
 msgstr "بحث إلى ال_خلف"
 
-#: ../src/gui.c:963
+#: ../src/gui.c:970
 #, fuzzy
 msgid "Scan Forwards"
 msgstr "يحث إلى الأمام"
 
-#: ../src/gui.c:964
+#: ../src/gui.c:971
 #, fuzzy
 msgid "0.05 MHz Backwards"
 msgstr "بحث خلفي على نفس النص"
 
-#: ../src/gui.c:965
+#: ../src/gui.c:972
 #, fuzzy
 msgid "0.05 MHz Forwards"
 msgstr "بحث أمامي عن نفس النص"
 
-#: ../src/gui.c:966
+#: ../src/gui.c:973
 msgid "About Gnomeradio"
 msgstr "حول راديو جينوم"
 
-#: ../src/gui.c:967
+#: ../src/gui.c:974
 msgid "Record radio as Wave, OGG or MP3"
 msgstr ""
 
-#: ../src/gui.c:968
+#: ../src/gui.c:975
 #, fuzzy
 msgid "Edit your Preferences"
 msgstr "غيّر تفضيلاتك"
 
-#: ../src/gui.c:969
+#: ../src/gui.c:976
 #, fuzzy
 msgid "Adjust the Volume"
 msgstr "تكييف شدة الصوت"
 
-#: ../src/gui.c:970
+#: ../src/gui.c:977
 msgid "Quit"
 msgstr "خروج"
 
-#: ../src/gui.c:1063
+#: ../src/gui.c:1070
 #, fuzzy
 msgid "Scan for stations"
-msgstr "كلمة المرور للمستند %s"
+msgstr "كلمة السر للمستند %s"
 
-#: ../src/gui.c:1097
+#: ../src/gui.c:1104
 #, c-format
 msgid ""
 "%s\n"
@@ -334,17 +336,17 @@ msgid ""
 "Changes to the settings won't be saved."
 msgstr ""
 
-#: ../src/gui.c:1098
+#: ../src/gui.c:1105
 #, fuzzy
 msgid "Failed to init GConf!"
 msgstr "فشل تشغيل GConf: %s\n"
 
-#: ../src/gui.c:1111
+#: ../src/gui.c:1118
 #, fuzzy
 msgid "manual"
 msgstr "يدوي"
 
-#: ../src/gui.c:1122
+#: ../src/gui.c:1129
 msgid "Could not scan. Radio is not initialized."
 msgstr ""
 
@@ -354,7 +356,7 @@ msgstr ""
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1145
+#: ../src/gui.c:1152
 #, fuzzy
 msgid "Could not start lirc!"
 msgstr "لم أستطع بدء قناة الحالة: %s"
@@ -390,20 +392,26 @@ msgstr "خطأ"
 msgid "0 byte"
 msgstr "بايت 0"
 
-#: ../src/record.c:106
+#: ../src/record.c:108
 #, fuzzy
 msgid "Gnomeradio recording status"
 msgstr "فشل"
 
-#: ../src/record.c:119
-msgid "Recording:"
-msgstr "جارى التسجيل"
-
 #: ../src/record.c:120
+#, fuzzy, c-format
+msgid "Recording from station %s"
+msgstr "كلمة السر للمستند %s"
+
+#: ../src/record.c:127
+#, fuzzy
+msgid "Destination:"
+msgstr "دليل المستخدمين"
+
+#: ../src/record.c:132
 msgid "Filesize:"
 msgstr "حجم الملف"
 
-#: ../src/record.c:137
+#: ../src/record.c:156
 msgid "Stop Recording"
 msgstr "أوقف التسجيل"
 
@@ -417,8 +425,7 @@ msgstr "حدث خطأ خلال فتح %s."
 msgid "Could not create GStreamer pipeline."
 msgstr "عدم انشاء قاريء قرص GStreamer"
 
-#: ../src/rec_tech.c:59
-#: ../src/rec_tech.c:89
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
 #, fuzzy
 msgid "Check your Gstreamer installation!"
 msgstr "المرجو التأكد من تثبيتك."
@@ -456,3 +463,5 @@ msgstr "+"
 msgid "-"
 msgstr "-"
 
+#~ msgid "Recording:"
+#~ msgstr "جارى التسجيل"
