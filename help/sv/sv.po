@@ -430,7 +430,7 @@ msgstr "Dessa inställningar gäller för mp3-filen också."
 
 #: C/gnomeradio.xml:474(para)
 msgid "<guilabel>Sample rate:</guilabel> Choose a sample rate for the recording audio file. Higher sampling rate means better quality. 44100 kHz is a good default (aprox. CD quality). If the reception is bad you can take a lower sampling rate, because the quality won't be that good anyways."
-msgstr "<guilabel>Samplingshastighet:</guilabel> Välj en samplingshastighet för ljudfilen som ska spelas in. Högre samplingshastighet betyder bättre kvalitet. 44100 kHz är ett bra standardvärde (ungefär som cd-kvalitet). Om mottagningen är dålig kan du använda en lägre samplingshastighet därför att kvaliteten inte kommer att bli så bra ändå."
+msgstr "<guilabel>Samplingsfrekvens:</guilabel> Välj en samplingsfrekvens för ljudfilen som ska spelas in. Högre samplingsfrekvens betyder bättre kvalitet. 44100 kHz är ett bra standardvärde (ungefär som cd-kvalitet). Om mottagningen är dålig kan du använda en lägre samplingsfrekvens därför att kvaliteten inte kommer att bli så bra ändå."
 
 #: C/gnomeradio.xml:481(para)
 msgid "<guilabel>Sample format:</guilabel> Available options are 8 or 16 bit. Usually you want to take 16 bit."
@@ -458,7 +458,7 @@ msgstr "<guilabel>Kodare:</guilabel> En lista över MP3/Ogg-kodare som stöds oc
 
 #: C/gnomeradio.xml:524(para)
 msgid "<guilabel>Bitrate:</guilabel> Choose a bitrate. This will have the largest impact on the size and quality of the resulting MP3/Ogg file. The higher the bitrate the better the quality. 128 kb/s is usually a good value which will result in files that are aprox. 1 MB per minute playlength."
-msgstr "<guilabel>Bithastighet:</guilabel> Välj en bithastighet. Det här kommer att ha störst påverkan på storleken och kvaliteten på den resulterande MP3/Ogg-filen. Ju högre bithastighet, desto bättre kvalitet. 128 kbit/s är vanligtvis ett bra värde som kommer att resultera i att filerna är ungefär 1 MB per minut av speltid."
+msgstr "<guilabel>Bitfrekvens:</guilabel> Välj en bitfrekvens. Det här kommer att ha störst påverkan på storleken och kvaliteten på den resulterande MP3/Ogg-filen. Ju högre bitfrekvens, desto bättre kvalitet. 128 kbit/s är vanligtvis ett bra värde som kommer att resultera i att filerna är ungefär 1 MB per minut av speltid."
 
 #: C/gnomeradio.xml:535(title)
 msgid "Recording status window"

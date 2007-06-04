@@ -1,3 +1,7 @@
+2007-06-04  Daniel Nylander <po@danielnylander.se>
+
+	* help/sv/sv.po: Updated Swedish translation.
+
 2007-02-26  Alexander Shopov  <ash@contact.bg>
 
 	* configure.in: Added "bg" (Bulgarian) to ALL_LINGUAS
