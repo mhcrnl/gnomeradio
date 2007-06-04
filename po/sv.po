@@ -4,13 +4,13 @@
 # Gudmund Areskoug <fta@algonet.se>, 2001.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
-# $Id$
+# $Id: sv.po,v 1.4 2006/11/28 20:39:37 dnylande Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-28 21:35+0100\n"
+"POT-Creation-Date: 2007-06-04 07:54+0200\n"
 "PO-Revision-Date: 2006-11-28 21:38+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -22,19 +22,20 @@ msgstr ""
 msgid "Choose the GnomeMedia Profile that should be used for recording"
 msgstr "Välj en GnomeMedia-profil som ska användas för inspelning"
 
-#: ../data/gnomeradio.schemas.in.h:2
-#: ../src/prefs.c:608
-msgid "Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:608
+msgid ""
+"Choose the mixer source (line, line1, etc.) that is able to control the "
+"volume of your radio"
 msgstr "Välj den mixerkälla (kanal, kanal1, etc.) som styr radiovolymen"
 
 #: ../data/gnomeradio.schemas.in.h:3
 msgid "GnomeMedia Profile"
 msgstr "GnomeMedia-profil"
 
-#: ../data/gnomeradio.schemas.in.h:4
-#: ../src/prefs.c:609
+#: ../data/gnomeradio.schemas.in.h:4 ../src/prefs.c:609
 msgid "If unchecked, gnomeradio won't mute after exiting"
-msgstr "Om detta är omarkerat stänger inte gnomeradio av ljudet när programmet stängs"
+msgstr ""
+"Om detta är omarkerat stänger inte gnomeradio av ljudet när programmet stängs"
 
 #: ../data/gnomeradio.schemas.in.h:5
 msgid "Last frequency"
@@ -64,8 +65,7 @@ msgstr "Antal program"
 msgid "Radio device"
 msgstr "Radioenhet"
 
-#: ../data/gnomeradio.schemas.in.h:12
-#: ../src/prefs.c:606
+#: ../data/gnomeradio.schemas.in.h:12 ../src/prefs.c:606
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr "Ange radioenheten (oftast /dev/radio)"
 
@@ -74,16 +74,24 @@ msgid "The last frequency (in MHz) in use"
 msgstr "Den senaste frekvensen (i MHz) som användes"
 
 #: ../data/gnomeradio.schemas.in.h:14
-msgid "The mixer device that gnomeradio should use. Only changeable via this key (no GUI option)"
-msgstr "Mixerenheten som gnomeradio ska använda. Endast ändringsbar via denna nyckel (inget alternativ i det grafiska användargränssnittet)"
+msgid ""
+"The mixer device that gnomeradio should use. Only changeable via this key "
+"(no GUI option)"
+msgstr ""
+"Mixerenheten som gnomeradio ska använda. Endast ändringsbar via denna nyckel "
+"(inget alternativ i det grafiska användargränssnittet)"
 
 #: ../data/gnomeradio.schemas.in.h:15
 msgid "The number of presets"
 msgstr "Antalet program"
 
 #: ../data/gnomeradio.schemas.in.h:16
-msgid "The preset that was enabled when gnomeradio was terminated. Range is 0 ... (# presets - 1). None is -1"
-msgstr "Programmet som var på då gnomeradio avslutades. Intervallet är 0 ... (antalet program - 1). Inget program är -1"
+msgid ""
+"The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
+"(# presets - 1). None is -1"
+msgstr ""
+"Programmet som var på då gnomeradio avslutades. Intervallet är 0 ... "
+"(antalet program - 1). Inget program är -1"
 
 #: ../data/gnomeradio.desktop.in.h:1
 msgid "FM-Radio Tuner"
@@ -93,9 +101,7 @@ msgstr "FM-radiomottagare"
 msgid "Listen to FM-radio"
 msgstr "Lyssna på FM-radio"
 
-#: ../src/prefs.c:157
-#: ../src/prefs.c:288
-#: ../src/gui.c:176
+#: ../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:176
 msgid "unnamed"
 msgstr "namnlös"
 
@@ -204,14 +210,12 @@ msgstr "Kunde inte öppna \"%s\"!"
 msgid "Gnomeradio - %s"
 msgstr "Gnomeradio - %s"
 
-#: ../src/gui.c:396
-#: ../src/trayicon.c:158
+#: ../src/gui.c:396 ../src/trayicon.c:158
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:401
-#: ../src/gui.c:978
+#: ../src/gui.c:401 ../src/gui.c:978
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Frekvens: %.2f MHz"
@@ -255,26 +259,29 @@ msgstr ""
 
 #: ../src/gui.c:737
 msgid ""
-"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the video4linux drivers.\n"
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
-"Gnomeradio är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera med all mottagarhårdvara som stöds av video4linux-drivrutinerna.\n"
+"Gnomeradio är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera "
+"med all mottagarhårdvara som stöds av video4linux-drivrutinerna.\n"
 "\n"
 "Denna version har kompilerats med stöd för LIRC."
 
 #: ../src/gui.c:741
 msgid ""
-"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the video4linux drivers.\n"
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
-"Gnomeradio är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera med all mottagarhårdvara som stöds av video4linux-drivrutinerna.\n"
+"Gnomeradio är ett FM-mottagarprogram för GNOME-skrivbordet. Det bör fungera "
+"med all mottagarhårdvara som stöds av video4linux-drivrutinerna.\n"
 "\n"
 "Denna version har kompilerats utan stöd för LIRC."
 
-#: ../src/gui.c:810
-#: ../src/gui.c:1078
+#: ../src/gui.c:810 ../src/gui.c:1078
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
@@ -337,13 +344,13 @@ msgstr ""
 msgid "Failed to init GConf!"
 msgstr "Misslyckades med att initiera GConf!"
 
-#: ../src/gui.c:1118
-msgid "manual"
-msgstr "manuellt"
-
-#: ../src/gui.c:1129
+#: ../src/gui.c:1120
 msgid "Could not scan. Radio is not initialized."
 msgstr "Kunde inte söka av. Radion är inte initierad."
+
+#: ../src/gui.c:1128
+msgid "manual"
+msgstr "manuellt"
 
 #. GtkWidget *dialog;
 #. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -415,8 +422,7 @@ msgstr "GStreamer-körtidsfel."
 msgid "Could not create GStreamer pipeline."
 msgstr "Kunde inte skapa GStreamer-rör."
 
-#: ../src/rec_tech.c:59
-#: ../src/rec_tech.c:89
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
 msgid "Check your Gstreamer installation!"
 msgstr "Kontrollera din Gstreamer-installation!"
 
@@ -453,71 +459,98 @@ msgstr "-"
 
 #~ msgid "%s/%.2fMHz_%s"
 #~ msgstr "%s/%.2fMHz_%s"
+
 #~ msgid "Recording:"
 #~ msgstr "Inspelning:"
+
 #~ msgid "Audio device"
 #~ msgstr "Ljudenhet"
+
 #~ msgid "Choose the bitrate in which the mp3 will be encoded"
-#~ msgstr "Välj den bithastighet med vilken mp3-filen ska kodas"
+#~ msgstr "Välj den bitfrekvens med vilken mp3-filen ska kodas"
+
 #~ msgid "MP3 bitrate"
-#~ msgstr "MP3-bithastighet"
+#~ msgstr "MP3-bitfrekvens"
+
 #~ msgid "MP3 encoder"
 #~ msgstr "MP3-kodare"
+
 #~ msgid "Record as mp3- or wave-file"
 #~ msgstr "Spela in som mp3- eller wave-fil"
+
 #~ msgid "Record in stereo or mono"
 #~ msgstr "Spela in i stereo eller mono"
+
 #~ msgid "Sample format"
 #~ msgstr "Samplingsformat"
+
 #~ msgid "Sample rate"
-#~ msgstr "Samplingshastighet"
+#~ msgstr "Samplingsfrekvens"
+
 #~ msgid "The audio device to use (usually /dev/audio)"
 #~ msgstr "Ljudenheten att använda (vanligtvis /dev/audio)"
+
 #~ msgid "The audio sample-rate of the wave-file"
-#~ msgstr "Ljudsamplingshastigheten för wave-filen"
+#~ msgstr "Ljudsamplingsfrekvensen för wave-filen"
+
 #~ msgid "The format (8 or 16 bit) of the wave-file"
 #~ msgstr "Formatet (8- eller 16-bitars) på wave-filen"
+
 #~ msgid "The stored value of the volume (0-100)"
 #~ msgstr "Det lagrade värdet på volymen (0-100)"
+
 #~ msgid "Volume"
 #~ msgstr "Volym"
+
 #~ msgid "Whether the output should be a mp3- or a wave-file"
 #~ msgstr "Huruvida utmatningen ska vara en mp3- eller en wave-fil"
+
 #~ msgid "Whether the output should be in stereo or mono"
 #~ msgstr "Huruvida utmatningen ska vara i stereo eller mono"
+
 #~ msgid "A Gnome FM-Tuner"
 #~ msgstr "En FM-mottagare för Gnome"
+
 #~ msgid "Misc Settings"
 #~ msgstr "Diverse inställningar"
+
 #~ msgid "Name:"
 #~ msgstr "Namn:"
+
 #~ msgid "Frequency:"
 #~ msgstr "Frekvens:"
+
 #~ msgid "Update the preset in the List"
 #~ msgstr "Uppdatera programmet i listan"
+
 #~ msgid "Volume: %d%%"
 #~ msgstr "Volym: %d%%"
+
 #~ msgid ""
 #~ "Sox could not be detected. Please ensure that it is installed in your "
 #~ "PATH."
 #~ msgstr ""
 #~ "Sox kunde inte hittas. Försäkra dig om att det är installerat i din PATH."
+
 #~ msgid ""
 #~ "File '%s' exists.\n"
 #~ "Overwrite it?"
 #~ msgstr ""
 #~ "Filen \"%s\" existerar.\n"
 #~ "Skriva över den?"
+
 #~ msgid ""
 #~ "Error opening file '%s':\n"
 #~ "%s"
 #~ msgstr ""
 #~ "Fel vid öppnande av filen \"%s\":\n"
 #~ "%s"
+
 #~ msgid "Start"
 #~ msgstr "Start"
+
 #~ msgid "Gnomeradio Record"
 #~ msgstr "Gnomeradio-inspelning"
+
 #~ msgid "General"
 #~ msgstr "Allmänt"
-
