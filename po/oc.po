@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnomeradio 1.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-02-26 22:50+0100\n"
-"PO-Revision-Date: 2007-07-29 13:08+0200\n"
+"PO-Revision-Date: 2007-08-19 20:33+0200\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -219,7 +219,7 @@ msgstr ""
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
 #: ../src/gui.c:665
 msgid "%B-%d-%Y_%H-%M-%S"
-msgstr ""
+msgstr "%B-%d-%Y_%H-%M-%S"
 
 #: ../src/gui.c:668
 #, c-format
@@ -237,7 +237,7 @@ msgstr "Mut"
 #. Feel free to put your names here translators :-)
 #: ../src/gui.c:726
 msgid "TRANSLATORS"
-msgstr ""
+msgstr "REVIRAIRES"
 
 #: ../src/gui.c:737
 msgid ""
