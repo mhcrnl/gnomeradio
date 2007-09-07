@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-28 23:33+0300\n"
+"POT-Creation-Date: 2007-09-07 19:39+0300\n"
 "PO-Revision-Date: 2006-11-28 23:34+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -125,7 +125,7 @@ msgstr "Esivalinnat"
 
 #: ../src/prefs.c:554
 msgid "Record Settings"
-msgstr "Äänityksen asetukset:"
+msgstr "Nauhoitusasetukset"
 
 #: ../src/prefs.c:572
 msgid "Radio Device:"
@@ -153,7 +153,7 @@ msgstr "Kohdekansio:"
 
 #: ../src/prefs.c:709
 msgid "Choose the Media Profile that should be used to record."
-msgstr "Valitse äänittämiseen käytettävä mediaprofiili."
+msgstr "Valitse nauhoitukseen käytettävä mediaprofiili."
 
 #: ../src/gui.c:96
 #, c-format
@@ -252,7 +252,7 @@ msgstr "Vaimenna"
 #: ../src/gui.c:726
 msgid "TRANSLATORS"
 msgstr ""
-"Ilkka Tuohela, 2005-2006\n"
+"Ilkka Tuohela, 2005-2007\n"
 "Jouni Rinne, 2005\n"
 "\n"
 "http://www.gnome.fi/"
@@ -311,7 +311,7 @@ msgstr "Tietoja Gnomeradiosta"
 
 #: ../src/gui.c:974
 msgid "Record radio as Wave, OGG or MP3"
-msgstr "Äänitä radiosta wave-, ogg- tai mp3-tiedostoksi"
+msgstr "Nauhoita radiosta wave-, ogg- tai mp3-tiedostoksi"
 
 #: ../src/gui.c:975
 msgid "Edit your Preferences"
@@ -344,13 +344,13 @@ msgstr ""
 msgid "Failed to init GConf!"
 msgstr "GConfin alustus epäonnistui!"
 
-#: ../src/gui.c:1118
-msgid "manual"
-msgstr "Käsisäätö"
-
-#: ../src/gui.c:1129
+#: ../src/gui.c:1120
 msgid "Could not scan. Radio is not initialized."
 msgstr "Etsintä ei onnistunut, radiota ei ole alustettu."
+
+#: ../src/gui.c:1128
+msgid "manual"
+msgstr "Käsisäätö"
 
 #. GtkWidget *dialog;
 #. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -395,12 +395,12 @@ msgstr "0 tavua"
 
 #: ../src/record.c:108
 msgid "Gnomeradio recording status"
-msgstr "Gnomeradion äänitystila"
+msgstr "Gnomeradio-nauhoituksen tila"
 
 #: ../src/record.c:120
 #, c-format
 msgid "Recording from station %s"
-msgstr "Tallennetaan asemalta %s"
+msgstr "Nauhoitetaan asemalta %s"
 
 #: ../src/record.c:127
 msgid "Destination:"
@@ -412,7 +412,7 @@ msgstr "Tiedoston koko:"
 
 #: ../src/record.c:156
 msgid "Stop Recording"
-msgstr "Äänityksen lopetus"
+msgstr "Lopeta nauhoitus"
 
 #: ../src/rec_tech.c:42
 msgid "GStreamer runtime error."
@@ -456,178 +456,4 @@ msgstr "+"
 #: ../src/bacon-volume.c:203
 msgid "-"
 msgstr "-"
-
-#~ msgid "%s/%.2fMHz_%s"
-#~ msgstr "%s/%.2fMHz_%s"
-
-#~ msgid "Recording:"
-#~ msgstr "Äänitys:"
-
-#~ msgid "Audio device"
-#~ msgstr "Äänilaite"
-
-#~ msgid "Choose the bitrate in which the mp3 will be encoded"
-#~ msgstr "Valitse bittitaajuus jolla mp3 koodataan"
-
-#~ msgid "MP3 bitrate"
-#~ msgstr "MP3-bittitaajuus"
-
-#~ msgid "MP3 encoder"
-#~ msgstr "MP3-kooderi"
-
-#~ msgid "Record as mp3- or wave-file"
-#~ msgstr "Äänitä mp3- tai wave-tiedostona"
-
-#~ msgid "Record in stereo or mono"
-#~ msgstr "Äänitä stereona tai monona"
-
-#~ msgid "Sample format"
-#~ msgstr "Näytteenottomuoto"
-
-#~ msgid "Sample rate"
-#~ msgstr "Näytteenottotaajuus"
-
-#~ msgid "The audio device to use (usually /dev/audio)"
-#~ msgstr "Käytettävä äänilaite (yleensä /dev/audio)"
-
-#~ msgid "The audio sample-rate of the wave-file"
-#~ msgstr "Wave-tiedoston näytteenottotaajuus"
-
-#~ msgid "The format (8 or 16 bit) of the wave-file"
-#~ msgstr "Wave-tiedoston näytteenottomuoto (8 tai 16 bit)"
-
-#~ msgid "The stored value of the volume (0-100)"
-#~ msgstr "Tallennettu äänenvoimakkuus (0-100)"
-
-#~ msgid "Volume"
-#~ msgstr "Äänenvoimakkuus"
-
-#~ msgid "Whether the output should be a mp3- or a wave-file"
-#~ msgstr "Onko äänitystuloksena mp3/ogg- vai wave-tiedosto"
-
-#~ msgid "Whether the output should be in stereo or mono"
-#~ msgstr "Onko äänitystulos stereona vai monona"
-
-#~ msgid "Wave file"
-#~ msgstr "Wave-tiedosto"
-
-#~ msgid "Encoder:"
-#~ msgstr "Kooderi:"
-
-#~ msgid "Bitrate:"
-#~ msgstr "Bittitaajuus:"
-
-#~ msgid "%s kb/s"
-#~ msgstr "%s kb/s"
-
-#~ msgid ""
-#~ "Choose the mp3-/ogg-encoder that should be used, or to record as a "
-#~ "uncompressed wave file"
-#~ msgstr ""
-#~ "Valitse käytettävä mp3- tai ogg-kooderi, tai tallenna pakkaamattomaan wav-"
-#~ "tiedostoon"
-
-#~ msgid "Choose the bitrate in which the mp3/ogg will be encoded"
-#~ msgstr ""
-#~ "Valitse käytettävä bittitaajuus jolla mp3- tai ogg-tiedosto koodataan"
-
-#~ msgid "Volume: %d%%"
-#~ msgstr "Äänenvoimakkuus: %d %%"
-
-#~ msgid ""
-#~ "Sox could not be detected. Please ensure that it is installed in your "
-#~ "PATH."
-#~ msgstr "Sox'ia ei löytynyt. Varmista että se on PATH'illasi"
-
-#~ msgid ""
-#~ "Error opening file '%s':\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Virhe avattaessa tiedostoa '%s':\n"
-#~ "%s"
-
-#~ msgid "Start"
-#~ msgstr "Aloita"
-
-#~ msgid "Gnomeradio Record"
-#~ msgstr "Gnomeradion äänitys"
-
-#~ msgid "General"
-#~ msgstr "Yleistä"
-
-#~ msgid "Wave Settings"
-#~ msgstr "Wave-asetukset"
-
-#~ msgid "Mp3/Ogg Settings"
-#~ msgstr "MP3/Ogg-asetukset"
-
-#~ msgid "Audio device:"
-#~ msgstr "Äänilaite:"
-
-#~ msgid "Filename:"
-#~ msgstr "Tiedostonimi:"
-
-#~ msgid "Choose a filename"
-#~ msgstr "Valitse tiedostonimi"
-
-#~ msgid "Record as:"
-#~ msgstr "Äänitetyyppi:"
-
-#~ msgid "Wave (.wav)"
-#~ msgstr "Wave (.wav)"
-
-#~ msgid "MP3/Ogg (.mp3/.ogg)"
-#~ msgstr "MP3/Ogg (.mp3/.ogg)"
-
-#~ msgid "Sample rate:"
-#~ msgstr "Näytteenottotaajuus:"
-
-#~ msgid "Sample format:"
-#~ msgstr "Näytteenottomuoto:"
-
-#~ msgid "Record in:"
-#~ msgstr "Äänitä:"
-
-#~ msgid "Mono"
-#~ msgstr "Monona"
-
-#~ msgid "Stereo"
-#~ msgstr "Stereona"
-
-#~ msgid "no supported encoder installed"
-#~ msgstr "ainuttakaan tuettua kooderia ei ole asennettu"
-
-#~ msgid ""
-#~ "%s has stopped:\n"
-#~ "%s\n"
-#~ msgstr ""
-#~ "%s on pysähtynyt:\n"
-#~ "%s\n"
-
-#~ msgid "MP3/Ogg encoder"
-#~ msgstr "MP3/Ogg kooderi"
-
-#~ msgid "unknown reason"
-#~ msgstr "tuntematon syy"
-
-#~ msgid "A Gnome FM-Tuner"
-#~ msgstr "Gnome FM-viritin"
-
-#~ msgid "Misc Settings"
-#~ msgstr "Sekalaiset asetukset"
-
-#~ msgid "Name:"
-#~ msgstr "Nimi:"
-
-#~ msgid "Frequency:"
-#~ msgstr "Taajuus:"
-
-#~ msgid "Update the preset in the List"
-#~ msgstr "Päivitä esivalinta listalla"
-
-#~ msgid ""
-#~ "File '%s' exists.\n"
-#~ "Overwrite it?"
-#~ msgstr ""
-#~ "Tiedosto '%s' on jo olemassa.\n"
-#~ "Ylikirjoita?"
+ 
