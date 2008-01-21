@@ -17,4 +17,4 @@ figures/settings-presets.png \
 figures/status-window.png \
 figures/volume-controls.png
 
-DOC_LINGUAS = oc sv
+DOC_LINGUAS = es oc sv
