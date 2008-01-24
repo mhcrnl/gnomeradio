@@ -32,6 +32,13 @@
 #include "lirc.h"
 #include "gui.h"
 
+extern GtkWidget* mute_button, *preset_combo;
+extern GtkAdjustment *adj;
+extern GtkTooltips *tooltips;
+
+extern int mom_ps;
+extern gnomeradio_settings settings;
+
 static int fd = -1;
 static struct lirc_config *config = NULL;
 

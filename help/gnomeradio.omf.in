@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <omf>
   <resource>
-    <subject category="GNOME|Applications|Multimedia"/>
+    <subject category="Applications|Multimedia"/>
     <type>manual</type>
     <relation seriesid="aa808024-e437-11d6-9898-aa172e9bc9ed"/>
     <rights type="GNU FDL" license.version="1.1" holder="Jörgen Scheibengruber"/>

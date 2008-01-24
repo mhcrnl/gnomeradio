@@ -43,15 +43,6 @@ struct Preset
 	gfloat freq;
 };
 
-GtkWidget* mute_button, *preset_combo;
-GtkAdjustment *adj;
-GtkTooltips *tooltips;
-
-
-int mom_ps;
-
-gnomeradio_settings settings;
-
 void start_radio(gboolean restart, GtkWidget *app);
 
 void start_mixer(gboolean restart, GtkWidget *app);

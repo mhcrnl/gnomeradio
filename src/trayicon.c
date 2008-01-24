@@ -23,6 +23,12 @@
 #include "gui.h"
 #include "trayicon.h"
 
+extern GtkAdjustment *adj;
+extern GtkTooltips *tooltips;
+
+extern int mom_ps;
+extern gnomeradio_settings settings;
+
 static GtkWidget *showwindow_menuitem;
 
 static void mute_menuitem_toggled_cb(GtkCheckMenuItem *checkmenuitem, gpointer user_data)

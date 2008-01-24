@@ -47,6 +47,13 @@
 
 #define TRANSLATORS "TRANSLATORS"
 
+GtkWidget* mute_button, *preset_combo;
+GtkAdjustment *adj;
+GtkTooltips *tooltips;
+
+int mom_ps;
+gnomeradio_settings settings;
+
 static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
 static GtkWidget *freq_scale;
@@ -416,10 +423,11 @@ static void volume_value_changed_cb(BaconVolumeButton *button, gpointer user_dat
 	gtk_tooltips_set_tip(tooltips, vol_scale, text, NULL);
 	g_free(text);*/
 	
-	g_assert(tray_menu);
-	g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
-	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
-	g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+    if (tray_menu) {
+	    g_signal_handler_block(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+	    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mute_menuitem), vol == 0);
+	    g_signal_handler_unblock(G_OBJECT(mute_menuitem), mute_menuitem_toggled_cb_id);
+    }
 }
 
 #if 0
@@ -1078,6 +1086,7 @@ int main(int argc, char* argv[])
 	g_set_application_name(_("Gnomeradio"));
 	
 #if GNOME_14
+    if (!g_thread_supported ()) g_thread_init(NULL);
 	ctx = g_option_context_new("- Gnomeradio");
 	g_option_context_add_main_entries(ctx, entries, GETTEXT_PACKAGE);  
 	g_option_context_add_group(ctx, gst_init_get_option_group());

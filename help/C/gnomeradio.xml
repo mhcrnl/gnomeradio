@@ -23,7 +23,8 @@
   <articleinfo> 
 	 <title>&app; Manual V&manrevision;</title> 
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year> 
+ 
 		<holder>Jörgen Scheibengruber</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
@@ -34,6 +35,11 @@
   </copyright>
 
    -->
+
+    <abstract role="description">
+      <para>Gnomeradio is a FM-tuner application for the GNOME desktop.</para>
+    </abstract>
+
 	<publisher> 
 		<publishername>GNOME Documentation Project</publishername> 
 	</publisher> 

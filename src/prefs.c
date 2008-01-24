@@ -23,6 +23,13 @@
 #include "gui.h"
 #include "rec_tech.h"
 
+extern GtkWidget* mute_button, *preset_combo;
+extern GtkAdjustment *adj;
+extern GtkTooltips *tooltips;
+
+extern int mom_ps;
+extern gnomeradio_settings settings;
+
 static GtkWidget *device_entry;
 static GtkWidget *mixer_combo;
 static GtkWidget *mute_on_exit_cb;
