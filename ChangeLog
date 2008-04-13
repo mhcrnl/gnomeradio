@@ -1,5 +1,33 @@
 2008-04-13  Jörgen Scheibengruber  <mfcn@gmx.de>
 
+	* data/gnomeradio.schemas.in:
+	* src/Makefile.am:
+	* src/gui.c (initial_frequency_scan_cb), (initial_frequency_scan),
+	(start_radio), (redraw_status_window), (adj_value_changed_cb):
+	* src/gui.h:
+	* src/prefs.c (save_settings), (load_settings):
+	* src/radio.c (radio_init), (radio_is_init), (radio_stop),
+	(radio_set_freq), (radio_unmute), (radio_mute), (radio_get_stereo),
+	(radio_get_signal), (radio_check_station):
+	* src/radio.h:
+	* src/tech.c (mixer_get_volume):
+	* src/tech.h:
+	* src/v4l1.c (v4l1_radio_init), (v4l1_radio_is_init),
+	(v4l1_radio_set_freq), (v4l1_radio_mute), (v4l1_radio_get_stereo),
+	(v4l1_radio_get_signal), (v4l1_radio_finalize),
+	(v4l1_radio_dev_new):
+	* src/v4l1.h:
+	* src/v4l2.c (v4l2_radio_init), (v4l2_radio_is_init),
+	(v4l2_radio_set_freq), (v4l2_radio_mute), (v4l2_radio_get_stereo),
+	(v4l2_radio_get_signal), (v4l2_radio_finalize),
+	(v4l2_radio_dev_new):
+	* src/v4l2.h:
+	Refactored backend so that it supports both v4l and v4l2 and selection can
+	be made at runtime. The v4l2 code is based on the patch contributed by
+	James Henstridge (bug #429005).
+
+2008-04-13  Jörgen Scheibengruber  <mfcn@gmx.de>
+
 	* src/prefs.c (name_cell_edited_cb):
 	Applied patch from Francesco Namuri; should fix #506037
 	and a couple of dups

@@ -23,12 +23,11 @@
 #include <sys/ioctl.h>
 #include <assert.h>
 
-#include <linux/videodev.h>
 #include <sys/soundcard.h>
 
 #include "tech.h"
 
-static int freq_fact, fd = -1, mixer_fd = -1, mixer_src = -1;
+static int mixer_fd = -1, mixer_src = -1;
 static char *devices[] = SOUND_DEVICE_NAMES;
 
 /*
@@ -169,147 +168,4 @@ int mixer_get_volume(void)
 	assert((volume >= 0) && (volume <= 100));
 	
 	return volume;
-}
-
-/*
- * These functions handle the radio device
- */
- 
-int radio_init(char *device)
-{
-	struct video_tuner tuner;
-	
-	if ((fd = open(device, O_RDONLY))< 0)
-		return 0;
-	
-	tuner.tuner = 0;
-	if (ioctl (fd, VIDIOCGTUNER, &tuner) < 0)
-		freq_fact = 16;
-	else
-	{
-		if ((tuner.flags & VIDEO_TUNER_LOW) == 0)
-			freq_fact = 16;
-		else 
-			freq_fact = 16000;
-	}		
-	
-	radio_unmute();
-	
-	return 1;
-}
-
-int radio_is_init(void)
-{
-	return (fd >= 0);
-}
-
-void radio_stop(void)
-{
-	radio_mute();
-	
-	if (fd >= 0)
-		close(fd);
-}
-
-int radio_setfreq(float freq)
-{
-    int ifreq = (freq+1.0/32)*freq_fact;
-    if (fd<0)
-    	return 0;
-    
-#if 0
-	printf("Setting to %i (= %.2f)\n", ifreq, freq);
-#endif
-	
-	if ((freq > 108) || (freq < 65))
-		return 1;
-
-	assert ((freq <= 108) && (freq > 65));
-
-    return ioctl(fd, VIDIOCSFREQ, &ifreq);
-}
-
-int radio_check_station(float freq)
-{
-	static int a, b;
-	static float last;
-	int signal;
-	
-	signal = radio_getsignal();
-	
-	if (last == 0.0f)
-		last = freq;
-	
-	if ((a + b + signal > 8) && (fabsf(freq - last) > 0.25f)) {
-		a = b = 0;
-		last = freq;
-		return 1;
-	}
-	a = b;
-	b = signal;
-	return 0;
-}	
-
-
-void radio_unmute(void)
-{
-    struct video_audio vid_aud;
-
-    if (fd<0)
-    	return;
-
-    if (ioctl(fd, VIDIOCGAUDIO, &vid_aud))
-		perror("VIDIOCGAUDIO");
-    /*if (vid_aud.volume == 0)*/
-	vid_aud.volume = 0xFFFF;
-    vid_aud.flags &= ~VIDEO_AUDIO_MUTE;
-	vid_aud.mode = VIDEO_SOUND_STEREO;
-	
-    if (ioctl(fd, VIDIOCSAUDIO, &vid_aud))
-		perror("VIDIOCSAUDIO");
-}
-
-void radio_mute(void)
-{
-    struct video_audio vid_aud;
-
-    if (fd<0)
-    	return;
-
-    if (ioctl(fd, VIDIOCGAUDIO, &vid_aud))
-		perror("VIDIOCGAUDIO");
-    vid_aud.flags |= VIDEO_AUDIO_MUTE;
-    if (ioctl(fd, VIDIOCSAUDIO, &vid_aud))
-		perror("VIDIOCSAUDIO");
-}
-
-int radio_getstereo()
-{
-    struct video_audio va;
-    va.mode=-1;
-
-    if (fd<0)
-    	return -1;
-    
-    if (ioctl (fd, VIDIOCGAUDIO, &va) < 0)
-		return -1;
-	if (va.mode == VIDEO_SOUND_STEREO)
-		return 1;
-	else 
-		return 0;
-}
-
-int radio_getsignal()
-{
-    struct video_tuner vt;
-    int signal;
-
-    if (fd<0)
-    	return -1;
-
-    memset(&vt,0,sizeof(vt));
-    ioctl (fd, VIDIOCGTUNER, &vt);
-    signal=vt.signal>>13;
-
-    return signal;
 }

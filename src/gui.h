@@ -33,7 +33,8 @@ struct Gnomeradio_Settings
 	gchar *mixer_dev;
 	gchar *mixer;
 	gboolean mute_on_exit;
-		
+    gchar *driver;
+	
 	GList *presets;
 };
 

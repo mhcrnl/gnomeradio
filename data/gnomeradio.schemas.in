@@ -37,6 +37,18 @@
     </schema>
 
     <schema>
+      <key>/schemas/apps/gnomeradio/driver</key>
+      <applyto>/apps/gnomeradio/driver</applyto>
+      <owner>gnomeradio</owner>
+      <type>string</type>
+      <default>any</default>
+      <locale name="C">
+	<short>Device driver</short>
+	<long>Specify the device driver to use (any, v4l1 or v4l2)</long>
+      </locale>
+    </schema>
+
+    <schema>
       <key>/schemas/apps/gnomeradio/mixer</key>
       <applyto>/apps/gnomeradio/mixer</applyto>
       <owner>gnomeradio</owner>

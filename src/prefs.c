@@ -53,6 +53,7 @@ gboolean save_settings(void)
 	
 	/* Store general settings */
 	gconf_client_set_string(client, "/apps/gnomeradio/device", settings.device, NULL);
+	gconf_client_set_string(client, "/apps/gnomeradio/driver", settings.driver, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/mixer", settings.mixer, NULL);
 	gconf_client_set_string(client, "/apps/gnomeradio/mixer-device", settings.mixer_dev, NULL);
 	gconf_client_set_bool(client, "/apps/gnomeradio/mute-on-exit", settings.mute_on_exit, NULL);
@@ -112,6 +113,9 @@ gboolean load_settings(void)
 	settings.device = gconf_client_get_string(client, "/apps/gnomeradio/device" , NULL);
 	if (!settings.device)
 		settings.device = g_strdup("/dev/radio");
+	settings.driver = gconf_client_get_string(client, "/apps/gnomeradio/driver" , NULL);
+	if (!settings.driver)
+		settings.driver = g_strdup("any");
 	settings.mixer = gconf_client_get_string(client, "/apps/gnomeradio/mixer", NULL);
 	if (!settings.mixer)
 		settings.mixer = g_strdup("line");

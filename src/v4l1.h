@@ -14,21 +14,12 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef _TECH_H
-#define _TECH_H
+#ifndef _V4L1_H
+#define _V4L1_H
 
-int mixer_init(char *mixer_device, char *mixer_source);
+#include <radio.h>
 
-char* mixer_get_sndcard_name(void);
-
-char** mixer_get_rec_devices(void);
-
-int mixer_close(void);
-
-int mixer_set_volume(int volume);
-
-int mixer_get_volume(void);
-
-int mixer_set_rec_device(void);
+RadioDev* v4l1_radio_dev_new (void);
 
 #endif
+

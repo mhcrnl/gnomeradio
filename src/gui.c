@@ -29,6 +29,7 @@
 #include "gui.h"
 #include "trayicon.h"
 #include "tech.h"
+#include "radio.h"
 #include "rec_tech.h"
 #include "lirc.h"
 #include "prefs.h"
@@ -114,7 +115,7 @@ static gboolean initial_frequency_scan_cb(gpointer data)
 	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsd->progress), MAX(0, (freq - FREQ_MIN)/(FREQ_MAX - FREQ_MIN)));	
 	
 	freq += 1.0/STEPS;
-	radio_setfreq(freq);
+	radio_set_freq(freq);
 	
 	return TRUE;
 }
@@ -161,7 +162,7 @@ static void initial_frequency_scan(GtkWidget *app)
 		if (g_list_length(data.stations) > 0) {
 			gfloat f = *((gfloat*)data.stations->data);
 			adj->value = f*STEPS;
-			radio_setfreq(f);
+			radio_set_freq(f);
 			
 			GtkWidget *dialog;
 			GList *ptr;
@@ -223,10 +224,18 @@ static void prefs_button_clicked_cb(GtkButton *button, gpointer app)
 
 void start_radio(gboolean restart, GtkWidget *app)
 {
+    DriverType driver = DRIVER_ANY;
 	if (restart)
 		radio_stop();
 	
-	if (!radio_init(settings.device)) 
+    if (settings.driver) {
+        if (0 == strcmp(settings.driver, "v4l1"))
+            driver = DRIVER_V4L1;
+        if (0 == strcmp(settings.driver, "v4l2"))
+            driver = DRIVER_V4L2;
+    }
+
+	if (!radio_init(settings.device, driver))
 	{
 		char *caption = g_strdup_printf(_("Could not open device \"%s\"!"), settings.device);
 		char *detail = g_strdup_printf(_("Check your settings and make sure that no other\n"
@@ -308,8 +317,8 @@ static gboolean redraw_status_window(void)
 	freq[3] = (val % 100) / 10;
 	freq[4] = val % 10;
 
-	signal_strength = radio_getsignal();
-	is_stereo = radio_getstereo();
+	signal_strength = radio_get_signal();
+	is_stereo = radio_get_stereo();
 	
 	if (signal_strength > 3) signal_strength = 3;
 	if (signal_strength < 0) signal_strength = 0;
@@ -409,7 +418,7 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	gtk_tooltips_set_tip(tooltips, freq_scale, buffer, NULL);
 	g_free(buffer);
 
-	radio_setfreq(adj->value/STEPS);
+	radio_set_freq(adj->value/STEPS);
 }
 
 static void volume_value_changed_cb(BaconVolumeButton *button, gpointer user_data)

@@ -10,7 +10,29 @@ INCLUDES = -I$(top_srcdir) -I$(includedir) \
 
 bin_PROGRAMS = gnomeradio
 
-gnomeradio_SOURCES = eggtrayicon.c bacon-volume.c trayicon.c gui.c tech.c prefs.c rec_tech.c record.c lirc.c \
-                     eggtrayicon.h bacon-volume.h trayicon.h gui.h tech.h prefs.h rec_tech.h record.h lirc.h
+gnomeradio_SOURCES = \
+            bacon-volume.h \
+            eggtrayicon.h \
+            gui.h \
+            prefs.h \
+            radio.h \
+            rec_tech.h \
+            record.h \
+            tech.h \
+            trayicon.h \
+            v4l1.h \
+            v4l2.h \
+            bacon-volume.c \
+            eggtrayicon.c \
+            gui.c \
+            lirc.c \
+            prefs.c \
+            radio.c \
+            rec_tech.c \
+            record.c \
+            tech.c \
+            trayicon.c \
+            v4l1.c \
+            v4l2.c
 
 gnomeradio_LDADD = $(GNOME_LIBS) $(GSTREAMER_LIBS) $(LIRC)
