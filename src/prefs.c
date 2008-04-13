@@ -418,6 +418,7 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 
 	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
 	gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row + 1, ps->title);
+	mom_ps = *row;
 	preset_combo_set_item(mom_ps);
 	
 	menuitems = GTK_MENU_SHELL(tray_menu)->children;

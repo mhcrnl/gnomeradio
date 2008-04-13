@@ -1,3 +1,9 @@
+2008-04-13  Jörgen Scheibengruber  <mfcn@gmx.de>
+
+	* src/prefs.c (name_cell_edited_cb):
+	Applied patch from Francesco Namuri; should fix #506037
+	and a couple of dups
+
 2007-11-12  Jörgen Scheibengruber <mfcn@gmx.de>
 
 	* help/C/gnomeradio.xml:
