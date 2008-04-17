@@ -1,3 +1,9 @@
+2008-04-17  Claude Paroz  <claude@2xlibre.net>
+
+	* help/Makefile.am: Added fr to DOC_LINUGAS.
+	* help/fr/figures/*.png:
+	* help/fr/fr.po: Added French translation.
+
 2008-04-13  Jörgen Scheibengruber  <mfcn@gmx.de>
 
 	* data/gnomeradio.schemas.in:
