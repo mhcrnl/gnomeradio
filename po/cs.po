@@ -1,31 +1,29 @@
 # Czech translation for gnomeradio.
-# Copyright (C) 2002 Free Software Foundation
+# Copyright (C) 2002, 2008 the author(s) of gnomeradio.
 # Copyright (C) 2005 Miloslav Trmac <mitr@volny.cz>
 # This file is distributed under the same license as the gnomeradio package.
 # Michal Bukovjan <bukm@centrum.cz>, 2002.
 # Miloslav Trmac <mitr@volny.cz>, 2005.
+# Adrian Guniš <andygun@seznam.cz>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnomeradio VERSION\n"
+"Project-Id-Version: gnomeradio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-30 11:33+0000\n"
-"PO-Revision-Date: 2005-04-30 16:26+0200\n"
-"Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"POT-Creation-Date: 2008-05-31 20:18+0200\n"
+"PO-Revision-Date: 2008-05-30 19:40+0100\n"
+"Last-Translator: Adrian Guniš <andygun@seznam.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../gnomeradio.schemas.in.h:1
-msgid "Audio device"
-msgstr "Zvukové zařízení"
+#: ../data/gnomeradio.schemas.in.h:1
+msgid "Choose the GnomeMedia Profile that should be used for recording"
+msgstr "Vyberte profil GnomeMedia, který by měl být použit pro nahrávání"
 
-#: ../gnomeradio.schemas.in.h:2 ../src/record.c:355
-msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr "Vyberte rychlost přenosu, ve které budou soubory MP3 kódovány"
-
-#: ../gnomeradio.schemas.in.h:3 ../src/prefs.c:562
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:620
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
@@ -33,87 +31,59 @@ msgstr ""
 "Vyberte zdroj pro mixér (line, line1, apod.), který ovládá hlasitost vašeho "
 "rádia"
 
-#: ../gnomeradio.schemas.in.h:4 ../src/record.c:354
-msgid "Choose the mp3 encoder that should be used"
-msgstr "Vyberte kodér souborů MP3, který chcete použít"
+#: ../data/gnomeradio.schemas.in.h:3
+msgid "Device driver"
+msgstr "Ovladač zařízení"
 
-#: ../gnomeradio.schemas.in.h:5 ../src/prefs.c:563
+#: ../data/gnomeradio.schemas.in.h:4
+msgid "GnomeMedia Profile"
+msgstr "Profil GnomeMedia"
+
+#: ../data/gnomeradio.schemas.in.h:5 ../src/prefs.c:621
 msgid "If unchecked, gnomeradio won't mute after exiting"
-msgstr "Pokud není zatrženo, program Gnomeradio při ukončení rádio neztiší"
+msgstr "Pokud není zatrženo, program Gnomeradio při ukončení neztiší rádio"
 
-#: ../gnomeradio.schemas.in.h:6
+#: ../data/gnomeradio.schemas.in.h:6
 msgid "Last frequency"
 msgstr "Poslední frekvence"
 
-#: ../gnomeradio.schemas.in.h:7
+#: ../data/gnomeradio.schemas.in.h:7
 msgid "Last presets"
 msgstr "Poslední předvolby"
 
-#: ../gnomeradio.schemas.in.h:8
-msgid "MP3 bitrate"
-msgstr "Přenosová rychlost MP3"
-
-#: ../gnomeradio.schemas.in.h:9
-msgid "MP3 encoder"
-msgstr "Kodér MP3"
-
-#: ../gnomeradio.schemas.in.h:10
+#: ../data/gnomeradio.schemas.in.h:8
 msgid "Mixer Device"
 msgstr "Zařízení mixéru"
 
-#: ../gnomeradio.schemas.in.h:11
+#: ../data/gnomeradio.schemas.in.h:9
 msgid "Mixer source"
 msgstr "Zdroj mixéru"
 
-#: ../gnomeradio.schemas.in.h:12
+#: ../data/gnomeradio.schemas.in.h:10
 msgid "Mute on exit"
 msgstr "Ztišit při ukončení"
 
-#: ../gnomeradio.schemas.in.h:13
+#: ../data/gnomeradio.schemas.in.h:11
 msgid "Number of presets"
 msgstr "Počet předvoleb"
 
-#: ../gnomeradio.schemas.in.h:14
+#: ../data/gnomeradio.schemas.in.h:12
 msgid "Radio device"
 msgstr "Zařízení rádia"
 
-#: ../gnomeradio.schemas.in.h:15
-msgid "Record as mp3- or wave-file"
-msgstr "Ukládat jako soubory MP3 nebo WAV"
+#: ../data/gnomeradio.schemas.in.h:13
+msgid "Specify the device driver to use (any, v4l1 or v4l2)"
+msgstr "Určete ovladač zařízení pro použití (libovolný, v4l1 nebo v4l2)"
 
-#: ../gnomeradio.schemas.in.h:16
-msgid "Record in stereo or mono"
-msgstr "Ukládat v režimu stereo nebo mono"
-
-#: ../gnomeradio.schemas.in.h:17
-msgid "Sample format"
-msgstr "Formát vzorku"
-
-#: ../gnomeradio.schemas.in.h:18
-msgid "Sample rate"
-msgstr "Vzorkovací kmitočet"
-
-#: ../gnomeradio.schemas.in.h:19 ../src/prefs.c:560
+#: ../data/gnomeradio.schemas.in.h:14 ../src/prefs.c:618
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr "Zadejte zařízení rádia (obvykle /dev/radio)"
+msgstr "Určete zařízení rádia (nejčastěji /dev/radio)"
 
-#: ../gnomeradio.schemas.in.h:20 ../src/record.c:356
-msgid "The audio device to use (usually /dev/audio)"
-msgstr "Zvukové zařízení, které se má použít (obvykle /dev/audio)"
-
-#: ../gnomeradio.schemas.in.h:21 ../src/record.c:352
-msgid "The audio sample-rate of the wave-file"
-msgstr "Vzorkovací frekvence zvukového souboru WAV"
-
-#: ../gnomeradio.schemas.in.h:22 ../src/record.c:353
-msgid "The format (8 or 16 bit) of the wave-file"
-msgstr "Formát (8 nebo 16bitový) souboru WAV"
-
-#: ../gnomeradio.schemas.in.h:23
+#: ../data/gnomeradio.schemas.in.h:15
 msgid "The last frequency (in MHz) in use"
 msgstr "Poslední použitá frekvence (v MHz)"
 
-#: ../gnomeradio.schemas.in.h:24
+#: ../data/gnomeradio.schemas.in.h:16
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
@@ -121,11 +91,11 @@ msgstr ""
 "Zařízení mixéru, které by měl program Gnomeradio použít. Lze změnit pouze "
 "tímto klíčem (v GUI to není možné)"
 
-#: ../gnomeradio.schemas.in.h:25
+#: ../data/gnomeradio.schemas.in.h:17
 msgid "The number of presets"
 msgstr "Počet předvoleb"
 
-#: ../gnomeradio.schemas.in.h:26
+#: ../data/gnomeradio.schemas.in.h:18
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
@@ -133,186 +103,168 @@ msgstr ""
 "Předvolba, která byla zvolena při posledním ukončení programu Gnomeradio. "
 "Rozsah je od 0 ... (počet předvoleb - 1). Žádná znamená -1"
 
-#: ../gnomeradio.schemas.in.h:27
-msgid "The stored value of the volume (0-100)"
-msgstr "Uložená hodnota hlasitosti (0-100)"
-
-#: ../gnomeradio.schemas.in.h:28
-msgid "Volume"
-msgstr "Hlasitost"
-
-#: ../gnomeradio.schemas.in.h:29 ../src/record.c:357 ../src/record.c:358
-msgid "Whether the output should be a mp3- or a wave-file"
-msgstr "Jestli má být výstup ve formě souboru MP3 nebo WAV"
-
-#: ../gnomeradio.schemas.in.h:30 ../src/record.c:359 ../src/record.c:360
-msgid "Whether the output should be in stereo or mono"
-msgstr "Jestli má být výstup v režimu stereo nebo mono"
-
-#: ../gnomeradio.desktop.in.h:1
+#: ../data/gnomeradio.desktop.in.h:1
 msgid "FM-Radio Tuner"
 msgstr "Tuner rádia FM"
 
-#: ../gnomeradio.desktop.in.h:2
+#: ../data/gnomeradio.desktop.in.h:2
 msgid "Listen to FM-radio"
 msgstr "Poslouchat rádio FM"
 
-#: ../src/prefs.c:248 ../src/prefs.c:676
-msgid "Wave file"
-msgstr "Soubor wave"
-
 # FIXME: s/unamed/unnamed/
-#: ../src/prefs.c:268
-msgid "unamed"
+#: ../src/prefs.c:168 ../src/prefs.c:299 ../src/gui.c:184
+msgid "unnamed"
 msgstr "nepojmenovaný"
 
-#: ../src/prefs.c:333
+#: ../src/prefs.c:378
 msgid "Choose a destination folder"
-msgstr "Zvolte cílový adresář"
+msgstr "Vyberte cílový adresář"
 
-#: ../src/prefs.c:472
+#: ../src/prefs.c:530
 msgid "Gnomeradio Settings"
 msgstr "Nastavení programu Gnomeradio"
 
-#: ../src/prefs.c:488
+#: ../src/prefs.c:546
 msgid "General Settings"
 msgstr "Obecná nastavení"
 
-#: ../src/prefs.c:498
+#: ../src/prefs.c:556
 msgid "Presets"
 msgstr "Předvolby"
 
-#: ../src/prefs.c:508
+#: ../src/prefs.c:566
 msgid "Record Settings"
 msgstr "Nastavení nahrávání"
 
-#: ../src/prefs.c:526
+#: ../src/prefs.c:584
 msgid "Radio Device:"
 msgstr "Zařízení rádia:"
 
-#: ../src/prefs.c:533
+#: ../src/prefs.c:591
 msgid "Mixer Source:"
 msgstr "Zdroj mixéru:"
 
-#: ../src/prefs.c:550
+#: ../src/prefs.c:608
 msgid "Mute on exit?"
 msgstr "Ztišit při ukončení?"
 
-#: ../src/prefs.c:632
+#: ../src/prefs.c:689
 msgid "Add a new preset"
 msgstr "Přidat novou předvolbu"
 
-#: ../src/prefs.c:633
+#: ../src/prefs.c:690
 msgid "Remove preset from List"
 msgstr "Odstranit předvolbu ze seznamu"
 
-#: ../src/prefs.c:661 ../src/record.c:275
-msgid "Encoder:"
-msgstr "Kodér:"
-
-#: ../src/prefs.c:662 ../src/record.c:276
-msgid "Bitrate:"
-msgstr "Přenosová rychlost:"
-
-#: ../src/prefs.c:663
+#: ../src/prefs.c:703
 msgid "Destination directory:"
 msgstr "Cílový adresář:"
 
-#: ../src/prefs.c:692
+#: ../src/prefs.c:721
+msgid "Choose the Media Profile that should be used to record."
+msgstr "Vyberte profil média, které by mělo být použito pro nahrávání."
+
+#: ../src/gui.c:104
 #, c-format
-msgid "%s kb/s"
-msgstr "%s kb/s"
+msgid "%d stations found"
+msgstr "Nalezeny %d stanice"
 
-#: ../src/prefs.c:714
-msgid ""
-"Choose the mp3-/ogg-encoder that should be used, or to record as a "
-"uncompressed wave file"
-msgstr "Vyberte kodér mp3/ogg, který se má používat, nebo nahrávání jako nekomprimovaný soubor wave"
+#: ../src/gui.c:131
+msgid "Scanning"
+msgstr "Hledání"
 
-#: ../src/prefs.c:715
-msgid "Choose the bitrate in which the mp3/ogg will be encoded"
-msgstr "Vyberte rychlost přenosu, ve které budou mp3/ogg kódovány"
+#: ../src/gui.c:136
+msgid "Scanning for available stations:"
+msgstr "Hledám dostupné stanice:"
 
-#: ../src/gui.c:68
+#: ../src/gui.c:146
+msgid "No stations found"
+msgstr "Nenalezeny žádné stanice"
+
+#: ../src/gui.c:171
 #, c-format
 msgid ""
-"Could not open device \"%s\" !\n"
-"\n"
-"Check your Settings and make sure that no other\n"
-"program is using %s.\n"
-"Make also sure that you have read-access to it."
+"%d stations found. \n"
+"Do you want to add them as presets?\n"
 msgstr ""
-"Nelze otevřít zařízení \"%s\"!\n"
-"\n"
-"Zkontrolujte své nastavení a ujistěte se, že žádný\n"
-"jiný program nepoužívá %s.\n"
-"Ujistěte se rovněž, že máto k zařízení právo ke čtení."
+"Nalezeny %d stanice. \n"
+"Chcete je přidat do předvoleb?\n"
 
-#: ../src/gui.c:90
+#: ../src/gui.c:240
+#, c-format
+msgid "Could not open device \"%s\"!"
+msgstr "Nelze otevřít zařízení \"%s\"!"
+
+#: ../src/gui.c:241
+#, c-format
+msgid ""
+"Check your settings and make sure that no other\n"
+"program is using %s.\n"
+"Also make sure that you have read-access to it."
+msgstr ""
+"Zkontrolujte svá nastavení a ujistěte se, že žádný\n"
+"jiný program nepoužívá %s.\n"
+"Ujistěte se rovněž, že máte k zařízení právo ke čtení."
+
+#: ../src/gui.c:265
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr "Zdroj mixéru \"%s\" není platný zdroj!"
 
-#: ../src/gui.c:92
+#: ../src/gui.c:267
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr "Nelze otevřít \"%s\"!"
 
-#: ../src/gui.c:247 ../src/gui.c:255 ../src/gui.c:732
+#: ../src/gui.c:410
+#, c-format
+msgid "Gnomeradio - %s"
+msgstr "Gnomeradio - %s"
+
+#: ../src/gui.c:412 ../src/trayicon.c:164
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:251 ../src/gui.c:918
+#: ../src/gui.c:417 ../src/gui.c:995
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Frekvence: %.2f MHz"
 
-#: ../src/gui.c:275 ../src/gui.c:921
+#. You can translate the filename for a recording:
+#. * args for this format are: path, station title, time
+#.
+#: ../src/gui.c:654
 #, c-format
-msgid "Volume: %d%%"
-msgstr "Hlasitost: %d%%"
-
-#: ../src/gui.c:556
-msgid ""
-"Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr ""
-"Nemohu detekovat sox. Přesvědčte se prosím, že je nainstalován ve vaší PATH."
+msgid "%s/%s_%s"
+msgstr "%s/%s_%s"
 
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:570
+#: ../src/gui.c:682
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%d.%B-%Y_%H-%M-%S"
 
-#. Only change the "MHz" part here (if applicable)
-#: ../src/gui.c:573
+#: ../src/gui.c:685
 #, c-format
-msgid "%s/%.2fMHz_%s%s"
-msgstr "%s/%.2fMHz_%s%s"
+msgid "%.2f MHz"
+msgstr "%.2f MHz"
 
-#: ../src/gui.c:582
-#, c-format
-msgid ""
-"Error opening file '%s':\n"
-"%s"
-msgstr ""
-"Chyba při otevírání souboru '%s':\n"
-"%s"
+#: ../src/gui.c:725
+msgid "Unmute"
+msgstr "Zrušit ztišení"
 
-#: ../src/gui.c:597 ../src/gui.c:916
+#: ../src/gui.c:729
 msgid "Mute"
 msgstr "Ztišit"
 
-#: ../src/gui.c:603
-msgid "Unmute"
-msgstr "Pustit"
-
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:615
+#: ../src/gui.c:743
 msgid "TRANSLATORS"
-msgstr "Michal Bukovjan <bukm@centrum.cz>"
+msgstr ""
+"Michal Bukovjan <bukm@centrum.cz>\n"
+"Adrian Guniš <andygun@seznam.cz>"
 
-#: ../src/gui.c:626
+#: ../src/gui.c:754
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -324,7 +276,7 @@ msgstr ""
 "\n"
 "Tato verze byla přeložena s podporou LIRC."
 
-#: ../src/gui.c:630
+#: ../src/gui.c:758
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -336,56 +288,74 @@ msgstr ""
 "\n"
 "Tato verze byla přeložena bez podpory LIRC."
 
-#: ../src/gui.c:752
+#: ../src/gui.c:827 ../src/gui.c:1095
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
-#: ../src/gui.c:806
+#: ../src/gui.c:883
 msgid "Presets:"
 msgstr "Předvolby:"
 
-#: ../src/gui.c:909
+#: ../src/gui.c:986
 msgid "Scan Backwards"
 msgstr "Hledat dozadu"
 
-#: ../src/gui.c:910
+#: ../src/gui.c:987
 msgid "Scan Forwards"
 msgstr "Hledat dopředu"
 
-#: ../src/gui.c:911
+#: ../src/gui.c:988
 msgid "0.05 MHz Backwards"
 msgstr "Dozadu o 0,05 MHz "
 
-#: ../src/gui.c:912
+#: ../src/gui.c:989
 msgid "0.05 MHz Forwards"
 msgstr "Dopředu o 0,05 MHz "
 
-#: ../src/gui.c:913
+#: ../src/gui.c:990
 msgid "About Gnomeradio"
 msgstr "O programu Gnomeradio"
 
-#: ../src/gui.c:914
+#: ../src/gui.c:991
 msgid "Record radio as Wave, OGG or MP3"
-msgstr "Nahrát rádio jako wave, OGG nebo MP3"
+msgstr "Nahrát rádio jako Wave, OGG nebo MP3"
 
-#: ../src/gui.c:915
+#: ../src/gui.c:992
 msgid "Edit your Preferences"
 msgstr "Úprava vašeho nastavení"
 
-#: ../src/gui.c:917
+#: ../src/gui.c:993
+msgid "Adjust the Volume"
+msgstr "Nastavit hlasitost"
+
+#: ../src/gui.c:994
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../src/gui.c:1036
+#: ../src/gui.c:1087
+msgid "Scan for stations"
+msgstr "Hledat stanice"
+
+#: ../src/gui.c:1122
 #, c-format
 msgid ""
-"Failed to init GConf: %s\n"
-"Changes to the settings won't be saved\n"
+"%s\n"
+"\n"
+"Changes to the settings won't be saved."
 msgstr ""
-"Selhala inicializace programu GConf: %s\n"
-"Změny v nastavení nebudou uloženy\n"
+"%s\n"
+"\n"
+"Změny v nastavení nebudou uloženy."
 
-#: ../src/gui.c:1050
+#: ../src/gui.c:1123
+msgid "Failed to init GConf!"
+msgstr "Selhalo zavádění GConf!"
+
+#: ../src/gui.c:1138
+msgid "Could not scan. Radio is not initialized."
+msgstr "Nelze hledat. Rádio není spuštěno."
+
+#: ../src/gui.c:1146
 msgid "manual"
 msgstr "ručně"
 
@@ -395,160 +365,101 @@ msgstr "ručně"
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1073
-msgid "Could not start lirc!\n"
-msgstr "Nemohu spustit lirc!\n"
+#: ../src/gui.c:1170
+msgid "Could not start lirc!"
+msgstr "Nelze spustit lirc!"
 
-#: ../src/record.c:154
-msgid "Start"
-msgstr "Začít"
+#: ../src/trayicon.c:84
+msgid "Muted"
+msgstr "Ztišeno "
 
-#: ../src/record.c:162
-msgid "Gnomeradio Record"
-msgstr "Nahrávání programu Gnomeradio"
+#: ../src/trayicon.c:98
+msgid "Show Window"
+msgstr "Zobrazit okno"
 
-#: ../src/record.c:170
-msgid "General"
-msgstr "Obecné"
-
-#: ../src/record.c:171
-msgid "Wave Settings"
-msgstr "Nastavení WAV"
-
-#: ../src/record.c:172
-msgid "Mp3/Ogg Settings"
-msgstr "Nastavení Mp3/Ogg"
-
-#: ../src/record.c:184
-msgid "Audio device:"
-msgstr "Zvukové zařízení:"
-
-#: ../src/record.c:187
-msgid "Filename:"
-msgstr "Název souboru:"
-
-#. path_entry = gtk_entry_new();
-#: ../src/record.c:189
-msgid "Choose a filename"
-msgstr "Vyberte název souboru"
-
-#. choose_button = gtk_button_new_with_label(_("Choose..."));
-#: ../src/record.c:195
-msgid "Record as:"
-msgstr "Nahrát jako:"
-
-#: ../src/record.c:196
-msgid "Wave (.wav)"
-msgstr "Zvuk (.wav)"
-
-#: ../src/record.c:197
-msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3/Ogg (.mp3/.ogg)"
-
-#: ../src/record.c:221
-msgid "Sample rate:"
-msgstr "Vzorkovací frekvence:"
-
-#: ../src/record.c:222
-msgid "Sample format:"
-msgstr "Formát vzorku:"
-
-#: ../src/record.c:223
-msgid "Record in:"
-msgstr "Nahrát v:"
-
-#: ../src/record.c:256
-msgid "Mono"
-msgstr "Mono"
-
-#: ../src/record.c:257
-msgid "Stereo"
-msgstr "Stereo"
-
-#: ../src/record.c:303 ../src/record.c:310
-msgid "no supported encoder installed"
-msgstr "nenainstalován podporovaný kodér"
-
-#: ../src/record.c:431
-#, c-format
-msgid ""
-"%s has stopped:\n"
-"%s\n"
-msgstr ""
-"%s se zastavil:\n"
-"%s\n"
-
-#: ../src/record.c:432
-msgid "MP3/Ogg encoder"
-msgstr "Kodér MP3/Ogg"
-
-#: ../src/record.c:433
-msgid "unknown reason"
-msgstr "neznámý důvod"
-
-#: ../src/record.c:482
+#: ../src/record.c:65
 #, c-format
 msgid "%i byte"
 msgstr "%i bajtů"
 
-#: ../src/record.c:484
+#: ../src/record.c:67
 #, c-format
 msgid "%i kB"
 msgstr "%i kB"
 
-#: ../src/record.c:485
+#: ../src/record.c:68
 #, c-format
 msgid "%.2f MB"
 msgstr "%.2f MB"
 
-#: ../src/record.c:487
+#: ../src/record.c:70
 msgid "Error"
 msgstr "Chyba"
 
-#: ../src/record.c:488
+#: ../src/record.c:71
 msgid "0 byte"
 msgstr "0 bajtů"
 
-#: ../src/record.c:528
+#: ../src/record.c:108
 msgid "Gnomeradio recording status"
 msgstr "Stav nahrávání programu Gnomeradio"
 
-#: ../src/record.c:541
-msgid "Recording:"
-msgstr "Nahrávání:"
+#: ../src/record.c:120
+#, c-format
+msgid "Recording from station %s"
+msgstr "Nahrávání ze stanice %s"
 
-#: ../src/record.c:542
+#: ../src/record.c:127
+msgid "Destination:"
+msgstr "Cílový adresář:"
+
+#: ../src/record.c:132
 msgid "Filesize:"
-msgstr "Velikost:"
+msgstr "Velikost souboru:"
 
-#: ../src/record.c:559
+#: ../src/record.c:156
 msgid "Stop Recording"
 msgstr "Zastavit nahrávání"
 
-#~ msgid "A Gnome FM-Tuner"
-#~ msgstr "Rádio pro GNOME"
+#: ../src/rec_tech.c:42
+msgid "GStreamer runtime error."
+msgstr "Chyba při běhu GStreamer."
 
-#~ msgid ""
-#~ "File '%s' exists.\n"
-#~ "Overwrite it?"
-#~ msgstr ""
-#~ "Soubor '%s' existuje.\n"
-#~ "Přepsat jej?"
+#: ../src/rec_tech.c:58
+msgid "Could not create GStreamer pipeline."
+msgstr "Nelze vytvořit kanál GStreamer."
 
-#~ msgid "Misc Settings"
-#~ msgstr "Ostatní nastavení"
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
+msgid "Check your Gstreamer installation!"
+msgstr "Zkontrolujte instalaci GStreamer!"
 
-#~ msgid "Name:"
-#~ msgstr "Název:"
+#: ../src/rec_tech.c:65
+msgid "Could not open Gstreamer OSS Source."
+msgstr "Nelze otevřít GStreamer OSS zdroj."
 
-#~ msgid "Frequency:"
-#~ msgstr "Frekvence:"
+#: ../src/rec_tech.c:66
+msgid "Verify your Gstreamer OSS subsystem installation!"
+msgstr "Ověřte instalaci GStreamer OSS podsystému!"
 
-#~ msgid "Update the preset in the List"
-#~ msgstr "Aktualizovat předvolbu v seznamu"
+#: ../src/rec_tech.c:78
+#, c-format
+msgid "Could not create encoder \"%s\"."
+msgstr "Nelze vytvořit kodér \"%s\"."
 
-#~ msgid "Start Recording"
-#~ msgstr "Začít nahrávat"
+#: ../src/rec_tech.c:80
+msgid "Verify your Gstreamer plugins installation!"
+msgstr "Ověřte instalaci zásuvných modulů GStreamer!"
 
-#~ msgid "Choose..."
-#~ msgstr "Vyberte..."
+#: ../src/rec_tech.c:88
+msgid "Could not create Gstreamer filesink."
+msgstr "Nelze vytvořit GStreamer filesink."
+
+#. +
+#: ../src/bacon-volume.c:187
+msgid "+"
+msgstr "+"
+
+#. -
+#: ../src/bacon-volume.c:203
+msgid "-"
+msgstr "-"
