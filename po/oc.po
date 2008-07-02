@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-07 10:21+0100\n"
+"POT-Creation-Date: 2008-07-02 08:58+0200\n"
 "PO-Revision-Date: 2008-02-26 23:05+0100\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan <ubuntu-l10n-oci@lists.ubuntu.com>\n"
@@ -20,67 +20,75 @@ msgstr ""
 msgid "Choose the GnomeMedia Profile that should be used for recording"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:615
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:620
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
 
 #: ../data/gnomeradio.schemas.in.h:3
+msgid "Device driver"
+msgstr ""
+
+#: ../data/gnomeradio.schemas.in.h:4
 msgid "GnomeMedia Profile"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:4 ../src/prefs.c:616
+#: ../data/gnomeradio.schemas.in.h:5 ../src/prefs.c:621
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:5
+#: ../data/gnomeradio.schemas.in.h:6
 msgid "Last frequency"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:6
+#: ../data/gnomeradio.schemas.in.h:7
 msgid "Last presets"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:7
+#: ../data/gnomeradio.schemas.in.h:8
 msgid "Mixer Device"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:8
+#: ../data/gnomeradio.schemas.in.h:9
 msgid "Mixer source"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:9
+#: ../data/gnomeradio.schemas.in.h:10
 msgid "Mute on exit"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:10
+#: ../data/gnomeradio.schemas.in.h:11
 msgid "Number of presets"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:11
+#: ../data/gnomeradio.schemas.in.h:12
 msgid "Radio device"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:12 ../src/prefs.c:613
+#: ../data/gnomeradio.schemas.in.h:13
+msgid "Specify the device driver to use (any, v4l1 or v4l2)"
+msgstr ""
+
+#: ../data/gnomeradio.schemas.in.h:14 ../src/prefs.c:618
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:13
+#: ../data/gnomeradio.schemas.in.h:15
 msgid "The last frequency (in MHz) in use"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:14
+#: ../data/gnomeradio.schemas.in.h:16
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:15
+#: ../data/gnomeradio.schemas.in.h:17
 msgid "The number of presets"
 msgstr ""
 
-#: ../data/gnomeradio.schemas.in.h:16
+#: ../data/gnomeradio.schemas.in.h:18
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
@@ -94,88 +102,88 @@ msgstr ""
 msgid "Listen to FM-radio"
 msgstr ""
 
-#: ../src/prefs.c:164 ../src/prefs.c:295 ../src/gui.c:183
+#: ../src/prefs.c:168 ../src/prefs.c:299 ../src/gui.c:184
 msgid "unnamed"
 msgstr "sens nom"
 
-#: ../src/prefs.c:374
+#: ../src/prefs.c:378
 msgid "Choose a destination folder"
 msgstr ""
 
-#: ../src/prefs.c:525
+#: ../src/prefs.c:530
 msgid "Gnomeradio Settings"
 msgstr "Paramètres de Gnomeradio"
 
-#: ../src/prefs.c:541
+#: ../src/prefs.c:546
 msgid "General Settings"
 msgstr "Paramètres generals"
 
-#: ../src/prefs.c:551
+#: ../src/prefs.c:556
 msgid "Presets"
 msgstr ""
 
-#: ../src/prefs.c:561
+#: ../src/prefs.c:566
 msgid "Record Settings"
 msgstr ""
 
-#: ../src/prefs.c:579
+#: ../src/prefs.c:584
 msgid "Radio Device:"
 msgstr ""
 
-#: ../src/prefs.c:586
+#: ../src/prefs.c:591
 msgid "Mixer Source:"
 msgstr ""
 
-#: ../src/prefs.c:603
+#: ../src/prefs.c:608
 msgid "Mute on exit?"
 msgstr ""
 
-#: ../src/prefs.c:684
+#: ../src/prefs.c:689
 msgid "Add a new preset"
 msgstr ""
 
-#: ../src/prefs.c:685
+#: ../src/prefs.c:690
 msgid "Remove preset from List"
 msgstr ""
 
-#: ../src/prefs.c:698
+#: ../src/prefs.c:703
 msgid "Destination directory:"
 msgstr ""
 
-#: ../src/prefs.c:716
+#: ../src/prefs.c:721
 msgid "Choose the Media Profile that should be used to record."
 msgstr ""
 
-#: ../src/gui.c:103
+#: ../src/gui.c:104
 #, c-format
 msgid "%d stations found"
 msgstr ""
 
-#: ../src/gui.c:130
+#: ../src/gui.c:131
 msgid "Scanning"
 msgstr ""
 
-#: ../src/gui.c:135
+#: ../src/gui.c:136
 msgid "Scanning for available stations:"
 msgstr ""
 
-#: ../src/gui.c:145
+#: ../src/gui.c:146
 msgid "No stations found"
 msgstr ""
 
-#: ../src/gui.c:170
+#: ../src/gui.c:171
 #, c-format
 msgid ""
 "%d stations found. \n"
 "Do you want to add them as presets?\n"
 msgstr ""
 
-#: ../src/gui.c:231
+#: ../src/gui.c:240
 #, c-format
 msgid "Could not open device \"%s\"!"
 msgstr ""
 
-#: ../src/gui.c:232
+#: ../src/gui.c:241
 #, c-format
 msgid ""
 "Check your settings and make sure that no other\n"
@@ -183,27 +191,27 @@ msgid ""
 "Also make sure that you have read-access to it."
 msgstr ""
 
-#: ../src/gui.c:256
+#: ../src/gui.c:265
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr ""
 
-#: ../src/gui.c:258
+#: ../src/gui.c:267
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr ""
 
-#: ../src/gui.c:401
+#: ../src/gui.c:410
 #, c-format
 msgid "Gnomeradio - %s"
 msgstr "Gnomeradio - %s"
 
-#: ../src/gui.c:403 ../src/trayicon.c:164
+#: ../src/gui.c:412 ../src/trayicon.c:164
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:408 ../src/gui.c:986
+#: ../src/gui.c:417 ../src/gui.c:995
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr ""
@@ -211,35 +219,35 @@ msgstr ""
 #. You can translate the filename for a recording:
 #. * args for this format are: path, station title, time
 #.
-#: ../src/gui.c:645
+#: ../src/gui.c:654
 #, c-format
 msgid "%s/%s_%s"
 msgstr "%s/%s_%s"
 
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:673
+#: ../src/gui.c:682
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%B-%d-%Y_%H-%M-%S"
 
-#: ../src/gui.c:676
+#: ../src/gui.c:685
 #, c-format
 msgid "%.2f MHz"
 msgstr "%.2f MHz"
 
-#: ../src/gui.c:716
+#: ../src/gui.c:725
 msgid "Unmute"
 msgstr ""
 
-#: ../src/gui.c:720
+#: ../src/gui.c:729
 msgid "Mute"
 msgstr "Mut"
 
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:734
+#: ../src/gui.c:743
 msgid "TRANSLATORS"
 msgstr "REVIRAIRES"
 
-#: ../src/gui.c:745
+#: ../src/gui.c:754
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -247,7 +255,7 @@ msgid ""
 "This version has been compiled with LIRC support."
 msgstr ""
 
-#: ../src/gui.c:749
+#: ../src/gui.c:758
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -255,55 +263,55 @@ msgid ""
 "This version has been compiled without LIRC support."
 msgstr ""
 
-#: ../src/gui.c:818 ../src/gui.c:1086
+#: ../src/gui.c:827 ../src/gui.c:1095
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
-#: ../src/gui.c:874
+#: ../src/gui.c:883
 msgid "Presets:"
 msgstr ""
 
-#: ../src/gui.c:977
+#: ../src/gui.c:986
 msgid "Scan Backwards"
 msgstr ""
 
-#: ../src/gui.c:978
+#: ../src/gui.c:987
 msgid "Scan Forwards"
 msgstr ""
 
-#: ../src/gui.c:979
+#: ../src/gui.c:988
 msgid "0.05 MHz Backwards"
 msgstr ""
 
-#: ../src/gui.c:980
+#: ../src/gui.c:989
 msgid "0.05 MHz Forwards"
 msgstr ""
 
-#: ../src/gui.c:981
+#: ../src/gui.c:990
 msgid "About Gnomeradio"
 msgstr "A prepaus de Gnomeradio"
 
-#: ../src/gui.c:982
+#: ../src/gui.c:991
 msgid "Record radio as Wave, OGG or MP3"
 msgstr ""
 
-#: ../src/gui.c:983
+#: ../src/gui.c:992
 msgid "Edit your Preferences"
 msgstr "Modificar vòstras preferéncias"
 
-#: ../src/gui.c:984
+#: ../src/gui.c:993
 msgid "Adjust the Volume"
 msgstr ""
 
-#: ../src/gui.c:985
+#: ../src/gui.c:994
 msgid "Quit"
 msgstr "Quitar"
 
-#: ../src/gui.c:1078
+#: ../src/gui.c:1087
 msgid "Scan for stations"
 msgstr ""
 
-#: ../src/gui.c:1113
+#: ../src/gui.c:1122
 #, c-format
 msgid ""
 "%s\n"
@@ -311,15 +319,15 @@ msgid ""
 "Changes to the settings won't be saved."
 msgstr ""
 
-#: ../src/gui.c:1114
+#: ../src/gui.c:1123
 msgid "Failed to init GConf!"
 msgstr ""
 
-#: ../src/gui.c:1129
+#: ../src/gui.c:1138
 msgid "Could not scan. Radio is not initialized."
 msgstr ""
 
-#: ../src/gui.c:1137
+#: ../src/gui.c:1146
 msgid "manual"
 msgstr "manual"
 
@@ -329,7 +337,7 @@ msgstr "manual"
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1161
+#: ../src/gui.c:1170
 msgid "Could not start lirc!"
 msgstr ""
 
