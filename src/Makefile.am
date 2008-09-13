@@ -13,6 +13,7 @@ bin_PROGRAMS = gnomeradio
 gnomeradio_SOURCES = \
             bacon-volume.h \
             gui.h \
+            lirc.h \
             prefs.h \
             radio.h \
             rec_tech.h \

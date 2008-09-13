@@ -1,5 +1,12 @@
 2008-09-13  Jörgen Scheibengruber  <mfcn@gmx.de>
 
+	* configure.in:
+	* src/Makefile.am:
+
+	Version 1.8
+
+2008-09-13  Jörgen Scheibengruber  <mfcn@gmx.de>
+
 	* src/Makefile.am:
 	* src/eggtrayicon.c:
 	* src/eggtrayicon.h:
