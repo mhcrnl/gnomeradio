@@ -18,7 +18,7 @@
 #define _TRAYICON_H
 
 GtkWidget *tray_menu;
-GtkWidget *tray_icon;
+GObject *tray_icon;
 GtkWidget *mute_menuitem;
 
 int mute_menuitem_toggled_cb_id;

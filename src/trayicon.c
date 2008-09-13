@@ -110,58 +110,38 @@ void create_tray_menu(GtkWidget *app) {
 	gtk_widget_show_all(tray_menu);
 }
 
-static gboolean tray_destroyed_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
-{
-	create_tray_icon(GTK_WIDGET(data));
-	return TRUE;
-}
-
-static gboolean tray_clicked_cb(GtkWidget *widget, GdkEventButton *event, gpointer data)
+static void tray_activate_cb(GtkStatusIcon* icon, gpointer data)
 {
 	gboolean active;
-	switch (event->button)
-	{
-		case 1:
-			if (event->type != GDK_BUTTON_PRESS)
-				break;
-			active = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem));
-			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), !active);
-			break;
-		case 3:
-			if (event->type != GDK_BUTTON_PRESS)
-				break;
-			gtk_menu_popup(GTK_MENU(tray_menu), NULL, NULL, NULL, NULL, event->button, event->time);
-			break;
-	}			
-	return FALSE;
+	active = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem));
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(showwindow_menuitem), !active);
+}
+
+static void tray_popup_menu (GtkStatusIcon* icon, guint button, guint32 time, gpointer data)
+{
+	gtk_menu_popup(GTK_MENU(tray_menu), NULL, NULL, NULL, icon, button, time);
 }	
 
 void create_tray_icon(GtkWidget *app)
 {
 	GdkPixbuf *pixbuf;
-	GtkWidget *tray_icon_image;
 	GtkWidget *eventbox;
 	GtkIconTheme *icontheme;
 	char *text;
 	
-	tray_icon = GTK_WIDGET(egg_tray_icon_new (PACKAGE));
 	icontheme = gtk_icon_theme_get_default();
 	pixbuf = gtk_icon_theme_load_icon(icontheme, "gnomeradio", 22, 0, NULL);
 	g_return_if_fail(pixbuf);
-	tray_icon_image = gtk_image_new_from_pixbuf(pixbuf);
+	tray_icon = G_OBJECT(gtk_status_icon_new_from_pixbuf(pixbuf));
 	gdk_pixbuf_unref(pixbuf);
 
-	eventbox = gtk_event_box_new();
-	gtk_container_add(GTK_CONTAINER(eventbox), tray_icon_image);
-	gtk_container_add (GTK_CONTAINER(tray_icon), eventbox);
 
-	g_signal_connect(G_OBJECT(eventbox), "button-press-event", 
-		G_CALLBACK(tray_clicked_cb), (gpointer)app);
-	g_signal_connect(G_OBJECT(tray_icon), "destroy-event",
-		G_CALLBACK(tray_destroyed_cb), (gpointer)app);
-	gtk_widget_show_all(GTK_WIDGET(tray_icon));
+	g_signal_connect(G_OBJECT(tray_icon), "activate", 
+		G_CALLBACK(tray_activate_cb), (gpointer)app);
+	g_signal_connect(G_OBJECT(tray_icon), "popup-menu",
+		G_CALLBACK(tray_popup_menu), (gpointer)app);
 	
 	text = g_strdup_printf(_("Gnomeradio - %.2f MHz"), adj->value/STEPS);
-	gtk_tooltips_set_tip(tooltips, tray_icon, text, NULL);
+        gtk_status_icon_set_tooltip(GTK_STATUS_ICON(tray_icon), text);
 	g_free(text);
 }

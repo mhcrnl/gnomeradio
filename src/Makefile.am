@@ -12,7 +12,6 @@ bin_PROGRAMS = gnomeradio
 
 gnomeradio_SOURCES = \
             bacon-volume.h \
-            eggtrayicon.h \
             gui.h \
             prefs.h \
             radio.h \
@@ -23,7 +22,6 @@ gnomeradio_SOURCES = \
             v4l1.h \
             v4l2.h \
             bacon-volume.c \
-            eggtrayicon.c \
             gui.c \
             lirc.c \
             prefs.c \

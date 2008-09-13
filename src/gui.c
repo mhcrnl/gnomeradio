@@ -24,7 +24,6 @@
 #include <gnome.h>
 #include <gconf/gconf-client.h>
 #include <math.h>
-#include "eggtrayicon.h"
 #include "bacon-volume.h"
 #include "gui.h"
 #include "trayicon.h"
@@ -411,7 +410,7 @@ static void adj_value_changed_cb(GtkAdjustment* data, gpointer window)
 	else
 		buffer = g_strdup_printf(_("Gnomeradio - %.2f MHz"), freq);
 	gtk_window_set_title(GTK_WINDOW(window), buffer);
-	if (tray_icon) gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
+	if (tray_icon) gtk_status_icon_set_tooltip(GTK_STATUS_ICON(tray_icon), buffer); //gtk_tooltips_set_tip(tooltips, tray_icon, buffer, NULL);
 	g_free(buffer);
 	
 	buffer = g_strdup_printf(_("Frequency: %.2f MHz"), freq);

@@ -1,3 +1,14 @@
+2008-09-13  Jörgen Scheibengruber  <mfcn@gmx.de>
+
+	* src/Makefile.am:
+	* src/eggtrayicon.c:
+	* src/eggtrayicon.h:
+	* src/gui.c (adj_value_changed_cb):
+	* src/trayicon.c (tray_activate_cb), (tray_popup_menu),
+	(create_tray_icon):
+	* src/trayicon.h:
+	Apply patch by Daniel Garcia to use GtkStatusIcon instead of egg-tray-icon (#417240)
+
 2008-05-31  Petr Kovar  <pknbe@volny.cz>
 
 	* configure.in: Added mk and ms to ALL_LINGUAS.
