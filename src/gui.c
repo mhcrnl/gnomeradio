@@ -54,6 +54,8 @@ GtkTooltips *tooltips;
 int mom_ps;
 gnomeradio_settings settings;
 
+gboolean main_visible;
+
 static GtkWidget *drawing_area;
 static GdkPixmap *digits, *signal_s, *stereo;
 static GtkWidget *freq_scale;
@@ -1110,6 +1112,7 @@ int main(int argc, char* argv[])
 					NULL);
 	gtk_window_set_default_icon_name("gnomeradio");
 	/* Main app */
+	main_visible = FALSE;
 	app = gnome_radio_gui();
 
 	/* Initizialize GStreamer */
@@ -1150,6 +1153,7 @@ int main(int argc, char* argv[])
 	preset_combo_set_item(mom_ps);
 
 	gtk_widget_show_all(app);
+	main_visible = TRUE;
 
 	/* Create an tray icon */
 	create_tray_icon(app);

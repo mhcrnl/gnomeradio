@@ -30,6 +30,8 @@ extern GtkTooltips *tooltips;
 extern int mom_ps;
 extern gnomeradio_settings settings;
 
+extern gboolean main_visible;
+
 static GtkWidget *device_entry;
 static GtkWidget *mixer_combo;
 static GtkWidget *mute_on_exit_cb;
@@ -310,16 +312,18 @@ static void add_button_clicked_cb(GtkWidget *widget, gpointer data)
 	v_scb = gtk_tree_view_get_vadjustment(GTK_TREE_VIEW(list_view));
 	gtk_adjustment_set_value(v_scb, v_scb->upper);
 	
-	gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
-	mom_ps = g_list_length(settings.presets) - 1;
-	preset_combo_set_item(mom_ps);
+	if (main_visible) {
+		gtk_combo_box_append_text(GTK_COMBO_BOX(preset_combo), ps->title);
+		mom_ps = g_list_length(settings.presets) - 1;
+		preset_combo_set_item(mom_ps);
 
-	menuitems = GTK_MENU_SHELL(tray_menu)->children;
-	menuitem = gtk_menu_item_new_with_label(ps->title); 
-		
-	gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, mom_ps);		
-	g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)mom_ps);
-	gtk_widget_show(menuitem);
+		menuitems = GTK_MENU_SHELL(tray_menu)->children;
+		menuitem = gtk_menu_item_new_with_label(ps->title); 
+			
+		gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, mom_ps);		
+		g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)mom_ps);
+		gtk_widget_show(menuitem);
+	}
 
 	buffer = g_strdup_printf("%d", g_list_length(settings.presets) - 1);
 	path = gtk_tree_path_new_from_string(buffer);
@@ -356,15 +360,17 @@ static void del_button_clicked_cb(GtkWidget *widget, gpointer data)
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_remove(list_store, &iter);
 
-	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
-	if (--mom_ps < 0) mom_ps = 0;
-	if (!g_list_length(settings.presets)) mom_ps = -1;
-	preset_combo_set_item(mom_ps);
+	if (main_visible) {
+		gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
+		if (--mom_ps < 0) mom_ps = 0;
+		if (!g_list_length(settings.presets)) mom_ps = -1;
+		preset_combo_set_item(mom_ps);
 
-	menuitems = GTK_MENU_SHELL(tray_menu)->children;
-	g_assert(*row < g_list_length(menuitems));
-	menuitem = g_list_nth_data(menuitems, *row);
-	gtk_widget_destroy(menuitem);
+		menuitems = GTK_MENU_SHELL(tray_menu)->children;
+		g_assert(*row < g_list_length(menuitems));
+		menuitem = g_list_nth_data(menuitems, *row);
+		gtk_widget_destroy(menuitem);
+	}
 	
 	gtk_tree_path_prev(path);
 	gtk_tree_view_set_cursor(GTK_TREE_VIEW(list_view), path, NULL, FALSE);
@@ -420,20 +426,22 @@ static void name_cell_edited_cb(GtkCellRendererText *cellrenderertext, gchar *pa
 	if (ps->title) g_free(ps->title);
 	ps->title = g_strdup(new_val);
 
-	gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
-	gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row + 1, ps->title);
-	mom_ps = *row;
-	preset_combo_set_item(mom_ps);
-	
-	menuitems = GTK_MENU_SHELL(tray_menu)->children;
-	g_assert(mom_ps < g_list_length(menuitems));
-	menuitem = g_list_nth_data(menuitems, mom_ps);
-	gtk_widget_destroy(menuitem);
-	menuitem = gtk_menu_item_new_with_label(ps->title); 
-		
-	gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, *row);		
-	g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)mom_ps);
-	gtk_widget_show(menuitem);
+	if (main_visible) {
+		gtk_combo_box_remove_text(GTK_COMBO_BOX(preset_combo), *row + 1);
+		gtk_combo_box_insert_text(GTK_COMBO_BOX(preset_combo), *row + 1, ps->title);
+		mom_ps = *row;
+		preset_combo_set_item(mom_ps);
+
+		menuitems = GTK_MENU_SHELL(tray_menu)->children;
+		g_assert(mom_ps < g_list_length(menuitems));
+		menuitem = g_list_nth_data(menuitems, mom_ps);
+		gtk_widget_destroy(menuitem);
+		menuitem = gtk_menu_item_new_with_label(ps->title); 
+			
+		gtk_menu_shell_insert(GTK_MENU_SHELL(tray_menu), menuitem, *row);		
+		g_signal_connect(G_OBJECT(menuitem), "activate", (GCallback)preset_menuitem_activate_cb, (gpointer)mom_ps);
+		gtk_widget_show(menuitem);
+	}
 	
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(list_store), &iter, path);
 	gtk_list_store_set(GTK_LIST_STORE(list_store), &iter, 0, new_val, -1);
