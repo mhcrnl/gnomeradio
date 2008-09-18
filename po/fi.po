@@ -1,16 +1,16 @@
 # Finnish messages for gnomeradio
 # Finnish Gnomeradio translation
-# Copyright (C) 2005 Free Software Foundation, Inc.
+# Copyright (C) 2005-2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnomeradio package.
 # Jouni Rinne <l33tmmx@sci.fi>, 2005.
-# Ilkka Tuohela <hile@iki.fi>, 2005-2006.
+# Ilkka Tuohela <hile@iki.fi>, 2005-2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-07 19:39+0300\n"
-"PO-Revision-Date: 2006-11-28 23:34+0300\n"
+"POT-Creation-Date: 2008-09-18 16:07+0300\n"
+"PO-Revision-Date: 2008-09-18 16:00+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Choose the GnomeMedia Profile that should be used for recording"
 msgstr "Valitse nauhoitukseenkäytettävä GnomeMedian profiili"
 
-#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:608
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:628
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
@@ -32,50 +32,58 @@ msgstr ""
 "äänenvoimakkuutta"
 
 #: ../data/gnomeradio.schemas.in.h:3
+msgid "Device driver"
+msgstr "Laiteajuri"
+
+#: ../data/gnomeradio.schemas.in.h:4
 msgid "GnomeMedia Profile"
 msgstr "GnomeMedian profiili"
 
-#: ../data/gnomeradio.schemas.in.h:4 ../src/prefs.c:609
+#: ../data/gnomeradio.schemas.in.h:5 ../src/prefs.c:629
 msgid "If unchecked, gnomeradio won't mute after exiting"
 msgstr "Jos ei valittu, gnomeradio ei vaimenna ääntä lopetettaessa"
 
-#: ../data/gnomeradio.schemas.in.h:5
+#: ../data/gnomeradio.schemas.in.h:6
 msgid "Last frequency"
 msgstr "Viimeinen taajuus"
 
-#: ../data/gnomeradio.schemas.in.h:6
+#: ../data/gnomeradio.schemas.in.h:7
 msgid "Last presets"
 msgstr "Viimeiset esivalinnat"
 
-#: ../data/gnomeradio.schemas.in.h:7
+#: ../data/gnomeradio.schemas.in.h:8
 msgid "Mixer Device"
 msgstr "Mikserilaite"
 
-#: ../data/gnomeradio.schemas.in.h:8
+#: ../data/gnomeradio.schemas.in.h:9
 msgid "Mixer source"
 msgstr "Mikserilähde"
 
-#: ../data/gnomeradio.schemas.in.h:9
+#: ../data/gnomeradio.schemas.in.h:10
 msgid "Mute on exit"
 msgstr "Vaimenna lopetettaessa"
 
-#: ../data/gnomeradio.schemas.in.h:10
+#: ../data/gnomeradio.schemas.in.h:11
 msgid "Number of presets"
 msgstr "Esivalintojen määrä"
 
-#: ../data/gnomeradio.schemas.in.h:11
+#: ../data/gnomeradio.schemas.in.h:12
 msgid "Radio device"
 msgstr "Radiolaite"
 
-#: ../data/gnomeradio.schemas.in.h:12 ../src/prefs.c:606
+#: ../data/gnomeradio.schemas.in.h:13
+msgid "Specify the device driver to use (any, v4l1 or v4l2)"
+msgstr "Anna käytettävä laiteajuri (any, v4l1 tai v4l2)"
+
+#: ../data/gnomeradio.schemas.in.h:14 ../src/prefs.c:626
 msgid "Specify the radio-device (in most cases /dev/radio)"
 msgstr "Määrittele radiolaite (useimmiten /dev/radio)"
 
-#: ../data/gnomeradio.schemas.in.h:13
+#: ../data/gnomeradio.schemas.in.h:15
 msgid "The last frequency (in MHz) in use"
 msgstr "Viimeinen käytetty.taajuus (MHz)"
 
-#: ../data/gnomeradio.schemas.in.h:14
+#: ../data/gnomeradio.schemas.in.h:16
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
@@ -83,11 +91,11 @@ msgstr ""
 "Mikserilaite jota gnomeradion pitäisi käyttää. Vaihdettavissa vain tämän "
 "avaimen kautta (ei GUI vaihtoehtoa)"
 
-#: ../data/gnomeradio.schemas.in.h:15
+#: ../data/gnomeradio.schemas.in.h:17
 msgid "The number of presets"
 msgstr "Esivalintojen määrä"
 
-#: ../data/gnomeradio.schemas.in.h:16
+#: ../data/gnomeradio.schemas.in.h:18
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
@@ -103,76 +111,76 @@ msgstr "FM-viritin"
 msgid "Listen to FM-radio"
 msgstr "Kuuntele FM-radiota"
 
-#: ../src/prefs.c:157 ../src/prefs.c:288 ../src/gui.c:176
+#: ../src/prefs.c:170 ../src/prefs.c:301 ../src/gui.c:185
 msgid "unnamed"
 msgstr "nimetön"
 
-#: ../src/prefs.c:367
+#: ../src/prefs.c:384
 msgid "Choose a destination folder"
 msgstr "Valitse kohdekansio"
 
-#: ../src/prefs.c:518
+#: ../src/prefs.c:538
 msgid "Gnomeradio Settings"
 msgstr "Gnomeradion asetukset"
 
-#: ../src/prefs.c:534
+#: ../src/prefs.c:554
 msgid "General Settings"
 msgstr "Yleiset asetukset"
 
-#: ../src/prefs.c:544
+#: ../src/prefs.c:564
 msgid "Presets"
 msgstr "Esivalinnat"
 
-#: ../src/prefs.c:554
+#: ../src/prefs.c:574
 msgid "Record Settings"
 msgstr "Nauhoitusasetukset"
 
-#: ../src/prefs.c:572
+#: ../src/prefs.c:592
 msgid "Radio Device:"
 msgstr "Radiolaite:"
 
-#: ../src/prefs.c:579
+#: ../src/prefs.c:599
 msgid "Mixer Source:"
 msgstr "Mikserilähde:"
 
-#: ../src/prefs.c:596
+#: ../src/prefs.c:616
 msgid "Mute on exit?"
 msgstr "Vaimennetaanko lopetettaessa?"
 
-#: ../src/prefs.c:677
+#: ../src/prefs.c:697
 msgid "Add a new preset"
 msgstr "Lisää uusi esivalinta"
 
-#: ../src/prefs.c:678
+#: ../src/prefs.c:698
 msgid "Remove preset from List"
 msgstr "Poista esivalinta listalta"
 
-#: ../src/prefs.c:691
+#: ../src/prefs.c:711
 msgid "Destination directory:"
 msgstr "Kohdekansio:"
 
-#: ../src/prefs.c:709
+#: ../src/prefs.c:729
 msgid "Choose the Media Profile that should be used to record."
 msgstr "Valitse nauhoitukseen käytettävä mediaprofiili."
 
-#: ../src/gui.c:96
+#: ../src/gui.c:105
 #, c-format
 msgid "%d stations found"
 msgstr "löytyi %d asemaa"
 
-#: ../src/gui.c:123
+#: ../src/gui.c:132
 msgid "Scanning"
 msgstr "Etsitään"
 
-#: ../src/gui.c:128
+#: ../src/gui.c:137
 msgid "Scanning for available stations:"
 msgstr "Etsitään saatavilla olevia asemia:"
 
-#: ../src/gui.c:138
+#: ../src/gui.c:147
 msgid "No stations found"
 msgstr "Asemia ei löytynyt"
 
-#: ../src/gui.c:163
+#: ../src/gui.c:172
 #, c-format
 msgid ""
 "%d stations found. \n"
@@ -181,12 +189,12 @@ msgstr ""
 "Löytyi %d asemaa.\n"
 "Haluatko lisätä ne esivalinnoiksi?\n"
 
-#: ../src/gui.c:224
+#: ../src/gui.c:241
 #, c-format
 msgid "Could not open device \"%s\"!"
 msgstr "Laitetta \"%s\" ei voi avata!"
 
-#: ../src/gui.c:225
+#: ../src/gui.c:242
 #, c-format
 msgid ""
 "Check your settings and make sure that no other\n"
@@ -197,27 +205,27 @@ msgstr ""
 "ohjelma käytä laitetta %s.\n"
 "Varmista myös että sinulla on lukuoikeus laitteeseen."
 
-#: ../src/gui.c:249
+#: ../src/gui.c:266
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
 msgstr "Mikserilähde \"%s\" ei ole kelvollinen lähde!"
 
-#: ../src/gui.c:251
+#: ../src/gui.c:268
 #, c-format
 msgid "Could not open \"%s\"!"
 msgstr "Laitetta \"%s\" ei voi avata!"
 
-#: ../src/gui.c:394
+#: ../src/gui.c:411
 #, c-format
 msgid "Gnomeradio - %s"
 msgstr "Gnomeradio - %s"
 
-#: ../src/gui.c:396 ../src/trayicon.c:158
+#: ../src/gui.c:413 ../src/trayicon.c:144
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: ../src/gui.c:401 ../src/gui.c:978
+#: ../src/gui.c:418 ../src/gui.c:996
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Taajuus: %.2f MHz"
@@ -225,31 +233,31 @@ msgstr "Taajuus: %.2f MHz"
 #. You can translate the filename for a recording:
 #. * args for this format are: path, station title, time
 #.
-#: ../src/gui.c:637
+#: ../src/gui.c:655
 #, c-format
 msgid "%s/%s_%s"
 msgstr "%s/%s_%s"
 
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
-#: ../src/gui.c:665
+#: ../src/gui.c:683
 msgid "%B-%d-%Y_%H-%M-%S"
 msgstr "%d.%m.%Y-%H:%M:%S"
 
-#: ../src/gui.c:668
+#: ../src/gui.c:686
 #, c-format
 msgid "%.2f MHz"
 msgstr "%.2f MHz"
 
-#: ../src/gui.c:708
+#: ../src/gui.c:726
 msgid "Unmute"
 msgstr "Ääni takaisin"
 
-#: ../src/gui.c:712
+#: ../src/gui.c:730
 msgid "Mute"
 msgstr "Vaimenna"
 
 #. Feel free to put your names here translators :-)
-#: ../src/gui.c:726
+#: ../src/gui.c:744
 msgid "TRANSLATORS"
 msgstr ""
 "Ilkka Tuohela, 2005-2007\n"
@@ -257,7 +265,7 @@ msgstr ""
 "\n"
 "http://www.gnome.fi/"
 
-#: ../src/gui.c:737
+#: ../src/gui.c:755
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -269,7 +277,7 @@ msgstr ""
 "\n"
 "Tämä versio on käännetty LIRC-tuella."
 
-#: ../src/gui.c:741
+#: ../src/gui.c:759
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
@@ -281,55 +289,55 @@ msgstr ""
 "\n"
 "Tämä versio on käännetty ilman LIRC-tukea."
 
-#: ../src/gui.c:810 ../src/gui.c:1078
+#: ../src/gui.c:828 ../src/gui.c:1096
 msgid "Gnomeradio"
 msgstr "Gnomeradio"
 
-#: ../src/gui.c:866
+#: ../src/gui.c:884
 msgid "Presets:"
 msgstr "Esivalinnat:"
 
-#: ../src/gui.c:969
+#: ../src/gui.c:987
 msgid "Scan Backwards"
 msgstr "Etsi taaksepäin"
 
-#: ../src/gui.c:970
+#: ../src/gui.c:988
 msgid "Scan Forwards"
 msgstr "Etsi eteenpäin"
 
-#: ../src/gui.c:971
+#: ../src/gui.c:989
 msgid "0.05 MHz Backwards"
 msgstr "0.05 MHz taaksepäin"
 
-#: ../src/gui.c:972
+#: ../src/gui.c:990
 msgid "0.05 MHz Forwards"
 msgstr "0.05 MHz eteenpäin"
 
-#: ../src/gui.c:973
+#: ../src/gui.c:991
 msgid "About Gnomeradio"
 msgstr "Tietoja Gnomeradiosta"
 
-#: ../src/gui.c:974
+#: ../src/gui.c:992
 msgid "Record radio as Wave, OGG or MP3"
 msgstr "Nauhoita radiosta wave-, ogg- tai mp3-tiedostoksi"
 
-#: ../src/gui.c:975
+#: ../src/gui.c:993
 msgid "Edit your Preferences"
 msgstr "Muokkaa asetuksia"
 
-#: ../src/gui.c:976
+#: ../src/gui.c:994
 msgid "Adjust the Volume"
 msgstr "Säädä äänenvoimakkuutta"
 
-#: ../src/gui.c:977
+#: ../src/gui.c:995
 msgid "Quit"
 msgstr "Lopeta"
 
-#: ../src/gui.c:1070
+#: ../src/gui.c:1088
 msgid "Scan for stations"
 msgstr "Etsi asemia"
 
-#: ../src/gui.c:1104
+#: ../src/gui.c:1124
 #, c-format
 msgid ""
 "%s\n"
@@ -340,15 +348,15 @@ msgstr ""
 "\n"
 "Muutoksia asetuksiin ei tallenneta."
 
-#: ../src/gui.c:1105
+#: ../src/gui.c:1125
 msgid "Failed to init GConf!"
 msgstr "GConfin alustus epäonnistui!"
 
-#: ../src/gui.c:1120
+#: ../src/gui.c:1140
 msgid "Could not scan. Radio is not initialized."
 msgstr "Etsintä ei onnistunut, radiota ei ole alustettu."
 
-#: ../src/gui.c:1128
+#: ../src/gui.c:1148
 msgid "manual"
 msgstr "Käsisäätö"
 
@@ -358,15 +366,15 @@ msgstr "Käsisäätö"
 #. gtk_dialog_run (GTK_DIALOG (dialog));
 #. gtk_widget_destroy (dialog);
 #.
-#: ../src/gui.c:1152
+#: ../src/gui.c:1173
 msgid "Could not start lirc!"
 msgstr "Lirciä ei voi käynnistää!"
 
-#: ../src/trayicon.c:78
+#: ../src/trayicon.c:84
 msgid "Muted"
 msgstr "Vaimennettu"
 
-#: ../src/trayicon.c:92
+#: ../src/trayicon.c:98
 msgid "Show Window"
 msgstr "Näytä ikkuna"
 
@@ -456,4 +464,3 @@ msgstr "+"
 #: ../src/bacon-volume.c:203
 msgid "-"
 msgstr "-"
- 
