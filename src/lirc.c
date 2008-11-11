@@ -35,6 +35,7 @@
 extern GtkWidget* mute_button, *preset_combo;
 extern GtkAdjustment *adj;
 extern GtkTooltips *tooltips;
+extern GtkWidget *app;
 
 extern int mom_ps;
 extern gnomeradio_settings settings;
@@ -85,6 +86,10 @@ static void execute_lirc_command (char *cmd)
 	else if (strcasecmp (cmd, "preset down") == 0)
 	{
 		change_preset(FALSE);
+	}
+	else if (strcasecmp (cmd, "toggle visible") == 0)
+	{
+		toggle_mainwindow_visibility(app);
 	}
 	else if (strncasecmp (cmd, "preset ", 7) == 0) 
 	{

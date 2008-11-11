@@ -1,3 +1,11 @@
+2008-11-11  Jörgen Scheibengruber  <mfcn@gmx.de>
+
+	* src/gui.c (main):
+	* src/lirc.c (execute_lirc_command):
+
+	Add a lirc command "toggle visible" (patch provided by Grant Petersen);
+	Fixes #558344
+
 2008-10-09  Daniel Nylander <po@danielnylander.se>
 
 	* help/sv/sv.po: Updated Swedish translation.

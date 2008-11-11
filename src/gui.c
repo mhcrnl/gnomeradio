@@ -50,6 +50,8 @@
 GtkWidget* mute_button, *preset_combo;
 GtkAdjustment *adj;
 GtkTooltips *tooltips;
+GtkWidget* app;
+
 
 int mom_ps;
 gnomeradio_settings settings;
@@ -1076,7 +1078,6 @@ key_press_event_cb(GtkWidget *app, GdkEventKey *event, gpointer data)
 
 int main(int argc, char* argv[])
 {
-	GtkWidget* app;
 	GList *ptr;
 	GnomeClient *client;
 	GError *err = NULL;
