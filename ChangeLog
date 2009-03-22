@@ -1,3 +1,7 @@
+2009-03-22  Mișu Moldovan  <dumol@gnome.ro>
+
+	* configure.in: Added 'ro' to ALL_LINGUAS.
+
 2008-12-20  Mario Blättermann <mariobl@svn.gnome.org>
 
 	* help/de/de.po: Updated German translation.

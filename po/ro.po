@@ -1,0 +1,618 @@
+# Romanian translation.
+# Copyright (C) 2004 THE gnomeradio's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnomeradio package.
+# Ciprian Popovici <ciprian@zuavra.net>, 2006.
+# Adi Roiban https://launchpad.net/~adiroiban, 2009
+msgid ""
+msgstr ""
+"Project-Id-Version: gnomeradio\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-22 22:19+0200\n"
+"PO-Revision-Date: 2009-03-20 01:07+0200\n"
+"Last-Translator: Adi Roiban <adi@roiban.ro>\n"
+"Language-Team: Gnome Romanian Team <gnomero-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
+"== 0) && (n != 0))) ? 2: 1));\n"
+
+#: ../data/gnomeradio.schemas.in.h:1
+msgid "Choose the GnomeMedia Profile that should be used for recording"
+msgstr "Alegeți profilul GnomeMedia care va fi folosit pentru înregistrare"
+
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:628
+msgid ""
+"Choose the mixer source (line, line1, etc.) that is able to control the "
+"volume of your radio"
+msgstr ""
+"Alegeți sursa de sunet (line, line1, etc.) care controlează volumul radioului"
+
+#: ../data/gnomeradio.schemas.in.h:3
+msgid "Device driver"
+msgstr "Driver dispozitiv"
+
+#: ../data/gnomeradio.schemas.in.h:4
+msgid "GnomeMedia Profile"
+msgstr "Profil GnomeMedia"
+
+#: ../data/gnomeradio.schemas.in.h:5 ../src/prefs.c:629
+msgid "If unchecked, gnomeradio won't mute after exiting"
+msgstr "Dacă nu e bifată, Gnomeradio nu va opri sunetul la ieșire"
+
+#: ../data/gnomeradio.schemas.in.h:6
+msgid "Last frequency"
+msgstr "Cea mai recentă frecvență"
+
+#: ../data/gnomeradio.schemas.in.h:7
+msgid "Last presets"
+msgstr "Cele mai recente posturi"
+
+#: ../data/gnomeradio.schemas.in.h:8
+msgid "Mixer Device"
+msgstr "Dispozitiv mixer"
+
+#: ../data/gnomeradio.schemas.in.h:9
+msgid "Mixer source"
+msgstr "Sursă mixer"
+
+#: ../data/gnomeradio.schemas.in.h:10
+msgid "Mute on exit"
+msgstr "Opriți sunetul la ieșire"
+
+#: ../data/gnomeradio.schemas.in.h:11
+msgid "Number of presets"
+msgstr "Număr total de posturi predefinite"
+
+#: ../data/gnomeradio.schemas.in.h:12
+msgid "Radio device"
+msgstr "Dispozitiv radio"
+
+#: ../data/gnomeradio.schemas.in.h:13
+msgid "Specify the device driver to use (any, v4l1 or v4l2)"
+msgstr "Specifică driverul dispozitivului folosit („any”, „v4l1” sau „v4l2”)"
+
+#: ../data/gnomeradio.schemas.in.h:14 ../src/prefs.c:626
+msgid "Specify the radio-device (in most cases /dev/radio)"
+msgstr "Dispozitivul radio folosit (de obicei /dev/radio)"
+
+#: ../data/gnomeradio.schemas.in.h:15
+msgid "The last frequency (in MHz) in use"
+msgstr "Cea mai recentă frecvență folosită (în MHz)"
+
+#: ../data/gnomeradio.schemas.in.h:16
+msgid ""
+"The mixer device that gnomeradio should use. Only changeable via this key "
+"(no GUI option)"
+msgstr ""
+"Dispozitivul mixer folosit de Gnomeradio. Nu se poate schimba decît prin "
+"această cheie (nu există opțiune în interfață)"
+
+#: ../data/gnomeradio.schemas.in.h:17
+msgid "The number of presets"
+msgstr "Numărul posturilor"
+
+#: ../data/gnomeradio.schemas.in.h:18
+msgid ""
+"The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
+"(# presets - 1). None is -1"
+msgstr ""
+"Postul ascultat cînd Gnomeradio a fost închis. Intervalul e cuprins între 0 "
+"și numărul total de posturi minus 1. Folosiți -1 pentru a nu selecta nici un "
+"post"
+
+#: ../data/gnomeradio.desktop.in.h:1
+msgid "FM-Radio Tuner"
+msgstr "Aparat radio FM"
+
+#: ../data/gnomeradio.desktop.in.h:2
+msgid "Listen to FM-radio"
+msgstr "Ascultă radiouri FM"
+
+#: ../src/prefs.c:170 ../src/prefs.c:301 ../src/gui.c:187
+msgid "unnamed"
+msgstr "fără nume"
+
+#: ../src/prefs.c:384
+msgid "Choose a destination folder"
+msgstr "Alegeți un dosar destinație"
+
+#: ../src/prefs.c:538
+msgid "Gnomeradio Settings"
+msgstr "Preferințe Gnomeradio"
+
+#: ../src/prefs.c:554
+msgid "General Settings"
+msgstr "Preferințe generale"
+
+#: ../src/prefs.c:564
+msgid "Presets"
+msgstr "Posturi predefinite"
+
+#: ../src/prefs.c:574
+msgid "Record Settings"
+msgstr "Preferințe înregistrare"
+
+#: ../src/prefs.c:592
+msgid "Radio Device:"
+msgstr "Dispozitiv radio:"
+
+#: ../src/prefs.c:599
+msgid "Mixer Source:"
+msgstr "Sursă mixer:"
+
+#: ../src/prefs.c:616
+msgid "Mute on exit?"
+msgstr "Opriți sunetul la ieșire?"
+
+#: ../src/prefs.c:697
+msgid "Add a new preset"
+msgstr "Adaugă un nou post predefinit"
+
+#: ../src/prefs.c:698
+msgid "Remove preset from List"
+msgstr "Șterge postul din listă"
+
+#: ../src/prefs.c:711
+msgid "Destination directory:"
+msgstr "Dosar destinație:"
+
+#: ../src/prefs.c:729
+msgid "Choose the Media Profile that should be used to record."
+msgstr "Alege profilul media folosit la înregistrare."
+
+#: ../src/gui.c:107
+#, c-format
+msgid "%d stations found"
+msgstr "%d posturi găsite"
+
+#: ../src/gui.c:134
+msgid "Scanning"
+msgstr "Se scanează"
+
+#: ../src/gui.c:139
+msgid "Scanning for available stations:"
+msgstr "Se scanează posturile disponibile:"
+
+#: ../src/gui.c:149
+msgid "No stations found"
+msgstr "Nu s-a găsit nici un post"
+
+#: ../src/gui.c:174
+#, c-format
+msgid ""
+"%d stations found. \n"
+"Do you want to add them as presets?\n"
+msgstr ""
+"%d posturi găsite. \n"
+"Doriți să le adăugați ca predefinite?\n"
+
+#: ../src/gui.c:243
+#, c-format
+msgid "Could not open device \"%s\"!"
+msgstr "Nu s-a putut deschide dispozitivul „%s”!"
+
+#: ../src/gui.c:244
+#, c-format
+msgid ""
+"Check your settings and make sure that no other\n"
+"program is using %s.\n"
+"Also make sure that you have read-access to it."
+msgstr ""
+"Verificați preferințele și asigurați-vă că nici un\n"
+"alt program nu folosește %s.\n"
+"Asigurați-vă și că aveți drepturi de scriere și citire pentru dispozitiv."
+
+#: ../src/gui.c:268
+#, c-format
+msgid "Mixer source \"%s\" is not a valid source!"
+msgstr "Sursa mixer „%s” nu este o sursă validă!"
+
+#: ../src/gui.c:270
+#, c-format
+msgid "Could not open \"%s\"!"
+msgstr "Nu s-a putut deschide „%s”!"
+
+#: ../src/gui.c:413
+#, c-format
+msgid "Gnomeradio - %s"
+msgstr "Gnomeradio - %s"
+
+#: ../src/gui.c:415 ../src/trayicon.c:144
+#, c-format
+msgid "Gnomeradio - %.2f MHz"
+msgstr "Gnomeradio - %.2f MHz"
+
+#: ../src/gui.c:420 ../src/gui.c:998
+#, c-format
+msgid "Frequency: %.2f MHz"
+msgstr "Frecvență: %.2f MHz"
+
+#. You can translate the filename for a recording:
+#. * args for this format are: path, station title, time
+#.
+#: ../src/gui.c:657
+#, c-format
+msgid "%s/%s_%s"
+msgstr "%s/%s_%s"
+
+#. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
+#: ../src/gui.c:685
+msgid "%B-%d-%Y_%H-%M-%S"
+msgstr "%B-%d-%Y_%H-%M-%S"
+
+#: ../src/gui.c:688
+#, c-format
+msgid "%.2f MHz"
+msgstr "%.2f MHz"
+
+#: ../src/gui.c:728
+msgid "Unmute"
+msgstr "Pornire sunet"
+
+#: ../src/gui.c:732
+msgid "Mute"
+msgstr "Mut"
+
+#. Feel free to put your names here translators :-)
+#: ../src/gui.c:746
+msgid "TRANSLATORS"
+msgstr ""
+"Adi Roiban, 2009\n"
+"Ciprian Popovici <ciprian@zuavra.net>"
+
+#: ../src/gui.c:757
+msgid ""
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
+"\n"
+"This version has been compiled with LIRC support."
+msgstr ""
+"Gnomeradio este un aparat radio FM pentru mediul GNOME. Ar trebui să "
+"funcționeze cu orice hardware radio cunoscut de driverele video4linux.\n"
+"\n"
+"Această versiune a fost compilată cu suport LIRC."
+
+#: ../src/gui.c:761
+msgid ""
+"Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
+"with all tuner hardware that is supported by the video4linux drivers.\n"
+"\n"
+"This version has been compiled without LIRC support."
+msgstr ""
+"Gnomeradio este un aparat radio FM pentru mediul GNOME. Ar trebui să "
+"funcționeze cu orice hardware radio cunoscut de driverele video4linux.\n"
+"\n"
+"Această versiune a fost compilată fără suport LIRC."
+
+#: ../src/gui.c:830 ../src/gui.c:1097
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: ../src/gui.c:886
+msgid "Presets:"
+msgstr "Posturi predefinite:"
+
+#: ../src/gui.c:989
+msgid "Scan Backwards"
+msgstr "Caută frecvență în jos"
+
+#: ../src/gui.c:990
+msgid "Scan Forwards"
+msgstr "Caută frecvență în sus"
+
+#: ../src/gui.c:991
+msgid "0.05 MHz Backwards"
+msgstr "0.05 MHz mai jos"
+
+#: ../src/gui.c:992
+msgid "0.05 MHz Forwards"
+msgstr "0.05 MHz mai sus"
+
+#: ../src/gui.c:993
+msgid "About Gnomeradio"
+msgstr "Despre Gnomeradio"
+
+#: ../src/gui.c:994
+msgid "Record radio as Wave, OGG or MP3"
+msgstr "Înregistrați de la radio ca Wave, OGG sau MP3"
+
+#: ../src/gui.c:995
+msgid "Edit your Preferences"
+msgstr "Modificare preferințe"
+
+#: ../src/gui.c:996
+msgid "Adjust the Volume"
+msgstr "Modifică volumul"
+
+#: ../src/gui.c:997
+msgid "Quit"
+msgstr "Ieșire"
+
+#: ../src/gui.c:1089
+msgid "Scan for stations"
+msgstr "Caută posturi"
+
+#: ../src/gui.c:1125
+#, c-format
+msgid ""
+"%s\n"
+"\n"
+"Changes to the settings won't be saved."
+msgstr ""
+"%s\n"
+"\n"
+"Schimbările preferințelor nu vor fi salvate."
+
+#: ../src/gui.c:1126
+msgid "Failed to init GConf!"
+msgstr "Inițializarea GConf a eșuat!"
+
+#: ../src/gui.c:1141
+msgid "Could not scan. Radio is not initialized."
+msgstr "Nu s-a putut scana. Radioul nu este inițializat."
+
+#: ../src/gui.c:1149
+msgid "manual"
+msgstr "manual"
+
+#. GtkWidget *dialog;
+#. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+#. _("Could not start lirc"));
+#. gtk_dialog_run (GTK_DIALOG (dialog));
+#. gtk_widget_destroy (dialog);
+#.
+#: ../src/gui.c:1174
+msgid "Could not start lirc!"
+msgstr "Nu s-a putut porni LIRC!"
+
+#: ../src/trayicon.c:84
+msgid "Muted"
+msgstr "Sunet oprit"
+
+#: ../src/trayicon.c:98
+msgid "Show Window"
+msgstr "Arată fereastra"
+
+#: ../src/record.c:65
+#, c-format
+msgid "%i byte"
+msgstr "%i octeți"
+
+#: ../src/record.c:67
+#, c-format
+msgid "%i kB"
+msgstr "%i kB"
+
+#: ../src/record.c:68
+#, c-format
+msgid "%.2f MB"
+msgstr "%.2f MB"
+
+#: ../src/record.c:70
+msgid "Error"
+msgstr "Eroare"
+
+#: ../src/record.c:71
+msgid "0 byte"
+msgstr "0 octeți"
+
+#: ../src/record.c:108
+msgid "Gnomeradio recording status"
+msgstr "Gnomeradio stare înregistrare"
+
+#: ../src/record.c:120
+#, c-format
+msgid "Recording from station %s"
+msgstr "Se înregistrează postul %s"
+
+#: ../src/record.c:127
+msgid "Destination:"
+msgstr "Destinația:"
+
+#: ../src/record.c:132
+msgid "Filesize:"
+msgstr "Dimensiune fișier:"
+
+#: ../src/record.c:156
+msgid "Stop Recording"
+msgstr "Oprire înregistrare"
+
+#: ../src/rec_tech.c:42
+msgid "GStreamer runtime error."
+msgstr "Eroare rulare GStreamer."
+
+#: ../src/rec_tech.c:58
+msgid "Could not create GStreamer pipeline."
+msgstr "Nu s-a putut crea ansamblul GStreamer."
+
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
+msgid "Check your Gstreamer installation!"
+msgstr "Verificați instalarea GStreamer!"
+
+#: ../src/rec_tech.c:65
+msgid "Could not open Gstreamer OSS Source."
+msgstr "Nu s-a putut deschide sursa GStreamer OSS."
+
+#: ../src/rec_tech.c:66
+msgid "Verify your Gstreamer OSS subsystem installation!"
+msgstr "Verificați instalarea subsistemului GStreamer OSS!"
+
+#: ../src/rec_tech.c:78
+#, c-format
+msgid "Could not create encoder \"%s\"."
+msgstr "Nu s-a putut crea encoderul „%s”!"
+
+#: ../src/rec_tech.c:80
+msgid "Verify your Gstreamer plugins installation!"
+msgstr "Verificați instalarea moduleleor GStreamer!"
+
+#: ../src/rec_tech.c:88
+msgid "Could not create Gstreamer filesink."
+msgstr "Nu s-a putut crea Gstreamer filesink."
+
+#. +
+#: ../src/bacon-volume.c:187
+msgid "+"
+msgstr "+"
+
+#. -
+#: ../src/bacon-volume.c:203
+msgid "-"
+msgstr "-"
+
+#, fuzzy
+#~ msgid "Audio device"
+#~ msgstr "Device audio"
+
+#~ msgid "Choose the bitrate in which the mp3 will be encoded"
+#~ msgstr "Alegeți rata la care va fi creat fișierul MP3"
+
+#~ msgid "MP3 bitrate"
+#~ msgstr "Rata MP3"
+
+#~ msgid "MP3 encoder"
+#~ msgstr "Encoder MP3"
+
+#~ msgid "Record as mp3- or wave-file"
+#~ msgstr "Înregistrare ca MP3 sau WAV"
+
+#~ msgid "Record in stereo or mono"
+#~ msgstr "Înregistrare în mono sau stereo"
+
+#~ msgid "Sample format"
+#~ msgstr "Formatul de captură"
+
+#~ msgid "Sample rate"
+#~ msgstr "Rata de captură"
+
+#~ msgid "The audio device to use (usually /dev/audio)"
+#~ msgstr "Device-ul audio folosit (de obicei /dev/audio)"
+
+#~ msgid "The audio sample-rate of the wave-file"
+#~ msgstr "Rata audio a fișierului WAV"
+
+#~ msgid "The format (8 or 16 bit) of the wave-file"
+#~ msgstr "Formatul (8 sau 16 biți) fișierului WAV"
+
+#~ msgid "The stored value of the volume (0-100)"
+#~ msgstr "Nivelul memorat al volumului (0-100)"
+
+#~ msgid "Volume"
+#~ msgstr "Volum"
+
+#~ msgid "Whether the output should be a mp3- or a wave-file"
+#~ msgstr "Dacă înregistrarea trebuie să fie un fișier mp3 sau wav"
+
+#~ msgid "Whether the output should be in stereo or mono"
+#~ msgstr "Dacă înregistrarea trebuie să fie mono sau stereo"
+
+#~ msgid "A Gnome FM-Tuner"
+#~ msgstr "Un aparat de radio FM pentru Gnome"
+
+#~ msgid "Misc Settings"
+#~ msgstr "Preferințe diverse"
+
+#~ msgid "Name:"
+#~ msgstr "Nume:"
+
+#~ msgid "Frequency:"
+#~ msgstr "Frecvență:"
+
+#~ msgid "Update the preset in the List"
+#~ msgstr "Actualizați stația în listă"
+
+#~ msgid "Volume: %d%%"
+#~ msgstr "Volum: %d%%"
+
+#~ msgid ""
+#~ "Sox could not be detected. Please ensure that it is installed in your "
+#~ "PATH."
+#~ msgstr "Nu am detectat Sox. Asigurați-vă că este accesibil prin PATH."
+
+#~ msgid ""
+#~ "File '%s' exists.\n"
+#~ "Overwrite it?"
+#~ msgstr ""
+#~ "Fișierul '%s' există deja.\n"
+#~ "Să îl suprascriu?"
+
+#~ msgid ""
+#~ "Error opening file '%s':\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nu am putut deschide fișierul '%s':\n"
+#~ "%s"
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Gnomeradio Record"
+#~ msgstr "Înregistrare Gnomeradio"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Wave Settings"
+#~ msgstr "Preferințe WAV"
+
+#~ msgid "Mp3/Ogg Settings"
+#~ msgstr "Preferințe Mp3/Ogg"
+
+#, fuzzy
+#~ msgid "Audio device:"
+#~ msgstr "Device audio:"
+
+#~ msgid "Filename:"
+#~ msgstr "Fișier:"
+
+#~ msgid "Choose a filename"
+#~ msgstr "Alegeți un fișier"
+
+#~ msgid "Record as:"
+#~ msgstr "Înregistrează ca:"
+
+#~ msgid "Wave (.wav)"
+#~ msgstr "Wave (.wav)"
+
+#~ msgid "MP3/Ogg (.mp3/.ogg)"
+#~ msgstr "MP3/Ogg (.mp3/.ogg)"
+
+#~ msgid "Sample rate:"
+#~ msgstr "Rata mostrei:"
+
+#~ msgid "Sample format:"
+#~ msgstr "Formatul mostrei:"
+
+#~ msgid "Mono"
+#~ msgstr "Mono"
+
+#~ msgid "Stereo"
+#~ msgstr "Stereo"
+
+#, fuzzy
+#~ msgid "Encoder:"
+#~ msgstr "Encoder:"
+
+#~ msgid "Bitrate:"
+#~ msgstr "Rata:"
+
+#, fuzzy
+#~ msgid "no supported encoder installed"
+#~ msgstr "nu este instalat nici un encoder cunoscut"
+
+#~ msgid ""
+#~ "%s has stopped:\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "%s s-a oprit:\n"
+#~ "%s\n"
+
+#~ msgid "MP3/Ogg encoder"
+#~ msgstr "Encoder MP3/Ogg"
+
+#~ msgid "unknown reason"
+#~ msgstr "motiv necunoscut"
+
+#~ msgid "Recording:"
+#~ msgstr "Înregistrare:"
