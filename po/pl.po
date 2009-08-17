@@ -1,522 +1,467 @@
-# Copyright (C) 2002-2003 Free Software Foundation, Inc.
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aktualną wersję tego pliku możesz odnaleźć w repozytorium cvs.gnome.pl
-# (:pserver:anonymous@cvs.gnome.pl:/home/cvs, puste hasło)
+# Aviary.pl
 # Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
-# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas na adres:
-# translators@gnome.pl
+# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
+# gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Polskie tłumaczenie do programu GnomeRadio
-# schizee <schizee@interia.pl>, 2002
-# GNOME PL Team <translators@gnome.pl>, 2002-2003
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnomeradio\n"
-"POT-Creation-Date: 2003-03-16 17:55+0100\n"
-"PO-Revision-Date: 2003-03-17 19:18+0100\n"
-"Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
-"Language-Team: Polish <pl@li.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-18 00:52+0200\n"
+"PO-Revision-Date: 2009-08-18 00:47+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <gnomepl@aviary.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: Poland\n"
 
-#: gnomeradio.schemas.in.h:1
-msgid "Audio device"
-msgstr "Urządzenie dźwiękowe"
+#: ../data/gnomeradio.schemas.in.h:1
+msgid "Choose the GnomeMedia Profile that should be used for recording"
+msgstr "Wybór profilu gnome-media używanego do nagrywania"
 
-#: gnomeradio.schemas.in.h:1 src/record.c:1
-msgid "Choose the bitrate in which the mp3 will be encoded"
-msgstr "Wybór gęstości bitowej z jaką będzie zakodowany plik mp3"
-
-#: gnomeradio.schemas.in.h:1 src/prefs.c:1
+#: ../data/gnomeradio.schemas.in.h:2 ../src/prefs.c:628
 msgid ""
 "Choose the mixer source (line, line1, etc.) that is able to control the "
 "volume of your radio"
 msgstr ""
-"Wybierz źródło w mikserze (line, line1, itd.). Dzięki temu będzie można "
-"regulować głośność radia."
+"Wybór źródło miksera (line, line1 itd.), które może kontrolować głośność "
+"radia"
 
-#: gnomeradio.schemas.in.h:1 src/record.c:1
-msgid "Choose the mp3 encoder that should be used"
-msgstr "Wybór używanego kodera mp3"
+#: ../data/gnomeradio.schemas.in.h:3
+msgid "Device driver"
+msgstr "Sterownik urządzenia"
 
-#: gnomeradio.schemas.in.h:1 src/prefs.c:1
+#: ../data/gnomeradio.schemas.in.h:4
+msgid "GnomeMedia Profile"
+msgstr "Profil gnome-media"
+
+#: ../data/gnomeradio.schemas.in.h:5 ../src/prefs.c:629
 msgid "If unchecked, gnomeradio won't mute after exiting"
-msgstr "Określa, czy przy zakończeniu programu powinno nastąpić wyciszenie"
+msgstr "Wyciszenie po zakończeniu programu gnomeradio"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:6
 msgid "Last frequency"
 msgstr "Ostatnia częstotliwość"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:7
 msgid "Last presets"
 msgstr "Ostatnia stacja"
 
-#: gnomeradio.schemas.in.h:1
-msgid "MP3 bitrate"
-msgstr "Gęstość bitowa MP3"
-
-#: gnomeradio.schemas.in.h:1
-msgid "MP3 encoder"
-msgstr "Koder MP3"
-
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:8
 msgid "Mixer Device"
 msgstr "Urządzenie miksera"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:9
 msgid "Mixer source"
-msgstr "Źródło w mikserze"
+msgstr "Źródło miksera"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:10
 msgid "Mute on exit"
-msgstr "Wyciszenie przy zakończeniu programu"
+msgstr "Wyciszenie podczas zakończenia programu"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:11
 msgid "Number of presets"
 msgstr "Liczba stacji"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:12
 msgid "Radio device"
 msgstr "Urządzenie radia"
 
-#: gnomeradio.schemas.in.h:1
-msgid "Record as mp3- or wave-file"
-msgstr "Zapis w formacie mp3 lub wave"
+#: ../data/gnomeradio.schemas.in.h:13
+msgid "Specify the device driver to use (any, v4l1 or v4l2)"
+msgstr "Określa używany sterownik urządzenia (\"any\", \"v4l1\" lub \"v4l2\")"
 
-#: gnomeradio.schemas.in.h:1
-msgid "Record in stereo or mono"
-msgstr "Zapis w trybie stereo lub mono"
-
-#: gnomeradio.schemas.in.h:1
-msgid "Sample format"
-msgstr "Format próbki"
-
-#: gnomeradio.schemas.in.h:1
-msgid "Sample rate"
-msgstr "Częstotliwość próbkowania"
-
-#: gnomeradio.schemas.in.h:1 src/prefs.c:1
+#: ../data/gnomeradio.schemas.in.h:14 ../src/prefs.c:626
 msgid "Specify the radio-device (in most cases /dev/radio)"
-msgstr "Wybierz urządzenie radia (w większości przypadków /dev/radio)"
+msgstr "Określa urządzenie radia (w większości przypadków /dev/radio)"
 
-#: gnomeradio.schemas.in.h:1 src/record.c:1
-msgid "The audio device to use (usually /dev/audio)"
-msgstr "Używane urządzenie dźwiękowe (zwykle /dev/radio)"
-
-#: gnomeradio.schemas.in.h:1 src/record.c:1
-msgid "The audio sample-rate of the wave-file"
-msgstr "Częstotliwość próbkowania dźwięku w pliku wave"
-
-#: gnomeradio.schemas.in.h:1 src/record.c:1
-msgid "The format (8 or 16 bit) of the wave-file"
-msgstr "Rozmiar próbek w pliku wave (8 lub 16 bitów)"
-
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:15
 msgid "The last frequency (in MHz) in use"
-msgstr "Ostatnia użyta częstowtliwość (w MHz)"
+msgstr "Ostatnia użyta częstotliwość (w MHz)"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:16
 msgid ""
 "The mixer device that gnomeradio should use. Only changeable via this key "
 "(no GUI option)"
 msgstr ""
-"Mikser używany przez gnomeradio. Zmieniany tylko poprzez ten klucz (brak "
-"opcji w programie)"
+"Urządzenie miksera używane przez program gnomeradio. Zmieniane tylko poprzez "
+"ten klucz (brak opcji w interfejsie programu)"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:17
 msgid "The number of presets"
 msgstr "Liczba stacji"
 
-#: gnomeradio.schemas.in.h:1
+#: ../data/gnomeradio.schemas.in.h:18
 msgid ""
 "The preset that was enabled when gnomeradio was terminated. Range is 0 ... "
 "(# presets - 1). None is -1"
 msgstr ""
-"Numer stacji, która była aktywna w chwili przerwania działania programu. "
-"Wartości mieszczą się w zakresie od 0 do liczba_stacji - 1. Wartość -1 "
-"oznacza brak stacji."
+"Stacja, która była włączona podczas zakończenia programu gnomeradio. Zakres "
+"od 0 do liczba_stacji - 1. Wartość -1 oznacza brak stacji."
 
-#: gnomeradio.schemas.in.h:1
-msgid "The stored value of the volume (0-100)"
-msgstr "Zapisana wartość głośności (0-100)"
+#: ../data/gnomeradio.desktop.in.h:1
+msgid "FM-Radio Tuner"
+msgstr "Tuner radiowy FM"
 
-#: gnomeradio.schemas.in.h:1
-msgid "Volume"
-msgstr "Głośność"
+#: ../data/gnomeradio.desktop.in.h:2
+msgid "Listen to FM-radio"
+msgstr "Suchanie radia FM"
 
-#: gnomeradio.schemas.in.h:1 src/record.c:1 src/record.c:1
-msgid "Whether the output should be a mp3- or a wave-file"
-msgstr "Określa, czy wyjście powinno być kierowane do pliku mp3 czy wave"
+#: ../src/prefs.c:170 ../src/prefs.c:301 ../src/gui.c:187
+msgid "unnamed"
+msgstr "bez nazwy"
 
-#: gnomeradio.schemas.in.h:1 src/record.c:1 src/record.c:1
-msgid "Whether the output should be in stereo or mono"
-msgstr "Określa, czy wyjście powinno mieć format mono czy stereo"
+#: ../src/prefs.c:384
+msgid "Choose a destination folder"
+msgstr "Proszę wybrać katalog docelowy"
 
-#: gnomeradio.desktop.in.h:1
-msgid "A Gnome FM-Tuner"
-msgstr "Tuner FM dla GNOME"
-
-#: gnomeradio.desktop.in.h:1 src/gui.c:1
-msgid "Gnomeradio"
-msgstr "Gnomeradio"
-
-#: src/prefs.c:1
+#: ../src/prefs.c:538
 msgid "Gnomeradio Settings"
-msgstr "Ustawienia Gnomeradio"
+msgstr "Ustawienia programu gnomeradio"
 
-#: src/prefs.c:1
-msgid "Misc Settings"
-msgstr "Różne ustawienia"
+#: ../src/prefs.c:554
+msgid "General Settings"
+msgstr "Ogólne ustawienia"
 
-#: src/prefs.c:1
+#: ../src/prefs.c:564
 msgid "Presets"
 msgstr "Stacje"
 
-#: src/prefs.c:1
+#: ../src/prefs.c:574
+msgid "Record Settings"
+msgstr "Ustawienia nagrywania"
+
+#: ../src/prefs.c:592
 msgid "Radio Device:"
 msgstr "Urządzenie radia:"
 
-#: src/prefs.c:1
+#: ../src/prefs.c:599
 msgid "Mixer Source:"
-msgstr "Źródło w mikserze:"
+msgstr "Źródło miksera:"
 
-#: src/prefs.c:1
+#: ../src/prefs.c:616
 msgid "Mute on exit?"
-msgstr "Wyciszyć przy zakończeniu programu?"
+msgstr "Wyciszenie podczas zakończenia programu"
 
-#: src/prefs.c:1
-msgid "Name:"
-msgstr "Nazwa:"
-
-#: src/prefs.c:1
-msgid "Frequency:"
-msgstr "Częstotliwość:"
-
-#: src/prefs.c:1
+#: ../src/prefs.c:697
 msgid "Add a new preset"
 msgstr "Dodaje nową stację"
 
-#: src/prefs.c:1
+#: ../src/prefs.c:698
 msgid "Remove preset from List"
 msgstr "Usuwa stację z listy"
 
-#: src/prefs.c:1
-msgid "Update the preset in the List"
-msgstr "Odświeża stację na liście"
+#: ../src/prefs.c:711
+msgid "Destination directory:"
+msgstr "Katalog docelowy:"
 
-#: src/gui.c:1
+#: ../src/prefs.c:729
+msgid "Choose the Media Profile that should be used to record."
+msgstr "Proszę wybrać profil mediów używany do nagrywania."
+
+#: ../src/gui.c:107
+#, c-format
+msgid "%d stations found"
+msgstr "Znaleziono %d stacje"
+
+#: ../src/gui.c:134
+msgid "Scanning"
+msgstr "Skanowanie"
+
+#: ../src/gui.c:139
+msgid "Scanning for available stations:"
+msgstr "Skanowanie dostępnych stacji:"
+
+#: ../src/gui.c:149
+msgid "No stations found"
+msgstr "Nie znaleziono stacji"
+
+#: ../src/gui.c:174
 #, c-format
 msgid ""
-"Could not open device \"%s\" !\n"
-"\n"
-"Check your Settings and make sure that no other\n"
-"program is using %s.\n"
-"Make also sure that you have read-access to it."
+"%d stations found. \n"
+"Do you want to add them as presets?\n"
 msgstr ""
-"Nie można otworzyć urządzenia \"%s\" !\n"
-"\n"
-"Sprawdź ustawienia i upewnij się, że żaden inny\n"
-"program nie używa %s.\n"
-"Upewnij się także, że masz prawa odczytu z tego urządzenia."
+"Znaleziono %d stacje. \n"
+"Dodać je?\n"
 
-#: src/gui.c:1
+#: ../src/gui.c:243
+#, c-format
+msgid "Could not open device \"%s\"!"
+msgstr "Nie można otworzyć urządzenia \"%s\"."
+
+#: ../src/gui.c:244
+#, c-format
+msgid ""
+"Check your settings and make sure that no other\n"
+"program is using %s.\n"
+"Also make sure that you have read-access to it."
+msgstr ""
+"Proszę sprawdzić ustawienia i upewnić się, że\n"
+"żaden inny program nie używa %s.\n"
+"Proszę się także upewnić, że użytkownik posiada\n"
+"uprawnienia do odczytu i zapisu urządzenia."
+
+#: ../src/gui.c:268
 #, c-format
 msgid "Mixer source \"%s\" is not a valid source!"
-msgstr "Wybrane źródło \"%s\" nie jest poprawnym źródłem w mikserze!"
+msgstr "Źródło miksera \"%s\" nie jest prawidłowym źródłem."
 
-#: src/gui.c:1
+#: ../src/gui.c:270
 #, c-format
 msgid "Could not open \"%s\"!"
-msgstr "Nie można otworzyć \"%s\"!"
+msgstr "Nie można otworzyć \"%s\"."
 
-#: src/gui.c:1 src/gui.c:1 src/gui.c:1
+#: ../src/gui.c:413
+#, c-format
+msgid "Gnomeradio - %s"
+msgstr "Gnomeradio - %s"
+
+#: ../src/gui.c:415 ../src/trayicon.c:144
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
 msgstr "Gnomeradio - %.2f MHz"
 
-#: src/gui.c:1 src/gui.c:1
+#: ../src/gui.c:420 ../src/gui.c:998
 #, c-format
 msgid "Frequency: %.2f MHz"
 msgstr "Częstotliwość: %.2f MHz"
 
-#: src/gui.c:1 src/gui.c:1
+#. You can translate the filename for a recording:
+#. * args for this format are: path, station title, time
+#.
+#: ../src/gui.c:657
 #, c-format
-msgid "Volume: %d%%"
-msgstr "Głośność: %d%%"
+msgid "%s/%s_%s"
+msgstr "%s/%s_%s"
 
-#: src/gui.c:1
-msgid "manual"
-msgstr "wybór ręczny"
+#. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
+#: ../src/gui.c:685
+msgid "%B-%d-%Y_%H-%M-%S"
+msgstr "%B-%d-%Y_%H-%M-%S"
 
-#: src/gui.c:1
-msgid ""
-"Sox could not be detected. Please ensure that it is installed in your PATH."
-msgstr ""
-"Nie odnaleziono programu Sox. Upewnij się, że jest on zainstalowany na "
-"ścieżce"
-
-#: src/gui.c:1
+#: ../src/gui.c:688
 #, c-format
-msgid ""
-"File '%s' exists.\n"
-"Overwrite it?"
-msgstr ""
-"Plik \"%s\" istnieje.\n"
-"Czy chcesz go nadpisać?"
+msgid "%.2f MHz"
+msgstr "%.2f MHz"
 
-#: src/gui.c:1
-#, c-format
-msgid ""
-"Error opening file '%s':\n"
-"%s"
-msgstr ""
-"Błąd przy otwieraniu pliku \"%s\":\n"
-"%s"
+#: ../src/gui.c:728
+msgid "Unmute"
+msgstr "Wyłącz wyciszenie"
 
-#: src/gui.c:1 src/gui.c:1
+#: ../src/gui.c:732
 msgid "Mute"
 msgstr "Wycisz"
 
-#: src/gui.c:1
-msgid "Unmute"
-msgstr "Włącz głos"
-
 #. Feel free to put your names here translators :-)
-#: src/gui.c:1
+#: ../src/gui.c:746
 msgid "TRANSLATORS"
-msgstr "GNOME PL Team <translators@gnome.pl>"
+msgstr ""
+"Schizee <schizee@interia.pl>, 2002\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2009\n"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009"
 
-#: src/gui.c:1
+#: ../src/gui.c:757
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
-"Gnomeradio jest aplikacją tunera FM dla GNOME. Powinna współpracować ze "
-"wszystkimi tunerami obługiwanymi przez sterowniki video4linux.\n"
+"Program Gnomeradio jest programem tunera FM dla środowiska GNOME. "
+"Współpracuje ze wszystkimi tunerami sprzętowymi obsługiwanymi przez "
+"sterowniki video4linux.\n"
 "\n"
-"Wersja z obsługą LIRC"
+"Wersja skompilowana z obsługą LIRC."
 
-#: src/gui.c:1
+#: ../src/gui.c:761
 msgid ""
 "Gnomeradio is a FM-Tuner application for the GNOME desktop. It should work "
 "with all tuner hardware that is supported by the video4linux drivers.\n"
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
-"Gnomeradio jest aplikacją tunera FM dla GNOME. Powinna współpracować ze "
-"wszystkimi tunerami obługiwanymi przez sterowniki video4linux.\n"
+"Program Gnomeradio jest programem tunera FM dla środowiska GNOME. "
+"Współpracuje ze wszystkimi tunerami sprzętowymi obsługiwanymi przez "
+"sterowniki video4linux.\n"
 "\n"
-"Wersja bez obsługi LIRC"
+"Wersja skompilowana bez obsługi LIRC."
 
-#: src/gui.c:1
+#: ../src/gui.c:830 ../src/gui.c:1097
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: ../src/gui.c:886
 msgid "Presets:"
 msgstr "Stacje:"
 
-#: src/gui.c:1
+#: ../src/gui.c:989
 msgid "Scan Backwards"
-msgstr "Przeszukuje w dół"
+msgstr "Skanuj wstecz"
 
-#: src/gui.c:1
+#: ../src/gui.c:990
 msgid "Scan Forwards"
-msgstr "Przeszukuje w górę"
+msgstr "Skanuj w przód"
 
-#: src/gui.c:1
+#: ../src/gui.c:991
 msgid "0.05 MHz Backwards"
-msgstr "0,05 MHz w dół"
+msgstr "0,05 MHz wstecz"
 
-#: src/gui.c:1
+#: ../src/gui.c:992
 msgid "0.05 MHz Forwards"
-msgstr "0,05 MHz w górę"
+msgstr "0,05 MHz w przód"
 
-#: src/gui.c:1
+#: ../src/gui.c:993
 msgid "About Gnomeradio"
-msgstr "Informacje o Gnomeradio"
+msgstr "O programie gnomeradio"
 
-#: src/gui.c:1
-msgid "Record radio as Wave or MP3"
-msgstr "Zapisuje dźwięk z radia do pliku wave lub mp3"
+#: ../src/gui.c:994
+msgid "Record radio as Wave, OGG or MP3"
+msgstr "Zapisuje radio jako plik wave, OGG lub MP3"
 
-#: src/gui.c:1
+#: ../src/gui.c:995
 msgid "Edit your Preferences"
-msgstr "Modyfikuje preferencje"
+msgstr "Modyfikacja preferencji"
 
-#: src/gui.c:1
+#: ../src/gui.c:996
+msgid "Adjust the Volume"
+msgstr "Dostosowuje głośność"
+
+#: ../src/gui.c:997
 msgid "Quit"
 msgstr "Kończy działanie programu"
 
-#: src/gui.c:1
+#: ../src/gui.c:1089
+msgid "Scan for stations"
+msgstr "Skanuje stacje"
+
+#: ../src/gui.c:1125
 #, c-format
 msgid ""
-"Failed to init GConf: %s\n"
-"Changes to the settings won't be saved\n"
-msgstr ""
-"Błąd przy inicjowaniu podsystemu GConf: %s\n"
-"Zmiany w ustawieniach nie zostaną zapisane\n"
-
-#: src/gui.c:1
-msgid "Could not start lirc"
-msgstr "Nie można zainicjować lirc"
-
-#: src/record.c:1
-msgid "Start"
-msgstr "Rozpocznij"
-
-#: src/record.c:1
-msgid "Gnomeradio Record"
-msgstr "Zapis dźwięku - Gnomeradio"
-
-#: src/record.c:1
-msgid "General"
-msgstr "Ogólne"
-
-#: src/record.c:1
-msgid "Wave Settings"
-msgstr "Ustawienia formatu wave"
-
-#: src/record.c:1
-msgid "Mp3/Ogg Settings"
-msgstr "Ustawienia formatu MP3/Ogg"
-
-#: src/record.c:1
-msgid "Audio device:"
-msgstr "Urządzenie dźwiękowe:"
-
-#: src/record.c:1
-msgid "Filename:"
-msgstr "Nazwa pliku:"
-
-#. path_entry = gtk_entry_new();
-#: src/record.c:1
-msgid "Choose a filename"
-msgstr "Wybór nazwy pliku"
-
-#. choose_button = gtk_button_new_with_label(_("Choose..."));
-#: src/record.c:1
-msgid "Record as:"
-msgstr "Zapis w formacie:"
-
-#: src/record.c:1
-msgid "Wave (.wav)"
-msgstr "Wave (.wav)"
-
-#: src/record.c:1
-msgid "MP3/Ogg (.mp3/.ogg)"
-msgstr "MP3/Ogg (.mp3/.ogg)"
-
-#: src/record.c:1
-msgid "Sample rate:"
-msgstr "Częstotliwość próbkowania:"
-
-#: src/record.c:1
-msgid "Sample format:"
-msgstr "Format próbki:"
-
-#: src/record.c:1
-msgid "Record in:"
-msgstr "Zapis jako:"
-
-#: src/record.c:1
-msgid "Mono"
-msgstr "Mono"
-
-#: src/record.c:1
-msgid "Stereo"
-msgstr "Stereo"
-
-#: src/record.c:1
-msgid "Encoder:"
-msgstr "Koder:"
-
-#: src/record.c:1
-msgid "Bitrate:"
-msgstr "Gęstość bitowa:"
-
-#: src/record.c:1 src/record.c:1
-msgid "no supported encoder installed"
-msgstr "nie zainstalowano żadnego z obsługiwanych koderów"
-
-#: src/record.c:1
-#, c-format
-msgid ""
-"%s has stopped:\n"
 "%s\n"
+"\n"
+"Changes to the settings won't be saved."
 msgstr ""
-"%s został zatrzymany:\n"
 "%s\n"
+"\n"
+"Zmiany ustawień nie zostaną zapisane."
 
-#: src/record.c:1
-msgid "MP3/Ogg encoder"
-msgstr "Koder MP3/Ogg"
+#: ../src/gui.c:1126
+msgid "Failed to init GConf!"
+msgstr "Zainicjowanie GConf nie powiodło się."
 
-#: src/record.c:1
-msgid "unknown reason"
-msgstr "nieznana przyczyna"
+#: ../src/gui.c:1141
+msgid "Could not scan. Radio is not initialized."
+msgstr "Nie można skanować. Radio nie jest zainicjowane."
 
-#: src/record.c:1
+#: ../src/gui.c:1149
+msgid "manual"
+msgstr "ręcznie"
+
+#. GtkWidget *dialog;
+#. dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+#. _("Could not start lirc"));
+#. gtk_dialog_run (GTK_DIALOG (dialog));
+#. gtk_widget_destroy (dialog);
+#.
+#: ../src/gui.c:1174
+msgid "Could not start lirc!"
+msgstr "Nie można uruchomić lirc."
+
+#: ../src/trayicon.c:84
+msgid "Muted"
+msgstr "Wyciszone"
+
+#: ../src/trayicon.c:98
+msgid "Show Window"
+msgstr "Wyświetl okno"
+
+#: ../src/record.c:65
 #, c-format
 msgid "%i byte"
-msgstr "%i bajtów"
+msgstr "%i bajty"
 
-#: src/record.c:1
+#: ../src/record.c:67
 #, c-format
 msgid "%i kB"
 msgstr "%i KB"
 
-#: src/record.c:1
+#: ../src/record.c:68
 #, c-format
 msgid "%.2f MB"
 msgstr "%.2f MB"
 
-#: src/record.c:1
+#: ../src/record.c:70
 msgid "Error"
 msgstr "Błąd"
 
-#: src/record.c:1
+#: ../src/record.c:71
 msgid "0 byte"
-msgstr "0 bajtów"
+msgstr "Zero bajtów"
 
-#: src/record.c:1
+#: ../src/record.c:108
 msgid "Gnomeradio recording status"
-msgstr "Gnomeradio - stan nagrywania"
+msgstr "Stan nagrywania programu gnomeradio"
 
-#: src/record.c:1
-msgid "Recording:"
-msgstr "Nagrywanie:"
+#: ../src/record.c:120
+#, c-format
+msgid "Recording from station %s"
+msgstr "Nagrywanie ze stacji %s"
 
-#: src/record.c:1
+#: ../src/record.c:127
+msgid "Destination:"
+msgstr "Katalog docelowy:"
+
+#: ../src/record.c:132
 msgid "Filesize:"
 msgstr "Rozmiar pliku:"
 
-#: src/record.c:1
+#: ../src/record.c:156
 msgid "Stop Recording"
 msgstr "Zatrzymaj nagrywanie"
 
-#~ msgid ""
-#~ "Yet another Gnome FM-Tuner. But this one is the best ;-)\n"
-#~ "(Hopefully) works with all FM-Tunercards supported by video4linux."
-#~ msgstr ""
-#~ "Jeszcze jeden tuner FM dla GNOME. Ten jest jednak najlepszy ;-)\n"
-#~ "(Mamy nadzieję, że) Działa ze wszystkimi kartami FM obsługiwanymi przez "
-#~ "video4linux"
+#: ../src/rec_tech.c:42
+msgid "GStreamer runtime error."
+msgstr "Błąd uruchamiania GStreamer."
 
-#~ msgid ""
-#~ "Mp3 encoder has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "Koder mp3 zakończył działanie:\n"
-#~ "%s\n"
-#~ "Aby uzyskać więcej szczegółów, uruchom gnomeradio z wiersza poleceń."
+#: ../src/rec_tech.c:58
+msgid "Could not create GStreamer pipeline."
+msgstr "Nie można utworzyć potoku GStreamer."
 
-#~ msgid ""
-#~ "sox has stopped:\n"
-#~ "%s\n"
-#~ "Start gnomeradio from a commandline for more details"
-#~ msgstr ""
-#~ "Program sox zakończył działanie:\n"
-#~ "%s\n"
-#~ "Aby uzyskać więcej szczegółów, uruchom gnomeradio z wiersza poleceń."
+#: ../src/rec_tech.c:59 ../src/rec_tech.c:89
+msgid "Check your Gstreamer installation!"
+msgstr "Proszę sprawdzić instalację GStreamer."
+
+#: ../src/rec_tech.c:65
+msgid "Could not open Gstreamer OSS Source."
+msgstr "Nie można otworzyć źródła OSS GStreamer."
+
+#: ../src/rec_tech.c:66
+msgid "Verify your Gstreamer OSS subsystem installation!"
+msgstr "Proszę sprawdzić instalację podsystemu OSS GStreamer."
+
+#: ../src/rec_tech.c:78
+#, c-format
+msgid "Could not create encoder \"%s\"."
+msgstr "Nie można utworzyć kodera \"%s\"."
+
+#: ../src/rec_tech.c:80
+msgid "Verify your Gstreamer plugins installation!"
+msgstr "Proszę sprawdzić instalację wtyczek GStreamer."
+
+#: ../src/rec_tech.c:88
+msgid "Could not create Gstreamer filesink."
+msgstr "Nie można utworzyć odpływu pliku GStreamer."
+
+#. +
+#: ../src/bacon-volume.c:187
+msgid "+"
+msgstr "+"
+
+#. -
+#: ../src/bacon-volume.c:203
+msgid "-"
+msgstr "-"
