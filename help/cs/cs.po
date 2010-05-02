@@ -1,0 +1,715 @@
+# Czech translation for gnomeradio help.
+# Copyright (C) 2010 gnomeradio's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnomeradio help.
+# Marek Černocký <marek@manet.cz>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnomeradio master\n"
+"POT-Creation-Date: 2010-03-05 13:48+0000\n"
+"PO-Revision-Date: 2010-03-15 17:47+0100\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:113(None)
+msgid "@@image: 'figures/status-window.png'; md5=d0c4d54f97de39699819385a710ba144"
+msgstr "@@image: 'figures/status-window.png'; md5=d0c4d54f97de39699819385a710ba144"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:150(None)
+msgid "@@image: 'figures/freq-controls.png'; md5=4933cb5da85db3dfb1806bc57581b47e"
+msgstr "@@image: 'figures/freq-controls.png'; md5=4933cb5da85db3dfb1806bc57581b47e"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:198(None)
+msgid "@@image: 'figures/volume-controls.png'; md5=78105ac11b84b19a23ee6e2de67bf746"
+msgstr "@@image: 'figures/volume-controls.png'; md5=78105ac11b84b19a23ee6e2de67bf746"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:231(None)
+msgid "@@image: 'figures/presets-box.png'; md5=edc4a308490ee833c9c5f3902bc80d29"
+msgstr "@@image: 'figures/presets-box.png'; md5=edc4a308490ee833c9c5f3902bc80d29"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:252(None)
+msgid "@@image: 'figures/misc-controls.png'; md5=f0498f2c68e70eccd5e3463cd3624d51"
+msgstr "@@image: 'figures/misc-controls.png'; md5=f0498f2c68e70eccd5e3463cd3624d51"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:305(None)
+msgid "@@image: 'figures/settings-misc.png'; md5=fd68ac96f48182a98e08cad0830c64b4"
+msgstr "@@image: 'figures/settings-misc.png'; md5=fd68ac96f48182a98e08cad0830c64b4"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:346(None)
+msgid "@@image: 'figures/settings-presets.png'; md5=f4b5dfb9412995456e3ec0bea75c33a9"
+msgstr "@@image: 'figures/settings-presets.png'; md5=f4b5dfb9412995456e3ec0bea75c33a9"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:423(None)
+msgid "@@image: 'figures/recording-general.png'; md5=b05b8ad408e2e439a3b7ce6884ab1cfe"
+msgstr "@@image: 'figures/recording-general.png'; md5=b05b8ad408e2e439a3b7ce6884ab1cfe"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:466(None)
+msgid "@@image: 'figures/recording-wav.png'; md5=d33785ba4f8958072fe7fb5f156b2bb6"
+msgstr "@@image: 'figures/recording-wav.png'; md5=d33785ba4f8958072fe7fb5f156b2bb6"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:508(None)
+msgid "@@image: 'figures/recording-mp3.png'; md5=fe5e8d5d9530cd86f111c6e6afc8dd69"
+msgstr "@@image: 'figures/recording-mp3.png'; md5=fe5e8d5d9530cd86f111c6e6afc8dd69"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/gnomeradio.xml:545(None)
+msgid "@@image: 'figures/recording_status.png'; md5=62929ea7948ce6158d5656cb2404bc56"
+msgstr "@@image: 'figures/recording_status.png'; md5=62929ea7948ce6158d5656cb2404bc56"
+
+#: C/gnomeradio.xml:24(title)
+msgid "Gnomeradio Manual V1.0"
+msgstr "Příručka V1.0 k aplikaci Gnomeradio."
+
+#: C/gnomeradio.xml:26(year)
+#: C/gnomeradio.xml:64(date)
+msgid "2002"
+msgstr "2002"
+
+#: C/gnomeradio.xml:28(holder)
+msgid "Jörgen Scheibengruber"
+msgstr "Jörgen Scheibengruber"
+
+#: C/gnomeradio.xml:40(para)
+msgid "Gnomeradio is a FM-tuner application for the GNOME desktop."
+msgstr "Gnomeradio je aplikace pro příjem rádia FM v pracovním prostředí GNOME."
+
+#: C/gnomeradio.xml:44(publishername)
+#: C/gnomeradio.xml:55(orgname)
+#: C/gnomeradio.xml:68(para)
+msgid "GNOME Documentation Project"
+msgstr "Dokumentační projekt GNOME"
+
+#: C/gnomeradio.xml:2(para)
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any later version published by the Free Software Foundation with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+msgstr "Je povoleno kopírovat, šířit a/nebo upravovat tento dokument za podmínek GNU Free Documentation License, verze 1.1 nebo jakékoli další verze vydané nadací Free Software Foundation; bez neměnných oddílů, bez textů předních desek a bez textů zadních desek. Kopie této licence je zahrnuta v oddílu jménem <ulink type=\"help\" url=\"ghelp:fdl\">GNU Free Documentation License</ulink> nebo v souboru COPYING-DOCS dodávaném s touto příručkou."
+
+#: C/gnomeradio.xml:12(para)
+msgid "This manual is part of a collection of GNOME manuals distributed under the GFDL. If you want to distribute this manual separately from the collection, you can do so by adding a copy of the license to the manual, as described in section 6 of the license."
+msgstr "Tato příručka je součástí kolekce příruček GNOME, distribuovaných pod licencí GNU FDL. Pokud chcete tento dokument šířit odděleně od kolekce, musíte přiložit kopii licence dle popisu v sekci 6 dané licence."
+
+#: C/gnomeradio.xml:19(para)
+msgid "Many of the names used by companies to distinguish their products and services are claimed as trademarks. Where those names appear in any GNOME documentation, and the members of the GNOME Documentation Project are made aware of those trademarks, then the names are in capital letters or initial capital letters."
+msgstr "Mnoho užívaných jmen určených k zviditelnění produktů nebo služeb jsou ochranné známky. Na místech, kde jsou tato jména v dokumentaci užita a členové Dokumentačního projektu GNOME jsou si vědomi skutečnosti, že se jedná o ochrannou známku, je takové jméno psáno velkými písmeny celé nebo s velkým písmenem na začátku."
+
+#: C/gnomeradio.xml:35(para)
+msgid "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL WRITER, AUTHOR OR ANY CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND"
+msgstr "DOKUMENT JE POSKYTOVÁN V PODOBĚ „JAK JE“ BEZ ZÁRUKY V JAKÉKOLIV PODOBĚ, NEPOSKYTUJÍ SE ANI ODVOZENÉ ZÁRUKY, ZÁRUKY, ŽE DOKUMENT, NEBO JEHO UPRAVENÁ VERZE, JE BEZCHYBNÝ NEBO ZÁRUKY PRODEJNOSTI, VHODNOSTI PRO URČITÝ ÚČEL NEBO NEPORUŠENOSTI. RIZIKO NEKVALITY, NEPŘESNOSTI A ŠPATNÉHO PROVEDENÍ DOKUMENTU, NEBO JEHO UPRAVENÉ VERZE, LEŽÍ NA VÁS. POKUD KVŮLI TOMUTO DOKUMENTU, NEBO JEHO UPRAVENÉ VERZI, NASTANE PROBLÉM, VY (NIKOLIV PŮVODNÍ AUTOR NEBO JAKÝKOLIV PŘISPĚVATEL) PŘEBÍRÁTE JAKÉKOLIV NÁKLADY ZA NUTNÉ ÚPRAVY, OPRAVY ČI SLUŽBY. TOTO PROHLÁŠENÍ O ZÁRUCE PŘEDSTAVUJE ZÁKLADNÍ SOUČÁST TÉTO LICENCE. BEZ TOHOTO PROHLÁŠENÍ NENÍ, PODLE TÉTO DOHODY, POVOLENO UŽÍVÁNÍ ANI ÚPRAVY TOHOTO DOKUMENTU; DÁLE"
+
+#: C/gnomeradio.xml:55(para)
+msgid "UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES."
+msgstr "ZA ŽÁDNÝCH OKOLNOSTÍ A ŽÁDNÝCH PRÁVNÍCH PŘEDPOKLADŮ, AŤ SE JEDNÁ O PŘEČIN (VČETNĚ NEDBALOSTNÍCH), SMLOUVU NEBO JINÉ, NENÍ AUTOR, PŮVODNÍ PISATEL, KTERÝKOLIV PŘISPĚVATEL NEBO KTERÝKOLIV DISTRIBUTOR TOHOTO DOKUMENTU NEBO UPRAVENÉ VERZE DOKUMENTU NEBO KTERÝKOLIV DODAVATEL NĚKTERÉ Z TĚCHTO STRAN ODPOVĚDNÝ NĚJAKÉ OSOBĚ ZA PŘÍMÉ, NEPŘÍMÉ, SPECIÁLNÍ, NAHODILÉ NEBO NÁSLEDNÉ ŠKODY JAKÉHOKOLIV CHARAKTERU, VČETNĚ, ALE NEJEN, ZA POŠKOZENÍ ZE ZTRÁTY DOBRÉHO JMÉNA, PŘERUŠENÍ PRÁCE, PORUCHY NEBO NESPRÁVNÉ FUNKCE POČÍTAČE NEBO JINÉHO A VŠECH DALŠÍCH ŠKOD NEBO ZTRÁT VYVSTÁVAJÍCÍCH Z NEBO VZTAHUJÍCÍCH SE K POUŽÍVÁNÍ TOHOTO DOKUMENTU NEBO UPRAVENÝCH VERZÍ DOKUMENTU, I KDYŽ BY TAKOVÁTO STRANA BYLA INFORMOVANÁ O MOŽNOSTI TAKOVÉHOTO POŠKOZENÍ."
+
+#: C/gnomeradio.xml:28(para)
+msgid "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: <placeholder-1/>"
+msgstr "DOKUMENT A JEHO UPRAVENÉ VERZE JSOU ŠÍŘENY V SOULADU SE ZNĚNÍM LICENCE GNU FREE DOCUMENTATION LICENSE S NÁSLEDUJÍCÍM USTANOVENÍM: <placeholder-1/>"
+
+#: C/gnomeradio.xml:52(firstname)
+msgid "Jörgen"
+msgstr "Jörgen"
+
+#: C/gnomeradio.xml:53(surname)
+msgid "Scheibengruber"
+msgstr "Scheibengruber"
+
+#: C/gnomeradio.xml:56(email)
+msgid "mfcn@gmx.de"
+msgstr "mfcn@gmx.de"
+
+#: C/gnomeradio.xml:63(revnumber)
+msgid "1.0"
+msgstr "1.0"
+
+#: C/gnomeradio.xml:66(para)
+msgid "Jörgen Scheibengruber <email>mfcn@gmx.de</email>"
+msgstr "Jörgen Scheibengruber <email>mfcn@gmx.de</email>"
+
+#: C/gnomeradio.xml:72(releaseinfo)
+msgid "This manual describes version 1.3 of Gnomeradio."
+msgstr "Tato příručka popisuje aplikaci Gnomeradio ve verzi 1.3."
+
+#: C/gnomeradio.xml:75(title)
+msgid "Feedback"
+msgstr "Ohlasy"
+
+#: C/gnomeradio.xml:76(para)
+msgid "To report a bug or make a suggestion regarding Gnomeradio or this manual, send a e-mail to <ulink url=\"mailto:mfcn@gmx.de\" type=\"mail\">Jörgen Scheibengruber</ulink>."
+msgstr "Pokud chcete oznámit chybu nebo navrhnout vylepšení vztahující se k aplikaci <application>Gnomeradio</application> nebo této příručce, pošlete e-mail <ulink url=\"mailto:mfcn@gmx.de\" type=\"mail\">Jörgenovi Scheibengruberovi</ulink>."
+
+#: C/gnomeradio.xml:81(primary)
+msgid "Gnomeradio"
+msgstr "Gnomeradio"
+
+#: C/gnomeradio.xml:87(title)
+msgid "Introduction"
+msgstr "Úvod"
+
+#: C/gnomeradio.xml:88(para)
+msgid "<application>Gnomeradio</application> is a FM-Tuner application for the GNOME desktop. It should work with all tuner hardware that is supported by the <ulink url=\"http://roadrunner.swansea.uk.linux.org/v4l.shtml\" type=\"http\">video4linux</ulink> drivers."
+msgstr "<application>Gnomeradio</application> je aplikace pro příjem rádia FM v pracovním prostředí GNOME. Měla by pracovat s veškerým hardwarem pro příjem rádia, který je podporován ovladači projektu <ulink url=\"http://roadrunner.swansea.uk.linux.org/v4l.shtml\" type=\"http\">video4linux</ulink>."
+
+#: C/gnomeradio.xml:93(para)
+msgid "To start <application>Gnomeradio</application> open the applications menu, then choose <menuchoice><guimenu>Multimedia</guimenu><guimenuitem>Gnomeradio</guimenuitem></menuchoice> or type <command>gnomeradio</command> in a shell."
+msgstr "Pokud chcete aplikaci <application>Gnomeradio</application> spustit, otevřete nabídku Aplikace a zvolte <menuchoice><guimenu>Zvuk a video</guimenu><guimenuitem>Gnomeradio</guimenuitem></menuchoice> nebo v příkazovém řádku terminálu napište <command>gnomeradio</command>."
+
+#: C/gnomeradio.xml:105(title)
+msgid "Usage"
+msgstr "Použití"
+
+#: C/gnomeradio.xml:108(title)
+msgid "Status window"
+msgstr "Stavové okno"
+
+#: C/gnomeradio.xml:110(title)
+msgid "The black box in the upper left of Gnomeradio is the status window"
+msgstr "Černý obdélník v levém horním rohu aplikace Gnomeradio je stavové okno"
+
+#: C/gnomeradio.xml:116(phrase)
+msgid "The black box in the upper left of Gnomeradio is the status window."
+msgstr "Černý obdélník v levém horním rohu aplikace Gnomeradio je stavové okno."
+
+#: C/gnomeradio.xml:121(para)
+msgid "The status window is located in the upper left corner of the Gnomeradio main window. It consists of:"
+msgstr "Stavové okno se nachází v levém horním rohu hlavního okna Gnomeradio. Obsahuje:"
+
+#: C/gnomeradio.xml:126(para)
+msgid "a label showing wether the reception is mono or stereo,"
+msgstr "popisku ukazujícího zda je příjem mono nebo stereo"
+
+#: C/gnomeradio.xml:131(para)
+msgid "an icon indicating the quality of the reception and"
+msgstr "ikonu signalizující kvalitu příjmu"
+
+#: C/gnomeradio.xml:136(para)
+msgid "the current frequency."
+msgstr "současnou naladěnou frekvenci."
+
+#: C/gnomeradio.xml:145(title)
+msgid "Frequency controls"
+msgstr "Ladění stanic"
+
+#: C/gnomeradio.xml:147(title)
+msgid "Use these controls to change the frequency"
+msgstr "Použijte tyto ovládací prvky ke změně frekvence stanice"
+
+#: C/gnomeradio.xml:153(phrase)
+msgid "Use these controls to change the frequency."
+msgstr "Použijte tyto ovládací prvky ke změně frekvence stanice."
+
+#: C/gnomeradio.xml:158(para)
+msgid "The following controls are available to change the frequency:"
+msgstr "Následující ovládací prvky jsou k dispozici ke změně frekvence:"
+
+#: C/gnomeradio.xml:163(para)
+msgid "Using the slider you can change the frequency very quick."
+msgstr "Použitím táhla můžete frekvenci změnit velmi rychle."
+
+#: C/gnomeradio.xml:168(para)
+msgid "The <guibutton>scan backwards</guibutton> button (left-arrow with bar) will decrease the frequency until if detects the next radio station with good reception."
+msgstr "Tlačítko <guibutton>Hledat dozadu</guibutton> (šipka vlevo se zarážkou) bude snižovat frekvenci, dokud nebude nalezena následující stanice rádia s dobrým příjmem."
+
+#: C/gnomeradio.xml:173(para)
+msgid "The <guibutton>0.5 MHz backwards</guibutton> button (left-arrow without bar) decreases the frequency by 0.5 MHz."
+msgstr "Tlačítko <guibutton>Dozadu o 0,05 MHz</guibutton> (šipka vlevo bez zarážky) sníží frekvenci o 0,05 MHz."
+
+#: C/gnomeradio.xml:178(para)
+msgid "The <guibutton>0.5 MHz forward</guibutton> button (right-arrow without bar) increases the frequency by 0.5 MHz."
+msgstr "Tlačítko <guibutton>Dopředu o 0,05 MHz</guibutton> (šipka vpravo bez zarážky) zvýší frekvenci o 0,05 MHz."
+
+#: C/gnomeradio.xml:183(para)
+msgid "The <guibutton>scan forwards</guibutton> button (right-arrow with bar) does the same as the \"scan backwards\" button, but it increases the frequency."
+msgstr "Tlačítko <guibutton>Hledat dopředu</guibutton> (šipka vpravo se zarážkou) dělá to stejné, co tlačítko „Hledat dozadu“, akorát frekvenci zvyšuje."
+
+#: C/gnomeradio.xml:193(title)
+msgid "Volume controls"
+msgstr "Ovládání hlasitosti"
+
+#: C/gnomeradio.xml:195(title)
+msgid "Use these controls to change the volume"
+msgstr "Tyto ovládací prvky použijte pro změnu hlasitosti"
+
+#: C/gnomeradio.xml:201(phrase)
+msgid "Use these controls to change the volume."
+msgstr "Tyto ovládací prvky použijte pro změnu hlasitosti."
+
+#: C/gnomeradio.xml:206(para)
+msgid "Controls available to change the volume:"
+msgstr "Ovládací prvky, které jsou k dispozici ke změně hlasitosti:"
+
+#: C/gnomeradio.xml:211(para)
+msgid "Use the slider to adjust the volume. Note that it will only work if you have picked the right <guilabel>mixer source</guilabel>, in the <xref linkend=\"gnomeradio-settings\"/> Dialog."
+msgstr "K přizpůsobení hlasitosti použijte táhlo. Upozorňujeme, že to funguje pouze v případě, že máte vybraný správný <guilabel>zdroj mixéru</guilabel> v dialogovém okně <xref linkend=\"gnomeradio-settings\"/>."
+
+#: C/gnomeradio.xml:217(para)
+msgid "Toggling the button showing the speaker will mute/unmute Gnomeradio."
+msgstr "Přepínací tlačítko ukazuje, zda je zvuk z aplikace Gnomeradio ztišený nebo normálně puštěný."
+
+#: C/gnomeradio.xml:226(title)
+msgid "Presets menubutton"
+msgstr "Nabídka předvolených stanic"
+
+#: C/gnomeradio.xml:228(title)
+msgid "Choose a preset using the menubutton"
+msgstr "Vyberte si předvolenou stanici pomocí nabídkového tlačítka"
+
+#: C/gnomeradio.xml:234(phrase)
+msgid "Choose a preset using the menubutton."
+msgstr "Vyberte si předvolenou stanici pomocí nabídkového tlačítka."
+
+#: C/gnomeradio.xml:239(para)
+msgid "Use the menubutton in the upper right to choose a radio station preset. You can edit presets in the <xref linkend=\"gnomeradio-settings\"/> Dialog."
+msgstr "K výběru předvolené stanice použijte nabídkové tlačítko vpravo nahoře. Předvolené stanice můžete upravit v dialogovém okně <xref linkend=\"gnomeradio-settings\"/>."
+
+#: C/gnomeradio.xml:247(title)
+msgid "Misc. controls"
+msgstr "Různé ovládací prvky"
+
+#: C/gnomeradio.xml:249(title)
+msgid "Remaining controls"
+msgstr "Zbývající ovládací prvky"
+
+#: C/gnomeradio.xml:255(phrase)
+msgid "Remaining controls."
+msgstr "Zbývající ovládací prvky."
+
+#: C/gnomeradio.xml:264(para)
+msgid "The <guibutton>record</guibutton> button opens the <xref linkend=\"gnomeradio-recording\"/> Dialog."
+msgstr "Tlačítko <guibutton>Nahrát</guibutton> otevře dialogové okno <xref linkend=\"gnomeradio-recording\"/>."
+
+#: C/gnomeradio.xml:269(para)
+msgid "Clicking the <guibutton>about</guibutton> button will show a window with some credits."
+msgstr "Kliknutím na tlačítko <guibutton>O aplikaci</guibutton> se zobrazí okno s informacemi o zásluhách."
+
+#: C/gnomeradio.xml:274(para)
+msgid "Behind the <guibutton>settings</guibutton> button hides the <xref linkend=\"gnomeradio-settings\"/> Dialog."
+msgstr "Za tlačítkem <guibutton>Nastavení</guibutton> je ukryto dialogové okno <xref linkend=\"gnomeradio-settings\"/>."
+
+#: C/gnomeradio.xml:279(para)
+msgid "The <guibutton>quit</guibutton> button will terminate Gnomeradio"
+msgstr "Tlačítko <guibutton>Ukončit</guibutton> aplikaci Gnomeradio ukončí."
+
+#: C/gnomeradio.xml:290(title)
+msgid "Preferences"
+msgstr "Předvolby"
+
+#: C/gnomeradio.xml:291(para)
+msgid "To open the preferences dialog, click the <guibutton>preferences</guibutton> button in the main window."
+msgstr "Když chcete otevřít dialogové okno předvoleb, klikněte na tlačítko <guibutton>Předvolby</guibutton> v hlavním okně."
+
+#: C/gnomeradio.xml:294(para)
+msgid "If you are finished click <guibutton>OK</guibutton> to accept your changes or <guibutton>Cancel</guibutton> to undo the changes."
+msgstr "Až skončíte, klikněte na <guibutton>OK</guibutton> pro potvrzení vašich změn nebo <guibutton>Zrušit</guibutton> pro vrácení změn zpět."
+
+#: C/gnomeradio.xml:300(title)
+#: C/gnomeradio.xml:302(title)
+msgid "General preferences"
+msgstr "Obecná nastavení"
+
+#: C/gnomeradio.xml:308(phrase)
+msgid "General preferences."
+msgstr "Obecná nastavení."
+
+#: C/gnomeradio.xml:317(para)
+msgid "<guilabel>Radio Device:</guilabel> Enter your radio device. Unless you have several radio tuners installed this is usually /dev/radio."
+msgstr "<guilabel>Zařízení rádia:</guilabel> Zadejte zařízení svého rádia. Pokud nemáte nainstalováno několik přijímačů rádia, je zde obvykle nastaveno /dev/radio."
+
+#: C/gnomeradio.xml:323(para)
+msgid "<guilabel>Mixer Source:</guilabel> Choose the mixer source that is able to control the volume of your radio tuner. The combobox lists all devices that you can choose as a recording source. You should usually pick one of these, otherwise you won't be able to record radio. If you have set up own names for the sources in gnome volume control, these names will be shown in paranthesis behind the \"official\" name."
+msgstr "<guilabel>Zdroj mixéru:</guilabel> Zvolte zdroj mixéru, který je schopný ovládat hlasitost vašeho rádia. Kombinovaný výběrový seznam nabízí všechna zařízení, která si můžete zvolit jako zdroje záznamu. Obvykle byste měli zvolit jedno z těchto, jinak nebudete schopni si vysílání rádia nahrávat. Pokud máte v ovládání hlasitosti gnome nastavené vlastní názvy zdrojů, zobrazí se tyto názvy v závorkách vedle „oficiálních“ názvů."
+
+#: C/gnomeradio.xml:332(para)
+msgid "<guilabel>Mute on Exit:</guilabel> Uncheck this checkbox, if you want that the radio keeps on playing after you have terminated Gnomeradio."
+msgstr "<guilabel>Ztišit při ukončení:</guilabel> Toto políčko ponechte nezaškrtnuté v případě, že chcete ponechat rádio hrát i po ukončení aplikace Gnomeradio."
+
+#: C/gnomeradio.xml:341(title)
+#: C/gnomeradio.xml:343(title)
+msgid "Editing presets"
+msgstr "Úprava předvolených stanic"
+
+#: C/gnomeradio.xml:349(phrase)
+msgid "Editing presets."
+msgstr "Úprava předvolených stanic."
+
+#: C/gnomeradio.xml:354(para)
+msgid "Here you can add some preset radio stations. You can select one of these using the <xref linkend=\"gnomeradio-usage-presets\"/> or your <xref linkend=\"gnomeradio-lirc\"/> remote control."
+msgstr "Zde si můžete přidat předvolené stanice. Z nich si potom můžete vybírat pomocí <xref linkend=\"gnomeradio-usage-presets\"/> nebo svého dálkového ovladače s podporou <xref linkend=\"gnomeradio-lirc\"/>."
+
+#: C/gnomeradio.xml:361(para)
+msgid "<guilabel>Name:</guilabel> Enter a name for the preset (usually the name of the radio station)."
+msgstr "<guilabel>Název:</guilabel> Zadejte název předvolené stanice (obvyklé je použít název rádiové stanice)."
+
+#: C/gnomeradio.xml:367(para)
+msgid "<guilabel>Frequency:</guilabel> Choose the frequency for the radio station."
+msgstr "<guilabel>Frekvence:</guilabel> Zvolte frekvenci rádiové stanice."
+
+#: C/gnomeradio.xml:372(para)
+msgid "Click the button <guibutton>add preset</guibutton> (shows a +) to add the preset to the list."
+msgstr "Předvolenou stanici přidáte do seznamu kliknutím na tlačítko <guibutton>Smazat</guibutton>."
+
+#: C/gnomeradio.xml:378(para)
+msgid "The button <guibutton>remove preset</guibutton> (shows a -) will remove the currently selected preset from the list."
+msgstr "Již předvolenou stanici můžete ze seznamu odstranit kliknutím na tlačítko <guibutton>Přidat</guibutton>."
+
+#: C/gnomeradio.xml:384(para)
+msgid "Use the button <guibutton>update preset</guibutton> to update the selected preset with the values currently entered in the name and frequency entries."
+msgstr "Tlačítkem <guibutton>Aktualizovat předvolené</guibutton> aktualizujete vybranou předvolenou stanici hodnotami právě zadanými v polích Název a Frekvence."
+
+#: C/gnomeradio.xml:395(title)
+msgid "Recording"
+msgstr "Nahrávání"
+
+#: C/gnomeradio.xml:396(para)
+msgid "You can use gnomeradio to (live)record radio. In this dialog you have to give some information, on how this shall be done."
+msgstr "Aplikaci gnomeradio můžete použít k nahrávání živého vysílání rádia. V tomto dialogovém okně můžete zadat některé údaje upřesňující, jak se to má dít."
+
+#: C/gnomeradio.xml:400(para)
+msgid "You need the external application <application>sox</application> installed in order to use the recording functionality of Gnomeradio. If you want to record as MP3, you have to install a MP3 encoder, too. Currently the MP3 encoders <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink> and <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink> are supported. To record files as ogg vorbis you need <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink>."
+msgstr "Pro fungování nahrávání v aplikaci Gnomeradio potřebujete mít nainstalovanou externí aplikaci <application>sox</application>. Pokud chcete nahrávat ve formátu MP3, musíte mít také nainstalovaný kodér MP3. V současnosti jsou podporované kodéry MP3 <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink> a <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink>. Pro záznam souborů ve formátu ogg potřebujete <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink>."
+
+#: C/gnomeradio.xml:409(para)
+msgid "To open this dialog, click the <guibutton>record</guibutton> button in the main window."
+msgstr "Toto dialogové okno otevřete kliknutím na tlačítko <guibutton>Nahrát</guibutton> v hlavním okně."
+
+#: C/gnomeradio.xml:412(para)
+msgid "Use the <guibutton>Start</guibutton> button to start recording. Otherwise click <guibutton>Cancel</guibutton> to close the dialog."
+msgstr "K započetí nahrávání použijte tlačítko <guibutton>Začít</guibutton>. Naopak tlačítkem <guibutton>Zrušit</guibutton> dialogové okno zavřete."
+
+#: C/gnomeradio.xml:418(title)
+msgid "General settings"
+msgstr "Obecná nastavení"
+
+#: C/gnomeradio.xml:420(title)
+msgid "General recording settings"
+msgstr "Obecná nastavení nahrávání"
+
+#: C/gnomeradio.xml:426(phrase)
+msgid "General recording settings."
+msgstr "Obecná nastavení nahrávání."
+
+#: C/gnomeradio.xml:435(para)
+msgid "<guilabel>Audio Device:</guilabel> Enter your audio device. Unless you have several soundcards installed this is usually /dev/audio."
+msgstr "<guilabel>Zvukové zařízení:</guilabel> Zadejte své zvukové zařízení. Pokud nemáte nainstalováno více zvukových karet, bude to obvykle /dev/audio."
+
+#: C/gnomeradio.xml:441(para)
+msgid "<guilabel>Filename:</guilabel> Choose a filename and destination for the file in which the audio data should be stored. This file should usually have the suffix \".wav\", in case you want to record as wave data, \".mp3\", in case the audio should be stored in the mp3-format or \".ogg\", for ogg vorbis files."
+msgstr "<guilabel>Název souboru:</guilabel> Zvolte název souboru a cílovou složku pro soubor, do kterého by se měla zvuková data ukládat. Tento soubor by měl obvykle mít příponu „.wav“ v případě, že chcete zaznamenávat přímo průběh zvuku, „.mp3“ v případě, že by se měl zvuk ukládat ve formátu mp3 nebo „.ogg“ pro soubory ogg vorbis."
+
+#: C/gnomeradio.xml:449(para)
+msgid "<guilabel>Record as:</guilabel> Select <guilabel>Wave (.wav)</guilabel>, if you want the audio data to be stored in the wave format (uncompressed - about 10 megabyte per minute playlength). Otherwise choose <guilabel>MP3/Ogg (.mp3/.ogg)</guilabel> which will lead to a much lower filesize, but also a little bit lower audio quality."
+msgstr "<guilabel>Nahrát jako:</guilabel> Vyberte <guilabel>Wave (.wav)</guilabel>, pokud chcete zvuková data uchovat ve formátu wave (nekomprimovaný - zhruba 10 megabajtů na minutu záznamu). V opačném případě zvolte <guilabel>MP3/Ogg (.mp3/.ogg)</guilabel>, které poskytují mnohem menší velikost souboru, ale také o trošičku nižší kvalitu zvuku."
+
+#: C/gnomeradio.xml:461(title)
+msgid "Wave settings"
+msgstr "Nastavení Wave"
+
+#: C/gnomeradio.xml:463(title)
+msgid "The wave settings"
+msgstr "Nastavení Wave"
+
+#: C/gnomeradio.xml:469(phrase)
+msgid "The wave settings."
+msgstr "Nastavení Wave."
+
+#: C/gnomeradio.xml:474(para)
+msgid "These settings apply to the mp3 file, too."
+msgstr "Tato nastavení se použijí rovněž pro soubor mp3."
+
+#: C/gnomeradio.xml:479(para)
+msgid "<guilabel>Sample rate:</guilabel> Choose a sample rate for the recording audio file. Higher sampling rate means better quality. 44100 kHz is a good default (aprox. CD quality). If the reception is bad you can take a lower sampling rate, because the quality won't be that good anyways."
+msgstr "<guilabel>Vzorkovací frekvence:</guilabel> Zvolte vzorkovací frekvenci pro nahrávání zvukového souboru. Vyšší vzorkovací frekvence znamená lepší kvalitu. Dobrá výchozí hodnota je 44100 kHz (odpovídá kvalitě CD). Pokud je špatný příjem, vystačí vám nižší vzorkovací frekvence, protože kvalita se stejně nezlepší."
+
+#: C/gnomeradio.xml:486(para)
+msgid "<guilabel>Sample format:</guilabel> Available options are 8 or 16 bit. Usually you want to take 16 bit."
+msgstr "<guilabel>Formát vzorku:</guilabel> Možné volby jsou 8 nebo 16 bitů. Obvykle budete chtít 16 bitů."
+
+#: C/gnomeradio.xml:492(para)
+msgid "<guilabel>Record in:</guilabel> Select <guilabel>stereo</guilabel>, if you want to record in stereo or <guilabel>mono</guilabel> otherwise. It probably doen't make much sense to record in stereo, if the reception is only mono."
+msgstr "<guilabel>Nahrát v:</guilabel> Vyberte <guilabel>stereo</guilabel>, pokud chcete nahrávat ve stereo nebo v opačném případě <guilabel>mono</guilabel>. Pravděpodobně nemá smysl zaznamenávat stereo, pokud máte příjem pouze mono."
+
+#: C/gnomeradio.xml:503(title)
+msgid "MP3/Ogg settings"
+msgstr "Nastavení MP3/Ogg"
+
+#: C/gnomeradio.xml:505(title)
+msgid "The MP3/Ogg settings"
+msgstr "Nastavení MP3/Ogg"
+
+#: C/gnomeradio.xml:511(phrase)
+msgid "The MP3 settings."
+msgstr "Nastavení MP3/Ogg."
+
+#: C/gnomeradio.xml:520(para)
+msgid "<guilabel>Encoder:</guilabel> A list of supported MP3/Ogg encoders that you have installed. Choose the one you like the best. Currently <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink>, <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink> and <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink> are supported. The encoder must be in your PATH, otherwise Gnomeradio can't find it."
+msgstr "<guilabel>Kodér:</guilabel> Seznam podporovaných kodérů MP3/Ogg, které máte nainstalované. Zvolte nejlepší z nich. V současnosti jsou podporované <ulink url=\"http://www.mp3dev.org/mp3/\" type=\"http\">lame</ulink>, <ulink url=\"http://bladeenc.mp3.no/\" type=\"http\">bladeenc</ulink> a <ulink url=\"http://www.xiph.org/ogg/vorbis/index.html\" type=\"http\">oggenc</ulink>. Kodér se musí nacházet v prohledávané cestě PATH, jinak jej aplikace Gnomeradio nenajde."
+
+#: C/gnomeradio.xml:529(para)
+msgid "<guilabel>Bitrate:</guilabel> Choose a bitrate. This will have the largest impact on the size and quality of the resulting MP3/Ogg file. The higher the bitrate the better the quality. 128 kb/s is usually a good value which will result in files that are aprox. 1 MB per minute playlength."
+msgstr "<guilabel>Datový tok:</guilabel> Zvolte datový tok. Ten má velký vliv na velikost a kvalitu výsledného souboru MP3/Ogg. Vyšší datový tok přináší vyšší kvalitu. 128 kb/s je obvykle dobrá hodnota, jejímž výsledkem jsou soubory s velikostí přibližně 1 MB na minutu záznamu."
+
+#: C/gnomeradio.xml:540(title)
+msgid "Recording status window"
+msgstr "Okno se stavem nahrávání"
+
+#: C/gnomeradio.xml:542(title)
+msgid "The status window"
+msgstr "Stavové okno"
+
+#: C/gnomeradio.xml:548(phrase)
+msgid "The status window."
+msgstr "Stavové okno."
+
+#: C/gnomeradio.xml:553(para)
+msgid "Click <guibutton>Stop Recording</guibutton> to stop the recording and return to the main window. The window shows the name and size of the file in which the audio data is being stored."
+msgstr "Kliknutím na <guibutton>Zastavit nahrávání</guibutton> zastavíte nahrávání a vrátíte se do hlavního okna. Okno zobrazuje název a velikost souboru, do kterého se zvuková data ukládají."
+
+#: C/gnomeradio.xml:563(title)
+msgid "Keybindings"
+msgstr "Klávesové zkratky"
+
+#: C/gnomeradio.xml:564(para)
+msgid "Gnomeradio has a few keybindings."
+msgstr "Gnomeradio má několik klávesových zkratek."
+
+#: C/gnomeradio.xml:568(title)
+msgid "Keyboard shortcuts in Gnomeradio"
+msgstr "Klávesové zkratky v Gnomeradio"
+
+#: C/gnomeradio.xml:574(entry)
+msgid "Shortcut"
+msgstr "Klávesová zkratka"
+
+#: C/gnomeradio.xml:575(entry)
+#: C/gnomeradio.xml:720(entry)
+msgid "Description"
+msgstr "Popis"
+
+#: C/gnomeradio.xml:581(keycap)
+msgid "F1"
+msgstr "F1"
+
+#: C/gnomeradio.xml:583(entry)
+msgid "Open this help."
+msgstr "Otevřít tuto nápovědu."
+
+#: C/gnomeradio.xml:589(keycap)
+msgid "r"
+msgstr "r"
+
+#: C/gnomeradio.xml:591(entry)
+msgid "Open the recording dialog."
+msgstr "Otevřít dialogové okno nahrávání."
+
+#: C/gnomeradio.xml:597(keycap)
+msgid "m"
+msgstr "m"
+
+#: C/gnomeradio.xml:599(entry)
+#: C/gnomeradio.xml:776(entry)
+msgid "Mute/unmute the volume."
+msgstr "Ztišit/zapnout normální hlasitost."
+
+#: C/gnomeradio.xml:605(keycap)
+msgid "q"
+msgstr "q"
+
+#: C/gnomeradio.xml:607(entry)
+#: C/gnomeradio.xml:784(entry)
+msgid "Terminate Gnomeradio."
+msgstr "Ukončit Gnomeradio."
+
+#: C/gnomeradio.xml:613(keycap)
+msgid "f"
+msgstr "f"
+
+#: C/gnomeradio.xml:615(entry)
+#: C/gnomeradio.xml:728(entry)
+msgid "Scan forward."
+msgstr "Hledat dopředu."
+
+#: C/gnomeradio.xml:621(keycap)
+msgid "b"
+msgstr "b"
+
+#: C/gnomeradio.xml:623(entry)
+#: C/gnomeradio.xml:736(entry)
+msgid "Scan backwards."
+msgstr "Hledat dozadu."
+
+#: C/gnomeradio.xml:629(keycap)
+msgid "n"
+msgstr "n"
+
+#: C/gnomeradio.xml:631(entry)
+#: C/gnomeradio.xml:744(entry)
+msgid "Select next preset."
+msgstr "Vybrat následující předvolenou stanici."
+
+#: C/gnomeradio.xml:637(keycap)
+msgid "p"
+msgstr "p"
+
+#: C/gnomeradio.xml:639(entry)
+#: C/gnomeradio.xml:752(entry)
+msgid "Select previous preset."
+msgstr "Vybrat předchozí předvolenou stanici."
+
+#: C/gnomeradio.xml:645(keycap)
+msgid "+"
+msgstr "+"
+
+#: C/gnomeradio.xml:647(entry)
+msgid "Increase volume."
+msgstr "Zvýšit hlasitost."
+
+#: C/gnomeradio.xml:653(keycap)
+msgid "-"
+msgstr "-"
+
+#: C/gnomeradio.xml:655(entry)
+msgid "Decrease volume."
+msgstr "Snížit hlasitost."
+
+#: C/gnomeradio.xml:667(title)
+msgid "LIRC"
+msgstr "LIRC"
+
+#: C/gnomeradio.xml:668(para)
+msgid "You can use a remote control supported by <ulink url=\"http://www.lirc.org/\" type=\"http\">LIRC</ulink> (Linux infrared remote control) to control <application>Gnomeradio</application>."
+msgstr "K ovládání aplikace <application>Gnomeradio</application> můžete používat dálkové ovladače podporované projektem <ulink url=\"http://www.lirc.org/\" type=\"http\">LIRC</ulink> (Linux infrared remote control)."
+
+#: C/gnomeradio.xml:673(para)
+msgid "Your remote control will only work if <application>Gnomeradio</application> has been compiled with LIRC support enabled. If you are unsure wether this is the case or not, check the about dialog."
+msgstr "Váš dálkový ovladač bude pracovat jen v případě, že aplikace <application>Gnomeradio</application> byla přeložena se zapnutou podporou LIRC. Pokud si nejste jistí, že tomu tak je, zkontrolujte si to v dialogovém okně o aplikaci."
+
+#: C/gnomeradio.xml:679(title)
+msgid "The .lircrc config file"
+msgstr "Soubor nastavení .lircrc"
+
+#: C/gnomeradio.xml:680(para)
+msgid "In the file <filename>.lircrc</filename> in your home directory, you set up which keys on your remote control you want to associate with actions in Gnomeradio. A typical section in the file looks like this:"
+msgstr "V souboru <filename>.lircrc</filename> ve své domovské složce nastavte, které klávesy na vašem dálkovém ovladači chcete přiřadit k akcím aplikace Gnomeradio. Typická část v souboru vypadá následovně:"
+
+#: C/gnomeradio.xml:685(title)
+msgid "Example for a .lircrc section"
+msgstr "Příklad části .lircrc"
+
+#: C/gnomeradio.xml:686(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"begin\n"
+"\tprog = gnomeradio\n"
+"\tbutton = VOL+\n"
+"\tconfig = volume up\n"
+"\trepeat = 1      \n"
+"end\n"
+msgstr ""
+"\n"
+"begin\n"
+"\tprog = gnomeradio\n"
+"\tbutton = VOL+\n"
+"\tconfig = volume up\n"
+"\trepeat = 1      \n"
+"end\n"
+
+#: C/gnomeradio.xml:695(para)
+msgid "This associates the button VOL+ (Attention: Buttonnames are remote control specific) with the command \"volume up\". \"repeat = 1\" means that in case you keep the button of your remote control pressed, the command is repeated as long as you press the button. It's of by default."
+msgstr "Tímto se tlačítko VOL+ (pozor: názvy tlačítek jsou specifické pro každý ovladač) přidruží k příkazu „volume up“ (zvýšení hlasitosti). „repeat = 1“ znamená, že pokud tlačítko na svém dálkovém ovladači držíte zmáčknuté, bude se příkaz opakovat tak dlouho, než tlačítko pustíte. Standardně je tato volba vypnutá."
+
+#: C/gnomeradio.xml:701(para)
+msgid "For more information, please consult the LIRC documentation."
+msgstr "Na další informace nahlédněte prosím do dokumentace LIRC."
+
+#: C/gnomeradio.xml:708(title)
+msgid "Available commands"
+msgstr "Dostupné příkazy"
+
+#: C/gnomeradio.xml:709(para)
+msgid "The following commands are available in Gnomeradio:"
+msgstr "V Gnomeradio jsou dostupné následující příkazy:"
+
+#: C/gnomeradio.xml:713(title)
+msgid "LIRC commands"
+msgstr "Příkazy LIRC"
+
+#: C/gnomeradio.xml:719(entry)
+msgid "Command"
+msgstr "Příkaz"
+
+#: C/gnomeradio.xml:726(command)
+msgid "tune up"
+msgstr "tune up"
+
+#: C/gnomeradio.xml:734(command)
+msgid "tune down"
+msgstr "tune down"
+
+#: C/gnomeradio.xml:742(command)
+msgid "preset up"
+msgstr "preset up"
+
+#: C/gnomeradio.xml:750(command)
+msgid "preset down"
+msgstr "preset down"
+
+#: C/gnomeradio.xml:758(command)
+msgid "volume up"
+msgstr "volume up"
+
+#: C/gnomeradio.xml:760(entry)
+msgid "Increase the volume."
+msgstr "Zvýšit hlasitost."
+
+#: C/gnomeradio.xml:766(command)
+msgid "volume down"
+msgstr "volume down"
+
+#: C/gnomeradio.xml:768(entry)
+msgid "Decrease the volume."
+msgstr "Snížit hlasitost."
+
+#: C/gnomeradio.xml:774(command)
+msgid "mute"
+msgstr "mute"
+
+#: C/gnomeradio.xml:782(command)
+msgid "quit"
+msgstr "quit"
+
+#: C/gnomeradio.xml:790(command)
+msgid "preset x"
+msgstr "preset x"
+
+#: C/gnomeradio.xml:792(entry)
+msgid "Select preset x + 1 (where x is between 0 and 9)"
+msgstr "Vybrat předvolenou stanici x + 1 (kde x je v rozsahu 0 až 9)."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/gnomeradio.xml:0(None)
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>, 2010"
+
