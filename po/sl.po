@@ -1,7 +1,12 @@
-# Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2009.
+# Slovenian translations for gnomeradio.
+# Copyright (C) 2005-2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome radio package.
+#
+# # Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2009 - 2010.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Gnome radio\n"
+"Project-Id-Version: gnomeradio master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnomeradio&component=general\n"
 "POT-Creation-Date: 2009-08-17 22:52+0000\n"
 "PO-Revision-Date: \n"
@@ -17,12 +22,12 @@ msgstr ""
 
 #: ../data/gnomeradio.schemas.in.h:1
 msgid "Choose the GnomeMedia Profile that should be used for recording"
-msgstr "Izberite profil GnomeMedia, ki naj bo uporabljen za snemanje"
+msgstr "Izberite profil GnomeMedia, ki bo uporabljen za snemanje"
 
 #: ../data/gnomeradio.schemas.in.h:2
 #: ../src/prefs.c:628
 msgid "Choose the mixer source (line, line1, etc.) that is able to control the volume of your radio"
-msgstr "Izberite vir mešalca (vrsta, vrsta1, itd.), s katerim je mogoče nadzirati glasnost radia"
+msgstr "Izberite vir mešalca (vrsta, vrsta1, itd.), s katerim je mogoče uravnavati glasnost radia"
 
 #: ../data/gnomeradio.schemas.in.h:3
 msgid "Device driver"
@@ -43,7 +48,7 @@ msgstr "Zadnja frekvenca"
 
 #: ../data/gnomeradio.schemas.in.h:7
 msgid "Last presets"
-msgstr "Zadnja predstavljena"
+msgstr "Zadnja pripravljena"
 
 #: ../data/gnomeradio.schemas.in.h:8
 msgid "Mixer Device"
@@ -63,7 +68,7 @@ msgstr "Število postaj na seznamu"
 
 #: ../data/gnomeradio.schemas.in.h:12
 msgid "Radio device"
-msgstr "Radio naprava"
+msgstr "Radijska naprava"
 
 #: ../data/gnomeradio.schemas.in.h:13
 msgid "Specify the device driver to use (any, v4l1 or v4l2)"
@@ -80,7 +85,7 @@ msgstr "Zadnja frekvenca (v MHz) v uporabi"
 
 #: ../data/gnomeradio.schemas.in.h:16
 msgid "The mixer device that gnomeradio should use. Only changeable via this key (no GUI option)"
-msgstr "Mešalna naprava, ki naj jo uporabi gnomeradio. Naprava je spremenljiva samo s to tipko (ni možnosti v grafičnem vmesniku)"
+msgstr "Mešalna naprava, ki naj jo uporabi gnomeradio. Naprava je spremenljiva le s to tipko (ni možnosti v grafičnem vmesniku)"
 
 #: ../data/gnomeradio.schemas.in.h:17
 msgid "The number of presets"
@@ -88,11 +93,11 @@ msgstr "Število postaj na seznamu"
 
 #: ../data/gnomeradio.schemas.in.h:18
 msgid "The preset that was enabled when gnomeradio was terminated. Range is 0 ... (# presets - 1). None is -1"
-msgstr "Postaja s seznama, ki je bila omogočena ob izhodu iz gnomeradia. Razpon je 0 ... (# prednastaljenih postaj-1). Nič je -1"
+msgstr "Postaja s seznama, ki je bila omogočena ob izhodu iz gnomeradia. Razpon je 0 ... (# predhodno nastavljenih postaj-1). Nič je -1"
 
 #: ../data/gnomeradio.desktop.in.h:1
 msgid "FM-Radio Tuner"
-msgstr "FM-Radijski Tuner"
+msgstr "FM-Radijski uglaševalnik"
 
 #: ../data/gnomeradio.desktop.in.h:2
 msgid "Listen to FM-radio"
@@ -126,15 +131,15 @@ msgstr "Nastavitve snemanja"
 
 #: ../src/prefs.c:592
 msgid "Radio Device:"
-msgstr "Radio naprava:"
+msgstr "Radijska naprava:"
 
 #: ../src/prefs.c:599
 msgid "Mixer Source:"
-msgstr "Mešalni vir?"
+msgstr "Mešalni vir:"
 
 #: ../src/prefs.c:616
 msgid "Mute on exit?"
-msgstr "Utišaj ob izhodu?"
+msgstr "Ali naj se utiša ob izhodu?"
 
 #: ../src/prefs.c:697
 msgid "Add a new preset"
@@ -150,7 +155,7 @@ msgstr "Ciljna mapa:"
 
 #: ../src/prefs.c:729
 msgid "Choose the Media Profile that should be used to record."
-msgstr "Izberite medijski profil za snemanje"
+msgstr "Izbor profila za snemanje."
 
 #: ../src/gui.c:107
 #, c-format
@@ -159,11 +164,11 @@ msgstr "najdenih %d postaj"
 
 #: ../src/gui.c:134
 msgid "Scanning"
-msgstr "Skeniranje"
+msgstr "Preiskovanje"
 
 #: ../src/gui.c:139
 msgid "Scanning for available stations:"
-msgstr "Skeniranje dostopnih postaj:"
+msgstr "Preiskovanje postaj:"
 
 #: ../src/gui.c:149
 msgid "No stations found"
@@ -175,8 +180,8 @@ msgid ""
 "%d stations found. \n"
 "Do you want to add them as presets?\n"
 msgstr ""
-"Najdenih %d postaj.\n"
-"Ali jih želite dodati na seznam postaj?\n"
+"Najdene postaje: %d.\n"
+"Ali želite nove postaje dodati v seznam?\n"
 
 #: ../src/gui.c:243
 #, c-format
@@ -190,9 +195,9 @@ msgid ""
 "program is using %s.\n"
 "Also make sure that you have read-access to it."
 msgstr ""
-"Preverite vaše nastavitve in se prepričajte da noben\n"
-"drug program ne uporablja %s.\n"
-"Prepričajte se tudi, da imate dostop za branje."
+"Preverite vaše nastavitve in se prepričajte da drugi\n"
+"programi ne uporabljajo naprave %s.\n"
+"Prepričajte se tudi, da imate ustrezna dovoljenja za branje."
 
 #: ../src/gui.c:268
 #, c-format
@@ -213,7 +218,7 @@ msgstr "Gnomeradio - %s"
 #: ../src/trayicon.c:144
 #, c-format
 msgid "Gnomeradio - %.2f MHz"
-msgstr "Gnomeradio - %2f MHz"
+msgstr "Gnomeradio - %.2f MHz"
 
 #: ../src/gui.c:420
 #: ../src/gui.c:998
@@ -232,7 +237,7 @@ msgstr "%s/%s_%s"
 #. consult man strftime to translate this. This is a filename, so don't use "/" or ":", please
 #: ../src/gui.c:685
 msgid "%B-%d-%Y_%H-%M-%S"
-msgstr "%B-%d-%Y_%H-%M-%S"
+msgstr "%d.%m.%Y_%H-%M-%S"
 
 #: ../src/gui.c:688
 #, c-format
@@ -245,7 +250,7 @@ msgstr "Povrni glasnost"
 
 #: ../src/gui.c:732
 msgid "Mute"
-msgstr "Utišaj"
+msgstr "Nemo"
 
 #. Feel free to put your names here translators :-)
 #: ../src/gui.c:746
@@ -258,7 +263,7 @@ msgid ""
 "\n"
 "This version has been compiled with LIRC support."
 msgstr ""
-"Gnomeradio je FM-Tunerski program za GNOME namizje. Moral bi delovati z vso tunersko strojno opremo, ki jo podpirajo gonilniki video4linux.\n"
+"Gnomeradio je uglaševalnik FM program za GNOME namizje. Moral bi delovati z vso uglaševalno strojno opremo, ki jo podpirajo gonilniki video4linux.\n"
 "\n"
 "Ta različica je bila prevedena s podporo za LIRC."
 
@@ -268,7 +273,7 @@ msgid ""
 "\n"
 "This version has been compiled without LIRC support."
 msgstr ""
-"Gnomeradio je FM-Tunerski program za GNOME namizje. Moral bi delovati z vso tunersko strojno opremo, ki jo podpirajo gonilniki video4linux.\n"
+"Gnomeradio je uglaševalnik FM program za GNOME namizje. Moral bi delovati z vso uglaševalno strojno opremo, ki jo podpirajo gonilniki video4linux.\n"
 "\n"
 "Ta različica je bila prevedena brez podpore za LIRC."
 
@@ -283,11 +288,11 @@ msgstr "Seznam postaj:"
 
 #: ../src/gui.c:989
 msgid "Scan Backwards"
-msgstr "Skeniraj nazaj"
+msgstr "Preišči nazaj"
 
 #: ../src/gui.c:990
 msgid "Scan Forwards"
-msgstr "Skeniraj naprej"
+msgstr "Preišči naprej"
 
 #: ../src/gui.c:991
 msgid "0.05 MHz Backwards"
@@ -307,7 +312,7 @@ msgstr "Shranite radio kot Wave, OGG ali MP3"
 
 #: ../src/gui.c:995
 msgid "Edit your Preferences"
-msgstr "Urejanje nastavitev"
+msgstr "Urejanje možnosti"
 
 #: ../src/gui.c:996
 msgid "Adjust the Volume"
@@ -315,11 +320,11 @@ msgstr "Prilagoditev glasnosti"
 
 #: ../src/gui.c:997
 msgid "Quit"
-msgstr "Izhod"
+msgstr "Končaj"
 
 #: ../src/gui.c:1089
 msgid "Scan for stations"
-msgstr "Skeniraj za postaje"
+msgstr "Preišči postaje"
 
 #: ../src/gui.c:1125
 #, c-format
@@ -328,16 +333,17 @@ msgid ""
 "\n"
 "Changes to the settings won't be saved."
 msgstr ""
-"%s\\n"
+"%s\n"
+"\n"
 "Spremembe nastavitev ne bodo shranjene."
 
 #: ../src/gui.c:1126
 msgid "Failed to init GConf!"
-msgstr "Inicializacija GConf je spodletela!"
+msgstr "Začenjanje GConf je spodletelo!"
 
 #: ../src/gui.c:1141
 msgid "Could not scan. Radio is not initialized."
-msgstr "Ni mogoče skenirati. Radio ni inicializiran"
+msgstr "Ni mogoče začeti preiskovanja. Radio ni začet."
 
 #: ../src/gui.c:1149
 msgid "manual"
@@ -355,11 +361,11 @@ msgstr "Ni mogoče zagnati lirc!"
 
 #: ../src/trayicon.c:84
 msgid "Muted"
-msgstr "Utišano"
+msgstr "Nemo"
 
 #: ../src/trayicon.c:98
 msgid "Show Window"
-msgstr "Prikaži okno"
+msgstr "Pokaži okno"
 
 #: ../src/record.c:65
 #, c-format
@@ -403,11 +409,11 @@ msgstr "Velikost datoteke:"
 
 #: ../src/record.c:156
 msgid "Stop Recording"
-msgstr "Ustavitev snemanja"
+msgstr "Zaustavi snemanje"
 
 #: ../src/rec_tech.c:42
 msgid "GStreamer runtime error."
-msgstr "Napaka v delovanju Gstreamerja"
+msgstr "Napaka v delovanju programa Gstreamer."
 
 #: ../src/rec_tech.c:58
 msgid "Could not create GStreamer pipeline."
@@ -416,7 +422,7 @@ msgstr "Ni mogoče ustvariti GStreamer cevovoda"
 #: ../src/rec_tech.c:59
 #: ../src/rec_tech.c:89
 msgid "Check your Gstreamer installation!"
-msgstr "Preverite vašo Gstreamer namestitev!"
+msgstr "Preverite Gstreamer namestitev!"
 
 #: ../src/rec_tech.c:65
 msgid "Could not open Gstreamer OSS Source."
@@ -424,7 +430,7 @@ msgstr "Ni mogoče odpreti Gstreamer OSS vira."
 
 #: ../src/rec_tech.c:66
 msgid "Verify your Gstreamer OSS subsystem installation!"
-msgstr "Preverite namestitev vaše Gstreamer OSS podsistema!"
+msgstr "Preverite namestitev Gstreamer OSS podsistema!"
 
 #: ../src/rec_tech.c:78
 #, c-format
@@ -433,7 +439,7 @@ msgstr "Ni mogoče ustvariti kodirnika \"%s\"."
 
 #: ../src/rec_tech.c:80
 msgid "Verify your Gstreamer plugins installation!"
-msgstr "Preverite namestitev vaših Gstreamer vstavkov"
+msgstr "Preverite namestitev Gstreamer vstavkov"
 
 #: ../src/rec_tech.c:88
 msgid "Could not create Gstreamer filesink."
